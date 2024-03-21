@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://4aiejq7m2otq"]
+
+[ext_resource type="Script" path="res://entities/enemy/enemy.gd" id="1_b24ro"]
+[ext_resource type="Texture2D" uid="uid://d070ci8r5x1u8" path="res://resources/sprites/Bag of Milk.png" id="2_18mf7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ufnhi"]
+radius = 7.11382
+height = 26.8293
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_b24ro")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(9.53674e-07, -1.19209e-06)
+scale = Vector2(0.17, 0.178)
+texture = ExtResource("2_18mf7")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 11
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1.13687e-13, -4)
+scale = Vector2(4.92, 4.92)
+shape = SubResource("CapsuleShape2D_ufnhi")
+debug_color = Color(0, 0.643137, 0.290196, 0.419608)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.13687e-13, -4)
+scale = Vector2(4.92, 4.92)
+shape = SubResource("CapsuleShape2D_ufnhi")
+debug_color = Color(0, 0.643137, 0.290196, 0.419608)
