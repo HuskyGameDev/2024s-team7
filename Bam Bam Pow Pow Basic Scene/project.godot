@@ -18,6 +18,7 @@ config/icon="res://resources/sprites/icon.svg"
 [autoload]
 
 ItemStorage="*res://item_storage.gd"
+SceneSwap="*res://scripts/scene_swap.gd"
 
 [dotnet]
 
