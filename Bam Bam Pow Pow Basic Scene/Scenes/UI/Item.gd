@@ -12,9 +12,15 @@ var money;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	money = item_storage.itemsList[id][2]
-	money_label.text = "Price: " + str(item_storage.itemsList[id][2])
-	sprite.texture = load(item_storage.itemsList[id][3])
+	if (item_storage.itemsList[id][4] == false): 
+		money = item_storage.itemsList[id][2]
+		money_label.text = "Price: " + str(item_storage.itemsList[id][2])
+		sprite.texture = load(item_storage.itemsList[id][3])
+	else: 
+		money_label.visible = false
+		buy_button.visible = false
+		sprite.visible = false
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -29,5 +29,5 @@ func _on_hurtbox_area_entered(hitbox):
 	animPlayer.play("hurt")
 	print(hitbox.get_parent().name + "'s hitbox touched " + name + "'s hurtbox and dealt " + str(base_damage) + "Total Score: " + str(self.score))
 
-	if self.score == 200:
+	if self.score >= 200:
 		SceneSwap.scene_swap("res://Scenes/ItemShop.tscn")
