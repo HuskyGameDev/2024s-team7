@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var sprite = $Sprite2D
 @onready var collShape = $CollisionShape2D
 @onready var animPlayer = $AnimationPlayer
+@onready var animTree : AnimationTree = $AnimationTree
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -25,4 +26,5 @@ func _physics_process(delta):
 func _on_hurtbox_area_entered(hitbox):
 	var base_damage = hitbox.damage
 	self.score += base_damage
+	animPlayer.play("hurt")
 	print(hitbox.get_parent().name + "'s hitbox touched " + name + "'s hurtbox and dealth " + str(base_damage))
