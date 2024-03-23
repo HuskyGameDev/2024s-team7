@@ -13,7 +13,7 @@ func scene_swap(scene_path):
 func _deferred_scene_swap(scene_path):
 	
 	# Add fade scene on top.
-	var fade = load("res://scenes/world/fade.tscn").instantiate()
+	var fade = load("res://Scenes/fade.tscn").instantiate()
 	get_tree().root.add_child(fade)
 	fade.fade_to_black()
 	
