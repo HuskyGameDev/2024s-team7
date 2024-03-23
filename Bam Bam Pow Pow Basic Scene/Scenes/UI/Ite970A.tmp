@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4pc3pqqnndd1"]
+
+[ext_resource type="Script" path="res://Scenes/UI/ItemShop.gd" id="1_ftw22"]
+[ext_resource type="Texture2D" uid="uid://bccvdng3t7mr0" path="res://Assets/icon.svg" id="2_lemg0"]
+[ext_resource type="Script" path="res://Scenes/UI/Button.gd" id="2_spodu"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_ftw22")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Button" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Buy
+"
+script = ExtResource("2_spodu")
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Money: "
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+position = Vector2(55, -77)
+texture = ExtResource("2_lemg0")
+
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]

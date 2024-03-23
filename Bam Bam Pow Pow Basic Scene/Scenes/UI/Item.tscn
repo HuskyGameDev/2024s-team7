@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://btqmnmpytpfkq"]
+
+[ext_resource type="Script" path="res://Scenes/UI/Item.gd" id="1_aiipj"]
+[ext_resource type="Texture2D" uid="uid://bccvdng3t7mr0" path="res://Assets/icon.svg" id="2_3fep4"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_aiipj")
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(150, 200)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+position = Vector2(45.5, -75)
+texture = ExtResource("2_3fep4")
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Price: "
+
+[node name="Button" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Buy"
+
+[node name="Node" type="Node" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+metadata/ID = 0
+
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
