@@ -5,8 +5,8 @@ func _on_start_pressed():
 
 
 func _on_settings_pressed():
-	print("Uncomment and put scene file")
-	#get_tree().change_scene_to_file("PUT FILE HERE")
+	Global.prev_scene = get_tree().current_scene.scene_file_path
+	SceneSwap.scene_swap("res://Scenes/SettingsMenu.tscn")
 
 
 func _on_quit_pressed():

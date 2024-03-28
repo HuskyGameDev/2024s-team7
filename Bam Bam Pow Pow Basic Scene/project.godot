@@ -19,6 +19,7 @@ config/icon="res://resources/sprites/icon.svg"
 
 ItemStorage="*res://item_storage.gd"
 SceneSwap="*res://scripts/scene_swap.gd"
+Global="*res://scripts/Global.gd"
 
 [dotnet]
 
