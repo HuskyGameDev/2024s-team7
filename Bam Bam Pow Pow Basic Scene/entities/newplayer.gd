@@ -54,6 +54,6 @@ func _physics_process(delta):
 
 
 func _on_hurtbox_area_entered(hitbox):
-	var base_damage = hitbox.damage
-	self.score += base_damage
+	var damage = hitbox.motion
+	self.score += damage
 	print("Total DMG = " + str(score))
