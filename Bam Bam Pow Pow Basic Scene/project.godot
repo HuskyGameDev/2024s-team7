@@ -21,6 +21,11 @@ ItemStorage="*res://item_storage.gd"
 SceneSwap="*res://scripts/scene_swap.gd"
 Global="*res://scripts/Global.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [dotnet]
 
 project/assembly_name="Bam Bam Pow Pow Basic Scene"

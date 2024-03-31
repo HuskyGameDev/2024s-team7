@@ -33,7 +33,7 @@ stretch_mode = 1
 texture_filter = 1
 tile_set = SubResource("TileSet_gik26")
 format = 2
-layer_0/tile_data = PackedInt32Array(2818051, 1, 0, 2818059, 1, 0, 2818067, 1, 0, 2818075, 1, 0, 2818083, 1, 0, 2818091, 1, 0, 2818099, 1, 0)
+layer_0/tile_data = PackedInt32Array(2818051, 1, 0, 2818059, 1, 0, 2818067, 1, 0, 2818075, 1, 0, 2818083, 1, 0, 2818091, 1, 0, 2818099, 1, 0, 2818107, 1, 0, 2818115, 1, 0, 2818123, 1, 0, 2883579, 1, 0)
 
 [node name="newplayer" parent="." instance=ExtResource("3_w7w43")]
 position = Vector2(222, 556)
