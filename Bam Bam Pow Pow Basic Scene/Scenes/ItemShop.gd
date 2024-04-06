@@ -30,6 +30,10 @@ func _on_fight_scene_button_pressed():
 func _on_main_menu_button_pressed():
 	SceneSwap.scene_swap("res://Scenes/MainMenu.tscn");
 
+func _on_settings_menu_button_pressed():
+	Global.prev_scene = get_tree().current_scene.scene_file_path
+	SceneSwap.scene_swap("res://Scenes/SettingsMenu.tscn");
+	
 func _on_save_button_pressed():
 	ItemStorage.save_game()
 

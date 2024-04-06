@@ -1,8 +1,8 @@
 extends Control
 
 func _ready() -> void:
-	$TabContainer/Video/CheckButton.button_pressed = Global.fullscreen_on
-	$TabContainer/Video/OptionButton.selected = Global.resolution_index
+	$"TabContainer/Video & Audio/CheckButton".button_pressed = Global.fullscreen_on
+	$"TabContainer/Video & Audio/OptionButton".selected = Global.resolution_index
 	
 func _on_button_pressed():
 	SceneSwap.scene_swap(Global.prev_scene)
