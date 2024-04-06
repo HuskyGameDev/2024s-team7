@@ -63,9 +63,6 @@ size_flags_vertical = 4
 offset = Vector2(-400, 0)
 transform = Transform2D(1, 0, 0, 1, -400, 0)
 
-[node name="Node" parent="Control/MarginContainer/HBoxContainer3/Item1/Control" index="1"]
-metadata/ID = 1
-
 [node name="Item2" parent="Control/MarginContainer/HBoxContainer3" instance=ExtResource("2_3qixg")]
 offset = Vector2(-250, 0)
 transform = Transform2D(1, 0, 0, 1, -250, 0)

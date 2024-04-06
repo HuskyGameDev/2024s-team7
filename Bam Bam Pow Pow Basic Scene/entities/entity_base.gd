@@ -24,12 +24,12 @@ func _ready():
 
 # Alters the damageMult and moneyMult variables depending on items the player has bought from the shop
 func readyMults():
-	for i in range(10):
-		if(ItemStorage.itemsList[i][3] == true):
-			moneyMult = moneyMult * ItemStorage.itemsList[i][4]
-	for i in range(11,20):
-		if(ItemStorage.itemsList[i][3] == true):
-			base_damage = base_damage * ItemStorage.itemsList[i][4]
+	for i in range(11):
+		if(ItemStorage.itemsList[i].owned == true):
+			moneyMult = moneyMult * ItemStorage.itemsList[i].multiplier
+	for i in range(11,21):
+		if(ItemStorage.itemsList[i].owned == true):
+			base_damage = base_damage * ItemStorage.itemsList[i].multiplier
 
 func _physics_process(delta):
 	# Add the gravity.
