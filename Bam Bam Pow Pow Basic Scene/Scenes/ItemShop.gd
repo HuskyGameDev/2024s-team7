@@ -4,6 +4,8 @@ extends CanvasLayer
 @onready var item1 = $Control/MarginContainer/HBoxContainer3/Item1
 @onready var item2 = $Control/MarginContainer/HBoxContainer3/Item2
 
+signal reload
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	moneylabel.text = "Money: " + str(ItemStorage.money)
@@ -27,3 +29,11 @@ func _on_fight_scene_button_pressed():
 
 func _on_main_menu_button_pressed():
 	SceneSwap.scene_swap("res://Scenes/MainMenu.tscn");
+
+func _on_save_button_pressed():
+	ItemStorage.save_game()
+
+func _on_load_button_pressed():
+	ItemStorage.load_game()
+	moneylabel.text = "Money: " + str(ItemStorage.money)
+	emit_signal("reload")

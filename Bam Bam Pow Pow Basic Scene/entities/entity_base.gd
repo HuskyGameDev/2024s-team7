@@ -12,12 +12,24 @@ extends CharacterBody2D
 @onready var animTree : AnimationTree = $AnimationTree
 
 var addedMoney = false
+var punchMult = 1.0
+var moneyMult = 1.0 # Multiplier for money stats
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	animPlayer.play("idle")
+	readyMults()
+
+# Alters the damageMult and moneyMult variables depending on items the player has bought from the shop
+func readyMults():
+	for i in range(10):
+		if(ItemStorage.itemsList[i][3] == true):
+			moneyMult = moneyMult * ItemStorage.itemsList[i][4]
+	for i in range(11,20):
+		if(ItemStorage.itemsList[i][3] == true):
+			base_damage = base_damage * ItemStorage.itemsList[i][4]
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -39,7 +51,7 @@ func _on_hurtbox_area_entered(hitbox):
 	print(str(damage) + " dealt!")
 	print("Juggle Count: " + str(self.juggle))
 
-	if self.score >= 20000 && !addedMoney:
+	if self.score >= 2000 && !addedMoney:
 		addedMoney = true
-		ItemStorage.money += score
+		ItemStorage.money += (score * moneyMult)
 		SceneSwap.scene_swap("res://Scenes/ItemShop.tscn")

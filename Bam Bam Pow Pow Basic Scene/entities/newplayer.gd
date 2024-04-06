@@ -12,7 +12,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	animTree.active = true
-	
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -55,5 +54,5 @@ func _physics_process(delta):
 
 func _on_hurtbox_area_entered(hitbox):
 	var damage = hitbox.motion
-	self.score += damage
+	self.score += damage 
 	print("Total DMG = " + str(score))
