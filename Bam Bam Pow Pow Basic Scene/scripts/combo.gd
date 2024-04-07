@@ -1,24 +1,36 @@
 extends Node
 
-enum ATTACK {
+## This enum is for the core ability
+## NOTE: The assigned values are equal to their index in the damage array
+enum CORE {
 	PUNCH = 0,
-	KICK = 1,
-	WEAPON = 2,
-	SPECIAL = 3
+	KICK = 5,
+	WEAPON = 10,
+	SPECIAL = 15
 }
 
+## This enum specifies the motion being input at the time that an attack was pressed.
+## NOTE: This has the value of 1...4 inclusive to be used for interpretation with the core ability
 enum MOTION {
-	UP = 4,
-	DOWN = 5,
-	LEFT = 6,
-	RIGHT = 7
+	UP = 1,
+	DOWN = 2,
+	LEFT = 3,
+	RIGHT = 4
 }
 
-var attack = null
+## These are the values containing the core or the motion the user pressed in the current instance
+var core = null
 var motion = -1
+
+## This is the signal to be caught by the damage handler
+signal attack(index)
 
 @onready
 var cooldown_timer = $CoolDownTimer
+
+## DEBUG FUNCTION
+func _on_attack(index):
+	print_debug("Indexing: " + str(index))
 
 ## This function checks if a current motion is being pressed and returns it
 func check_motion() -> int:
@@ -33,31 +45,49 @@ func check_motion() -> int:
 	else:
 		return -1
 
-## This function validates if a given combo is able to be performed
+## This function validates if a given combo is able to be performed and emits a signal corresponding to the index of the given attack
 func validate_combo():
-	match attack:
-		ATTACK.PUNCH:
-			match motion:
-				MOTION.UP:
-					print_debug("Uppercut attack")
+	var index = -1
+	match core:
+		CORE.PUNCH:
+			index = CORE.PUNCH
+		CORE.KICK:
+			index = CORE.KICK
+		CORE.WEAPON:
+			index = CORE.WEAPON
+		CORE.SPECIAL:
+			index = CORE.SPECIAL
+	
+	if motion != -1:
+		match motion:
+			MOTION.UP:
+				index += MOTION.UP
+			MOTION.DOWN:
+				index += MOTION.DOWN
+			MOTION.LEFT:
+				index += MOTION.LEFT
+			MOTION.RIGHT:
+				index += MOTION.RIGHT
+				
+	attack.emit(index)
+	motion = null
+	core = null
 
-func load_combo(attack_tag) -> void:
-	attack = attack_tag
+## This function will load the attack into given values, begin the cooldown timer, and then validate the combo to emit the signal
+func load_combo(core_tag) -> void:
+	core = core_tag
 	motion = check_motion()
 	cooldown_timer.start()
-	if motion == -1:
-		print_debug("Regular attack")
-	else:
-		validate_combo()
+	validate_combo()
 
-# This will wait for user input and then assign the appropriate tag and time to the `move` variable.
+## This will wait for user input and then attemp to load a combo using the value passed into it
 func _input(event):
 	if cooldown_timer.is_stopped():
 		if InputMap.event_is_action(event, "Punch"):
-			load_combo(ATTACK.PUNCH)
+			load_combo(CORE.PUNCH)
 		elif InputMap.event_is_action(event, "Kick"):
-			load_combo(ATTACK.KICK)
+			load_combo(CORE.KICK)
 		elif InputMap.event_is_action(event, "Weapon"):
-			load_combo(ATTACK.WEAPON)
+			load_combo(CORE.WEAPON)
 		elif InputMap.event_is_action(event, "Special"):
-			load_combo(ATTACK.SPECIAL)
+			load_combo(CORE.SPECIAL)

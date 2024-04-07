@@ -7,3 +7,5 @@ script = ExtResource("1_g4s65")
 
 [node name="CoolDownTimer" type="Timer" parent="."]
 one_shot = true
+
+[connection signal="attack" from="." to="." method="_on_attack"]
