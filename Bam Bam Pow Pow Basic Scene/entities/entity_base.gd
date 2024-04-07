@@ -23,44 +23,45 @@ var leftMult = 1.0
 var rightMult = 1.0
 
 var moneyMult = 1.0 # Multiplier for money stats
-var itemsOwned = [20]
+var dmg = []
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	animPlayer.play("idle")
-	readyMults()
+	dmg.resize(20)
+	readyDamage()
 
 # Alters the damageMult and moneyMult variables depending on items the player has bought from the shop
-func readyMults():
-	for i in range(11):
-		if(ItemStorage.itemsList[i].owned == true):
-			moneyMult = moneyMult * ItemStorage.itemsList[i].multiplier
-	for i in range(11,21):
-		if(ItemStorage.itemsList[i].owned == true):
-			base_damage = base_damage * ItemStorage.itemsList[i].multiplier
-	for i in range (21,41):
-		itemsOwned[i-21] = -1
-		var dam = base_damage * damageMult
-		if (i < 26):
-			dam = dam * punchMult
-		elif (i >= 26 && i < 31):
-			dam = dam * kickMult
-		elif (i >= 31 && i < 36):
-			dam = dam * weapMult
-		else:
-			dam = dam * specMult
-		if (i % 5 == 2):
-			dam = dam * upMult
-		elif (i % 4 == 3):
-			dam = dam * downMult
-		elif (i % 4 == 4):
-			dam = dam * leftMult
-		elif (i % 4 == 0):
-			dam = dam * rightMult
+func readyDamage():
+	for i in range (20):
 		if (ItemStorage.itemsList[i].owned == true):
-			itemsOwned[i-21] = dam
+			dmg[i] = 1.0
+		else:
+			dmg[i] = -1.0
+	for i in range(20,99):
+		if (ItemStorage.itemsList[i].owned == true):
+			if(ItemStorage.itemsList[i].type == ItemStorage.MULTTYPE.MONEY):
+				moneyMult += ItemStorage.itemsList[i].multiplier
+			elif(ItemStorage.itemsList[i].type == ItemStorage.MULTTYPE.BASE):
+				for j in range (4):
+					dmg[j] += ItemStorage.itemsList[i].multiplier
+					j = j + 5
+			elif(ItemStorage.itemsList[i].type == ItemStorage.MULTTYPE.LITERAL):
+				if(dmg[ItemStorage.itemsList[i].index] != -1):
+					dmg[ItemStorage.itemsList[i].index] += ItemStorage.itemsList[i].multiplier
+			else:
+				var trueInd = ItemStorage.itemsList[i].index
+				for j in range (0,4):
+					if (dmg[trueInd] != -1):
+						dmg[trueInd] += ItemStorage.itemsList[i].multiplier
+					trueInd = trueInd + 5
+	for i in range(20):
+		if (i % 5 != 0 && dmg[i] != -1):
+				var j = i-(i % 5)
+				dmg[i] = dmg[j] * dmg[i]
+	print(dmg)
 
 func _physics_process(delta):
 	# Add the gravity.

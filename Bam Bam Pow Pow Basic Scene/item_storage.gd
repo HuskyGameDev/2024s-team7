@@ -2,13 +2,15 @@ extends Node
 
 var money;
 var itemsList = [];
+enum MULTTYPE {MONEY, BASE, LITERAL, DIRECTION}
 var item = {
 	name = "",
 	price = 0,
 	sprite = "",
 	owned = false,
-	multiplier = 0,
-	move = ""
+	type = -1,
+	index = -1,
+	multiplier = 0
 }
 signal reload
 
@@ -19,27 +21,34 @@ func _ready():
 	for i in range(100):
 		itemsList.append(item.duplicate())
 	
-	itemsList[0].name = "Piggy Bank"
-	itemsList[0].price = 100
-	itemsList[0].sprite = "res://Assets/icon.svg"
-	itemsList[0].multiplier = 1.2
+	itemsList[20].name = "Piggy Bank"
+	itemsList[20].price = 100
+	itemsList[20].sprite = "res://Assets/icon.svg"
+	itemsList[20].type = MULTTYPE.MONEY
+	itemsList[20].multiplier = 1.2
 	
-	itemsList[11].name = "Sharper Axes"
-	itemsList[11].price = 200
-	itemsList[11].sprite = "res://Assets/smile2.png"
-	itemsList[11].multiplier = 1.2
+	itemsList[21].name = "Sharper Axes"
+	itemsList[21].price = 200
+	itemsList[21].sprite = "res://Assets/smile2.png"
+	itemsList[21].type = MULTTYPE.LITERAL
+	itemsList[21].index = 10
+	itemsList[21].multiplier = 1.2
 	
-	itemsList[12].name = "Sharper Fists"
-	itemsList[12].price = 500
-	itemsList[12].sprite = "res://Assets/smile2.png"
-	itemsList[12].multiplier = 1.5
+	itemsList[22].name = "Sharper Up"
+	itemsList[22].price = 500
+	itemsList[22].sprite = "res://Assets/smile2.png"
+	itemsList[22].type = MULTTYPE.DIRECTION
+	itemsList[22].index = 1
+	itemsList[22].multiplier = 1.5
 	
+	itemsList[1].name = "Uppercut Glove"
+	itemsList[1].price = 1000
+	itemsList[1].sprite = "res://Assets/icon.svg"
 	
-	
-	itemsList[21].name = "Uppercut Glove"
-	itemsList[21].price = 1000
-	itemsList[21].sprite = "res://Assets/icon.svg"
-	itemsList[21].move = "UP"
+	itemsList[0].owned = true
+	itemsList[5].owned = true
+	itemsList[10].owned = true
+	itemsList[15].owned = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
