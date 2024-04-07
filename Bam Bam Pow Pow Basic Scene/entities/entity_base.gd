@@ -12,8 +12,18 @@ extends CharacterBody2D
 @onready var animTree : AnimationTree = $AnimationTree
 
 var addedMoney = false
+var damageMult = 1.0
 var punchMult = 1.0
+var kickMult = 1.0
+var weapMult = 1.0
+var specMult = 1.0
+var upMult = 1.0
+var downMult = 1.0
+var leftMult = 1.0
+var rightMult = 1.0
+
 var moneyMult = 1.0 # Multiplier for money stats
+var itemsOwned = [20]
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -30,6 +40,27 @@ func readyMults():
 	for i in range(11,21):
 		if(ItemStorage.itemsList[i].owned == true):
 			base_damage = base_damage * ItemStorage.itemsList[i].multiplier
+	for i in range (21,41):
+		itemsOwned[i-21] = -1
+		var dam = base_damage * damageMult
+		if (i < 26):
+			dam = dam * punchMult
+		elif (i >= 26 && i < 31):
+			dam = dam * kickMult
+		elif (i >= 31 && i < 36):
+			dam = dam * weapMult
+		else:
+			dam = dam * specMult
+		if (i % 5 == 2):
+			dam = dam * upMult
+		elif (i % 4 == 3):
+			dam = dam * downMult
+		elif (i % 4 == 4):
+			dam = dam * leftMult
+		elif (i % 4 == 0):
+			dam = dam * rightMult
+		if (ItemStorage.itemsList[i].owned == true):
+			itemsOwned[i-21] = dam
 
 func _physics_process(delta):
 	# Add the gravity.

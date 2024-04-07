@@ -30,13 +30,14 @@ func _on_item_shop_reload():
 		money_label.visible = true
 		buy_button.visible = true
 		sprite.visible = true
+		name_label.visible = true
 		# Updates the cost of the item to match the item's info in the item list, then updates its price
 		# label to be accurate and the sprite to be its sprite
 		money = ItemStorage.itemsList[id].price
 		money_label.text = "Price: " + str(ItemStorage.itemsList[id].price)
+		name_label.text = "Name: " + str(ItemStorage.itemsList[id].name)
 		if (ItemStorage.itemsList[id].sprite != null):
 			sprite.texture = load(ItemStorage.itemsList[id].sprite)
-		name_label.text = "Name: " + str(ItemStorage.itemsList[id].name)
 	else: # If the item is owned by the player
 		# Makes the items components no longer visibile or interactable
 		money_label.visible = false

@@ -7,7 +7,8 @@ var item = {
 	price = 0,
 	sprite = "",
 	owned = false,
-	multiplier = 0
+	multiplier = 0,
+	move = ""
 }
 signal reload
 
@@ -32,6 +33,13 @@ func _ready():
 	itemsList[12].price = 500
 	itemsList[12].sprite = "res://Assets/smile2.png"
 	itemsList[12].multiplier = 1.5
+	
+	
+	
+	itemsList[21].name = "Uppercut Glove"
+	itemsList[21].price = 1000
+	itemsList[21].sprite = "res://Assets/icon.svg"
+	itemsList[21].move = "UP"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
