@@ -64,3 +64,9 @@ func printItems():
 	for i in range(100):
 		if (itemsList[i].owned == true):
 			print(i)
+
+func restart_game():
+	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+	save_file.store_line(str(10000))
+	for i in range(100):
+		save_file.store_line(str(0))
