@@ -9,18 +9,9 @@ extends CharacterBody2D
 @onready var sprite = $Sprite2D
 @onready var collShape = $CollisionShape2D
 @onready var animPlayer = $AnimationPlayer
-@onready var animTree : AnimationTree = $AnimationTree
 
 var addedMoney = false
-var damageMult = 1.0
-var punchMult = 1.0
-var kickMult = 1.0
-var weapMult = 1.0
-var specMult = 1.0
-var upMult = 1.0
-var downMult = 1.0
-var leftMult = 1.0
-var rightMult = 1.0
+
 
 var moneyMult = 1.0 # Multiplier for money stats
 var dmg = []
