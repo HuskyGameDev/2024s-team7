@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cuji3bj4q1s1d"]
 
-[ext_resource type="Script" path="res://entities/entity_base.gd" id="1_oxr1c"]
-[ext_resource type="PackedScene" uid="uid://fspnamnk1jw6" path="res://resources/overlap/hurtbox.tscn" id="2_xnj5o"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_oxr1c"]
+[ext_resource type="PackedScene" uid="uid://fspnamnk1jw6" path="res://Scenes/Entities/Hitboxes/hurtbox.tscn" id="2_xnj5o"]
 
 [node name="EntityBase" type="CharacterBody2D"]
 script = ExtResource("1_oxr1c")

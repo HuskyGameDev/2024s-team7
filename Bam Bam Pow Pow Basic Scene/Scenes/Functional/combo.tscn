@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://b8vq6sc31q3x6"]
 
-[ext_resource type="Script" path="res://scripts/combo.gd" id="1_g4s65"]
+[ext_resource type="Script" path="res://scripts/combo.gd" id="1_5kg8b"]
 
 [node name="Node" type="Node"]
-script = ExtResource("1_g4s65")
+script = ExtResource("1_5kg8b")
 
 [node name="CoolDownTimer" type="Timer" parent="."]
 one_shot = true

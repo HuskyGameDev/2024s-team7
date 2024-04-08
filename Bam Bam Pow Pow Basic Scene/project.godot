@@ -11,15 +11,15 @@ config_version=5
 [application]
 
 config/name="Bam Bam Pow Pow Basic Scene"
-run/main_scene="res://Scenes/MainMenu.tscn"
+run/main_scene="res://Scenes/Playable/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://resources/sprites/icon.svg"
 
 [autoload]
 
-ItemStorage="*res://item_storage.gd"
-SceneSwap="*res://scripts/scene_swap.gd"
-Global="*res://scripts/Global.gd"
+ItemStorage="*res://scripts/globals/item_storage.gd"
+SceneSwap="*res://scripts/globals/scene_swap.gd"
+Global="*res://scripts/globals/Global.gd"
 
 [display]
 

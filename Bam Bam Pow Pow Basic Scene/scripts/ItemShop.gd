@@ -25,14 +25,14 @@ func bought_item(money):
 
 
 func _on_fight_scene_button_pressed():
-	SceneSwap.scene_swap("res://main.tscn");
+	SceneSwap.scene_swap("res://Scenes/Playable/Fight.tscn");
 
 func _on_main_menu_button_pressed():
-	SceneSwap.scene_swap("res://Scenes/MainMenu.tscn");
+	SceneSwap.scene_swap("res://Scenes/Playable/MainMenu.tscn");
 
 func _on_settings_menu_button_pressed():
 	Global.prev_scene = get_tree().current_scene.scene_file_path
-	SceneSwap.scene_swap("res://Scenes/SettingsMenu.tscn");
+	SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn");
 	
 func _on_save_button_pressed():
 	ItemStorage.save_game()

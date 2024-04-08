@@ -33,11 +33,11 @@ func _on_item_shop_reload():
 		name_label.visible = true
 		# Updates the cost of the item to match the item's info in the item list, then updates its price
 		# label to be accurate and the sprite to be its sprite
-		money = ItemStorage.itemsList[id].price
-		money_label.text = "Price: " + str(ItemStorage.itemsList[id].price)
-		name_label.text = "Name: " + str(ItemStorage.itemsList[id].name)
-		if (ItemStorage.itemsList[id].sprite != null):
-			sprite.texture = load(ItemStorage.itemsList[id].sprite)
+		money = ItemStorage.itemsList[id]["price"]
+		money_label.text = "Price: " + str(ItemStorage.itemsList[id]["price"])
+		name_label.text = "Name: " + str(ItemStorage.itemsList[id]["name"])
+		if (ItemStorage.itemsList[id]["sprite"] != null):
+			sprite.texture = load(ItemStorage.itemsList[id]["sprite"])
 	else: # If the item is owned by the player
 		# Makes the items components no longer visibile or interactable
 		money_label.visible = false
@@ -48,7 +48,7 @@ func _on_item_shop_reload():
 # When the button attatched to the item is pressed
 func _on_button_pressed():
 	# Makes the item no longer visible or interactable
-	ItemStorage.itemsList[id].owned = true # Updates the item to be owned by the player in the item storage
+	ItemStorage.itemsList[id]["owned"] = true # Updates the item to be owned by the player in the item storage
 	_on_item_shop_reload()
 	#Plays the purchase noise
 	if (!audioPlayer.is_playing()):

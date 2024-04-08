@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://i48tabjyt08t"]
 
-[ext_resource type="Script" path="res://Scenes/ItemShop.gd" id="1_ed3xk"]
-[ext_resource type="PackedScene" uid="uid://btqmnmpytpfkq" path="res://Scenes/UI/Item.tscn" id="2_3qixg"]
+[ext_resource type="Script" path="res://scripts/ItemShop.gd" id="1_ed3xk"]
+[ext_resource type="PackedScene" uid="uid://btqmnmpytpfkq" path="res://Scenes/Functional/Item.tscn" id="2_3qixg"]
 
 [node name="ItemShop" type="CanvasLayer" groups=["Items"]]
 script = ExtResource("1_ed3xk")
@@ -87,7 +87,7 @@ offset = Vector2(150, 0)
 transform = Transform2D(1, 0, 0, 1, 150, 0)
 
 [node name="Node" parent="Control/MarginContainer/HBoxContainer3/Item4/Control" index="1"]
-metadata/ID = 1
+metadata/ID = 23
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"sfx"

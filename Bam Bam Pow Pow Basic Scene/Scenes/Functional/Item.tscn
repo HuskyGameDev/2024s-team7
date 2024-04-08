@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://btqmnmpytpfkq"]
 
-[ext_resource type="Script" path="res://Scenes/UI/Item.gd" id="1_aiipj"]
-[ext_resource type="Texture2D" uid="uid://bccvdng3t7mr0" path="res://Assets/icon.svg" id="2_3fep4"]
+[ext_resource type="Script" path="res://scripts/Item.gd" id="1_iv1pr"]
+[ext_resource type="Texture2D" uid="uid://bccvdng3t7mr0" path="res://Assets/icon.svg" id="2_pml55"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
-script = ExtResource("1_aiipj")
+script = ExtResource("1_iv1pr")
 
 [node name="Control" type="Control" parent="."]
 custom_minimum_size = Vector2(150, 200)
@@ -35,7 +35,7 @@ size_flags_vertical = 8
 
 [node name="Sprite2D" type="Sprite2D" parent="Control/MarginContainer/VBoxContainer2"]
 position = Vector2(64.5, -85)
-texture = ExtResource("2_3fep4")
+texture = ExtResource("2_pml55")
 
 [node name="NameLabel" type="Label" parent="Control/MarginContainer/VBoxContainer2"]
 layout_mode = 2
