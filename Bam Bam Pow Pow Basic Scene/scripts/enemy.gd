@@ -28,32 +28,35 @@ func _ready():
 
 # Alters the damageMult and money_mult variables depending on items the player has bought from the shop
 func ready_mults():
+	# Fill with zeros, initalize base attacks as valid.
+	mults.fill(0)
+	mults[0] 	= 1
+	mults[5] 	= 1
+	mults[10] 	= 1
+	mults[15] 	= 1
 	
-	for i in range (20):
-		if (items[i].owned):
-			mults[i] = 1.0
-		else:
-			mults[i] = 0
-	for i in range(20,99):
-		if (items[i].owned == true):
-			var mult = items[i]["mult"]
-			var index = items[i]["index"]
-			match items[i]["type"]:
-				ItemStorage.MULTTYPE.MONEY:
-					money_mult += mult
-					
-				ItemStorage.MULTTYPE.BASE:
-					base_mult(mult)
-					
-				ItemStorage.MULTTYPE.LITERAL:
-					literal_mult(index, mult)
-					
-				ItemStorage.MULTTYPE.DIRECTION:
-					direction_mult(index, mult)
-					
+	for item in ItemStorage.moneyItems:
+		if item["owned"]:
+			money_mult += item["mult"]
+	
+	for item in ItemStorage.baseItems:
+		if item["owned"]:
+			base_mult(item["mult"])
+	
+	for item in ItemStorage.specificItems:
+		if item["owned"]:
+			specific_mult(item["index"], item["mult"])
+	
+	for item in ItemStorage.directionItems:
+		if item["owned"]:
+			direction_mult(item["index"], item["mult"])
+	
 	base_mult_stack()
-	ItemStorage.printItems()
-	print(mults)
+	ready_damage()
+
+func ready_damage():
+	for index in range(mults.size()):
+		damage[index] = base_damage * mults[index]
 
 func base_mult_stack():
 	for index in range(20):
@@ -64,13 +67,11 @@ func base_mult_stack():
 func direction_mult(index, mult):
 	var iterator: int = 0
 	while iterator < 20:
-		print_debug(mults[iterator + index])
 		if mults[iterator + index] > 0:
-			print_debug("\n\n\nEntered")
 			mults[iterator + index] += mult
 		iterator += 5
 
-func literal_mult(index, mult):
+func specific_mult(index, mult):
 	mults[index] += mult
 
 func base_mult(mult):

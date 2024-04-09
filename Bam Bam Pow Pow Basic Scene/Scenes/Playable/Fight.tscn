@@ -40,7 +40,8 @@ format = 2
 layer_0/tile_data = PackedInt32Array(2818051, 1, 0, 2818059, 1, 0, 2818067, 1, 0, 2818075, 1, 0, 2818083, 1, 0, 2818091, 1, 0, 2818099, 1, 0, 2818107, 1, 0, 2818115, 1, 0, 2818123, 1, 0, 2883579, 1, 0)
 
 [node name="player" parent="." instance=ExtResource("3_w7w43")]
-position = Vector2(222, 556)
+position = Vector2(276, 505)
+scale = Vector2(2, 2)
 
 [node name="enemy" parent="." instance=ExtResource("4_boejj")]
 position = Vector2(695, 527)

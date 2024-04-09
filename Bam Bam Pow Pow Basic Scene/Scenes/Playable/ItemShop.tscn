@@ -67,27 +67,24 @@ size_flags_vertical = 4
 offset = Vector2(-400, 0)
 transform = Transform2D(1, 0, 0, 1, -400, 0)
 
-[node name="Node" parent="Control/MarginContainer/HBoxContainer3/Item1/Control" index="1"]
-metadata/ID = 20
-
 [node name="Item2" parent="Control/MarginContainer/HBoxContainer3" instance=ExtResource("2_3qixg")]
 offset = Vector2(-250, 0)
 transform = Transform2D(1, 0, 0, 1, -250, 0)
 
 [node name="Node" parent="Control/MarginContainer/HBoxContainer3/Item2/Control" index="1"]
-metadata/ID = 21
+metadata/ID = 1
 
 [node name="Item3" parent="Control/MarginContainer/HBoxContainer3" instance=ExtResource("2_3qixg")]
 
 [node name="Node" parent="Control/MarginContainer/HBoxContainer3/Item3/Control" index="1"]
-metadata/ID = 22
+metadata/ID = 2
 
 [node name="Item4" parent="Control/MarginContainer/HBoxContainer3" instance=ExtResource("2_3qixg")]
 offset = Vector2(150, 0)
 transform = Transform2D(1, 0, 0, 1, 150, 0)
 
 [node name="Node" parent="Control/MarginContainer/HBoxContainer3/Item4/Control" index="1"]
-metadata/ID = 23
+metadata/ID = 3
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"sfx"
