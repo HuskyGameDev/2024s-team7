@@ -5,7 +5,6 @@
 
 [node name="Item" type="VBoxContainer"]
 script = ExtResource("1_iv1pr")
-metadata/ID = 0
 
 [node name="SpriteContainer" type="Control" parent="."]
 custom_minimum_size = Vector2(200, 150)
@@ -36,5 +35,8 @@ text = "Price: "
 [node name="BuyButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 text = "Buy"
+
+[node name="Node" type="Node" parent="."]
+metadata/ID = 0
 
 [connection signal="pressed" from="HBoxContainer/BuyButton" to="." method="_on_button_pressed"]

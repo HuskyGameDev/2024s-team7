@@ -36,7 +36,7 @@ func _on_attack(index, damage):
 
 func _on_enemy_damage_readied(damage_array):
 	damage = damage_array
-
+	
 func validate_combo(index):
 	if damage[index] > 0:
 		attack.emit(index, damage[index])
