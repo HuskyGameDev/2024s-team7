@@ -24,18 +24,12 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed('P') and is_on_floor():
 		animTree["parameters/conditions/punch"] = true
-	else:
-		animTree["parameters/conditions/punch"] = false
 		
 	if Input.is_action_just_pressed('K') and is_on_floor():
 		animTree["parameters/conditions/kick"] = true
-	else:
-		animTree["parameters/conditions/kick"] = false
 		
 	if Input.is_action_just_pressed('W') and is_on_floor():
 		animTree["parameters/conditions/weapon"] = true
-	else:
-		animTree["parameters/conditions/weapon"] = false
 		
 		
 	if Input.is_action_just_pressed('Esc'):

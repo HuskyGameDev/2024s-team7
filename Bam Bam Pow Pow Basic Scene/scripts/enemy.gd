@@ -95,6 +95,7 @@ func _on_hurtbox_area_entered(hitbox):
 	var damage = (self.base_damage * hitbox.motion) * self.juggle
 	self.score += damage
 	animPlayer.play("hurt")
+	velocity.y = 0;
 	velocity.y -= 100*hitbox.weight
 	print(hitbox.get_parent().name + "'s hitbox touched " + name)
 	print(str(damage) + " dealt!")

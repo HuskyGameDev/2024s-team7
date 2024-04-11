@@ -450,6 +450,18 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AnimationTree:parameters/conditions/punch")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_2pgv6"]
 resource_name = "weapon"
@@ -485,7 +497,7 @@ tracks/2/path = NodePath("Hitbox:motion")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.267405),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [20, 30]
@@ -592,7 +604,7 @@ states/punch/position = Vector2(403, 54)
 states/weapon/node = SubResource("AnimationNodeAnimation_ga5e3")
 states/weapon/position = Vector2(403, 286)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_ojck6"), "idle", "punch", SubResource("AnimationNodeStateMachineTransition_er8of"), "punch", "idle", SubResource("AnimationNodeStateMachineTransition_qf62g"), "idle", "kick", SubResource("AnimationNodeStateMachineTransition_3wqra"), "kick", "idle", SubResource("AnimationNodeStateMachineTransition_vit5w"), "idle", "weapon", SubResource("AnimationNodeStateMachineTransition_gwwpi"), "weapon", "idle", SubResource("AnimationNodeStateMachineTransition_2581d")]
-graph_offset = Vector2(-274.729, 78.2869)
+graph_offset = Vector2(-109.729, 7.2869)
 
 [node name="player" instance=ExtResource("1_vkhv8")]
 collision_layer = 2
