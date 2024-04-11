@@ -103,7 +103,7 @@ signal showDmg(dmgNumber)
 
 func _on_hurtbox_area_entered(hitbox):
 	self.juggle += 1
-	var damage = (self.base_damage * hitbox.motion) * self.juggle
+	var damage = damage_delt * self.juggle
 	self.score += damage
 	animPlayer.play("hurt")
 	showDmg.emit(damage)
@@ -115,5 +115,9 @@ func _on_hurtbox_area_entered(hitbox):
 
 	if self.score >= 2000 && !addedMoney:
 		addedMoney = true
+		calc_money()
+		
+func calc_money():
 		ItemStorage.money += (score * money_mult)
 		SceneSwap.scene_swap("res://Scenes/Playable/ItemShop.tscn")
+

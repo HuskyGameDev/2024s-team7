@@ -19,8 +19,7 @@ func _process(delta):
 	time_label.text = "Time: " + "%.3f" % time.time_left
 
 func _on_timer_timeout():
-	# calc money
-	SceneSwap.scene_swap("res://Scenes/Playable/ItemShop.tscn")
+	enemy.calc_money()
 
 func _on_enemy_show_dmg(dmgNumber):
 	var damage_label = Label.new()

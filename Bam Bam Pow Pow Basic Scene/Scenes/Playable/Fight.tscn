@@ -85,3 +85,4 @@ one_shot = true
 [connection signal="showDmg" from="enemy" to="." method="_on_enemy_show_dmg"]
 [connection signal="attack_damamge" from="ComboHandler" to="enemy" method="_on_combo_handler_attack_damamge"]
 [connection signal="attack_index" from="ComboHandler" to="player" method="_on_combo_handler_attack_index"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

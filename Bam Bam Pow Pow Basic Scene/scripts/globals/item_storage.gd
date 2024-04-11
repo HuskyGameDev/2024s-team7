@@ -152,6 +152,10 @@ func _ready():
 			MULTTYPE.SPECIFIC:
 				specificItems.append(item)
 
+func calc_money(score):
+	money += score*self.moneyMult
+	
+
 func make_item(name, price, owned, type, index, mult, sprite_index) -> Dictionary:
 	var item: Dictionary = {
 		"name" 		: name,
