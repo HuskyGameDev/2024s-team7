@@ -17,6 +17,8 @@ var money_mult = 1.0 # Multiplier for money stats
 var mults = []
 var damage = []
 
+signal damage_readied(damage_array)
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -53,6 +55,9 @@ func ready_mults():
 	
 	base_mult_stack()
 	ready_damage()
+	# Send the calcualted damage array to the combo script
+	damage_readied.emit(damage)
+	print_debug("Damage array: " + str(damage))
 
 func ready_damage():
 	for index in range(mults.size()):
@@ -90,6 +95,11 @@ func _physics_process(delta):
 	move_and_slide()
 
 
+var index
+var damage_delt
+
+
+
 func _on_hurtbox_area_entered(hitbox):
 	self.juggle += 1
 	var damage = (self.base_damage * hitbox.motion) * self.juggle
@@ -105,3 +115,7 @@ func _on_hurtbox_area_entered(hitbox):
 		addedMoney = true
 		ItemStorage.money += (score * money_mult)
 		SceneSwap.scene_swap("res://Scenes/Playable/ItemShop.tscn")
+
+
+func _on_combo_handler_attack(index, damage):
+	pass # Replace with function body.
