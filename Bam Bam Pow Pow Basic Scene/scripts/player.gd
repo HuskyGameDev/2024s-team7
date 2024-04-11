@@ -51,20 +51,20 @@ signal delay(delaytime)
 	
 
 func _on_combo_handler_attack_index(index):
-	if(index < CORE.PUNCH + 4):
+	if(index < CORE.PUNCH + 5):
 		animTree["parameters/conditions/punch"] = true
 		attackType = "punch"
 		inputDir = index - CORE.PUNCH
 		delay.emit(.1)
-	elif(index < CORE.KICK + 4):
+	elif(index < CORE.KICK + 5):
 		animTree["parameters/conditions/kick"] = true
 		attackType = "kick"
 		inputDir = index - CORE.KICK
-	elif(index < CORE.WEAPON + 4):
+	elif(index < CORE.WEAPON + 5):
 		animTree["parameters/conditions/weapon"] = true
 		attackType = "weapon"
 		inputDir = index - CORE.WEAPON
-	elif(index < CORE.SPECIAL + 4):
+	elif(index < CORE.SPECIAL + 5):
 		animTree["parameters/conditions/special"] = true
 		delay.emit(.1)
 		attackType = "special"
