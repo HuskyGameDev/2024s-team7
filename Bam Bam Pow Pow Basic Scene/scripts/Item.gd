@@ -52,11 +52,12 @@ func _on_item_shop_reload():
 
 # When the button attatched to the item is pressed
 func _on_button_pressed():
-	# Makes the item no longer visible or interactable
-	ItemStorage.itemsList[id]["owned"] = true # Updates the item to be owned by the player in the item storage
-	_on_item_shop_reload()
-	#Plays the purchase noise
-	if (!audioPlayer.is_playing()):
-		audioPlayer.stream = purchase_noise
-		audioPlayer.play()
-	emit_signal("bought_item", money) # Emits the signal to say the item was bought with the appropriate cost
+	if ItemStorage.money >= money:
+		# Makes the item no longer visible or interactable
+		ItemStorage.itemsList[id]["owned"] = true # Updates the item to be owned by the player in the item storage
+		_on_item_shop_reload()
+		#Plays the purchase noise
+		if (!audioPlayer.is_playing()):
+			audioPlayer.stream = purchase_noise
+			audioPlayer.play()
+		emit_signal("bought_item", money) # Emits the signal to say the item was bought with the appropriate cost

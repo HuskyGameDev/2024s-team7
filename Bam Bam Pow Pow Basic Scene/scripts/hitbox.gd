@@ -1,4 +1,4 @@
 extends Area2D
 
-@export var motion: int = 10
-@export var weight: int = 1
+@export var motion: float = 10
+@export var weight: float = 1

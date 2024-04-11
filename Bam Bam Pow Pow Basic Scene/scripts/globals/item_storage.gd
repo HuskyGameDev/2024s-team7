@@ -197,6 +197,6 @@ func printItems():
 
 func restart_game():
 	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
-	save_file.store_line(str(10000))
+	save_file.store_line(str(0))
 	for i in range(itemsList.size()):
 		save_file.store_line(str(0))

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var hp: int = 1
-@export var weight: int = 100
+@export var weight: float = 100
 @export var score: int = 0
 @export var base_damage: int = 10
 @export var juggle: float = 1
@@ -103,12 +103,12 @@ signal showDmg(dmgNumber)
 
 func _on_hurtbox_area_entered(hitbox):
 	self.juggle += 0.2
-	var damage = damage_delt * self.juggle
+	var damage = damage_delt * self.juggle * hitbox.motion
 	self.score += damage
 	animPlayer.play("hurt")
 	showDmg.emit(damage)
 	velocity.y = 0;
-	velocity.y -= 100*hitbox.weight
+	velocity.y -= float((100*hitbox.weight))
 	print(hitbox.get_parent().name + "'s hitbox touched " + name)
 	print(str(damage) + " dealt!")
 	print("Juggle Count: " + str(self.juggle))
