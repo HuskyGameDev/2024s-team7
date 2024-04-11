@@ -19,11 +19,11 @@ signal reload
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	money = 10000;
+	money = 5000;
 	
 	itemsList.append(make_item(
 		"Uppercut Scroll",
-		1000,
+		500,
 		false,
 		MULTTYPE.SPECIFIC,
 		1,
@@ -33,21 +33,11 @@ func _ready():
 	
 	itemsList.append(make_item(
 		"Low Blow Scroll",
-		100,
+		500,
 		false,
 		MULTTYPE.SPECIFIC,
 		2,
 		1.6,
-		4
-	))
-	
-	itemsList.append(make_item(
-		"Left Jab Scroll",
-		200,
-		false,
-		MULTTYPE.SPECIFIC,
-		3,
-		1.1,
 		4
 	))
 	
@@ -73,7 +63,7 @@ func _ready():
 	
 	itemsList.append(make_item(
 		"Brass Knuckles",
-		1000,
+		700,
 		false,
 		MULTTYPE.BASE,
 		0,
@@ -82,8 +72,18 @@ func _ready():
 	))
 	
 	itemsList.append(make_item(
+		"Gun",
+		5000,
+		false,
+		MULTTYPE.SPECIFIC,
+		15,
+		50,
+		2
+	))
+	
+	itemsList.append(make_item(
 		"High Kick Scroll",
-		600,
+		500,
 		false,
 		MULTTYPE.SPECIFIC,
 		6,
@@ -93,7 +93,7 @@ func _ready():
 	
 	itemsList.append(make_item(
 		"Heel Slam Scroll",
-		100,
+		500,
 		false,
 		MULTTYPE.SPECIFIC,
 		7,
@@ -103,7 +103,7 @@ func _ready():
 	
 	itemsList.append(make_item(
 		"Leg Sweep Scroll",
-		200,
+		500,
 		false,
 		MULTTYPE.SPECIFIC,
 		8,
@@ -137,7 +137,7 @@ func _ready():
 		false,
 		MULTTYPE.MONEY,
 		-1,
-		1.5,
+		2,
 		16
 	))
 	

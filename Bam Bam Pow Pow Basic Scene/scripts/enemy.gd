@@ -35,7 +35,7 @@ func ready_mults():
 	mults[0] 	= 1
 	mults[5] 	= 1
 	mults[10] 	= 1
-	mults[15] 	= 1
+	#mults[15] 	= 1
 	
 	for item in ItemStorage.moneyItems:
 		if item["owned"]:
