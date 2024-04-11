@@ -94,11 +94,8 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-
 var index
 var damage_delt
-
-
 
 func _on_hurtbox_area_entered(hitbox):
 	self.juggle += 1
@@ -116,6 +113,3 @@ func _on_hurtbox_area_entered(hitbox):
 		ItemStorage.money += (score * money_mult)
 		SceneSwap.scene_swap("res://Scenes/Playable/ItemShop.tscn")
 
-
-func _on_combo_handler_attack(index, damage):
-	pass # Replace with function body.

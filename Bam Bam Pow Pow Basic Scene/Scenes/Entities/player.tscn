@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cfx46l5ghyfp3"]
+[gd_scene load_steps=35 format=3 uid="uid://cfx46l5ghyfp3"]
 
 [ext_resource type="PackedScene" uid="uid://cuji3bj4q1s1d" path="res://Scenes/Entities/entity_base.tscn" id="1_vkhv8"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_01k3i"]
@@ -35,7 +35,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -156,10 +156,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0400439, 0.161951),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.0212916, 0.0439929, 0.0713798, 0.234101),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [7, 12, 13]
+"values": [7, 12, 13, 14, 15]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -293,10 +293,10 @@ tracks/1/path = NodePath("Hitbox/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.243143),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.00338802, 0.243143),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [true, true]
 }
 
 [sub_resource type="Animation" id="Animation_hnipe"]
@@ -371,7 +371,7 @@ tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0.299501),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [false]
 }
 
@@ -469,9 +469,9 @@ tracks/7/path = NodePath("AnimationTree:parameters/conditions/punch")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.1),
+"times": PackedFloat32Array(0.10223),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [false]
 }
 
@@ -559,17 +559,49 @@ tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0.494651),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [false]
 }
+
+[sub_resource type="Animation" id="Animation_ba72k"]
+resource_name = "chop"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_epiqs"]
+resource_name = "taunt"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xgo3l"]
 _data = {
 "RESET": SubResource("Animation_t7b2i"),
 "Uppercut": SubResource("Animation_g6fyr"),
+"chop": SubResource("Animation_ba72k"),
 "idle": SubResource("Animation_spttg"),
 "kick": SubResource("Animation_hnipe"),
 "punch": SubResource("Animation_oimui"),
+"taunt": SubResource("Animation_epiqs"),
 "weapon": SubResource("Animation_2pgv6")
 }
 
@@ -583,21 +615,42 @@ animation = &"idle"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tby0c"]
 animation = &"kick"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lxybe"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oucyv"]
+animation = &"Uppercut"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6x2uv"]
 animation = &"punch"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g1lp0"]
+advance_mode = 2
+advance_condition = &"neutral"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5p4ir"]
+advance_mode = 2
+advance_condition = &"up"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_plw8d"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tukmh"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_isffe"]
+states/End/position = Vector2(544, -95)
+states/Start/position = Vector2(544, 189)
+states/Uppercut/node = SubResource("AnimationNodeAnimation_oucyv")
+states/Uppercut/position = Vector2(682, 21)
+states/punch/node = SubResource("AnimationNodeAnimation_6x2uv")
+states/punch/position = Vector2(544, 21)
+transitions = ["Start", "punch", SubResource("AnimationNodeStateMachineTransition_g1lp0"), "Start", "Uppercut", SubResource("AnimationNodeStateMachineTransition_5p4ir"), "punch", "End", SubResource("AnimationNodeStateMachineTransition_plw8d"), "Uppercut", "End", SubResource("AnimationNodeStateMachineTransition_tukmh")]
+graph_offset = Vector2(155, -80.9379)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ga5e3"]
 animation = &"weapon"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ojck6"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_er8of"]
-advance_mode = 2
-advance_condition = &"punch"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qf62g"]
-switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3wqra"]
@@ -616,6 +669,14 @@ advance_condition = &"weapon"
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6dmhu"]
+advance_mode = 2
+advance_condition = &"punch"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_djpjj"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_qhjss"]
 states/End/position = Vector2(223, 295)
 states/Start/position = Vector2(199, 149)
@@ -623,12 +684,12 @@ states/idle/node = SubResource("AnimationNodeAnimation_5y2gy")
 states/idle/position = Vector2(403, 149)
 states/kick/node = SubResource("AnimationNodeAnimation_tby0c")
 states/kick/position = Vector2(635, 149)
-states/punch/node = SubResource("AnimationNodeAnimation_lxybe")
-states/punch/position = Vector2(403, 54)
+states/punch/node = SubResource("AnimationNodeStateMachine_isffe")
+states/punch/position = Vector2(403, -23.7131)
 states/weapon/node = SubResource("AnimationNodeAnimation_ga5e3")
 states/weapon/position = Vector2(403, 286)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_ojck6"), "idle", "punch", SubResource("AnimationNodeStateMachineTransition_er8of"), "punch", "idle", SubResource("AnimationNodeStateMachineTransition_qf62g"), "idle", "kick", SubResource("AnimationNodeStateMachineTransition_3wqra"), "kick", "idle", SubResource("AnimationNodeStateMachineTransition_vit5w"), "idle", "weapon", SubResource("AnimationNodeStateMachineTransition_gwwpi"), "weapon", "idle", SubResource("AnimationNodeStateMachineTransition_2581d")]
-graph_offset = Vector2(-109.729, 7.2869)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_ojck6"), "idle", "kick", SubResource("AnimationNodeStateMachineTransition_3wqra"), "kick", "idle", SubResource("AnimationNodeStateMachineTransition_vit5w"), "idle", "weapon", SubResource("AnimationNodeStateMachineTransition_gwwpi"), "weapon", "idle", SubResource("AnimationNodeStateMachineTransition_2581d"), "idle", "punch", SubResource("AnimationNodeStateMachineTransition_6dmhu"), "punch", "idle", SubResource("AnimationNodeStateMachineTransition_djpjj")]
+graph_offset = Vector2(-210.416, -89.7131)
 
 [node name="player" instance=ExtResource("1_vkhv8")]
 collision_layer = 2
@@ -672,6 +733,7 @@ weight = 20
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2(-33.625, 33)
 shape = SubResource("RectangleShape2D_s3a16")
+disabled = true
 one_way_collision_margin = 0.0
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="5"]
@@ -683,6 +745,8 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/kick = false
 parameters/conditions/punch = false
 parameters/conditions/weapon = false
+parameters/punch/conditions/neutral = false
+parameters/punch/conditions/up = false
 
 [editable path="Hurtbox"]
 [editable path="Hitbox"]

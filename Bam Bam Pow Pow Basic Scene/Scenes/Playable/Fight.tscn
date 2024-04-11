@@ -41,12 +41,13 @@ format = 2
 layer_0/tile_data = PackedInt32Array(2818051, 1, 0, 2818059, 1, 0, 2818067, 1, 0, 2818075, 1, 0, 2818083, 1, 0, 2818091, 1, 0, 2818099, 1, 0, 2818107, 1, 0, 2818115, 1, 0, 2818123, 1, 0, 2883579, 1, 0)
 
 [node name="player" parent="." instance=ExtResource("3_w7w43")]
-position = Vector2(276, 505)
+position = Vector2(513, 523)
 scale = Vector2(2, 2)
 
 [node name="enemy" parent="." instance=ExtResource("4_boejj")]
-position = Vector2(695, 527)
+position = Vector2(681, 436)
 
 [node name="ComboHandler" parent="." instance=ExtResource("5_xefg3")]
 
 [connection signal="damage_readied" from="enemy" to="ComboHandler" method="_on_enemy_damage_readied"]
+[connection signal="attack" from="ComboHandler" to="player" method="_on_combo_handler_attack"]
