@@ -22,31 +22,27 @@ enum MOTION {
 var core = null
 var motion = -1
 
+var damage = []
+
 ## This is the signal to be caught by the damage handler
-signal attack(index)
+signal attack(index, damage)
 
 @onready
 var cooldown_timer = $CoolDownTimer
 
 ## DEBUG FUNCTION
-func _on_attack(index):
-	print_debug("Indexing: " + str(index))
+func _on_attack(index, damage):
+	print_debug("Valid attack index: " + str(index) + "\nDamage delt: " + str(damage))
 
-## This function checks if a current motion is being pressed and returns it
-func check_motion() -> int:
-	if Input.is_action_pressed("U"):
-		return MOTION.UP
-	elif Input.is_action_pressed("D"):
-		return MOTION.DOWN
-	elif Input.is_action_pressed("R"):
-		return MOTION.RIGHT
-	elif Input.is_action_pressed("L"):
-		return MOTION.LEFT
-	else:
-		return -1
+func _on_enemy_damage_readied(damage_array):
+	damage = damage_array
+
+func validate_combo(index):
+	if damage[index] > 0:
+		attack.emit(index, damage[index])
 
 ## This function validates if a given combo is able to be performed and emits a signal corresponding to the index of the given attack
-func validate_combo():
+func index_combo():
 	var index = -1
 	match core:
 		CORE.PUNCH:
@@ -69,16 +65,29 @@ func validate_combo():
 			MOTION.RIGHT:
 				index += MOTION.RIGHT
 				
-	attack.emit(index)
-	motion = null
+	validate_combo(index)
+	motion = -1
 	core = null
+
+## This function checks if a current motion is being pressed and returns it
+func check_motion() -> int:
+	if Input.is_action_pressed("U"):
+		return MOTION.UP
+	elif Input.is_action_pressed("D"):
+		return MOTION.DOWN
+	elif Input.is_action_pressed("R"):
+		return MOTION.RIGHT
+	elif Input.is_action_pressed("L"):
+		return MOTION.LEFT
+	else:
+		return -1
 
 ## This function will load the attack into given values, begin the cooldown timer, and then validate the combo to emit the signal
 func load_combo(core_tag) -> void:
 	core = core_tag
 	motion = check_motion()
 	cooldown_timer.start()
-	validate_combo()
+	index_combo()
 
 ## This will wait for user input and then attemp to load a combo using the value passed into it
 func _input(event):

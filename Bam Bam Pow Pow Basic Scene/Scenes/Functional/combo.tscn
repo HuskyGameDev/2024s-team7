@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/combo.gd" id="1_5kg8b"]
 
-[node name="Node" type="Node"]
+[node name="ComboHandler" type="Node"]
 script = ExtResource("1_5kg8b")
 
 [node name="CoolDownTimer" type="Timer" parent="."]

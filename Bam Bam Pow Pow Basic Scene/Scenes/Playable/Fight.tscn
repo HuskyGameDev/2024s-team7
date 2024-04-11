@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3qsuqxbit6rg"]
+[gd_scene load_steps=8 format=3 uid="uid://d3qsuqxbit6rg"]
 
 [ext_resource type="Texture2D" uid="uid://b084ekiqsrbeb" path="res://resources/sprites/Da griddy.png" id="1_2m55c"]
 [ext_resource type="Texture2D" uid="uid://cbia7ydbgigan" path="res://resources/sprites/icon.svg" id="2_tpybg"]
 [ext_resource type="PackedScene" uid="uid://cfx46l5ghyfp3" path="res://Scenes/Entities/player.tscn" id="3_w7w43"]
 [ext_resource type="PackedScene" uid="uid://cqhetuoqkeuty" path="res://Scenes/Entities/enemy.tscn" id="4_boejj"]
+[ext_resource type="PackedScene" uid="uid://b8vq6sc31q3x6" path="res://Scenes/Functional/combo.tscn" id="5_xefg3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1qjtc"]
 texture = ExtResource("2_tpybg")
@@ -45,3 +46,7 @@ scale = Vector2(2, 2)
 
 [node name="enemy" parent="." instance=ExtResource("4_boejj")]
 position = Vector2(695, 527)
+
+[node name="ComboHandler" parent="." instance=ExtResource("5_xefg3")]
+
+[connection signal="damage_readied" from="enemy" to="ComboHandler" method="_on_enemy_damage_readied"]
