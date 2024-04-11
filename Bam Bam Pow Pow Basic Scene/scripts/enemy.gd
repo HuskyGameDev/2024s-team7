@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var weight: int = 100
 @export var score: int = 0
 @export var base_damage: int = 10
-@export var juggle: int = 0
+@export var juggle: float = 1
 
 @onready var sprite = $Sprite2D
 @onready var collShape = $CollisionShape2D
@@ -90,7 +90,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta * weight/100
 	if is_on_floor():
-		self.juggle = 0
+		self.juggle = 1
 
 	move_and_slide()
 
@@ -102,7 +102,7 @@ func _on_combo_handler_attack_damamge(damage_number):
 signal showDmg(dmgNumber)
 
 func _on_hurtbox_area_entered(hitbox):
-	self.juggle += 1
+	self.juggle += 0.2
 	var damage = damage_delt * self.juggle
 	self.score += damage
 	animPlayer.play("hurt")
@@ -113,7 +113,7 @@ func _on_hurtbox_area_entered(hitbox):
 	print(str(damage) + " dealt!")
 	print("Juggle Count: " + str(self.juggle))
 
-	if self.score >= 2000 && !addedMoney:
+	if self.score >= 5000 && !addedMoney:
 		addedMoney = true
 		calc_money()
 		
