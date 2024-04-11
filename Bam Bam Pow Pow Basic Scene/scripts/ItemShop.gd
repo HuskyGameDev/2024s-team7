@@ -1,8 +1,6 @@
 extends CanvasLayer
 
-@onready var moneylabel = $Control/MarginContainer/HBoxContainer/MoneyLabel
-@onready var item1 = $Control/MarginContainer/HBoxContainer3/Item1
-@onready var item2 = $Control/MarginContainer/HBoxContainer3/Item2
+@onready var moneylabel = $Control/MarginContainer/MarginContainer2/MoneyLabel
 
 signal reload
 

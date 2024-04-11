@@ -22,43 +22,123 @@ func _ready():
 	money = 10000;
 	
 	itemsList.append(make_item(
-		"Piggy Bank",
-		100,
-		false,
-		MULTTYPE.MONEY,
-		-1,
-		1.2,
-		"res://Assets/icon.svg"
-	))
-	
-	itemsList.append(make_item(
-		"Sharper Axes",
-		200,
-		false,
-		MULTTYPE.SPECIFIC,
-		10,
-		1.2,
-		"res://Assets/smile2.png"
-	))
-	
-	itemsList.append(make_item(
-		"Uppercut Glove",
+		"Uppercut Scroll",
 		1000,
 		false,
 		MULTTYPE.SPECIFIC,
 		1,
 		1.5,
-		"res://Assets/icon.svg"
+		4
 	))
 	
 	itemsList.append(make_item(
-		"Sharper Up",
+		"Low Blow Scroll",
+		100,
+		false,
+		MULTTYPE.SPECIFIC,
+		2,
+		1.6,
+		4
+	))
+	
+	itemsList.append(make_item(
+		"Left Jab Scroll",
+		200,
+		false,
+		MULTTYPE.SPECIFIC,
+		3,
+		1.1,
+		4
+	))
+	
+	itemsList.append(make_item(
+		"Right Jab Scroll",
 		500,
+		false,
+		MULTTYPE.SPECIFIC,
+		4,
+		2,
+		4
+	))
+	
+	itemsList.append(make_item(
+		"Supersonic Right Jab",
+		700,
+		false,
+		MULTTYPE.SPECIFIC,
+		4,
+		1.6,
+		0
+	))
+	
+	itemsList.append(make_item(
+		"Brass Knuckles",
+		1000,
+		false,
+		MULTTYPE.BASE,
+		0,
+		1.2,
+		12
+	))
+	
+	itemsList.append(make_item(
+		"High Kick Scroll",
+		600,
+		false,
+		MULTTYPE.SPECIFIC,
+		6,
+		1.5,
+		5
+	))
+	
+	itemsList.append(make_item(
+		"Heel Slam Scroll",
+		100,
+		false,
+		MULTTYPE.SPECIFIC,
+		7,
+		1.6,
+		5
+	))
+	
+	itemsList.append(make_item(
+		"Leg Sweep Scroll",
+		200,
+		false,
+		MULTTYPE.SPECIFIC,
+		8,
+		1.1,
+		5
+	))
+	
+	itemsList.append(make_item(
+		"Axe Slam",
+		1000,
+		false,
+		MULTTYPE.SPECIFIC,
+		12,
+		3,
+		7
+	))
+	
+	itemsList.append(make_item(
+		"Bird Punching Glasses",
+		700,
 		false,
 		MULTTYPE.DIRECTION,
 		1,
-		2,
-		"res://Assets/smile2.png"
+		1.4,
+		11
+	))
+	
+	itemsList.append(make_item(
+		"Piggy Bank",
+		500,
+		false,
+		MULTTYPE.MONEY,
+		-1,
+		1.5,
+		16
 	))
 	
 	for item in itemsList:
@@ -72,7 +152,7 @@ func _ready():
 			MULTTYPE.SPECIFIC:
 				specificItems.append(item)
 
-func make_item(name, price, owned, type, index, mult, sprite) -> Dictionary:
+func make_item(name, price, owned, type, index, mult, sprite_index) -> Dictionary:
 	var item: Dictionary = {
 		"name" 		: name,
 		"price" 	: price,
@@ -80,7 +160,7 @@ func make_item(name, price, owned, type, index, mult, sprite) -> Dictionary:
 		"type" 		: type,
 		"index" 	: index,
 		"mult" 		: mult,
-		"sprite" 	: sprite
+		"sprite" 	: sprite_index
 	}
 	return item
 
@@ -95,7 +175,6 @@ func save_game():
 			save_file.store_line(str(0))
 
 func load_game():
-	print("Load")
 	var save_file = FileAccess.open("user://savegame.save", FileAccess.READ)
 	var content = save_file.get_as_text()
 	money = int(content.get_slice("\n", 0))

@@ -1,27 +1,30 @@
-extends CanvasLayer
+extends VBoxContainer
 
 signal bought_item(money) # Signal for when the item is bought that uses its money stat
 
 # Finds the items label for its cost, its buy button, its sprite in the scene, the node for its id, 
 # the purchase noise, its ID from its ID node, and its audio player
-@onready var money_label = $Control/MarginContainer/VBoxContainer2/HBoxContainer/PriceLabel
-@onready var buy_button = $Control/MarginContainer/VBoxContainer2/HBoxContainer/BuyButton
-@onready var sprite = $Control/MarginContainer/VBoxContainer2/Sprite2D
-@onready var name_label = $Control/MarginContainer/VBoxContainer2/NameLabel
-@onready var IDNode = $Control/Node
+@onready var money_label = $HBoxContainer/PriceLabel
+@onready var buy_button = $HBoxContainer/BuyButton
+@onready var sprite = $SpriteContainer/Sprite2D
+@onready var name_label = $NameLabel
 @onready var purchase_noise = preload("res://resources/Item_Purchase_Coins.wav")
-@onready var id = IDNode.get_meta("ID")
-@onready var audioPlayer = $"../../../../AudioStreamPlayer"
+@onready var id = self.get_meta("ID")
+@onready var audioPlayer = $"../../../../../../AudioStreamPlayer"
+@onready var item_shop = $"../../../../../../"
 
 var money # The cost of the item
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	item_shop.connect("reload", _on_item_shop_reload)
+	self.connect("bought_item", item_shop.bought_item)
 	_on_item_shop_reload() # Reloads the items sprite and labels
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
+
 
 # Function to call when reloading the items characteristics in the shop
 func _on_item_shop_reload():
@@ -35,9 +38,10 @@ func _on_item_shop_reload():
 		# label to be accurate and the sprite to be its sprite
 		money = ItemStorage.itemsList[id]["price"]
 		money_label.text = "Price: " + str(ItemStorage.itemsList[id]["price"])
-		name_label.text = "Name: " + str(ItemStorage.itemsList[id]["name"])
+		name_label.text = ItemStorage.itemsList[id]["name"]
 		if (ItemStorage.itemsList[id]["sprite"] != null):
-			sprite.texture = load(ItemStorage.itemsList[id]["sprite"])
+			sprite.texture = load("res://resources/sprites/Shop_sprites.png")
+			sprite.frame = ItemStorage.itemsList[id]["sprite"]
 	else: # If the item is owned by the player
 		# Makes the items components no longer visibile or interactable
 		money_label.visible = false

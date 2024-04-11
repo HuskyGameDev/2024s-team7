@@ -49,4 +49,15 @@ position = Vector2(695, 527)
 
 [node name="ComboHandler" parent="." instance=ExtResource("5_xefg3")]
 
+[node name="Label" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -26.0
+offset_right = 26.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Score: "
+horizontal_alignment = 1
+
 [connection signal="damage_readied" from="enemy" to="ComboHandler" method="_on_enemy_damage_readied"]
