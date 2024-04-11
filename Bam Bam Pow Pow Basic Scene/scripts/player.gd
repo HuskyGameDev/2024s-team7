@@ -73,7 +73,7 @@ func _on_hurtbox_area_entered(hitbox):
 signal delay(delaytime)
 	
 
-func _on_combo_handler_attack(index, damage):
+func _on_combo_handler_attack_index(index):
 	if(index < CORE.PUNCH + 4):
 		animTree["parameters/conditions/punch"] = true
 		attackType = "punch"

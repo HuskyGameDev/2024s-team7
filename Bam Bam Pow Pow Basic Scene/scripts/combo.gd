@@ -25,21 +25,19 @@ var motion = -1
 var damage = []
 
 ## This is the signal to be caught by the damage handler
-signal attack(index, damage)
+signal attack_index(index)
+signal attack_damamge(damage_number)
 
 @onready
 var cooldown_timer = $CoolDownTimer
-
-## DEBUG FUNCTION
-func _on_attack(index, damage):
-	print_debug("Valid attack index: " + str(index) + "\nDamage delt: " + str(damage))
 
 func _on_enemy_damage_readied(damage_array):
 	damage = damage_array
 	
 func validate_combo(index):
 	if damage[index] > 0:
-		attack.emit(index, damage[index])
+		attack_index.emit(index)
+		attack_damamge.emit(damage[index])
 
 ## This function validates if a given combo is able to be performed and emits a signal corresponding to the index of the given attack
 func index_combo():

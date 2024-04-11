@@ -94,8 +94,10 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-var index
-var damage_delt
+var damage_delt = 0;
+
+func _on_combo_handler_attack_damamge(damage_number):
+	damage_delt = damage_number
 
 signal showDmg(dmgNumber)
 
@@ -115,4 +117,3 @@ func _on_hurtbox_area_entered(hitbox):
 		addedMoney = true
 		ItemStorage.money += (score * money_mult)
 		SceneSwap.scene_swap("res://Scenes/Playable/ItemShop.tscn")
-

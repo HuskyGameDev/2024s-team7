@@ -8,5 +8,3 @@ script = ExtResource("1_5kg8b")
 [node name="CoolDownTimer" type="Timer" parent="."]
 wait_time = 0.375
 one_shot = true
-
-[connection signal="attack" from="." to="." method="_on_attack"]
