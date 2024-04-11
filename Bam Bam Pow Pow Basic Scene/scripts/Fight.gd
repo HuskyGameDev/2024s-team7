@@ -32,6 +32,6 @@ func _on_combo_handler_attack(index, damage):
 	var rand1 = randi_range(0, 50)
 	var rand2 = randi_range(0, 30)
 	var neg = 1 if randi_range(0, 1) == 0 else -1
-	damage_label.position += Vector2(-30 + (rand1 * neg) + rand2, -135 + rand1 + rand2 -10)
+	damage_label.position += Vector2(-30 + (rand1 * neg) + rand2, -40 + rand1 + rand2 -10)
 	await get_tree().create_timer(0.2).timeout
 	enemy.remove_child(damage_label)
