@@ -97,11 +97,14 @@ func _physics_process(delta):
 var index
 var damage_delt
 
+signal showDmg(dmgNumber)
+
 func _on_hurtbox_area_entered(hitbox):
 	self.juggle += 1
 	var damage = (self.base_damage * hitbox.motion) * self.juggle
 	self.score += damage
 	animPlayer.play("hurt")
+	showDmg.emit(damage)
 	velocity.y = 0;
 	velocity.y -= 100*hitbox.weight
 	print(hitbox.get_parent().name + "'s hitbox touched " + name)

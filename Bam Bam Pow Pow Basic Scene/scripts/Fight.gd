@@ -22,11 +22,10 @@ func _on_timer_timeout():
 	# calc money
 	SceneSwap.scene_swap("res://Scenes/Playable/ItemShop.tscn")
 
-
-func _on_combo_handler_attack(index, damage):
+func _on_enemy_show_dmg(dmgNumber):
 	var damage_label = Label.new()
 	enemy.add_child(damage_label)
-	damage_label.text = str(damage)
+	damage_label.text = str(dmgNumber)
 	damage_label.set("theme_override_colors/font_color", Color.DARK_RED)
 	damage_label.set("theme_override_font_sizes/font_size", 30)
 	var rand1 = randi_range(0, 50)
