@@ -40,8 +40,9 @@ func _on_item_shop_reload():
 		money_label.text = "Price: " + str(ItemStorage.itemsList[id]["price"])
 		name_label.text = ItemStorage.itemsList[id]["name"]
 		if (ItemStorage.itemsList[id]["sprite"] != null):
-			sprite.texture = load("res://resources/sprites/Shop_sprites.png")
-			sprite.frame = ItemStorage.itemsList[id]["sprite"]
+			if id != 5:
+				sprite.texture = load("res://resources/sprites/Shop_sprites.png")
+				sprite.frame = ItemStorage.itemsList[id]["sprite"]
 	else: # If the item is owned by the player
 		# Makes the items components no longer visibile or interactable
 		money_label.visible = false

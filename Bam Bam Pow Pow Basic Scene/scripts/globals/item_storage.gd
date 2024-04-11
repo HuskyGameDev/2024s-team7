@@ -19,7 +19,7 @@ signal reload
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	money = 5000;
+	money = 0;
 	
 	itemsList.append(make_item(
 		"Uppercut Scroll",
