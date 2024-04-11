@@ -100,3 +100,8 @@ func _input(event):
 			load_combo(CORE.WEAPON)
 		elif InputMap.event_is_action(event, "Special"):
 			load_combo(CORE.SPECIAL)
+
+
+func _on_player_delay(delaytimer):
+	cooldown_timer.stop()
+	cooldown_timer.start(delaytimer)

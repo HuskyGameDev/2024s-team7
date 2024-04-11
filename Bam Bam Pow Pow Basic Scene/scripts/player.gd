@@ -45,12 +45,12 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed('P') and is_on_floor():
 		animTree["parameters/conditions/punch"] = true
+		animTree["parameters/" + "punch" + "/conditions/neutral"] = true
 		
 	if Input.is_action_just_pressed('K') and is_on_floor():
 		animTree["parameters/conditions/kick"] = true
 	if Input.is_action_just_pressed('W') and is_on_floor():
 		animTree["parameters/conditions/weapon"] = true
-		
 		
 	if Input.is_action_just_pressed('Esc'):
 		SceneSwap.scene_swap("res://Scenes/Playable/ItemShop.tscn")
@@ -65,20 +65,20 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-
 func _on_hurtbox_area_entered(hitbox):
 	var damage = hitbox.motion
 	self.score += damage 
 	print("Total DMG = " + str(score))
 
+signal delay(delaytime)
+	
 
 func _on_combo_handler_attack(index, damage):
-
 	if(index < CORE.PUNCH + 4):
 		animTree["parameters/conditions/punch"] = true
 		attackType = "punch"
 		inputDir = index - CORE.PUNCH
-		print_debug("Valid attack index: " + str(index))
+		delay.emit(.1)
 	elif(index < CORE.KICK + 4):
 		animTree["parameters/conditions/kick"] = true
 		attackType = "kick"
@@ -88,7 +88,8 @@ func _on_combo_handler_attack(index, damage):
 		attackType = "weapon"
 		inputDir = index - CORE.WEAPON
 	elif(index < CORE.SPECIAL + 4):
-		animTree["parameters/conditions/punch"] = true
+		animTree["parameters/conditions/special"] = true
+		delay.emit(.1)
 		attackType = "special"
 		inputDir = index - CORE.SPECIAL
 
