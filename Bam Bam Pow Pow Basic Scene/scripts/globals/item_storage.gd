@@ -42,33 +42,33 @@ func _ready():
 	))
 	
 	itemsList.append(make_item(
-		"Right Jab Scroll",
-		500,
-		false,
-		MULTTYPE.SPECIFIC,
-		4,
-		2,
-		4
-	))
-	
-	itemsList.append(make_item(
-		"Supersonic Right Jab",
-		700,
-		false,
-		MULTTYPE.SPECIFIC,
-		4,
-		1.6,
-		0
-	))
-	
-	itemsList.append(make_item(
 		"Brass Knuckles",
 		700,
 		false,
-		MULTTYPE.BASE,
+		MULTTYPE.SPECIFIC,
 		0,
 		1.2,
 		12
+	))
+	
+	itemsList.append(make_item(
+		"Bird Punching Glasses",
+		700,
+		false,
+		MULTTYPE.DIRECTION,
+		1,
+		1.4,
+		11
+	))
+
+	itemsList.append(make_item(
+		"Danger Short",
+		700,
+		false,
+		MULTTYPE.DIRECTION,
+		2,
+		1.6,
+		9
 	))
 	
 	itemsList.append(make_item(
@@ -110,7 +110,7 @@ func _ready():
 		1.1,
 		5
 	))
-	
+
 	itemsList.append(make_item(
 		"Axe Slam",
 		1000,
@@ -122,13 +122,13 @@ func _ready():
 	))
 	
 	itemsList.append(make_item(
-		"Bird Punching Glasses",
-		700,
+		"Penny Pouch",
+		200,
 		false,
-		MULTTYPE.DIRECTION,
-		1,
-		1.4,
-		11
+		MULTTYPE.MONEY,
+		-1,
+		1.2,
+		16
 	))
 	
 	itemsList.append(make_item(

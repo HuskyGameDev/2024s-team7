@@ -80,10 +80,11 @@ func specific_mult(index, mult):
 	mults[index] += mult
 
 func base_mult(mult):
-	mults[0] 	+= mult
-	mults[5] 	+= mult
-	mults[10] 	+= mult
-	mults[15] 	+= mult
+	var index = 0 
+	while index < 16:
+		if mults[index] != 0:
+			mults[index] += mult
+		index += 5
 
 func _physics_process(delta):
 	# Add the gravity.
