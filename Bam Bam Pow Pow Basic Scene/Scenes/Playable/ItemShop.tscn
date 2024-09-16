@@ -40,97 +40,104 @@ size_flags_vertical = 6
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_bottom = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Control/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="LastPageButton" type="Button" parent="Control/MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "<
+Last
+Page"
+
+[node name="ItemContainer" type="VBoxContainer" parent="Control/MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ItemsFirstRow" type="HBoxContainer" parent="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Item1" parent="Control/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer3" instance=ExtResource("2_3qixg")]
+[node name="Item1" parent="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow" instance=ExtResource("2_3qixg")]
 layout_mode = 2
 
-[node name="Item2" parent="Control/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer3" instance=ExtResource("2_3qixg")]
+[node name="Item2" parent="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow" instance=ExtResource("2_3qixg")]
 layout_mode = 2
 metadata/ID = 1
 
-[node name="Item3" parent="Control/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer3" instance=ExtResource("2_3qixg")]
+[node name="Item3" parent="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow" instance=ExtResource("2_3qixg")]
 layout_mode = 2
 metadata/ID = 2
 
-[node name="Item4" parent="Control/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer3" instance=ExtResource("2_3qixg")]
+[node name="Item4" parent="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow" instance=ExtResource("2_3qixg")]
 layout_mode = 2
 metadata/ID = 3
 
-[node name="Item5" parent="Control/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer3" instance=ExtResource("2_3qixg")]
+[node name="Item5" parent="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow" instance=ExtResource("2_3qixg")]
 layout_mode = 2
 metadata/ID = 4
 
-[node name="Item6" parent="Control/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer3" instance=ExtResource("2_3qixg")]
-layout_mode = 2
-metadata/ID = 5
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="Control/MarginContainer/MarginContainer/VBoxContainer"]
+[node name="ItemsSecondRow" type="HBoxContainer" parent="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Item1" parent="Control/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer4" instance=ExtResource("2_3qixg")]
+[node name="Item6" parent="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow" instance=ExtResource("2_3qixg")]
+layout_mode = 2
+metadata/ID = 5
+
+[node name="Item7" parent="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow" instance=ExtResource("2_3qixg")]
 layout_mode = 2
 metadata/ID = 6
 
-[node name="Item2" parent="Control/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer4" instance=ExtResource("2_3qixg")]
+[node name="Item8" parent="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow" instance=ExtResource("2_3qixg")]
 layout_mode = 2
 metadata/ID = 7
 
-[node name="Item3" parent="Control/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer4" instance=ExtResource("2_3qixg")]
+[node name="Item9" parent="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow" instance=ExtResource("2_3qixg")]
 layout_mode = 2
 metadata/ID = 8
 
-[node name="Item4" parent="Control/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer4" instance=ExtResource("2_3qixg")]
+[node name="Item10" parent="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow" instance=ExtResource("2_3qixg")]
 layout_mode = 2
 metadata/ID = 9
 
-[node name="Item5" parent="Control/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer4" instance=ExtResource("2_3qixg")]
+[node name="NextPageButton" type="Button" parent="Control/MarginContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
-metadata/ID = 10
+text = ">
+Next
+Page"
 
-[node name="Item6" parent="Control/MarginContainer/MarginContainer/VBoxContainer/HBoxContainer4" instance=ExtResource("2_3qixg")]
-layout_mode = 2
-metadata/ID = 11
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control/MarginContainer"]
+[node name="MenuButtonRow" type="HBoxContainer" parent="Control/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 10
 
-[node name="MainMenuButton" type="Button" parent="Control/MarginContainer/HBoxContainer2"]
+[node name="MainMenuButton" type="Button" parent="Control/MarginContainer/MenuButtonRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 text = "Main Menu"
 
-[node name="SettingsMenuButton" type="Button" parent="Control/MarginContainer/HBoxContainer2"]
+[node name="SettingsMenuButton" type="Button" parent="Control/MarginContainer/MenuButtonRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 text = "Settings Menu"
 
-[node name="FightSceneButton" type="Button" parent="Control/MarginContainer/HBoxContainer2"]
+[node name="FightSceneButton" type="Button" parent="Control/MarginContainer/MenuButtonRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 text = "Fight Scene"
 
-[node name="SaveGameButton" type="Button" parent="Control/MarginContainer/HBoxContainer2"]
+[node name="SaveGameButton" type="Button" parent="Control/MarginContainer/MenuButtonRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 text = "Save Game"
 
-[node name="LoadGameButton" type="Button" parent="Control/MarginContainer/HBoxContainer2"]
+[node name="LoadGameButton" type="Button" parent="Control/MarginContainer/MenuButtonRow"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -139,8 +146,10 @@ text = "Load Game"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"sfx"
 
-[connection signal="pressed" from="Control/MarginContainer/HBoxContainer2/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="Control/MarginContainer/HBoxContainer2/SettingsMenuButton" to="." method="_on_settings_menu_button_pressed"]
-[connection signal="pressed" from="Control/MarginContainer/HBoxContainer2/FightSceneButton" to="." method="_on_fight_scene_button_pressed"]
-[connection signal="pressed" from="Control/MarginContainer/HBoxContainer2/SaveGameButton" to="." method="_on_save_button_pressed"]
-[connection signal="pressed" from="Control/MarginContainer/HBoxContainer2/LoadGameButton" to="." method="_on_load_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/MarginContainer/HBoxContainer/LastPageButton" to="." method="_on_last_page_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/MarginContainer/HBoxContainer/NextPageButton" to="." method="_on_next_page_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/MenuButtonRow/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/MenuButtonRow/SettingsMenuButton" to="." method="_on_settings_menu_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/MenuButtonRow/FightSceneButton" to="." method="_on_fight_scene_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/MenuButtonRow/SaveGameButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/MenuButtonRow/LoadGameButton" to="." method="_on_load_button_pressed"]

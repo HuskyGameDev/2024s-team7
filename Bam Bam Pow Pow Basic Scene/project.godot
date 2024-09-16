@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Bam Bam Pow Pow Basic Scene"
+config/name="Bam Bam Pow Pow"
 run/main_scene="res://Scenes/Playable/MainMenu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://resources/sprites/icon.svg"

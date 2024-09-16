@@ -18,16 +18,16 @@ var money # The cost of the item
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	item_shop.connect("reload", _on_item_shop_reload)
-	self.connect("bought_item", item_shop.bought_item)
+	item_shop.connect("bought_item", _on_button_pressed)
 	_on_item_shop_reload() # Reloads the items sprite and labels
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
 
-
 # Function to call when reloading the items characteristics in the shop
 func _on_item_shop_reload():
+	id = self.get_meta("ID") # Updates the id variable here based on what the metadata was changed to
 	if (ItemStorage.itemsList[id].owned == false): # If the item is not owned by the player
 		# Make the label for the cost, buy button, and sprite visible
 		money_label.visible = true

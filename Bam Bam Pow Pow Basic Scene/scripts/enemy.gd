@@ -121,4 +121,3 @@ func _on_hurtbox_area_entered(hitbox):
 func calc_money():
 		ItemStorage.money += (score * money_mult)
 		SceneSwap.scene_swap("res://Scenes/Playable/ItemShop.tscn")
-

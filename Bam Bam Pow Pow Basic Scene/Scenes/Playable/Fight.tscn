@@ -11,8 +11,6 @@
 texture = ExtResource("2_tpybg")
 0:0/size_in_atlas = Vector2i(8, 8)
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-63.25, -64.75, 60.25, -64.75, 65.25, 65.5, -64, 64.25)
 
 [sub_resource type="TileSet" id="TileSet_gik26"]

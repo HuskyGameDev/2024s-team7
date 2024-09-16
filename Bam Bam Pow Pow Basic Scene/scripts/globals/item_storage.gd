@@ -7,6 +7,7 @@ var moneyItems = []			# Only affect money
 var baseItems = []			# Only affect base multipliers
 var directionItems = []		# Only affect directional attacks
 var specificItems = []		# Allow and multiply a specific attack that is not a base attack
+var itemMax = 0;
 
 enum MULTTYPE {
 	MONEY,
@@ -30,6 +31,7 @@ func _ready():
 		1.5,
 		4
 	))
+	itemMax += 1;
 	
 	itemsList.append(make_item(
 		"Low Blow Scroll",
@@ -41,6 +43,8 @@ func _ready():
 		4
 	))
 	
+	itemMax += 1;
+	
 	itemsList.append(make_item(
 		"Brass Knuckles",
 		700,
@@ -51,6 +55,8 @@ func _ready():
 		12
 	))
 	
+	itemMax += 1;
+	
 	itemsList.append(make_item(
 		"Bird Punching Glasses",
 		700,
@@ -60,6 +66,8 @@ func _ready():
 		1.4,
 		11
 	))
+	
+	itemMax += 1;
 
 	itemsList.append(make_item(
 		"Danger Short",
@@ -71,6 +79,8 @@ func _ready():
 		9
 	))
 	
+	itemMax += 1;
+	
 	itemsList.append(make_item(
 		"Gun",
 		5000,
@@ -80,6 +90,8 @@ func _ready():
 		50,
 		2
 	))
+	
+	itemMax += 1;
 	
 	itemsList.append(make_item(
 		"High Kick Scroll",
@@ -91,6 +103,8 @@ func _ready():
 		5
 	))
 	
+	itemMax += 1;
+	
 	itemsList.append(make_item(
 		"Heel Slam Scroll",
 		500,
@@ -101,6 +115,8 @@ func _ready():
 		5
 	))
 	
+	itemMax += 1;
+	
 	itemsList.append(make_item(
 		"Leg Sweep Scroll",
 		500,
@@ -110,6 +126,8 @@ func _ready():
 		1.1,
 		5
 	))
+	
+	itemMax += 1;
 
 	itemsList.append(make_item(
 		"Axe Slam",
@@ -121,6 +139,8 @@ func _ready():
 		7
 	))
 	
+	itemMax += 1;
+	
 	itemsList.append(make_item(
 		"Penny Pouch",
 		200,
@@ -131,6 +151,128 @@ func _ready():
 		16
 	))
 	
+	itemMax += 1;
+	
+	itemsList.append(make_item(
+		"Penny Pouch",
+		200,
+		false,
+		MULTTYPE.MONEY,
+		-1,
+		1.2,
+		16
+	))
+	
+	itemMax += 1;
+	
+	itemsList.append(make_item(
+		"Penny Pouch",
+		200,
+		false,
+		MULTTYPE.MONEY,
+		-1,
+		1.2,
+		16
+	))
+	
+	itemMax += 1;
+	
+	itemsList.append(make_item(
+		"Penny Pouch",
+		200,
+		false,
+		MULTTYPE.MONEY,
+		-1,
+		1.2,
+		16
+	))
+	
+	itemMax += 1;
+	
+	itemsList.append(make_item(
+		"Penny Pouch",
+		200,
+		false,
+		MULTTYPE.MONEY,
+		-1,
+		1.2,
+		16
+	))
+	
+	itemMax += 1;
+	
+	itemsList.append(make_item(
+		"Penny Pouch",
+		200,
+		false,
+		MULTTYPE.MONEY,
+		-1,
+		1.2,
+		16
+	))
+	
+	itemMax += 1;
+	
+	itemsList.append(make_item(
+		"Penny Pouch",
+		200,
+		false,
+		MULTTYPE.MONEY,
+		-1,
+		1.2,
+		16
+	))
+	
+	itemMax += 1;
+	
+	itemsList.append(make_item(
+		"Penny Pouch",
+		200,
+		false,
+		MULTTYPE.MONEY,
+		-1,
+		1.2,
+		16
+	))
+	
+	itemMax += 1;
+	
+	itemsList.append(make_item(
+		"Penny Pouch",
+		200,
+		false,
+		MULTTYPE.MONEY,
+		-1,
+		1.2,
+		16
+	))
+	
+	itemMax += 1;
+	
+	itemsList.append(make_item(
+		"Penny Pouch",
+		200,
+		false,
+		MULTTYPE.MONEY,
+		-1,
+		1.2,
+		16
+	))
+	
+	itemMax += 1;
+	
+	itemsList.append(make_item(
+		"Penny Pouch",
+		200,
+		false,
+		MULTTYPE.MONEY,
+		-1,
+		1.2,
+		16
+	))
+	
+	itemMax += 1;
+	
 	itemsList.append(make_item(
 		"Piggy Bank",
 		500,
@@ -140,6 +282,104 @@ func _ready():
 		2,
 		16
 	))
+	
+	itemMax += 1;
+	
+	itemsList.append(make_item(
+		"Piggy Bank",
+		500,
+		false,
+		MULTTYPE.MONEY,
+		-1,
+		2,
+		16
+	))
+	
+	itemMax += 1;
+	
+	itemsList.append(make_item(
+		"Piggy Bank",
+		500,
+		false,
+		MULTTYPE.MONEY,
+		-1,
+		2,
+		16
+	))
+	
+	itemMax += 1;
+	
+	itemsList.append(make_item(
+		"Piggy Bank",
+		500,
+		false,
+		MULTTYPE.MONEY,
+		-1,
+		2,
+		16
+	))
+	
+	itemMax += 1;
+	
+	itemsList.append(make_item(
+		"Piggy Bank",
+		500,
+		false,
+		MULTTYPE.MONEY,
+		-1,
+		2,
+		16
+	))
+	
+	itemMax += 1;
+	
+	itemsList.append(make_item(
+		"Piggy Bank",
+		500,
+		false,
+		MULTTYPE.MONEY,
+		-1,
+		2,
+		16
+	))
+	
+	itemMax += 1;
+	
+	itemsList.append(make_item(
+		"Piggy Bank",
+		500,
+		false,
+		MULTTYPE.MONEY,
+		-1,
+		2,
+		16
+	))
+	
+	itemMax += 1;
+	
+	itemsList.append(make_item(
+		"Piggy Bank",
+		500,
+		false,
+		MULTTYPE.MONEY,
+		-1,
+		2,
+		16
+	))
+	
+	itemMax += 1;
+	
+	itemsList.append(make_item(
+		"Piggy Bank",
+		500,
+		false,
+		MULTTYPE.MONEY,
+		-1,
+		2,
+		16
+	))
+	
+	itemMax += 1;
 	
 	for item in itemsList:
 		match item["type"]:
