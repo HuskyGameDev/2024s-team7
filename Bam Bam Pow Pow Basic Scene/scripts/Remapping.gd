@@ -39,7 +39,6 @@ func _input(event):
 	var input_lab = input_button.find_child("InputL")
 	if is_remapping:
 		if (event is InputEventKey || (event is InputEventMouseButton && event.pressed)):
-			print(actionList[action_to_remap])
 			InputMap.action_erase_events(actionList[action_to_remap])
 			InputMap.action_add_event(actionList[action_to_remap], event)
 			input_lab.text = event.as_text()
