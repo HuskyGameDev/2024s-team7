@@ -1407,9 +1407,7 @@ disabled = true
 one_way_collision_margin = 0.0
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="5"]
-libraries = {
-"": SubResource("AnimationLibrary_xgo3l")
-}
+deterministic = false
 tree_root = SubResource("AnimationNodeStateMachine_qhjss")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/kick = false
