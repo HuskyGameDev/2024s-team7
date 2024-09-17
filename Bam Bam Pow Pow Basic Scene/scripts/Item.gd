@@ -4,19 +4,23 @@ signal bought_item(money) # Signal for when the item is bought that uses its mon
 
 # Finds the items label for its cost, its buy button, its sprite in the scene, the node for its id, 
 # the purchase noise, its ID from its ID node, and its audio player
+@onready var item_shop = get_node("/root/ItemShop")
 @onready var money_label = $HBoxContainer/PriceLabel
 @onready var buy_button = $HBoxContainer/BuyButton
 @onready var sprite = $SpriteContainer/Sprite2D
 @onready var name_label = $NameLabel
 @onready var purchase_noise = preload("res://resources/Item_Purchase_Coins.wav")
 @onready var id = self.get_meta("ID")
-@onready var audioPlayer = $"../../../../../../AudioStreamPlayer"
-@onready var item_shop = $"../../../../../../"
+@onready var con = get_node("/root/ItemShop/Control")
+@onready var audioPlayer = get_node("/root/ItemShop/AudioStreamPlayer")
 
 var money # The cost of the item
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print(item_shop.get_name())
+	print(con.get_name())
+	print(audioPlayer.get_name())
 	item_shop.connect("reload", _on_item_shop_reload)
 	item_shop.connect("bought_item", _on_button_pressed)
 	_on_item_shop_reload() # Reloads the items sprite and labels
