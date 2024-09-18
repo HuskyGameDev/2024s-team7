@@ -18,9 +18,6 @@ var money # The cost of the item
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(item_shop.get_name())
-	print(con.get_name())
-	print(audioPlayer.get_name())
 	item_shop.connect("reload", _on_item_shop_reload)
 	item_shop.connect("bought_item", _on_button_pressed)
 	_on_item_shop_reload() # Reloads the items sprite and labels
