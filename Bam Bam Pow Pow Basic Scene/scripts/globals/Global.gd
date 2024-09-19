@@ -5,4 +5,6 @@ var prev_scene
 #Fullscreen Toggle holder
 var fullscreen_on = false
 #Resolution Index holder
-var resolution_index = 3;
+var resolution_index = 3
+#Remapping
+var is_remapping = false

@@ -29,7 +29,8 @@ func _generate():
 	
 	
 func _on_input_button_pressed(button, action):
-		if  !is_remapping:
+		if  !(Global.is_remapping) && !is_remapping:
+			Global.is_remapping = true
 			is_remapping = true
 			action_to_remap = action
 			remapping_button = button
@@ -37,9 +38,10 @@ func _on_input_button_pressed(button, action):
 			
 func _input(event):
 	var input_lab = input_button.find_child("InputL")
-	if is_remapping:
-		if (event is InputEventKey || (event is InputEventMouseButton && event.pressed)):
+	if Global.is_remapping && is_remapping:
+		if (event is InputEventKey):
 			InputMap.action_erase_events(actionList[action_to_remap])
 			InputMap.action_add_event(actionList[action_to_remap], event)
 			input_lab.text = event.as_text()
+			Global.is_remapping = false
 			is_remapping = false

@@ -453,6 +453,8 @@ offset_right = 679.0
 offset_bottom = 665.0
 text = "Reset to Default"
 
+[node name="PopupPanel" type="PopupPanel" parent="TabContainer/Controls"]
+
 [connection signal="pressed" from="TabContainer/Video & Audio/Button" to="." method="_on_button_pressed"]
 [connection signal="ready" from="TabContainer/Video & Audio/CheckButton" to="." method="_on_check_button_ready"]
 [connection signal="toggled" from="TabContainer/Video & Audio/CheckButton" to="." method="_on_check_button_toggled"]
