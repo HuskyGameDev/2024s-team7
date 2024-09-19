@@ -35,13 +35,23 @@ func _on_input_button_pressed(button, action):
 			action_to_remap = action
 			remapping_button = button
 			button.find_child("InputL").text = "Press key to rebind..."
-			
+
+	
 func _input(event):
 	var input_lab = input_button.find_child("InputL")
 	if Global.is_remapping && is_remapping:
-		if (event is InputEventKey):
+		if (event is InputEventKey && !eventCheck(event, action_to_remap)):
 			InputMap.action_erase_events(actionList[action_to_remap])
 			InputMap.action_add_event(actionList[action_to_remap], event)
 			input_lab.text = event.as_text()
 			Global.is_remapping = false
 			is_remapping = false
+
+func eventCheck(event, actionIndex):
+	for n in range(77,85):
+		var events = InputMap.action_get_events(actionList[n])
+		if event.as_text_keycode()  == events[0].as_text_keycode() && actionIndex != n:
+			print("TRUE")
+			return true
+	print("FALSE")
+	return false
