@@ -388,6 +388,18 @@ func _ready() -> void:
 	
 	itemMax += 1;
 	
+	item_list.append(make_item(
+		"Piggy Bank",
+		500,
+		false,
+		MULTTYPE.MONEY,
+		-1,
+		2,
+		16
+	))
+	
+	itemMax += 1;
+	
 	for item in item_list:
 		match item["type"]:
 			MULTTYPE.MONEY:

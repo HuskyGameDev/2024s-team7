@@ -11,8 +11,12 @@ extends CanvasLayer
 @onready var item8 = $Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item8
 @onready var item9 = $Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item9
 @onready var item10 = $Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item10
+@onready var maxPage = ceil(ItemStorage.itemMax/10.0)
 
-var page = 1; # The item shop always starts on page 1
+
+
+var page = 1 # The item shop always starts on page 1
+
 
 signal reload
 
@@ -56,10 +60,10 @@ func _on_load_button_pressed():
 
 # Ensures page number never goes past what is allowed
 func valpage():
-	if (page < 0):
-		page = 3
-	elif (page >= 4):
-		page = 0
+	if (page < 1):
+		page = maxPage
+	elif (page > maxPage):
+		page = 1
 
 # When the next page button is pressed
 func _on_next_page_button_pressed() -> void:
@@ -76,8 +80,8 @@ func _on_next_page_button_pressed() -> void:
 		else:
 			curr_item_num = "Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item" + str(i+1)
 		curr_item = get_node(curr_item_num)
-		if ((curr_item.get_meta("ID") + 10) >= ItemStorage.itemMax):
-			curr_item.set_meta("ID", 0+i)
+		if ((curr_item.get_meta("ID") + 10) >= ceil(ItemStorage.itemMax/10.0)*10):
+			curr_item.set_meta("ID", i)
 		else:
 			curr_item.set_meta("ID", curr_item.get_meta("ID")+10)
 		curr_item._on_item_shop_reload()
@@ -98,7 +102,7 @@ func _on_last_page_button_pressed() -> void:
 			curr_item_num = "Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item" + str(i+1)
 		curr_item = get_node(curr_item_num)
 		if ((curr_item.get_meta("ID") - 10) < 0):
-			curr_item.set_meta("ID", ItemStorage.itemMax-10+i)
+			curr_item.set_meta("ID", ((ItemStorage.itemMax/10)*10)+i)
 		else:
 			curr_item.set_meta("ID", curr_item.get_meta("ID")-10)
 		curr_item._on_item_shop_reload()

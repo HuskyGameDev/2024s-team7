@@ -29,7 +29,22 @@ func _process(_delta):
 # Function to call when reloading the items characteristics in the shop
 func _on_item_shop_reload():
 	id = self.get_meta("ID") # Updates the id variable here based on what the metadata was changed to
-	if (ItemStorage.itemsList[id].owned == false): # If the item is not owned by the player
+	var lessThanMax = (id < ItemStorage.itemMax)
+	if (lessThanMax == false):
+		money_label.visible = false
+		buy_button.visible = false
+		sprite.visible = false
+		name_label.visible = false
+	elif (ItemStorage.itemsList[id].owned == true):
+		money_label.visible = false
+		buy_button.visible = false
+		sprite.visible = true;
+		if (ItemStorage.itemsList[id]["sprite"] != null):
+			sprite.texture = load("res://resources/sprites/Shop_sprites.png")
+			sprite.frame = ItemStorage.itemsList[id]["sprite"]
+		name_label.visible = true
+		name_label.text = "Bought"
+	else: # If the item is not owned by the player
 		# Make the label for the cost, buy button, and sprite visible
 		money_label.visible = true
 		buy_button.visible = true
@@ -43,12 +58,6 @@ func _on_item_shop_reload():
 		if (ItemStorage.itemsList[id]["sprite"] != null):
 			sprite.texture = load("res://resources/sprites/Shop_sprites.png")
 			sprite.frame = ItemStorage.itemsList[id]["sprite"]
-	else: # If the item is owned by the player
-		# Makes the items components no longer visibile or interactable
-		money_label.visible = false
-		buy_button.visible = false
-		sprite.visible = false
-		name_label.visible = false
 
 # When the button attatched to the item is pressed
 func _on_button_pressed():
