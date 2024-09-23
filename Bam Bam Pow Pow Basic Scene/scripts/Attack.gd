@@ -24,12 +24,12 @@ var animation: String = "path/to/debug/anim"
 ## Initializes the values for the attack instance.
 ##
 ## Parameters:
-## float	damage: The damage dealt by the attack.
-## float	knockback: The strength of the knockback.
-## float	angle: The angle in degrees at which the knockback is applied.
-## int		hit_stun: The milliseconds of hit stun this attack inflicts.
-## String	damage_type: The type of damage dealt.
-## String	animation: The path to the animation of the attack. The deault is
+## damage		float: The damage dealt by the attack.
+## knockback	float: The strength of the knockback.
+## angle		float: The angle in degrees at which the knockback is applied.
+## hit_stun		int: The milliseconds of hit stun this attack inflicts.
+## damage_type	String: The type of damage dealt.
+## animation	String: The path to the animation of the attack. The deault is
 ## a debug animation.
 ##
 ## Returns:

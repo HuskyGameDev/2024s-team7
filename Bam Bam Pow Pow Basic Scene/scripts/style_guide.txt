@@ -1,0 +1,16 @@
+## Dscription of what this file aims to achieve.
+
+
+# some code
+
+## Description of the example function.
+##
+## Parameters:
+## first	int: Description of the first parameter.
+## second	String: Description of the second parameter.
+## thrid	float: Description of the third parameter.
+##
+## Returns:
+## float: Description of the return.
+func example(first: int, second: String, third: float) -> float:
+	# Code

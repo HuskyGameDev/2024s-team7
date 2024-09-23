@@ -8,10 +8,12 @@ var name: String
 var damage_type: String
 
 ## All of the attacks a weapon has.
+var light_neutral: Attack
 var light_up: Attack
 var light_down: Attack
 var light_side: Attack
 var light_air: Attack
+var heavy_neutral: Attack
 var heavy_up: Attack
 var heavy_down: Attack
 var heavy_side: Attack
@@ -20,7 +22,7 @@ var heavy_air: Attack
 ## Initializes a weapon.
 ##
 ## Parameters:
-## String	path: This is the path to the JSON file containing the specifcations
+## path		String: This is the path to the JSON file containing the specifcations
 ## of the weapon. It has a default value of the template JSON file.
 ##
 ## Returns:
