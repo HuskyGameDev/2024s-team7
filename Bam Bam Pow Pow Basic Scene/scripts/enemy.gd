@@ -1,5 +1,16 @@
 extends CharacterBody2D
 
+# Add class for reference
+class_name Enemy
+
+# Campaign Specific Variables
+signal health_changed
+
+@export var max_health = 100
+@onready var current_health = max_health
+
+# Original Variables
+
 @export var hp: int = 1
 @export var weight: float = 100
 @export var score: int = 0

@@ -35,13 +35,33 @@ texture = ExtResource("2_locns")
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="New" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="Unlimited HBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "New Game"
+alignment = 1
 
-[node name="Load" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="New Unlimited" type="Button" parent="MarginContainer/VBoxContainer/Unlimited HBox"]
 layout_mode = 2
-text = "Load Game"
+size_flags_horizontal = 3
+text = "New Infinity"
+
+[node name="Unlimited" type="Button" parent="MarginContainer/VBoxContainer/Unlimited HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Load Infinity"
+
+[node name="Campaign HBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="New Campaign" type="Button" parent="MarginContainer/VBoxContainer/Campaign HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "New Campaign"
+
+[node name="Load Campaign" type="Button" parent="MarginContainer/VBoxContainer/Campaign HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Load Campaign"
 
 [node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -70,7 +90,7 @@ PAIR WITH MAIN ATTACKS
 EXAMPLE: 'W' + 'J' FOR UPPERCUT
 DIRECTIONAL ATTACKS ARE PURCHASED"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/New" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Load" to="." method="_on_load_game_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Unlimited HBox/New Unlimited" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Unlimited HBox/Unlimited" to="." method="_on_load_game_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
