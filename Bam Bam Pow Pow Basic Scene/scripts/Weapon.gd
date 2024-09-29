@@ -32,10 +32,14 @@ func _init(path: String="res://resources/weapons/template.json") -> void:
 	self.name = json["name"]
 	self.damage_type = json["damage_type"]
 	
-	var data = json["light_up"]
+	var data = json["light_neutral"]
 	self.light_up = Attack.new(data["damage"], data["knockback"], 
 							   data["angle"], data["hit_stun"], 
 							   self.damage_type, data["animation"])
+	data = json["light_up"]
+	self.light_down = Attack.new(data["damage"], data["knockback"], 
+								 data["angle"], data["hit_stun"], 
+								 self.damage_type, data["animation"])
 	data = json["light_down"]
 	self.light_down = Attack.new(data["damage"], data["knockback"], 
 								 data["angle"], data["hit_stun"], 
@@ -48,6 +52,10 @@ func _init(path: String="res://resources/weapons/template.json") -> void:
 	self.light_air = Attack.new(data["damage"], data["knockback"], 
 								data["angle"], data["hit_stun"], 
 								self.damage_type, data["animation"])
+	data = json["heavy_neutral"]
+	self.light_up = Attack.new(data["damage"], data["knockback"], 
+							   data["angle"], data["hit_stun"], 
+							   self.damage_type, data["animation"])
 	data = json["heavy_up"]
 	self.light_up = Attack.new(data["damage"], data["knockback"], 
 							   data["angle"], data["hit_stun"], 

@@ -1,6 +1,13 @@
 {
 	"name": "Unarmed",
 	"damage_type": "PHYSICAL",
+	"light_neutral": {
+		"damage": 10,
+		"knockback": 1.0,
+		"angle": 45.0,
+		"hit_stun": 100,
+		"animation": "path/to/anim"
+	},
 	"light_up": {
 		"damage": 8,
 		"knockback": 1.2,
@@ -27,6 +34,13 @@
 		"knockback": 1.0,
 		"angle": 45.0,
 		"hit_stun": 80,
+		"animation": "path/to/anim"
+	},
+	"heavy_neutral": {
+		"damage": 10,
+		"knockback": 1.0,
+		"angle": 45.0,
+		"hit_stun": 100,
 		"animation": "path/to/anim"
 	},
 	"heavy_up": {
