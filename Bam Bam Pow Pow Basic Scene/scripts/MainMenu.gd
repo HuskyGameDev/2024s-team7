@@ -4,7 +4,7 @@ extends Control
 func _on_new_game_pressed():
 	ItemStorage.restart_game()
 	SceneSwap.scene_swap("res://Scenes/Playable/Fight.tscn")
-
+ 
 func _on_load_game_pressed():
 	ItemStorage.load_game()
 	SceneSwap.scene_swap("res://Scenes/Playable/Fight.tscn")

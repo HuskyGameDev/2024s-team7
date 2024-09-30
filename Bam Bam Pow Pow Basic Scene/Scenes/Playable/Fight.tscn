@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d3qsuqxbit6rg"]
+[gd_scene load_steps=11 format=3 uid="uid://d3qsuqxbit6rg"]
 
 [ext_resource type="Texture2D" uid="uid://b084ekiqsrbeb" path="res://resources/sprites/Da griddy.png" id="1_2m55c"]
 [ext_resource type="Script" path="res://scripts/Fight.gd" id="1_xn2pw"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://cfx46l5ghyfp3" path="res://Scenes/Entities/player.tscn" id="3_w7w43"]
 [ext_resource type="PackedScene" uid="uid://cqhetuoqkeuty" path="res://Scenes/Entities/enemy.tscn" id="4_boejj"]
 [ext_resource type="PackedScene" uid="uid://b8vq6sc31q3x6" path="res://Scenes/Functional/combo.tscn" id="5_xefg3"]
+[ext_resource type="Texture2D" uid="uid://cbggip08fyd7k" path="res://Assets/timerBack.png" id="7_s5mxn"]
+[ext_resource type="Texture2D" uid="uid://dmwfm8ipdtto" path="res://Assets/timerFront.png" id="8_26cga"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1qjtc"]
 texture = ExtResource("2_tpybg")
@@ -74,6 +76,12 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Time: "
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer"]
+layout_mode = 2
+fill_mode = 4
+texture_under = ExtResource("8_26cga")
+texture_progress = ExtResource("7_s5mxn")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 20.0
