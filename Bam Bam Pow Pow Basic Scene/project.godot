@@ -21,6 +21,7 @@ ItemCreation="*res://scripts/globals/item_creation.gd"
 ItemStorage="*res://scripts/globals/item_storage.gd"
 SceneSwap="*res://scripts/globals/scene_swap.gd"
 Global="*res://scripts/globals/Global.gd"
+Player="*res://scripts/globals/Player.gd"
 
 [display]
 

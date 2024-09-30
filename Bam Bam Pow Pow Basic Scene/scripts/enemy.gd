@@ -113,6 +113,7 @@ func _on_combo_handler_attack_damamge(damage_number):
 
 signal showDmg(dmgNumber)
 
+
 func _on_hurtbox_area_entered(hitbox):
 	self.juggle += 0.2
 	var damage = damage_delt * self.juggle * hitbox.motion
