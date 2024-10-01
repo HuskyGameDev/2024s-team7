@@ -42,11 +42,11 @@ func _ready():
 # Alters the damageMult and money_mult variables depending on items the player has bought from the shop
 func ready_mults():
 	# Fill with zeros, initalize base attacks as valid.
-	mults.fill(0)
+	mults.fill(1)
 	mults[0] 	= 1
 	mults[5] 	= 1
 	mults[10] 	= 1
-	#mults[15] 	= 1
+	mults[15] 	= 1
 	
 	for item in ItemStorage.moneyItems:
 		if item["owned"]:

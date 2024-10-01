@@ -6,6 +6,8 @@ extends CharacterBody2D
 var inputDir #the direction the player is currently holding (used for detecting moves)
 var attackType #The type of move the player is currently doing
 
+@onready var weapon: Weapon = Weapon.new("unarmed")
+
 ## This enum is for the core ability
 ## NOTE: The assigned values are equal to their index in the damage array
 enum CORE {
@@ -32,6 +34,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	animTree.active = true
+	weapon.print_weapon()
+	
 
 
 func _physics_process(delta):

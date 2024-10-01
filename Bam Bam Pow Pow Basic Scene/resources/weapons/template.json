@@ -1,5 +1,6 @@
 {
 	"name": "template",
+	"icon": "path/to/icon/img",
 	"damage_type": "PHYSICAL",
 	"light_neutral": {
 		"damage": 10,

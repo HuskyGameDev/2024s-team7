@@ -5,6 +5,9 @@ class_name Attack
 ## The damage of the attack.
 var damage: float
 
+## The multiplier of the attack
+var multiplier: float = 1
+
 ## The strength of the knockback.
 var knockback: float
 
@@ -42,3 +45,13 @@ func _init(damage: float, knockback: float, angle: float,
 	self.hit_stun = hit_stun
 	self.damage_type = damage_type
 	self.animation = animation
+
+## Print out a single attack
+func print_attack():
+	print("	Damage: " + str(self.damage))
+	print("	Multiplier: " + str(self.multiplier))
+	print("	Knockback: " + str(self.knockback))
+	print("	Angle: " + str(self.angle))
+	print("	Hit Stun: " + str(self.hit_stun))
+	print("	Damage Type: " + str(self.damage_type))
+	print("	Animation Path: \"" + self.animation + "\"")

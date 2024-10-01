@@ -1,0 +1,30 @@
+{
+	"template": {
+		"damage": 10,
+		"damage_type": "PHYSICAL",
+		"knockback": 1.0,
+		"angle": 45.0,
+		"hit_stun": 100,
+		"animation": "path/to/anim",
+		"icon": "path/to/icon/img",
+		"transition": ""
+	},
+	"Spin": {
+		"damage": 10,
+		"damage_type": "PHYSICAL",
+		"knockback": 1.0,
+		"angle": 45.0,
+		"hit_stun": 100,
+		"animation": "path/to/anim",
+		"transition": "Spin_t1"
+	},
+	"Spin_t1": {
+		"damage": 10,
+		"damage_type": "PHYSICAL",
+		"knockback": 1.0,
+		"angle": 45.0,
+		"hit_stun": 100,
+		"animation": "path/to/anim",
+		"transition": ""
+	}
+}
