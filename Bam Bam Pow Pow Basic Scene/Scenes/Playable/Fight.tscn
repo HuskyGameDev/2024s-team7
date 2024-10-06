@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d3qsuqxbit6rg"]
+[gd_scene load_steps=12 format=3 uid="uid://d3qsuqxbit6rg"]
 
 [ext_resource type="Texture2D" uid="uid://b084ekiqsrbeb" path="res://resources/sprites/Da griddy.png" id="1_2m55c"]
 [ext_resource type="Script" path="res://scripts/Fight.gd" id="1_xn2pw"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b8vq6sc31q3x6" path="res://Scenes/Functional/combo.tscn" id="5_xefg3"]
 [ext_resource type="Texture2D" uid="uid://cbggip08fyd7k" path="res://Assets/timerBack.png" id="7_s5mxn"]
 [ext_resource type="Texture2D" uid="uid://dmwfm8ipdtto" path="res://Assets/timerFront.png" id="8_26cga"]
+[ext_resource type="Texture2D" uid="uid://doajiie6tkeaq" path="res://ahh.png" id="8_avj12"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1qjtc"]
 texture = ExtResource("2_tpybg")
@@ -27,10 +28,10 @@ texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -320.0
-offset_top = -180.0
-offset_right = 320.0
-offset_bottom = 180.0
+offset_left = -391.0
+offset_top = -179.0
+offset_right = 249.0
+offset_bottom = 181.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_2m55c")
@@ -81,6 +82,7 @@ text = "Time: "
 layout_mode = 2
 fill_mode = 4
 texture_under = ExtResource("8_26cga")
+texture_over = ExtResource("8_avj12")
 texture_progress = ExtResource("7_s5mxn")
 
 [node name="Timer" type="Timer" parent="."]
