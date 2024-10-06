@@ -17,7 +17,7 @@ func _input(event):
 func _process(delta):
 	score_label.text = "Score: " + str(enemy.score)
 	time_label.text = "Time: " + "%.3f" % time.time_left
-	$HBoxContainer/TextureProgressBar.value = 5*(20-time.time_left)
+	$HBoxContainer/TextureProgressBar.value = (100/time.wait_time)*(time.wait_time-time.time_left)
 
 func _on_timer_timeout():
 	enemy.calc_money()
