@@ -21,6 +21,7 @@ ItemCreation="*res://scripts/globals/item_creation.gd"
 ItemStorage="*res://scripts/globals/item_storage.gd"
 SceneSwap="*res://scripts/globals/scene_swap.gd"
 Global="*res://scripts/globals/Global.gd"
+WeaponInShop="*res://scripts/globals/weapon_in_shop.gd"
 Player="*res://scripts/globals/Player.gd"
 
 [display]
@@ -32,6 +33,10 @@ window/stretch/mode="viewport"
 [dotnet]
 
 project/assembly_name="Bam Bam Pow Pow Basic Scene"
+
+[gui]
+
+theme/custom_font="res://resources/fonts/PixeloidMono.ttf"
 
 [input]
 

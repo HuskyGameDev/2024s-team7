@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://5n0srb1iavr0"]
+
+[ext_resource type="Script" path="res://scripts/hanger.gd" id="1_g4n7n"]
+[ext_resource type="Shader" path="res://resources/fonts/multiply.gdshader" id="2_qlmu4"]
+[ext_resource type="Texture2D" uid="uid://co6nac81sss8a" path="res://resources/sprites/uncautioned-hangers.png" id="3_7turc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fs0ir"]
+shader = ExtResource("2_qlmu4")
+shader_parameter/onoff = false
+
+[node name="Hanger" type="Control"]
+layout_mode = 3
+anchor_right = 0.997
+anchor_bottom = 1.0
+offset_right = -957.16
+offset_bottom = -540.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+script = ExtResource("1_g4n7n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_fs0ir")
+position = Vector2(256, 353)
+scale = Vector2(4, 4)
+texture = ExtResource("3_7turc")
+hframes = 5
+
+[node name="HangerButton" type="Button" parent="Sprite2D"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -88.0
+offset_right = -64.0
+offset_bottom = -88.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="Sprite2D/HangerButton" to="." method="_on_button_pressed"]

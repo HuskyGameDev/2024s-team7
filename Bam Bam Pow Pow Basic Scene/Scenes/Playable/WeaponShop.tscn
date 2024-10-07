@@ -1,0 +1,263 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7hqp2kuj8xq5"]
+
+[ext_resource type="Script" path="res://scripts/weapon_shop.gd" id="1_wkwj5"]
+[ext_resource type="Texture2D" uid="uid://dxunmhf25os5p" path="res://resources/sprites/dragon-in-shop.png" id="2_7m3va"]
+[ext_resource type="Texture2D" uid="uid://dc36bpll4ldvy" path="res://resources/sprites/background-itemshop.png" id="2_8ayfd"]
+[ext_resource type="PackedScene" uid="uid://5n0srb1iavr0" path="res://Scenes/Entities/hanger.tscn" id="3_01yxm"]
+[ext_resource type="Texture2D" uid="uid://kg8lti6ql3wt" path="res://resources/sprites/caution-symbol.png" id="6_1g72y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2sdlv"]
+content_margin_left = 450.0
+content_margin_right = 0.0
+
+[node name="WeaponShop" type="CanvasLayer"]
+script = ExtResource("1_wkwj5")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+scale = Vector2(4, 4)
+texture = ExtResource("2_8ayfd")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2sdlv")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 400
+
+[node name="Hanger" parent="Control/ScrollContainer/HBoxContainer" instance=ExtResource("3_01yxm")]
+layout_mode = 2
+
+[node name="Hanger2" parent="Control/ScrollContainer/HBoxContainer" instance=ExtResource("3_01yxm")]
+layout_mode = 2
+
+[node name="Hanger3" parent="Control/ScrollContainer/HBoxContainer" instance=ExtResource("3_01yxm")]
+layout_mode = 2
+
+[node name="Hanger4" parent="Control/ScrollContainer/HBoxContainer" instance=ExtResource("3_01yxm")]
+layout_mode = 2
+
+[node name="Hanger5" parent="Control/ScrollContainer/HBoxContainer" instance=ExtResource("3_01yxm")]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Dra\'ko" type="Sprite2D" parent="."]
+position = Vector2(640, 360)
+scale = Vector2(4, 4)
+texture = ExtResource("2_7m3va")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 832.0
+offset_top = 352.0
+offset_right = 1232.0
+offset_bottom = 640.0
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 2
+color = Color(0.733333, 0.603922, 0.458824, 0.447059)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "Name"
+horizontal_alignment = 1
+
+[node name="ToBuy" type="HBoxContainer" parent="VBoxContainer/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Price" type="Label" parent="VBoxContainer/ColorRect/VBoxContainer/ToBuy"]
+layout_mode = 2
+text = "Price:"
+
+[node name="PriceLabel" type="Label" parent="VBoxContainer/ColorRect/VBoxContainer/ToBuy"]
+layout_mode = 2
+text = "0"
+
+[node name="BuyButton" type="Button" parent="VBoxContainer/ColorRect/VBoxContainer/ToBuy"]
+layout_mode = 2
+text = "Buy"
+
+[node name="Bought" type="HBoxContainer" parent="VBoxContainer/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Bought!" type="Label" parent="VBoxContainer/ColorRect/VBoxContainer/Bought"]
+layout_mode = 2
+text = "Bought!"
+
+[node name="Equip" type="Button" parent="VBoxContainer/ColorRect/VBoxContainer/Bought"]
+layout_mode = 2
+text = "Equip"
+
+[node name="FlavorText" type="Label" parent="VBoxContainer/ColorRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Prev" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Previous"
+
+[node name="Next" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Next"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 656.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+metadata/_edit_group_ = true
+
+[node name="MenuButtonRow" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="MainMenuButton" type="Button" parent="MarginContainer/MenuButtonRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Main Menu"
+
+[node name="SettingsMenuButton" type="Button" parent="MarginContainer/MenuButtonRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Settings Menu"
+
+[node name="ItemShopButton" type="Button" parent="MarginContainer/MenuButtonRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Item Shop"
+
+[node name="FightSceneButton" type="Button" parent="MarginContainer/MenuButtonRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Fight Scene"
+
+[node name="SaveGameButton" type="Button" parent="MarginContainer/MenuButtonRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Save Game"
+
+[node name="LoadGameButton" type="Button" parent="MarginContainer/MenuButtonRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Load Game"
+
+[node name="HazardButton" type="TextureButton" parent="."]
+anchors_preset = -1
+anchor_left = 0.269
+anchor_top = 0.2
+anchor_right = 0.269
+anchor_bottom = 0.2
+offset_left = 719.68
+offset_top = -128.0
+offset_right = 879.68
+offset_bottom = 32.0
+texture_normal = ExtResource("6_1g72y")
+texture_pressed = ExtResource("6_1g72y")
+stretch_mode = 4
+
+[node name="WarningScreen" type="ColorRect" parent="."]
+visible = false
+anchors_preset = -1
+anchor_left = 0.594
+anchor_top = 0.011
+anchor_right = 0.594
+anchor_bottom = 0.011
+offset_left = -512.32
+offset_top = 200.08
+offset_right = 351.68
+offset_bottom = 520.08
+color = Color(0.0941176, 0.0941176, 0.0862745, 0.870588)
+
+[node name="MarginContainer" type="MarginContainer" parent="WarningScreen"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 16.0
+offset_right = 848.0
+offset_bottom = 304.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="WarningScreen/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+text = "
+WARNING!
+Weapons implementation is not complete. All purchases made here will have no effect on coin count or combat.
+Please feel free to look around and review the Shop UI for now :D"
+
+[node name="Close" type="Button" parent="WarningScreen"]
+layout_mode = 2
+offset_left = 752.0
+offset_top = 16.0
+offset_right = 856.0
+offset_bottom = 96.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 38
+text = "X"
+
+[connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger" to="." method="_on_hanger_hanger_pressed"]
+[connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger2" to="." method="_on_hanger_hanger_pressed"]
+[connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger3" to="." method="_on_hanger_hanger_pressed"]
+[connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger4" to="." method="_on_hanger_hanger_pressed"]
+[connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger5" to="." method="_on_hanger_hanger_pressed"]
+[connection signal="pressed" from="VBoxContainer/ColorRect/VBoxContainer/ToBuy/BuyButton" to="." method="_on_buy_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Prev" to="." method="_on_prev_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuButtonRow/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuButtonRow/SettingsMenuButton" to="." method="_on_settings_menu_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuButtonRow/ItemShopButton" to="." method="_on_item_shop_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuButtonRow/FightSceneButton" to="." method="_on_fight_scene_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuButtonRow/SaveGameButton" to="." method="_on_save_game_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuButtonRow/LoadGameButton" to="." method="_on_load_game_button_pressed"]
+[connection signal="pressed" from="HazardButton" to="." method="_on_hazard_button_pressed"]
+[connection signal="pressed" from="WarningScreen/Close" to="." method="_on_close_pressed"]

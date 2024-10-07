@@ -1,4 +1,4 @@
-## Dscription of what this file aims to achieve.
+## Description of what this file aims to achieve.
 
 
 # some code
