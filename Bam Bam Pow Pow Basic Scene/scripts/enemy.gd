@@ -20,13 +20,12 @@ signal health_changed
 @onready var sprite = $Sprite2D
 @onready var collShape = $CollisionShape2D
 @onready var animPlayer = $AnimationPlayer
+@onready var player = $"../player"
 
 var addedMoney = false
 
 @onready var items = ItemStorage.itemsList
 var money_mult = 1.0 # Multiplier for money stats
-var mults = []
-var damage = []
 
 signal damage_readied(damage_array)
 
@@ -35,67 +34,64 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	animPlayer.play("idle")
-	mults.resize(20)
-	damage.resize(20)
 	ready_mults()
 
 # Alters the damageMult and money_mult variables depending on items the player has bought from the shop
 func ready_mults():
-	# Fill with zeros, initalize base attacks as valid.
-	mults.fill(1)
-	mults[0] 	= 1
-	mults[5] 	= 1
-	mults[10] 	= 1
-	mults[15] 	= 1
-	
-	for item in ItemStorage.moneyItems:
-		if item["owned"]:
-			money_mult += item["mult"]
-	
-	for item in ItemStorage.baseItems:
-		if item["owned"]:
-			base_mult(item["mult"])
-	
-	for item in ItemStorage.specificItems:
-		if item["owned"]:
-			specific_mult(item["index"], item["mult"])
-	
-	for item in ItemStorage.directionItems:
-		if item["owned"]:
-			direction_mult(item["index"], item["mult"])
-	
-	base_mult_stack()
+	# This is adding up all of the multipliers and storing them in the 
+	# dictionary in the item storage global.
+	for item in ItemStorage.owned_items:
+		var effects = item["effects"]
+		for key in effects:
+			ItemStorage.mults[key] += effects[key] ## TODO: not initializing to 1 whenever hte fight loads
+			
 	ready_damage()
 	# Send the calcualted damage array to the combo script
-	damage_readied.emit(damage)
-	print_debug("Damage array: " + str(damage))
 
+## This function will apply all of the multipliers to the player's weapon
+## attacks
 func ready_damage():
-	for index in range(mults.size()):
-		damage[index] = base_damage * mults[index]
+	## TODO: Apply the multipliers to the attacks on the current weapon the 
+	## player has 
+	var mults = ItemStorage.mults
+	money_mult += mults["money"]
+	all_light(mults["base"])
+	all_heavy(mults["base"])
+	all_light(mults["light"])
+	all_heavy(mults["heavy"])
+	player.weapon.light_neutral.mult	+= mults["light_neutral"]
+	player.weapon.light_up.mult			+= mults["light_up"]
+	player.weapon.light_down.mult		+= mults["light_down"]
+	player.weapon.light_side.mult		+= mults["light_side"]
+	player.weapon.light_air.mult		+= mults["light_air"]
+	player.weapon.heavy_neutral.mult	+= mults["heavy_neutral"]
+	player.weapon.heavy_up.mult			+= mults["heavy_up"]
+	player.weapon.heavy_down.mult		+= mults["heavy_down"]
+	player.weapon.heavy_side.mult		+= mults["heavy_side"]
+	player.weapon.heavy_air.mult		+= mults["heavy_air"]
+	
 
-func base_mult_stack():
-	for index in range(20):
-		var offset = index % 5
-		if offset != 0:
-			mults[index] *= mults[index - offset]
-
-func direction_mult(index, mult):
-	var iterator: int = 0
-	while iterator < 20:
-		if mults[iterator + index] > 0:
-			mults[iterator + index] += mult
-		iterator += 5
-
-func specific_mult(index, mult):
-	mults[index] += mult
-
-func base_mult(mult):
-	var index = 0 
-	while index < 16:
-		if mults[index] != 0:
-			mults[index] += mult
-		index += 5
+## This function will apply a light mutliplier to all of the light attacks
+##
+## Parameters:
+## mult		float: This is the mult to add
+func all_light(mult: float):
+	player.weapon.light_neutral.mult	+= mult
+	player.weapon.light_up.mult 		+= mult
+	player.weapon.light_down.mult	 	+= mult
+	player.weapon.light_side.mult 		+= mult
+	player.weapon.light_air.mult 		+= mult
+	
+## This function will apply a heavy mutliplier to all of the heavy attacks
+##
+## Parameters:
+## mult		float: This is the mult to add
+func all_heavy(mult: float):
+	player.weapon.heavy_neutral.mult	+= mult
+	player.weapon.heavy_up.mult 		+= mult
+	player.weapon.heavy_down.mult	 	+= mult
+	player.weapon.heavy_side.mult 		+= mult
+	player.weapon.heavy_air.mult 		+= mult
 
 func _physics_process(delta):
 	# Add the gravity.

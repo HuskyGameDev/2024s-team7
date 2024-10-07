@@ -147,8 +147,8 @@ text = "Load Game"
 bus = &"sfx"
 
 [connection signal="pressed" from="Control/MarginContainer/MarginContainer/HBoxContainer/LastPageButton" to="." method="_on_last_page_button_pressed"]
-[connection signal="bought_item" from="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item1" to="." method="_on_item_1_bought_item"]
 [connection signal="bought_item" from="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item1" to="." method="bought_item"]
+[connection signal="bought_item" from="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item1" to="." method="_on_item_1_bought_item"]
 [connection signal="bought_item" from="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item2" to="." method="bought_item"]
 [connection signal="bought_item" from="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item3" to="." method="bought_item"]
 [connection signal="bought_item" from="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item4" to="." method="bought_item"]

@@ -3,11 +3,6 @@ extends Node
 var item_list = []
 @onready var itemMax = 0;
 
-var moneyItems = []			# Only affect money
-var baseItems = []			# Only affect base multipliers
-var directionItems = []		# Only affect directional attacks
-var specificItems = []		# Allow and multiply a specific attack that is not a base attack
-
 enum MULTTYPE {
 	MONEY,
 	BASE,
@@ -15,14 +10,12 @@ enum MULTTYPE {
 	SPECIFIC
 }
 
-func make_item(name, price, owned, type, index, mult, sprite_index) -> Dictionary:
+func make_item(name, price, owned, effects: Dictionary, sprite_index) -> Dictionary:
 	var item: Dictionary = {
 		"name" 		: name,
 		"price" 	: price,
 		"owned" 	: owned,
-		"type" 		: type,
-		"index" 	: index,
-		"mult" 		: mult,
+		"effects" 	: {},
 		"sprite" 	: sprite_index
 	}
 	return item
@@ -33,9 +26,10 @@ func _ready() -> void:
 		"Uppercut Scroll",
 		500,
 		false,
-		MULTTYPE.SPECIFIC,
-		1,
-		1.5,
+		{
+			"light_up": 0.5,
+			"heavy_up": 0.5
+		},
 		4
 	))
 	itemMax += 1;
@@ -44,9 +38,9 @@ func _ready() -> void:
 		"Low Blow Scroll",
 		500,
 		false,
-		MULTTYPE.SPECIFIC,
-		2,
-		1.6,
+		{
+			"light_down": 0.6
+		},
 		4
 	))
 	
@@ -56,9 +50,9 @@ func _ready() -> void:
 		"Brass Knuckles",
 		700,
 		false,
-		MULTTYPE.SPECIFIC,
-		0,
-		1.2,
+		{
+			"light": 0.2
+		},
 		12
 	))
 	
@@ -68,9 +62,10 @@ func _ready() -> void:
 		"Bird Punching Glasses",
 		700,
 		false,
-		MULTTYPE.DIRECTION,
-		1,
-		1.4,
+		{
+			"light_up": 0.2,
+			"heavy_up": 0.2
+		},
 		11
 	))
 	
@@ -80,22 +75,11 @@ func _ready() -> void:
 		"Danger Short",
 		700,
 		false,
-		MULTTYPE.DIRECTION,
-		2,
-		1.6,
+		{
+			"light_side": 0.3,
+			"heavy_side": 0.3
+		},
 		9
-	))
-	
-	itemMax += 1;
-	
-	item_list.append(make_item(
-		"Gun",
-		5000,
-		false,
-		MULTTYPE.SPECIFIC,
-		15,
-		50,
-		2
 	))
 	
 	itemMax += 1;
@@ -104,9 +88,9 @@ func _ready() -> void:
 		"High Kick Scroll",
 		500,
 		false,
-		MULTTYPE.SPECIFIC,
-		6,
-		1.5,
+		{
+			"heavy_up": 0.6
+		},
 		5
 	))
 	
@@ -116,9 +100,9 @@ func _ready() -> void:
 		"Heel Slam Scroll",
 		500,
 		false,
-		MULTTYPE.SPECIFIC,
-		7,
-		1.6,
+		{
+			"heavy_down": 0.3
+		},
 		5
 	))
 	
@@ -128,153 +112,21 @@ func _ready() -> void:
 		"Leg Sweep Scroll",
 		500,
 		false,
-		MULTTYPE.SPECIFIC,
-		8,
-		1.1,
+		{
+			"light_down": 0.2
+		},
 		5
 	))
 	
 	itemMax += 1;
-
-	item_list.append(make_item(
-		"Axe Slam",
-		1000,
-		false,
-		MULTTYPE.SPECIFIC,
-		12,
-		3,
-		7
-	))
-	
-	itemMax += 1;
 	
 	item_list.append(make_item(
 		"Penny Pouch",
 		200,
 		false,
-		MULTTYPE.MONEY,
-		-1,
-		1.2,
-		16
-	))
-	
-	itemMax += 1;
-	
-	item_list.append(make_item(
-		"Penny Pouch",
-		200,
-		false,
-		MULTTYPE.MONEY,
-		-1,
-		1.2,
-		16
-	))
-	
-	itemMax += 1;
-	
-	item_list.append(make_item(
-		"Penny Pouch",
-		200,
-		false,
-		MULTTYPE.MONEY,
-		-1,
-		1.2,
-		16
-	))
-	
-	itemMax += 1;
-	
-	item_list.append(make_item(
-		"Penny Pouch",
-		200,
-		false,
-		MULTTYPE.MONEY,
-		-1,
-		1.2,
-		16
-	))
-	
-	itemMax += 1;
-	
-	item_list.append(make_item(
-		"Penny Pouch",
-		200,
-		false,
-		MULTTYPE.MONEY,
-		-1,
-		1.2,
-		16
-	))
-	
-	itemMax += 1;
-	
-	item_list.append(make_item(
-		"Penny Pouch",
-		200,
-		false,
-		MULTTYPE.MONEY,
-		-1,
-		1.2,
-		16
-	))
-	
-	itemMax += 1;
-	
-	item_list.append(make_item(
-		"Penny Pouch",
-		200,
-		false,
-		MULTTYPE.MONEY,
-		-1,
-		1.2,
-		16
-	))
-	
-	itemMax += 1;
-	
-	item_list.append(make_item(
-		"Penny Pouch",
-		200,
-		false,
-		MULTTYPE.MONEY,
-		-1,
-		1.2,
-		16
-	))
-	
-	itemMax += 1;
-	
-	item_list.append(make_item(
-		"Penny Pouch",
-		200,
-		false,
-		MULTTYPE.MONEY,
-		-1,
-		1.2,
-		16
-	))
-	
-	itemMax += 1;
-	
-	item_list.append(make_item(
-		"Penny Pouch",
-		200,
-		false,
-		MULTTYPE.MONEY,
-		-1,
-		1.2,
-		16
-	))
-	
-	itemMax += 1;
-	
-	item_list.append(make_item(
-		"Penny Pouch",
-		200,
-		false,
-		MULTTYPE.MONEY,
-		-1,
-		1.2,
+		{
+			"money": 0.2
+		},
 		16
 	))
 	
@@ -284,132 +136,13 @@ func _ready() -> void:
 		"Piggy Bank",
 		500,
 		false,
-		MULTTYPE.MONEY,
-		-1,
-		2,
+		{
+			"money": 1
+		},
 		16
 	))
 	
 	itemMax += 1;
-	
-	item_list.append(make_item(
-		"Piggy Bank",
-		500,
-		false,
-		MULTTYPE.MONEY,
-		-1,
-		2,
-		16
-	))
-	
-	itemMax += 1;
-	
-	item_list.append(make_item(
-		"Piggy Bank",
-		500,
-		false,
-		MULTTYPE.MONEY,
-		-1,
-		2,
-		16
-	))
-	
-	itemMax += 1;
-	
-	item_list.append(make_item(
-		"Piggy Bank",
-		500,
-		false,
-		MULTTYPE.MONEY,
-		-1,
-		2,
-		16
-	))
-	
-	itemMax += 1;
-	
-	item_list.append(make_item(
-		"Piggy Bank",
-		500,
-		false,
-		MULTTYPE.MONEY,
-		-1,
-		2,
-		16
-	))
-	
-	itemMax += 1;
-	
-	item_list.append(make_item(
-		"Piggy Bank",
-		500,
-		false,
-		MULTTYPE.MONEY,
-		-1,
-		2,
-		16
-	))
-	
-	itemMax += 1;
-	
-	item_list.append(make_item(
-		"Piggy Bank",
-		500,
-		false,
-		MULTTYPE.MONEY,
-		-1,
-		2,
-		16
-	))
-	
-	itemMax += 1;
-	
-	item_list.append(make_item(
-		"Piggy Bank",
-		500,
-		false,
-		MULTTYPE.MONEY,
-		-1,
-		2,
-		16
-	))
-	
-	itemMax += 1;
-	
-	item_list.append(make_item(
-		"Piggy Bank",
-		500,
-		false,
-		MULTTYPE.MONEY,
-		-1,
-		2,
-		16
-	))
-	
-	itemMax += 1;
-	
-	item_list.append(make_item(
-		"Piggy Bank",
-		500,
-		false,
-		MULTTYPE.MONEY,
-		-1,
-		2,
-		16
-	))
-	
-	itemMax += 1;
-	
-	for item in item_list:
-		match item["type"]:
-			MULTTYPE.MONEY:
-				moneyItems.append(item)
-			MULTTYPE.BASE:
-				baseItems.append(item)
-			MULTTYPE.DIRECTION:
-				directionItems.append(item)
-			MULTTYPE.SPECIFIC:
-				specificItems.append(item)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

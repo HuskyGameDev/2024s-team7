@@ -5,8 +5,8 @@ class_name Attack
 ## The damage of the attack.
 var damage: float
 
-## The multiplier of the attack
-var multiplier: float = 1
+## The multiplier for the damage
+var mult: float = 1
 
 ## The strength of the knockback.
 var knockback: float
