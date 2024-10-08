@@ -86,7 +86,7 @@ texture_over = ExtResource("8_avj12")
 texture_progress = ExtResource("7_s5mxn")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 20.0
 one_shot = true
 
 [connection signal="damage_readied" from="enemy" to="ComboHandler" method="_on_enemy_damage_readied"]
