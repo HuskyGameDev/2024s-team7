@@ -51,33 +51,6 @@ func validate_combo():
 	#attack_index.emit(0)
 	#attack_damamge.emit(10)
 
-## This function validates if a given combo is able to be performed and emits a signal corresponding to the index of the given attack
-func index_combo():
-	var index = -1
-	match core:
-		CORE.LIGHT:
-			index = CORE.LIGHT
-		CORE.HEAVY:
-			index = CORE.HEAVY
-		CORE.SPECIAL:
-			index = CORE.SPECIAL
-		CORE.SUPER:
-			index = CORE.SUPER
-	
-	if motion != -1:
-		match motion:
-			MOTION.NEUTRAL:
-				index += MOTION.NEUTRAL
-			MOTION.UP:
-				index += MOTION.UP
-			MOTION.DOWN:
-				index += MOTION.DOWN
-			MOTION.SIDE:
-				index += MOTION.SIDE
-				
-	validate_combo()
-	motion = MOTION.NEUTRAL
-	core = null
 
 ## This function checks if a current motion is being pressed and returns it
 func check_motion() -> int:
@@ -97,7 +70,9 @@ func load_combo(core_tag) -> void:
 	core = core_tag
 	motion = check_motion()
 	cooldown_timer.start()
-	index_combo()
+	validate_combo()
+	motion = MOTION.NEUTRAL
+	core = null
 
 ## This will wait for user input and then attemp to load a combo using the value passed into it
 func _input(event):
