@@ -49,7 +49,7 @@ func _init(damage: float, knockback: float, angle: float,
 ## Print out a single attack
 func print_attack():
 	print("	Damage: " + str(self.damage))
-	print("	Multiplier: " + str(self.multiplier))
+	print("	Multiplier: " + str(self.mult))
 	print("	Knockback: " + str(self.knockback))
 	print("	Angle: " + str(self.angle))
 	print("	Hit Stun: " + str(self.hit_stun))

@@ -129,3 +129,9 @@ func _on_hurtbox_area_entered(hitbox):
 func calc_money():
 		ItemStorage.money += (score * money_mult)
 		SceneSwap.scene_swap("res://Scenes/Playable/ItemShop.tscn")
+
+
+func _on_combo_handler_attack(core: int, motion: int) -> void:
+	print("Signal Recieved!")
+	print("   Core: " + str(core))
+	print("   Motion: " + str(core))

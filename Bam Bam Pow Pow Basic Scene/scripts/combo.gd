@@ -24,7 +24,7 @@ enum MOTION {
 
 ## These are the values containing the core or the motion the user pressed in the current instance
 var core = null
-var motion = -1
+var motion = MOTION.NEUTRAL
 
 var damage = []
 
@@ -32,20 +32,24 @@ var damage = []
 signal attack_index(index)
 signal attack_damamge(damage_number)
 
+## This is the signal that will be emitted once the player does a vailid attack.
+signal attack(core: int, motion: int)
+
 @onready
 var cooldown_timer = $CoolDownTimer
 
 func _on_enemy_damage_readied(damage_array):
 	damage = damage_array
 	
-func validate_combo(index):
-	if damage[index] > 0:
-		#attack_index.emit(index)
-		#attack_damamge.emit(damage[index])
-		print("Core: " + str(core))
-		print("Motion: " + str(motion))
-		attack_index.emit(0)
-		attack_damamge.emit(10)
+func validate_combo():
+	print("Core: " + str(core))
+	print("Motion: " + str(motion))
+	# TODO: Implement a way to check that the player has access to the given 
+	# attack. For example psecial attacks. Off the start the player will not
+	# have access to any special attacks.
+	attack.emit(core, motion)
+	#attack_index.emit(0)
+	#attack_damamge.emit(10)
 
 ## This function validates if a given combo is able to be performed and emits a signal corresponding to the index of the given attack
 func index_combo():
@@ -71,8 +75,8 @@ func index_combo():
 			MOTION.SIDE:
 				index += MOTION.SIDE
 				
-	validate_combo(index)
-	motion = -1
+	validate_combo()
+	motion = MOTION.NEUTRAL
 	core = null
 
 ## This function checks if a current motion is being pressed and returns it
@@ -82,6 +86,8 @@ func check_motion() -> int:
 	elif Input.is_action_pressed("D"):
 		return MOTION.DOWN
 	elif Input.is_action_pressed("R"):
+		return MOTION.SIDE
+	elif Input.is_action_pressed("L"):
 		return MOTION.SIDE
 	else:
 		return MOTION.NEUTRAL
