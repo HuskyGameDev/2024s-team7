@@ -1,9 +1,12 @@
-[gd_scene load_steps=62 format=3 uid="uid://cfx46l5ghyfp3"]
+[gd_scene load_steps=65 format=3 uid="uid://cfx46l5ghyfp3"]
 
 [ext_resource type="PackedScene" uid="uid://cuji3bj4q1s1d" path="res://Scenes/Entities/entity_base.tscn" id="1_vkhv8"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_01k3i"]
 [ext_resource type="Texture2D" uid="uid://ds4v3mo2b0xwy" path="res://resources/sprites/Player_Sprites_PLAYTEST.png" id="3_fj7bh"]
 [ext_resource type="PackedScene" uid="uid://buj5ef30juvcd" path="res://Scenes/Entities/Hitboxes/hitbox.tscn" id="4_hxr67"]
+[ext_resource type="Script" path="res://scripts/FSM/FiniteStateMachine.gd" id="5_6j1e5"]
+[ext_resource type="Script" path="res://Scenes/Entities/Player/States/player_state_idle.gd" id="6_rnl6h"]
+[ext_resource type="Script" path="res://Scenes/Entities/Player/States/player_state_moving.gd" id="7_i6g50"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_47618"]
 size = Vector2(75, 31)
@@ -1347,19 +1350,19 @@ advance_condition = &"special"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_qhjss"]
 states/End/position = Vector2(223, 295)
-states/Start/position = Vector2(-88, 156)
+states/Start/position = Vector2(195, 238)
 states/idle/node = SubResource("AnimationNodeAnimation_5y2gy")
-states/idle/position = Vector2(31, 151)
+states/idle/position = Vector2(195, 151)
 states/kick/node = SubResource("AnimationNodeStateMachine_o3hh0")
-states/kick/position = Vector2(184.584, -40.7131)
+states/kick/position = Vector2(162.584, -40.7131)
 states/punch/node = SubResource("AnimationNodeStateMachine_isffe")
-states/punch/position = Vector2(-60, -40.7131)
+states/punch/position = Vector2(12, -40.7131)
 states/special/node = SubResource("AnimationNodeStateMachine_2vspm")
-states/special/position = Vector2(335.584, 197.287)
+states/special/position = Vector2(448.584, -40.7131)
 states/weapon/node = SubResource("AnimationNodeStateMachine_3saak")
-states/weapon/position = Vector2(335.584, 38.2869)
+states/weapon/position = Vector2(309.584, -40.7131)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_ojck6"), "idle", "punch", SubResource("AnimationNodeStateMachineTransition_6dmhu"), "punch", "idle", SubResource("AnimationNodeStateMachineTransition_djpjj"), "idle", "kick", SubResource("AnimationNodeStateMachineTransition_uojlm"), "kick", "idle", SubResource("AnimationNodeStateMachineTransition_d3lg6"), "idle", "weapon", SubResource("AnimationNodeStateMachineTransition_2hvxu"), "weapon", "idle", SubResource("AnimationNodeStateMachineTransition_np3x2"), "special", "idle", SubResource("AnimationNodeStateMachineTransition_agile"), "idle", "special", SubResource("AnimationNodeStateMachineTransition_n8eiu")]
-graph_offset = Vector2(-522.416, -64.623)
+graph_offset = Vector2(-346.416, -93.623)
 
 [node name="player" instance=ExtResource("1_vkhv8")]
 collision_layer = 2
@@ -1423,6 +1426,18 @@ parameters/punch/conditions/up = false
 parameters/special/conditions/neutral = false
 parameters/weapon/conditions/down = false
 parameters/weapon/conditions/neutral = false
+
+[node name="FSM" type="Node" parent="." index="6" node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_6j1e5")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="FSM" index="0" node_paths=PackedStringArray("animator")]
+script = ExtResource("6_rnl6h")
+animator = NodePath("../../AnimationPlayer")
+
+[node name="Moving" type="Node" parent="FSM" index="1" node_paths=PackedStringArray("animator")]
+script = ExtResource("7_i6g50")
+animator = NodePath("../../AnimationPlayer")
 
 [editable path="Hurtbox"]
 [editable path="Hitbox"]
