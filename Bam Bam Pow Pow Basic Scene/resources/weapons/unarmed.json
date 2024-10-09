@@ -51,8 +51,8 @@
 		"animation": "un_light_a"
 	},
 	"heavy_neutral": {
-		"damage": 250,
-		"knockback": 15,
+		"damage": 100,
+		"knockback": 8,
 		"angle": 45.0,
 		"hit_stun": 100,
 		"animation": "un_heavy_n"
@@ -79,7 +79,7 @@
 		"animation": "un_heavy_s"
 	},
 	"heavy_air": {
-		"damage": 80,
+		"damage": 200,
 		"knockback": -40,
 		"angle": 45.0,
 		"hit_stun": 80,
