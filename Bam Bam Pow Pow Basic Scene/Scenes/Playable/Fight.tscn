@@ -46,6 +46,7 @@ layer_0/tile_data = PackedInt32Array(2818051, 1, 0, 2818059, 1, 0, 2818067, 1, 0
 [node name="player" parent="." instance=ExtResource("3_w7w43")]
 position = Vector2(291, 522)
 scale = Vector2(2, 2)
+dir = 0
 
 [node name="enemy" parent="." instance=ExtResource("4_boejj")]
 position = Vector2(681, 436)
@@ -68,6 +69,17 @@ theme_override_font_sizes/font_size = 30
 text = "Score: "
 horizontal_alignment = 1
 
+[node name="spacer2" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="combo" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "x"
+horizontal_alignment = 1
+
 [node name="spacer" type="Control" parent="HBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
@@ -86,14 +98,17 @@ texture_over = ExtResource("8_avj12")
 texture_progress = ExtResource("7_s5mxn")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 20.0
+wait_time = 30.0
 one_shot = true
 
+[connection signal="attack_performed" from="player" to="enemy" method="_on_player_attack"]
+[connection signal="player_dir" from="player" to="enemy" method="_on_player_player_dir"]
 [connection signal="damage_readied" from="enemy" to="ComboHandler" method="_on_enemy_damage_readied"]
 [connection signal="showDmg" from="enemy" to="." method="_on_enemy_show_dmg"]
+[connection signal="x_pos" from="enemy" to="player" method="_on_enemy_x_pos"]
 [connection signal="attack" from="ComboHandler" to="player" method="_on_signal_transfer_to_state"]
 [connection signal="attack" from="ComboHandler" to="enemy" method="_on_combo_handler_attack"]
 [connection signal="attack_damamge" from="ComboHandler" to="enemy" method="_on_combo_handler_attack_damamge"]
-[connection signal="attack_index" from="ComboHandler" to="player" method="_on_signal_transfer_to_state"]
 [connection signal="attack_index" from="ComboHandler" to="player" method="_on_combo_handler_attack_index"]
+[connection signal="attack_index" from="ComboHandler" to="player" method="_on_signal_transfer_to_state"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

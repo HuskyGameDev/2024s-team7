@@ -5,6 +5,7 @@ class_name Enemy
 
 # Campaign Specific Variables
 signal health_changed
+signal x_pos(position)
 
 @export var max_health = 100
 @onready var current_health = max_health
@@ -13,7 +14,9 @@ signal health_changed
 
 @export var hp: int = 1
 @export var weight: float = 100
+@export var damage: int
 @export var score: int = 0
+@export var combo: int = 0
 @export var base_damage: int = 10
 @export var juggle: float = 1
 
@@ -21,6 +24,9 @@ signal health_changed
 @onready var collShape = $CollisionShape2D
 @onready var animPlayer = $AnimationPlayer
 @onready var player = $"../player"
+
+var attack_performed: String
+var player_dir
 
 var addedMoney = false
 
@@ -35,6 +41,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready():
 	animPlayer.play("idle")
 	ready_mults()
+
 
 # Alters the damageMult and money_mult variables depending on items the player has bought from the shop
 func ready_mults():
@@ -94,11 +101,20 @@ func all_heavy(mult: float):
 	player.weapon.heavy_air.mult 		+= mult
 
 func _physics_process(delta):
+
+	x_pos.emit(position.x)
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta * weight/100
 	if is_on_floor():
-		self.juggle = 1
+		if velocity.x != 0:
+			if velocity.x > 0:
+				velocity.x -= weight/50 + velocity.x*0.1
+			if velocity.x < 0:
+				velocity.x += weight/50 - velocity.x*0.1
+		self.juggle = 0
+		self.combo = 0
 
 	move_and_slide()
 
@@ -111,13 +127,23 @@ signal showDmg(dmgNumber)
 
 
 func _on_hurtbox_area_entered(hitbox):
-	self.juggle += 0.2
-	var damage = damage_delt * self.juggle * hitbox.motion
+	damage = player.weapon[attack_performed].damage + 0.2 * (player.weapon[attack_performed].damage * self.juggle)
 	self.score += damage
+	self.combo += 1
+	self.juggle += 0.5
 	animPlayer.play("hurt")
 	showDmg.emit(damage)
+	velocity.x = 0;
 	velocity.y = 0;
-	velocity.y -= float((100*hitbox.weight))
+	if player.weapon[attack_performed].knockback < 0:
+		velocity.x += float((-10*player.weapon[attack_performed].knockback)) * player_dir
+	else:
+		velocity.x += float((10*player.weapon[attack_performed].knockback)) * player_dir
+	velocity.y -= float((100*player.weapon[attack_performed].knockback))
+	
+	#player.velocity.x *= .01
+	player.velocity.y *= .75
+	
 	print(hitbox.get_parent().name + "'s hitbox touched " + name)
 	print(str(damage) + " dealt!")
 	print("Juggle Count: " + str(self.juggle))
@@ -135,3 +161,12 @@ func _on_combo_handler_attack(core: int, motion: int) -> void:
 	print("Signal Recieved!")
 	print("   Core: " + str(core))
 	print("   Motion: " + str(core))
+
+
+func _on_player_attack(attack):
+	attack_performed = attack
+		
+
+
+func _on_player_player_dir(dir):
+	player_dir = dir

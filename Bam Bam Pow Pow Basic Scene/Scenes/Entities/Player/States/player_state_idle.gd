@@ -10,6 +10,7 @@ func Enter():
 
 	
 func Update(_delta : float):
+	player.transform.x.x = player.dir 
 	if(Input.get_axis("L", "R")):
 		state_transition.emit(self,"Moving")
 		

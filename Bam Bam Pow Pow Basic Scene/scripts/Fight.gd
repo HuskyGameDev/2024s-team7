@@ -4,6 +4,7 @@ extends Node
 @onready var player = $player
 @onready var time = $Timer
 @onready var score_label = $HBoxContainer/score
+@onready var combo_label = $HBoxContainer/combo
 @onready var time_label = $HBoxContainer/time
 
 var started = false
@@ -16,6 +17,7 @@ func _input(event):
 
 func _process(delta):
 	score_label.text = "Score: " + str(enemy.score)
+	combo_label.text = "x" + str(enemy.combo)
 	time_label.text = "Time: " + "%.3f" % time.time_left
 	$HBoxContainer/TextureProgressBar.value = (100/time.wait_time)*(time.wait_time-time.time_left)
 
