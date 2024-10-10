@@ -245,6 +245,11 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 38
 text = "X"
 
+[connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger" to="." method="_on_hanger_hanger_pressed"]
+[connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger2" to="." method="_on_hanger_hanger_pressed"]
+[connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger3" to="." method="_on_hanger_hanger_pressed"]
+[connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger4" to="." method="_on_hanger_hanger_pressed"]
+[connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger5" to="." method="_on_hanger_hanger_pressed"]
 [connection signal="pressed" from="VBoxContainer/ColorRect/VBoxContainer/ToBuy/BuyButton" to="." method="_on_buy_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Prev" to="." method="_on_prev_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Next" to="." method="_on_next_pressed"]
