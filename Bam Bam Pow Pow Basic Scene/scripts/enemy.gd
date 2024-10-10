@@ -146,10 +146,6 @@ signal showDmg(dmgNumber)
 
 
 func _on_hurtbox_area_entered(hitbox):
-<<<<<<< Updated upstream
-	damage = player.weapon[attack_performed].damage #+ 0.2 * (player.weapon[attack_performed].damage * self.juggle)
-	damage *= player.weapon[attack_performed].mult
-=======
 	if (!audioPlayer.is_playing()):
 		var rng = RandomNumberGenerator.new()
 		var rand = rng.randi_range(1,3)
@@ -157,9 +153,8 @@ func _on_hurtbox_area_entered(hitbox):
 		var stream2 = load(stream)
 		audioPlayer.set_stream(stream2)
 		audioPlayer.play()
-		wait()
 	damage = player.weapon[attack_performed].damage + 0.2 * (player.weapon[attack_performed].damage * self.juggle)
->>>>>>> Stashed changes
+	damage *= player.weapon[attack_performed].mult
 	self.score += damage
 	self.combo += 1
 	self.juggle += 0.5
