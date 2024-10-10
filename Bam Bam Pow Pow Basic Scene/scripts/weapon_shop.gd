@@ -5,13 +5,11 @@
 # Note: At the moment (10/6/24) WeaponShop is not connected to any weapon functions
 
 extends CanvasLayer
-signal multiplyChanged
-
 
 ## Handles changes to Selected Weapon screen
 ##
 ## Parameters:
-## i	int: index of current weapon
+## i		int: index of current weapon
 func _changeBox(i)-> void:
 	WeaponInShop.currentInstance=i		# Set current instance of weapon global to given i
 	
