@@ -23,20 +23,20 @@ enum MULTTYPE {
 var owned_items: Array[Dictionary] = []
 
 var mults: Dictionary = {
-	"money": 1,
-	"base": 1,
-	"light": 1,
-	"light_neutral": 1,
-	"light_up": 1,
-	"light_down": 1,
-	"light_side": 1,
-	"light_air": 1,
-	"heavy": 1,
-	"heavy_neutral": 1,
-	"heavy_up": 1,
-	"heavy_down": 1,
-	"heavy_side": 1,
-	"heavy_air": 1,
+	"money": 0,
+	"base": 0,
+	"light": 0,
+	"light_neutral": 0,
+	"light_up": 0,
+	"light_down": 0,
+	"light_side": 0,
+	"light_air": 0,
+	"heavy": 0,
+	"heavy_neutral": 0,
+	"heavy_up": 0,
+	"heavy_down": 0,
+	"heavy_side": 0,
+	"heavy_air": 0,
 }
 
 signal reload

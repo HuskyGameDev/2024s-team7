@@ -15,7 +15,7 @@ func make_item(name, price, owned, effects: Dictionary, sprite_index) -> Diction
 		"name" 		: name,
 		"price" 	: price,
 		"owned" 	: owned,
-		"effects" 	: {},
+		"effects" 	: effects,
 		"sprite" 	: sprite_index
 	}
 	return item
