@@ -22,23 +22,6 @@ enum MULTTYPE {
 ## Owned items list
 var owned_items: Array[Dictionary] = []
 
-var mults: Dictionary = {
-	"money": 0,
-	"base": 0,
-	"light": 0,
-	"light_neutral": 0,
-	"light_up": 0,
-	"light_down": 0,
-	"light_side": 0,
-	"light_air": 0,
-	"heavy": 0,
-	"heavy_neutral": 0,
-	"heavy_up": 0,
-	"heavy_down": 0,
-	"heavy_side": 0,
-	"heavy_air": 0,
-}
-
 signal reload
 
 # Called when the node enters the scene tree for the first time.

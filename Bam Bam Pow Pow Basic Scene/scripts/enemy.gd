@@ -33,6 +33,23 @@ var addedMoney = false
 @onready var items = ItemStorage.itemsList
 var money_mult = 1.0 # Multiplier for money stats
 
+var mults: Dictionary = {
+	"money": 0,
+	"base": 0,
+	"light": 0,
+	"light_neutral": 0,
+	"light_up": 0,
+	"light_down": 0,
+	"light_side": 0,
+	"light_air": 0,
+	"heavy": 0,
+	"heavy_neutral": 0,
+	"heavy_up": 0,
+	"heavy_down": 0,
+	"heavy_side": 0,
+	"heavy_air": 0,
+}
+
 signal damage_readied(damage_array)
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -50,7 +67,7 @@ func ready_mults():
 	for item in ItemStorage.owned_items:
 		var effects = item["effects"]
 		for key in effects:
-			ItemStorage.mults[key] += effects[key] ## TODO: not initializing to 1 whenever hte fight loads
+			mults[key] += effects[key] ## TODO: not initializing to 1 whenever hte fight loads
 			
 	ready_damage()
 	# Send the calcualted damage array to the combo script
@@ -60,7 +77,6 @@ func ready_mults():
 func ready_damage():
 	## TODO: Apply the multipliers to the attacks on the current weapon the 
 	## player has 
-	var mults = ItemStorage.mults
 	money_mult += mults["money"]
 	all_light(mults["base"])
 	all_heavy(mults["base"])
