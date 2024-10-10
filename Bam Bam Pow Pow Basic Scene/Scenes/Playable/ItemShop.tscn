@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://i48tabjyt08t"]
+[gd_scene load_steps=7 format=3 uid="uid://i48tabjyt08t"]
 
 [ext_resource type="Script" path="res://scripts/ItemShop.gd" id="1_ed3xk"]
 [ext_resource type="PackedScene" uid="uid://btqmnmpytpfkq" path="res://Scenes/Functional/Item.tscn" id="2_3qixg"]
 [ext_resource type="Texture2D" uid="uid://dqhwy21a3peoc" path="res://resources/sprites/item-shop-bg.png" id="2_b1eqh"]
 [ext_resource type="Texture2D" uid="uid://dj87ja156haea" path="res://resources/sprites/real-box.png" id="3_gnces"]
 [ext_resource type="Texture2D" uid="uid://csaod2ht6ymhf" path="res://resources/sprites/next-prev.png" id="4_jjh7n"]
+[ext_resource type="Texture2D" uid="uid://kg8lti6ql3wt" path="res://resources/sprites/caution-symbol.png" id="6_62woe"]
 
 [node name="ItemShop" type="CanvasLayer" groups=["Items"]]
 script = ExtResource("1_ed3xk")
@@ -363,6 +364,62 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="HazardButton" type="TextureButton" parent="."]
+anchors_preset = -1
+anchor_left = 0.269
+anchor_top = 0.2
+anchor_right = 0.269
+anchor_bottom = 0.2
+offset_left = 441.68
+offset_top = -146.0
+offset_right = 601.68
+offset_bottom = 14.0
+texture_normal = ExtResource("6_62woe")
+texture_pressed = ExtResource("6_62woe")
+stretch_mode = 4
+
+[node name="WarningScreen" type="ColorRect" parent="."]
+visible = false
+anchors_preset = -1
+anchor_left = 0.594
+anchor_top = 0.011
+anchor_right = 0.594
+anchor_bottom = 0.011
+offset_left = -512.32
+offset_top = 200.08
+offset_right = 351.68
+offset_bottom = 641.08
+color = Color(0.0941176, 0.0941176, 0.0862745, 0.870588)
+
+[node name="MarginContainer" type="MarginContainer" parent="WarningScreen"]
+layout_mode = 0
+offset_left = 39.0001
+offset_top = -23.0
+offset_right = 847.0
+offset_bottom = 424.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="WarningScreen/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+text = "
+LEGEND!
+The scrolls qffect specific attack directions. Red for light, green for heavy.
+The Filled in circles affect all attacks of one type. Red first for light, green boot for heavy.
+The outlined ones only affect their respective air attacks.
+The arrows affect all attacks in that direction"
+
+[node name="Close" type="Button" parent="WarningScreen"]
+layout_mode = 2
+offset_left = 752.0
+offset_top = 16.0
+offset_right = 856.0
+offset_bottom = 96.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 38
+text = "X"
+
 [connection signal="pressed" from="Control/MarginContainer/MenuButtonRow2/NinePatchRect/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/MenuButtonRow2/NinePatchRect2/SettingsMenuButton" to="." method="_on_settings_menu_button_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/MenuButtonRow2/NinePatchRect3/WeaponShopButton" to="." method="_on_weapon_shop_button_pressed"]
@@ -380,3 +437,5 @@ size_flags_vertical = 3
 [connection signal="bought_item" from="MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item8" to="." method="bought_item"]
 [connection signal="pressed" from="HBoxContainer/PrevSprite/LastPageButton" to="." method="_on_last_page_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/NextSprite/NextPageButton" to="." method="_on_next_page_button_pressed"]
+[connection signal="pressed" from="HazardButton" to="." method="_on_hazard_button_pressed"]
+[connection signal="pressed" from="WarningScreen/Close" to="." method="_on_close_pressed"]

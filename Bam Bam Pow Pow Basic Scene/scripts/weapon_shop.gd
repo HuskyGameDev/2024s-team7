@@ -146,7 +146,7 @@ func _on_load_game_button_pressed():
 
 ## When hazard button is clicked: warning popup screen is shown
 func _on_hazard_button_pressed():
-	$WarningScreen.show()	# Warning popup
+	$WarningScreen.visible = !$WarningScreen.visible	# Warning popup
 
 
 ## When close button is clicked: warning popup screen is closed

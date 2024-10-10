@@ -267,7 +267,7 @@ func _ready() -> void:
 	itemMax += 1;
 	
 	item_list.append(make_item(
-		"DON'T FORGET TO NAME ME",
+		"Spring Fist",
 		1000,
 		false,
 		{
@@ -279,7 +279,7 @@ func _ready() -> void:
 	itemMax += 1;
 	
 	item_list.append(make_item(
-		"DON'T FORGET TO NAME ME",
+		"Enlightened Centrist",
 		1500,
 		false,
 		{

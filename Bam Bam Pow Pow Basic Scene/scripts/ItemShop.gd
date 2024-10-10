@@ -20,7 +20,7 @@ signal reload
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	ItemStorage.money += 1000
+	#ItemStorage.money += 1000
 	moneylabel.text = "Money: " + str(ItemStorage.money)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -109,3 +109,17 @@ func _on_last_page_button_pressed() -> void:
 			curr_item.set_meta("ID", curr_item.get_meta("ID")-8)
 		curr_item._on_item_shop_reload()
 		print(curr_item.get_meta("ID"))
+
+
+##--------------------
+## HAZARD SCREEN 10/6/24
+## Hazard screen is a temporary popup that explains to the user
+## the current problems with WeaponShop for playtest
+
+## When hazard button is clicked: warning popup screen is shown
+func _on_hazard_button_pressed():
+	$WarningScreen.visible = !$WarningScreen.visible	# Warning popup
+
+## When close button is clicked: warning popup screen is closed
+func _on_close_pressed():
+	$WarningScreen.hide()	# Close Warning popup

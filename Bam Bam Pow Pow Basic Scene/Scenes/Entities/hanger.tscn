@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/hanger.gd" id="1_g4n7n"]
 [ext_resource type="Shader" path="res://resources/fonts/multiply.gdshader" id="2_qlmu4"]
-[ext_resource type="Texture2D" uid="uid://co6nac81sss8a" path="res://resources/sprites/uncautioned-hangers.png" id="3_7turc"]
+[ext_resource type="Texture2D" uid="uid://dotl2ldbft7to" path="res://resources/sprites/playtest-oct-24-hangers.png" id="3_sdmif"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fs0ir"]
 shader = ExtResource("2_qlmu4")
@@ -23,7 +23,7 @@ script = ExtResource("1_g4n7n")
 material = SubResource("ShaderMaterial_fs0ir")
 position = Vector2(256, 353)
 scale = Vector2(4, 4)
-texture = ExtResource("3_7turc")
+texture = ExtResource("3_sdmif")
 hframes = 5
 
 [node name="HangerButton" type="Button" parent="Sprite2D"]
