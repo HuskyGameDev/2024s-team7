@@ -4,7 +4,7 @@ extends Node
 @onready var player = $player
 @onready var time = $Timer
 @onready var score_label = $HBoxContainer/score
-@onready var combo_label = $HBoxContainer/combo
+@onready var combo_label = $HBoxContainer/VBoxContainer/combo
 @onready var time_label = $HBoxContainer/time
 @onready var input_screen = $WarningScreen
 var started = false
