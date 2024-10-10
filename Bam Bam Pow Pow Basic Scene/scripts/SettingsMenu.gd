@@ -38,3 +38,7 @@ func _on_reset_remap_pressed() -> void:
 		InputMap.action_add_event(actionList[n], event)
 		var node = get_node("TabContainer/Controls/VBoxContainer/"+str(n)+"/MarginContainer/HBoxContainer/InputL")
 		node.text = event.as_text()
+
+
+func _on_check_button_2_toggled(toggled_on: bool) -> void:
+	ItemStorage.inputtoggle = toggled_on

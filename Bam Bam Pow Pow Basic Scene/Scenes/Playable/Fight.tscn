@@ -46,7 +46,6 @@ layer_0/tile_data = PackedInt32Array(2818051, 1, 0, 2818059, 1, 0, 2818067, 1, 0
 [node name="player" parent="." instance=ExtResource("3_w7w43")]
 position = Vector2(291, 522)
 scale = Vector2(2, 2)
-dir = 0
 
 [node name="enemy" parent="." instance=ExtResource("4_boejj")]
 position = Vector2(681, 436)
@@ -100,6 +99,36 @@ texture_progress = ExtResource("7_s5mxn")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 30.0
 one_shot = true
+
+[node name="WarningScreen" type="ColorRect" parent="."]
+anchors_preset = -1
+anchor_left = 0.594
+anchor_top = 0.011
+anchor_right = 0.594
+anchor_bottom = 0.011
+offset_left = -512.32
+offset_top = 80.08
+offset_right = 351.68
+offset_bottom = 400.08
+color = Color(0.0941176, 0.0941176, 0.0862745, 0.870588)
+
+[node name="MarginContainer" type="MarginContainer" parent="WarningScreen"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 16.0
+offset_right = 848.0
+offset_bottom = 304.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="WarningScreen/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+text = "Controls:
+J = Light Attacks, K = Heavy Attacks
+L = Special Attacks, ; = Super Attacks
+W = Up, S = Down, A and D = Side
+Combine directions and attack types to do
+directional attacks
+Toggle this window appearing in settings"
 
 [connection signal="attack_performed" from="player" to="enemy" method="_on_player_attack"]
 [connection signal="player_dir" from="player" to="enemy" method="_on_player_player_dir"]
