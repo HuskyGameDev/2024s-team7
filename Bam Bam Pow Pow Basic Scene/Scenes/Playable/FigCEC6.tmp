@@ -80,20 +80,10 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="combo" type="Label" parent="HBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = -20
-
-[node name="combo indicator" type="Label" parent="HBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.87, 0.6525, 0, 1)
-theme_override_font_sizes/font_size = 25
-text = "COMBO"
-
-[node name="combo" type="Label" parent="HBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.94, 0.868717, 0.0846, 1)
-theme_override_font_sizes/font_size = 60
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 text = "x"
 horizontal_alignment = 1
 
@@ -147,8 +137,6 @@ W = Up, S = Down, A and D = Side
 Combine directions and attack types to do
 directional attacks
 Toggle this window appearing in settings"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="attack_performed" from="player" to="enemy" method="_on_player_attack"]
 [connection signal="player_dir" from="player" to="enemy" method="_on_player_player_dir"]

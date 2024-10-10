@@ -25,6 +25,11 @@ signal x_pos(position)
 @onready var animPlayer = $AnimationPlayer
 @onready var player = $"../player"
 
+@onready var audioPlayer = get_node("/root/Node/AudioStreamPlayer")
+@onready var hit_noise1 = preload("res://resources/Hit1.wav")
+@onready var hit_noise2 = preload("res://resources/Hit2.wav")
+@onready var hit_noise3 = preload("res://resources/Hit3.wav")
+
 var attack_performed: String
 var player_dir
 
@@ -58,6 +63,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready():
 	animPlayer.play("idle")
 	ready_mults()
+	print(audioPlayer)
 
 
 # Alters the damageMult and money_mult variables depending on items the player has bought from the shop
@@ -140,8 +146,20 @@ signal showDmg(dmgNumber)
 
 
 func _on_hurtbox_area_entered(hitbox):
+<<<<<<< Updated upstream
 	damage = player.weapon[attack_performed].damage #+ 0.2 * (player.weapon[attack_performed].damage * self.juggle)
 	damage *= player.weapon[attack_performed].mult
+=======
+	if (!audioPlayer.is_playing()):
+		var rng = RandomNumberGenerator.new()
+		var rand = rng.randi_range(1,3)
+		var stream = "res://resources/Hit" + str(rand) + ".wav"
+		var stream2 = load(stream)
+		audioPlayer.set_stream(stream2)
+		audioPlayer.play()
+		wait()
+	damage = player.weapon[attack_performed].damage + 0.2 * (player.weapon[attack_performed].damage * self.juggle)
+>>>>>>> Stashed changes
 	self.score += damage
 	self.combo += 1
 	self.juggle += 0.5
