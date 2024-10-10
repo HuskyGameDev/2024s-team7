@@ -89,9 +89,9 @@ text = "SFX Volume
 [node name="Button" type="Button" parent="TabContainer/Video & Audio"]
 layout_mode = 0
 offset_left = 448.0
-offset_top = 526.0
+offset_top = 566.0
 offset_right = 674.0
-offset_bottom = 603.0
+offset_bottom = 643.0
 text = "CLOSE"
 
 [node name="CheckButton" type="CheckButton" parent="TabContainer/Video & Audio"]
@@ -134,6 +134,20 @@ offset_top = 3.0
 offset_right = -123.0
 offset_bottom = 26.0
 text = "Resolution"
+
+[node name="CheckButton2" type="CheckButton" parent="TabContainer/Video & Audio"]
+offset_left = 630.0
+offset_top = 508.0
+offset_right = 674.0
+offset_bottom = 532.0
+scale = Vector2(1.5, 1.5)
+
+[node name="Label2" type="Label" parent="TabContainer/Video & Audio"]
+offset_left = 433.0
+offset_top = 508.0
+offset_right = 560.0
+offset_bottom = 531.0
+text = "Show Instructions"
 
 [node name="Controls" type="TabBar" parent="TabContainer"]
 visible = false
@@ -459,4 +473,6 @@ text = "Reset to Default"
 [connection signal="ready" from="TabContainer/Video & Audio/CheckButton" to="." method="_on_check_button_ready"]
 [connection signal="toggled" from="TabContainer/Video & Audio/CheckButton" to="." method="_on_check_button_toggled"]
 [connection signal="item_selected" from="TabContainer/Video & Audio/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="ready" from="TabContainer/Video & Audio/CheckButton2" to="." method="_on_check_button_ready"]
+[connection signal="toggled" from="TabContainer/Video & Audio/CheckButton2" to="." method="_on_check_button_2_toggled"]
 [connection signal="pressed" from="TabContainer/Controls/ResetRemap" to="." method="_on_reset_remap_pressed"]

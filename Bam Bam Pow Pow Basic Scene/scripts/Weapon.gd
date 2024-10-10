@@ -19,6 +19,9 @@ var heavy_down: Attack
 var heavy_side: Attack
 var heavy_air: Attack
 
+var light_neutral_1: Attack
+var light_neutral_2: Attack
+
 ## Initializes a self.
 ##
 ## Parameters:
@@ -74,7 +77,19 @@ func _init(path: String="template") -> void:
 	self.heavy_air = Attack.new(data["damage"], data["knockback"], 
 								data["angle"], data["hit_stun"], 
 								self.damage_type, data["animation"])
-
+	
+	# Currently the JSON loads everything manually, which means that there's a
+	# Hard limit on moves that can be loaded at once, which includes any multi part
+	# Animations, moves etc.
+	
+	data = json["light_neutral_1"]
+	self.light_neutral_1 = Attack.new(data["damage"], data["knockback"], 
+								data["angle"], data["hit_stun"], 
+								self.damage_type, data["animation"])
+	data = json["light_neutral_2"]
+	self.light_neutral_2 = Attack.new(data["damage"], data["knockback"], 
+								data["angle"], data["hit_stun"], 
+								self.damage_type, data["animation"])
 
 ## Check to see if the JSON file exists, if so then retrieve its data.
 ##

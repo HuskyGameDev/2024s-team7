@@ -5,13 +5,11 @@ extends CanvasLayer
 @onready var item2 = $Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item2
 @onready var item3 = $Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item3
 @onready var item4 = $Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item4
-@onready var item5 = $Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item5
+@onready var item5 = $Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item5
 @onready var item6 = $Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item6
 @onready var item7 = $Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item7
 @onready var item8 = $Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item8
-@onready var item9 = $Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item9
-@onready var item10 = $Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item10
-@onready var maxPage = ceil(ItemStorage.itemMax/10.0)
+@onready var maxPage = ceil(ItemStorage.itemMax/8.0)
 
 
 
@@ -72,19 +70,20 @@ func _on_next_page_button_pressed() -> void:
 	valpage()
 	# For each of the 10 items onscreen, find their path, then change their metadata to it+10. If that is above the
 	# max number of items, change it instead to 0+i. Finally, reload that item.
-	for i in 10:
+	for i in 8:
 		var curr_item;
 		var curr_item_num;
-		if (i < 5):
+		if (i < 4):
 			curr_item_num = "Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item" + str(i+1)
 		else:
 			curr_item_num = "Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item" + str(i+1)
 		curr_item = get_node(curr_item_num)
-		if ((curr_item.get_meta("ID") + 10) >= ceil(ItemStorage.itemMax/10.0)*10):
+		if ((curr_item.get_meta("ID") + 8) >= maxPage*8):
 			curr_item.set_meta("ID", i)
 		else:
-			curr_item.set_meta("ID", curr_item.get_meta("ID")+10)
+			curr_item.set_meta("ID", curr_item.get_meta("ID")+8)
 		curr_item._on_item_shop_reload()
+		print(curr_item.get_meta("ID"))
 
 # When the last page button is pressed
 func _on_last_page_button_pressed() -> void:
@@ -93,16 +92,17 @@ func _on_last_page_button_pressed() -> void:
 	valpage()
 	# For each of the 10 items onscreen, find their path, then change their metadata to it-10. If that is below
 	#0, change it instead to max-i. Finally, reload that item.
-	for i in 10:
+	for i in 8:
 		var curr_item;
 		var curr_item_num;
-		if (i < 5):
+		if (i < 4):
 			curr_item_num = "Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item" + str(i+1)
 		else:
 			curr_item_num = "Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item" + str(i+1)
 		curr_item = get_node(curr_item_num)
-		if ((curr_item.get_meta("ID") - 10) < 0):
-			curr_item.set_meta("ID", ((ItemStorage.itemMax/10)*10)+i)
+		if ((curr_item.get_meta("ID") - 8) < 0):
+			curr_item.set_meta("ID", ((maxPage-1)*8)+i)
 		else:
-			curr_item.set_meta("ID", curr_item.get_meta("ID")-10)
+			curr_item.set_meta("ID", curr_item.get_meta("ID")-8)
 		curr_item._on_item_shop_reload()
+		print(curr_item.get_meta("ID"))

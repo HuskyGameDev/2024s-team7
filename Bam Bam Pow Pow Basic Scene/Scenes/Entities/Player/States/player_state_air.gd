@@ -9,7 +9,8 @@ func Enter():
 	pass
 
 	
-func Update(_delta : float):		
+func Update(_delta : float):	
+	player.transform.x.x = player.dir 
 	var direction = Input.get_axis("L", "R")
 	if direction:
 		player.velocity.x = direction * SPEED

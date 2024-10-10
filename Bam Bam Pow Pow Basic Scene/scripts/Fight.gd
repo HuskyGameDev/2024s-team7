@@ -4,18 +4,29 @@ extends Node
 @onready var player = $player
 @onready var time = $Timer
 @onready var score_label = $HBoxContainer/score
+@onready var combo_label = $HBoxContainer/VBoxContainer/combo
 @onready var time_label = $HBoxContainer/time
-
+@onready var input_screen = $WarningScreen
 var started = false
+
+
+func _ready():
+	if (ItemStorage.fightvisit == 0 or ItemStorage.inputtoggle == true):
+		input_screen.visible = true
+		ItemStorage.fightvisitup()
+	else:
+		input_screen.visible = false
 
 func _input(event):
 	if !started && event is InputEventKey:
+		input_screen.visible = false
 		started = true
 		player.position += Vector2(275, 0)
 		time.start()
 
 func _process(delta):
 	score_label.text = "Score: " + str(enemy.score)
+	combo_label.text = "x" + str(enemy.combo)
 	time_label.text = "Time: " + "%.3f" % time.time_left
 	$HBoxContainer/TextureProgressBar.value = (100/time.wait_time)*(time.wait_time-time.time_left)
 

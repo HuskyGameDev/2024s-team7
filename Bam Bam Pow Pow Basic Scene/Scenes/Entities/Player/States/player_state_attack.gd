@@ -2,10 +2,13 @@ extends State
 class_name PlayerAttacking
 var weapon: Weapon
 @export var finished: int
-@export var cancel: int
+@export var cancel: String
 @export var x_momentum: int
 @export var y_momentum: int
+var direction: int
 var attack: String
+var attack_anim: String
+signal attack_performed(attack)
 
 ## This enum is for the core ability
 ## NOTE: The assigned values are equal to their index in the damage array
@@ -27,10 +30,11 @@ enum MOTION {
 
 
 func Enter():
+	direction = player.dir 
 	print("State: ATTACK")
 	weapon = get_parent().weapon
 	finished = 0
-	cancel = 0
+	cancel = ""
 	x_momentum = 0
 	y_momentum = 0
 	pass
@@ -44,47 +48,49 @@ func Update(delta : float):
 			state_transition.emit(self,"Idle")
 				
 	if (x_momentum != 0 or y_momentum != 0):
-		player.velocity.x = x_momentum
+		player.velocity.x = x_momentum * direction
 		player.velocity.y -= y_momentum
 	
 
 func _on_player_attack_index(core, motion):
-	print(str(cancel))
-	if(cancel != -1):
+	if(cancel != "no"):
 		if player.is_on_floor():
 			match [core, motion]:
 				[CORE.LIGHT, MOTION.NEUTRAL]:
-					attack = weapon.light_neutral.animation
+					attack = "light_neutral"
 				[CORE.LIGHT, MOTION.UP]:
-					attack = weapon.light_up.animation
+					attack = "light_up"
 				[CORE.LIGHT, MOTION.DOWN]:
-					attack = weapon.light_down.animation
+					attack = "light_down"
 				[CORE.LIGHT, MOTION.SIDE]:
-					attack = weapon.light_side.animation
+					attack = "light_side"
 				[CORE.HEAVY, MOTION.NEUTRAL]:
-					attack = weapon.heavy_neutral.animation
+					attack = "heavy_neutral"
 				[CORE.HEAVY, MOTION.UP]:
-					attack = weapon.heavy_up.animation
+					attack = "heavy_up"
 				[CORE.HEAVY, MOTION.DOWN]:
-					attack = weapon.heavy_down.animation
+					attack = "heavy_down"
 				[CORE.HEAVY, MOTION.SIDE]:
-					attack = weapon.heavy_side.animation
+					attack = "heavy_side"
 				_:
 					print("Attack Does Not Exist")
 		else:
 			match core:
 				CORE.LIGHT:
-					attack = weapon.light_air.animation
+					attack = "light_air"
 				CORE.HEAVY:
-					attack = weapon.heavy_air.animation
-		if(cancel > 0):
-			attack += "_" + str(cancel)
+					attack = "heavy_air"
+		if(cancel != ""):
+			attack = cancel
 			
-		if animator.has_animation(attack):
-			print(attack + " " + str(cancel))
+		print(attack)
+		attack_performed.emit(attack)
+		if animator.has_animation(weapon[attack].animation):
+			animator.stop()
+			attack_anim = weapon[attack].animation
 			player.velocity.x = 0
 			player.velocity.y = 0
-			animator.stop()
-			animator.play(attack)
+			animator.play(attack_anim)
+			print(cancel)
 		else:
 			pass

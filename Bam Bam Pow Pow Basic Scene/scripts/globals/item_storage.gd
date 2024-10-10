@@ -7,7 +7,9 @@ var moneyItems = []			# Only affect money
 var baseItems = []			# Only affect base multipliers
 var directionItems = []		# Only affect directional attacks
 var specificItems = []		# Allow and multiply a specific attack that is not a base attack
-var itemMax = 0;
+var itemMax = 0
+var fightvisit = 0
+var inputtoggle = false
 
 ## To be removed!!!! :|
 enum MULTTYPE {
@@ -44,11 +46,14 @@ func _ready():
 	money = 0;
 	itemsList = ItemCreation.item_list
 	itemMax = ItemCreation.itemMax
+	fightvisit = 0
 
 func calc_money(score):
 	money += score*self.moneyMult
 	
 
+func fightvisitup():
+	fightvisit = fightvisit + 1
 
 func save_game():
 	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
