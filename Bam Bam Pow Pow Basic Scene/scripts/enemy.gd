@@ -26,9 +26,9 @@ signal x_pos(position)
 @onready var player = $"../player"
 
 @onready var audioPlayer = get_node("/root/Node/AudioStreamPlayer")
-@onready var hit_noise1 = preload("res://resources/Hit1.wav")
-@onready var hit_noise2 = preload("res://resources/Hit2.wav")
-@onready var hit_noise3 = preload("res://resources/Hit3.wav")
+#@onready var hit_noise1 = preload("res://resources/Hit1.wav")
+#@onready var hit_noise2 = preload("res://resources/Hit2.wav")
+#@onready var hit_noise3 = preload("res://resources/Hit3.wav")
 
 var attack_performed: String
 var player_dir
@@ -146,22 +146,29 @@ signal showDmg(dmgNumber)
 
 
 func _on_hurtbox_area_entered(hitbox):
+	
+	audioPlayer.stop()
 	if (!audioPlayer.is_playing()):
 		var rng = RandomNumberGenerator.new()
-		var rand = rng.randi_range(1,3)
-		var stream = "res://resources/Hit" + str(rand) + ".wav"
+		var rand = rng.randi_range(1,4)
+		var stream = "res://resources/sounds/womp_" + str(rand) + ".wav"
 		var stream2 = load(stream)
 		audioPlayer.set_stream(stream2)
 		audioPlayer.play()
+		
 	damage = player.weapon[attack_performed].damage + 0.2 * (player.weapon[attack_performed].damage * self.juggle)
 	damage *= player.weapon[attack_performed].mult
+	
 	self.score += damage
 	self.combo += 1
 	self.juggle += 0.5
+	
 	animPlayer.play("hurt")
 	showDmg.emit(damage)
+	
 	velocity.x = 0;
 	velocity.y = 0;
+	
 	if player.weapon[attack_performed].knockback < 0:
 		velocity.x += float((-10*player.weapon[attack_performed].knockback)) * player_dir
 	else:

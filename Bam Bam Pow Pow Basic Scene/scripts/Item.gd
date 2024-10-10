@@ -9,7 +9,7 @@ signal bought_item(money) # Signal for when the item is bought that uses its mon
 @onready var buy_button = $HBoxContainer/BuyButton
 @onready var sprite = $SpriteContainer/Sprite2D
 @onready var name_label = $NameLabel
-@onready var purchase_noise = preload("res://resources/Item_Purchase_Coins.wav")
+@onready var purchase_noise = preload("res://resources/sounds/Item_Purchase_Coins.wav")
 @onready var id = self.get_meta("ID")
 @onready var con = get_node("/root/ItemShop/Control")
 @onready var audioPlayer = get_node("/root/ItemShop/AudioStreamPlayer")
