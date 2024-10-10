@@ -1,14 +1,14 @@
 extends CanvasLayer
 
 @onready var moneylabel = $Control/MarginContainer/MarginContainer2/MoneyLabel
-@onready var item1 = $Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item1
-@onready var item2 = $Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item2
-@onready var item3 = $Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item3
-@onready var item4 = $Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item4
-@onready var item5 = $Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item5
-@onready var item6 = $Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item6
-@onready var item7 = $Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item7
-@onready var item8 = $Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item8
+@onready var item1 = $MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item1
+@onready var item2 = $MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item2
+@onready var item3 = $MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item3
+@onready var item4 = $MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item4
+@onready var item5 = $MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item5
+@onready var item6 = $MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item6
+@onready var item7 = $MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item7
+@onready var item8 = $MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item8
 @onready var maxPage = ceil(ItemStorage.itemMax/8.0)
 
 
@@ -44,6 +44,9 @@ func _on_fight_scene_button_pressed():
 func _on_main_menu_button_pressed():
 	SceneSwap.scene_swap("res://Scenes/Playable/MainMenu.tscn");
 
+func _on_weapon_shop_button_pressed():
+	SceneSwap.scene_swap("res://Scenes/Playable/WeaponShop.tscn");
+
 func _on_settings_menu_button_pressed():
 	Global.prev_scene = get_tree().current_scene.scene_file_path
 	SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn");
@@ -74,9 +77,9 @@ func _on_next_page_button_pressed() -> void:
 		var curr_item;
 		var curr_item_num;
 		if (i < 4):
-			curr_item_num = "Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item" + str(i+1)
+			curr_item_num = "MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item" + str(i+1)
 		else:
-			curr_item_num = "Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item" + str(i+1)
+			curr_item_num = "MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item" + str(i+1)
 		curr_item = get_node(curr_item_num)
 		if ((curr_item.get_meta("ID") + 8) >= maxPage*8):
 			curr_item.set_meta("ID", i)
@@ -96,9 +99,9 @@ func _on_last_page_button_pressed() -> void:
 		var curr_item;
 		var curr_item_num;
 		if (i < 4):
-			curr_item_num = "Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item" + str(i+1)
+			curr_item_num = "MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item" + str(i+1)
 		else:
-			curr_item_num = "Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item" + str(i+1)
+			curr_item_num = "MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item" + str(i+1)
 		curr_item = get_node(curr_item_num)
 		if ((curr_item.get_meta("ID") - 8) < 0):
 			curr_item.set_meta("ID", ((maxPage-1)*8)+i)

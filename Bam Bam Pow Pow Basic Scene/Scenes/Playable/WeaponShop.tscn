@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7hqp2kuj8xq5"]
+[gd_scene load_steps=9 format=3 uid="uid://c7hqp2kuj8xq5"]
 
 [ext_resource type="Script" path="res://scripts/weapon_shop.gd" id="1_wkwj5"]
 [ext_resource type="Texture2D" uid="uid://dxunmhf25os5p" path="res://resources/sprites/dragon-in-shop.png" id="2_7m3va"]
 [ext_resource type="Texture2D" uid="uid://dc36bpll4ldvy" path="res://resources/sprites/background-itemshop.png" id="2_8ayfd"]
 [ext_resource type="PackedScene" uid="uid://5n0srb1iavr0" path="res://Scenes/Entities/hanger.tscn" id="3_01yxm"]
+[ext_resource type="Texture2D" uid="uid://csaod2ht6ymhf" path="res://resources/sprites/next-prev.png" id="5_75nm7"]
 [ext_resource type="Texture2D" uid="uid://kg8lti6ql3wt" path="res://resources/sprites/caution-symbol.png" id="6_1g72y"]
+[ext_resource type="Texture2D" uid="uid://dj87ja156haea" path="res://resources/sprites/real-box.png" id="6_g8uxk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2sdlv"]
 content_margin_left = 450.0
@@ -92,6 +94,7 @@ grow_vertical = 2
 
 [node name="NameLabel" type="Label" parent="VBoxContainer/ColorRect/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 40
 text = "Name"
 horizontal_alignment = 1
 
@@ -130,11 +133,49 @@ layout_mode = 2
 layout_mode = 2
 alignment = 1
 
-[node name="Prev" type="Button" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Previous"
+[node name="PrevSprite" type="Sprite2D" parent="VBoxContainer/HBoxContainer"]
+position = Vector2(102.75, 39.75)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("5_75nm7")
+hframes = 2
+
+[node name="Prev" type="Button" parent="VBoxContainer/HBoxContainer/PrevSprite"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_top = -9.0
+offset_right = -30.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="NextSprite" type="Sprite2D" parent="VBoxContainer/HBoxContainer"]
+position = Vector2(301.75, 39.75)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("5_75nm7")
+hframes = 2
+frame = 1
+
+[node name="Next" type="Button" parent="VBoxContainer/HBoxContainer/NextSprite"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -27.0
+offset_top = -9.0
+offset_right = -30.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+metadata/_edit_use_anchors_ = true
 
 [node name="Next" type="Button" parent="VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Next"
 
@@ -156,37 +197,205 @@ metadata/_edit_group_ = true
 layout_mode = 2
 size_flags_vertical = 10
 
-[node name="MainMenuButton" type="Button" parent="MarginContainer/MenuButtonRow"]
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/MenuButtonRow"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("6_g8uxk")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Label" type="Label" parent="MarginContainer/MenuButtonRow/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="MarginContainer/MenuButtonRow/NinePatchRect"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 text = "Main Menu"
 
-[node name="SettingsMenuButton" type="Button" parent="MarginContainer/MenuButtonRow"]
+[node name="NinePatchRect2" type="NinePatchRect" parent="MarginContainer/MenuButtonRow"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("6_g8uxk")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Label" type="Label" parent="MarginContainer/MenuButtonRow/NinePatchRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsMenuButton" type="Button" parent="MarginContainer/MenuButtonRow/NinePatchRect2"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 text = "Settings Menu"
 
-[node name="ItemShopButton" type="Button" parent="MarginContainer/MenuButtonRow"]
+[node name="NinePatchRect3" type="NinePatchRect" parent="MarginContainer/MenuButtonRow"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("6_g8uxk")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Label" type="Label" parent="MarginContainer/MenuButtonRow/NinePatchRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Item Shop"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemShopButton" type="Button" parent="MarginContainer/MenuButtonRow/NinePatchRect3"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 text = "Item Shop"
 
-[node name="FightSceneButton" type="Button" parent="MarginContainer/MenuButtonRow"]
+[node name="NinePatchRect4" type="NinePatchRect" parent="MarginContainer/MenuButtonRow"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("6_g8uxk")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Label" type="Label" parent="MarginContainer/MenuButtonRow/NinePatchRect4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Fight Scene"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FightSceneButton" type="Button" parent="MarginContainer/MenuButtonRow/NinePatchRect4"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 text = "Fight Scene"
 
-[node name="SaveGameButton" type="Button" parent="MarginContainer/MenuButtonRow"]
+[node name="NinePatchRect5" type="NinePatchRect" parent="MarginContainer/MenuButtonRow"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("6_g8uxk")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Label" type="Label" parent="MarginContainer/MenuButtonRow/NinePatchRect5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Save Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SaveGameButton" type="Button" parent="MarginContainer/MenuButtonRow/NinePatchRect5"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 text = "Save Game"
 
-[node name="LoadGameButton" type="Button" parent="MarginContainer/MenuButtonRow"]
+[node name="NinePatchRect6" type="NinePatchRect" parent="MarginContainer/MenuButtonRow"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("6_g8uxk")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Label" type="Label" parent="MarginContainer/MenuButtonRow/NinePatchRect6"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Load Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LoadGameButton" type="Button" parent="MarginContainer/MenuButtonRow/NinePatchRect6"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 text = "Load Game"
@@ -251,13 +460,14 @@ text = "X"
 [connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger4" to="." method="_on_hanger_hanger_pressed"]
 [connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger5" to="." method="_on_hanger_hanger_pressed"]
 [connection signal="pressed" from="VBoxContainer/ColorRect/VBoxContainer/ToBuy/BuyButton" to="." method="_on_buy_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Prev" to="." method="_on_prev_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/PrevSprite/Prev" to="." method="_on_prev_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/NextSprite/Next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Next" to="." method="_on_next_pressed"]
-[connection signal="pressed" from="MarginContainer/MenuButtonRow/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="MarginContainer/MenuButtonRow/SettingsMenuButton" to="." method="_on_settings_menu_button_pressed"]
-[connection signal="pressed" from="MarginContainer/MenuButtonRow/ItemShopButton" to="." method="_on_item_shop_button_pressed"]
-[connection signal="pressed" from="MarginContainer/MenuButtonRow/FightSceneButton" to="." method="_on_fight_scene_button_pressed"]
-[connection signal="pressed" from="MarginContainer/MenuButtonRow/SaveGameButton" to="." method="_on_save_game_button_pressed"]
-[connection signal="pressed" from="MarginContainer/MenuButtonRow/LoadGameButton" to="." method="_on_load_game_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuButtonRow/NinePatchRect/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuButtonRow/NinePatchRect2/SettingsMenuButton" to="." method="_on_settings_menu_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuButtonRow/NinePatchRect3/ItemShopButton" to="." method="_on_item_shop_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuButtonRow/NinePatchRect4/FightSceneButton" to="." method="_on_fight_scene_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuButtonRow/NinePatchRect5/SaveGameButton" to="." method="_on_save_game_button_pressed"]
+[connection signal="pressed" from="MarginContainer/MenuButtonRow/NinePatchRect6/LoadGameButton" to="." method="_on_load_game_button_pressed"]
 [connection signal="pressed" from="HazardButton" to="." method="_on_hazard_button_pressed"]
 [connection signal="pressed" from="WarningScreen/Close" to="." method="_on_close_pressed"]

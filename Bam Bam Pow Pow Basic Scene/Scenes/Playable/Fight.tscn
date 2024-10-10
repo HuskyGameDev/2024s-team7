@@ -7,9 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://bb523jxarvel0" path="res://Assets/tile-sakura .PNG" id="3_xd3ae"]
 [ext_resource type="PackedScene" uid="uid://cqhetuoqkeuty" path="res://Scenes/Entities/enemy.tscn" id="4_boejj"]
 [ext_resource type="PackedScene" uid="uid://b8vq6sc31q3x6" path="res://Scenes/Functional/combo.tscn" id="5_xefg3"]
-[ext_resource type="Texture2D" uid="uid://cbggip08fyd7k" path="res://Assets/timerBack.png" id="7_s5mxn"]
-[ext_resource type="Texture2D" uid="uid://dmwfm8ipdtto" path="res://Assets/timerFront.png" id="8_26cga"]
-[ext_resource type="Texture2D" uid="uid://doajiie6tkeaq" path="res://ahh.png" id="8_avj12"]
+[ext_resource type="Texture2D" uid="uid://c2pa3fqc042ok" path="res://resources/sprites/clock back new.png" id="8_qstn8"]
+[ext_resource type="Texture2D" uid="uid://bmxls3x41o1a7" path="res://resources/sprites/clock top new.png" id="9_i7ld0"]
+[ext_resource type="Texture2D" uid="uid://d07sw130xxmn5" path="res://resources/sprites/clock fill new.png" id="10_2oyx8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7n84y"]
 texture = ExtResource("3_xd3ae")
@@ -54,7 +54,7 @@ scale = Vector2(4, 4)
 tile_set = SubResource("TileSet_gik26")
 rendering_quadrant_size = 128
 format = 2
-layer_0/tile_data = PackedInt32Array(2818051, 1, 0, 2818059, 1, 0, 2818067, 1, 0, 2818075, 1, 0, 2818083, 1, 0, 2818091, 1, 0, 2818099, 1, 0, 2818107, 1, 0, 2818115, 1, 0, 2818123, 1, 0, 2883579, 1, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 393214, 0, 0)
+layer_0/tile_data = PackedInt32Array(2818051, 1, 0, 2818059, 1, 0, 2818067, 1, 0, 2818075, 1, 0, 2818083, 1, 0, 2818091, 1, 0, 2818099, 1, 0, 2818107, 1, 0, 2818115, 1, 0, 2818123, 1, 0, 2883579, 1, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 393214, 0, 0, 65548, 1, 0, 262156, 1, 0, 327677, 1, 0, 131069, 1, 0)
 
 [node name="player" parent="." instance=ExtResource("3_w7w43")]
 position = Vector2(291, 522)
@@ -116,9 +116,9 @@ text = "Time: "
 [node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer"]
 layout_mode = 2
 fill_mode = 4
-texture_under = ExtResource("8_26cga")
-texture_over = ExtResource("8_avj12")
-texture_progress = ExtResource("7_s5mxn")
+texture_under = ExtResource("8_qstn8")
+texture_over = ExtResource("9_i7ld0")
+texture_progress = ExtResource("10_2oyx8")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 30.0

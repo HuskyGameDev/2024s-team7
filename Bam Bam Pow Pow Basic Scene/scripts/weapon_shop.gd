@@ -14,8 +14,8 @@ func _changeBox(i)-> void:
 	WeaponInShop.currentInstance=i		# Set current instance of weapon global to given i
 	
 	# Set Next/Prev buttons to be visible (default)
-	$VBoxContainer/HBoxContainer/Next.show()
-	$VBoxContainer/HBoxContainer/Prev.show()
+	$VBoxContainer/HBoxContainer/NextSprite/Next.show()
+	$VBoxContainer/HBoxContainer/PrevSprite/Prev.show()
 	
 	# --- Set all values in Selected Weapon Screen to correct values given index
 	# Print for testing
@@ -34,10 +34,10 @@ func _changeBox(i)-> void:
 	
 	# If index is >= maxIndex, hide next button
 	if i >= WeaponInShop.weaponsInShopArray.size()-1:
-		$VBoxContainer/HBoxContainer/Next.hide()
+		$VBoxContainer/HBoxContainer/NextSprite/Next.hide()
 	# If index is <= minIndex, hide prev button
 	if i <= 0:
-		$VBoxContainer/HBoxContainer/Prev.hide()	
+		$VBoxContainer/HBoxContainer/PrevSprite/Prev.hide()	
 	
 	# Move the scroll container to center selected element
 	$Control/ScrollContainer.set_h_scroll((i)*400)	#Move scroll to separation value of hbox*index

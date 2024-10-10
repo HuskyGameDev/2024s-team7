@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c76vfrrc8d27k"]
+[gd_scene load_steps=5 format=3 uid="uid://c76vfrrc8d27k"]
 
 [ext_resource type="Script" path="res://scripts/MainMenu.gd" id="1_8i4yj"]
 [ext_resource type="Texture2D" uid="uid://cwexuk7jv1l3r" path="res://resources/sprites/MAIN MENU BG.png" id="2_aqswu"]
 [ext_resource type="Texture2D" uid="uid://ds64mtbtajy78" path="res://resources/sprites/Bam Bam Pow Pow logo.png" id="3_dt2py"]
+[ext_resource type="Texture2D" uid="uid://dj87ja156haea" path="res://resources/sprites/real-box.png" id="4_xbxdj"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -27,9 +28,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -230.0
-offset_right = 230.0
-offset_bottom = 363.0
+offset_left = -254.5
+offset_right = 254.5
+offset_bottom = 426.0
 grow_horizontal = 2
 texture = ExtResource("3_dt2py")
 stretch_mode = 4
@@ -41,19 +42,42 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -211.5
-offset_top = -388.0
-offset_right = 211.5
+offset_left = -211.0
+offset_top = -350.0
+offset_right = 212.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 10
 
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-color = Color(1, 0.792157, 0.145098, 1)
+texture = ExtResource("4_xbxdj")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
 
-[node name="New Unlimited" type="Button" parent="VBoxContainer"]
-layout_mode = 2
+[node name="Label" type="Label" parent="VBoxContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "New Infinity"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="New Unlimited" type="Button" parent="VBoxContainer/NinePatchRect"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 theme_override_colors/icon_normal_color = Color(1, 0.792157, 0.145098, 1)
 theme_override_colors/icon_focus_color = Color(1, 0.792157, 0.145098, 1)
@@ -64,19 +88,100 @@ theme_override_colors/icon_disabled_color = Color(1, 0.792157, 0.145098, 1)
 theme_override_font_sizes/font_size = 20
 text = "New Infinity"
 
-[node name="Unlimited" type="Button" parent="VBoxContainer"]
+[node name="NinePatchRect2" type="NinePatchRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+texture = ExtResource("4_xbxdj")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Label2" type="Label" parent="VBoxContainer/NinePatchRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Load Infinity"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Unlimited" type="Button" parent="VBoxContainer/NinePatchRect2"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 20
 text = "Load Infinity"
 
-[node name="Settings" type="Button" parent="VBoxContainer"]
+[node name="NinePatchRect3" type="NinePatchRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+texture = ExtResource("4_xbxdj")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Label3" type="Label" parent="VBoxContainer/NinePatchRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Settings" type="Button" parent="VBoxContainer/NinePatchRect3"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 20
 text = "Settings"
 
-[node name="Quit" type="Button" parent="VBoxContainer"]
+[node name="NinePatchRect4" type="NinePatchRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+texture = ExtResource("4_xbxdj")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Label4" type="Label" parent="VBoxContainer/NinePatchRect4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="Button" parent="VBoxContainer/NinePatchRect4"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 20
 text = "Quit"
 
@@ -100,7 +205,7 @@ PAIR WITH MAIN ATTACKS
 EXAMPLE: 'W' + 'J' FOR UPPERCUT
 DIRECTIONAL ATTACKS ARE PURCHASED"
 
-[connection signal="pressed" from="VBoxContainer/New Unlimited" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="VBoxContainer/Unlimited" to="." method="_on_load_game_pressed"]
-[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="VBoxContainer/NinePatchRect/New Unlimited" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="VBoxContainer/NinePatchRect2/Unlimited" to="." method="_on_load_game_pressed"]
+[connection signal="pressed" from="VBoxContainer/NinePatchRect3/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/NinePatchRect4/Quit" to="." method="_on_quit_pressed"]
