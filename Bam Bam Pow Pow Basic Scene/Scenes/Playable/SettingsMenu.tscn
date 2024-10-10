@@ -142,6 +142,7 @@ offset_top = 508.0
 offset_right = 674.0
 offset_bottom = 532.0
 scale = Vector2(1.5, 1.5)
+button_pressed = true
 
 [node name="Label2" type="Label" parent="TabContainer/Video & Audio"]
 layout_mode = 0
