@@ -127,7 +127,8 @@ signal showDmg(dmgNumber)
 
 
 func _on_hurtbox_area_entered(hitbox):
-	damage = player.weapon[attack_performed].damage + 0.2 * (player.weapon[attack_performed].damage * self.juggle)
+	damage = player.weapon[attack_performed].damage #+ 0.2 * (player.weapon[attack_performed].damage * self.juggle)
+	damage *= player.weapon[attack_performed].mult
 	self.score += damage
 	self.combo += 1
 	self.juggle += 0.5
