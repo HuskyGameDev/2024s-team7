@@ -11,11 +11,11 @@ var started = false
 
 
 func _ready():
-	if (ItemStorage.fightvisit == 0 or ItemStorage.inputtoggle == true):
+	if (ItemStorage.inputtoggle == true):
 		input_screen.visible = true
-		ItemStorage.fightvisitup()
 	else:
 		input_screen.visible = false
+	
 
 func _input(event):
 	if !started && event is InputEventKey:

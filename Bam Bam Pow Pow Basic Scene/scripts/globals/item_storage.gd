@@ -9,7 +9,7 @@ var directionItems = []		# Only affect directional attacks
 var specificItems = []		# Allow and multiply a specific attack that is not a base attack
 var itemMax = 0
 var fightvisit = 0
-var inputtoggle = false
+var inputtoggle = true
 
 ## To be removed!!!! :|
 enum MULTTYPE {
