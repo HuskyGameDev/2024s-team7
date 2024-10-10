@@ -136,6 +136,7 @@ offset_bottom = 26.0
 text = "Resolution"
 
 [node name="CheckButton2" type="CheckButton" parent="TabContainer/Video & Audio"]
+layout_mode = 0
 offset_left = 630.0
 offset_top = 508.0
 offset_right = 674.0
@@ -143,6 +144,7 @@ offset_bottom = 532.0
 scale = Vector2(1.5, 1.5)
 
 [node name="Label2" type="Label" parent="TabContainer/Video & Audio"]
+layout_mode = 0
 offset_left = 433.0
 offset_top = 508.0
 offset_right = 560.0

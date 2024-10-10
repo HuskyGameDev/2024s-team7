@@ -1,24 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://d3qsuqxbit6rg"]
+[gd_scene load_steps=12 format=3 uid="uid://d3qsuqxbit6rg"]
 
+[ext_resource type="Texture2D" uid="uid://b084ekiqsrbeb" path="res://resources/sprites/Da griddy.png" id="1_2m55c"]
 [ext_resource type="Script" path="res://scripts/Fight.gd" id="1_xn2pw"]
 [ext_resource type="Texture2D" uid="uid://cbia7ydbgigan" path="res://resources/sprites/icon.svg" id="2_tpybg"]
-[ext_resource type="Texture2D" uid="uid://bjp6mrfnrh2bv" path="res://Assets/bg-sakura.PNG" id="2_ua6bn"]
 [ext_resource type="PackedScene" uid="uid://cfx46l5ghyfp3" path="res://Scenes/Entities/Player/player.tscn" id="3_w7w43"]
-[ext_resource type="Texture2D" uid="uid://bb523jxarvel0" path="res://Assets/tile-sakura .PNG" id="3_xd3ae"]
 [ext_resource type="PackedScene" uid="uid://cqhetuoqkeuty" path="res://Scenes/Entities/enemy.tscn" id="4_boejj"]
 [ext_resource type="PackedScene" uid="uid://b8vq6sc31q3x6" path="res://Scenes/Functional/combo.tscn" id="5_xefg3"]
 [ext_resource type="Texture2D" uid="uid://cbggip08fyd7k" path="res://Assets/timerBack.png" id="7_s5mxn"]
 [ext_resource type="Texture2D" uid="uid://dmwfm8ipdtto" path="res://Assets/timerFront.png" id="8_26cga"]
 [ext_resource type="Texture2D" uid="uid://doajiie6tkeaq" path="res://ahh.png" id="8_avj12"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7n84y"]
-texture = ExtResource("3_xd3ae")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16.5, -16.25, 16.125, -15.875, 16, 16.25, -16.25, 16.5)
-1:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1qjtc"]
 texture = ExtResource("2_tpybg")
@@ -27,10 +17,8 @@ texture = ExtResource("2_tpybg")
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-63.25, -64.75, 60.25, -64.75, 65.25, 65.5, -64, 64.25)
 
 [sub_resource type="TileSet" id="TileSet_gik26"]
-tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_1qjtc")
-sources/0 = SubResource("TileSetAtlasSource_7n84y")
 
 [node name="Node" type="Node"]
 script = ExtResource("1_xn2pw")
@@ -40,21 +28,20 @@ texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -52.0
-offset_top = -46.0
-offset_right = 81.0
-offset_bottom = 38.0
+offset_left = -391.0
+offset_top = -179.0
+offset_right = 249.0
+offset_bottom = 181.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_ua6bn")
+texture = ExtResource("1_2m55c")
+stretch_mode = 1
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
-scale = Vector2(4, 4)
 tile_set = SubResource("TileSet_gik26")
-rendering_quadrant_size = 128
 format = 2
-layer_0/tile_data = PackedInt32Array(2818051, 1, 0, 2818059, 1, 0, 2818067, 1, 0, 2818075, 1, 0, 2818083, 1, 0, 2818091, 1, 0, 2818099, 1, 0, 2818107, 1, 0, 2818115, 1, 0, 2818123, 1, 0, 2883579, 1, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 393214, 0, 0)
+layer_0/tile_data = PackedInt32Array(2818051, 1, 0, 2818059, 1, 0, 2818067, 1, 0, 2818075, 1, 0, 2818083, 1, 0, 2818091, 1, 0, 2818099, 1, 0, 2818107, 1, 0, 2818115, 1, 0, 2818123, 1, 0, 2883579, 1, 0)
 
 [node name="player" parent="." instance=ExtResource("3_w7w43")]
 position = Vector2(291, 522)
