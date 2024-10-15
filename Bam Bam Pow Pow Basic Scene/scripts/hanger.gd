@@ -18,6 +18,9 @@ func _ready():
 	i = WeaponInShop.weaponStartup;		# Set index for Hanger instance from global
 	$Sprite2D.frame = i					# Set Sprite2d frame to frame at index
 	WeaponInShop.weaponStartup += 1		# Set global to next value for following instance
+	# Reset the number for next ready onces reaches end of array
+	if i==WeaponInShop.weaponsInShopArray.size():
+		WeaponInShop.weaponStartup = 1
 
 
 ## HangerButton press signal. 
