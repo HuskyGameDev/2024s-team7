@@ -36,14 +36,15 @@ func _on_item_shop_reload():
 		sprite.visible = false
 		name_label.visible = false
 	elif (ItemStorage.itemsList[id].owned == true):
-		money_label.visible = false
 		buy_button.visible = false
 		sprite.visible = true;
 		if (ItemStorage.itemsList[id]["sprite"] != null):
 			sprite.texture = load("res://resources/sprites/Shop_sprites.png")
 			sprite.frame = ItemStorage.itemsList[id]["sprite"]
 		name_label.visible = true
-		name_label.text = "Bought"
+		name_label.text = ItemStorage.itemsList[id]["name"]
+		money_label.visible = true
+		money_label.text = "Bought"
 	else: # If the item is not owned by the player
 		# Make the label for the cost, buy button, and sprite visible
 		money_label.visible = true

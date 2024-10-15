@@ -182,13 +182,10 @@ func _on_hurtbox_area_entered(hitbox):
 	print(str(damage) + " dealt!")
 	print("Juggle Count: " + str(self.juggle))
 
-	if self.score >= 5000 && !addedMoney:
-		addedMoney = true
-		calc_money()
-		
 func calc_money():
-		ItemStorage.money += (score * money_mult)
-		SceneSwap.scene_swap("res://Scenes/Playable/ItemShop.tscn")
+	var addedtotal: int = score * money_mult
+	ItemStorage.money += (addedtotal)
+	SceneSwap.scene_swap("res://Scenes/Playable/ItemShop.tscn")
 
 
 func _on_player_attack(attack):
