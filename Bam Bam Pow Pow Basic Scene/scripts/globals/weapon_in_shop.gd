@@ -13,6 +13,8 @@ extends Node
 
 
 var weapon_list = []
+# weapon_list.append(1)
+# WHY WON"
 @onready var weaponMax = 0;
 
 var currentInstance: int = 0 	# Which weapon we're on right now
@@ -43,5 +45,5 @@ func make_weapon(index, name, price, owned, description) -> Dictionary:
 	}
 	return weapon
 	
-weapon_list.append(1)
-weaponMax += 1;
+
+# wrap dictionary declarations inside a ready function

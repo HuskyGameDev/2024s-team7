@@ -144,7 +144,7 @@ func _ready() -> void:
 	itemMax += 1;
 	
 	item_list.append(make_item(
-		"Steriods",
+		"Steroids",
 		3000,
 		false,
 		{

@@ -404,7 +404,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "
 LEGEND!
 The scrolls qffect specific attack directions. Red for light, green for heavy.
-The Filled in circles affect all attacks of one type. Red first for light, green boot for heavy.
+The Filled in circles affect all attacks of one type. Red fist for light, green boot for heavy.
 The outlined ones only affect their respective air attacks.
 The arrows affect all attacks in that direction"
 
@@ -426,8 +426,8 @@ text = "X"
 [connection signal="pressed" from="Control/MarginContainer/MenuButtonRow2/NinePatchRect4/FightSceneButton" to="." method="_on_fight_scene_button_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/MenuButtonRow2/NinePatchRect5/SaveGameButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/MenuButtonRow2/NinePatchRect6/LoadGameButton" to="." method="_on_load_button_pressed"]
-[connection signal="bought_item" from="MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item1" to="." method="_on_item_1_bought_item"]
 [connection signal="bought_item" from="MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item1" to="." method="bought_item"]
+[connection signal="bought_item" from="MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item1" to="." method="_on_item_1_bought_item"]
 [connection signal="bought_item" from="MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item2" to="." method="bought_item"]
 [connection signal="bought_item" from="MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item3" to="." method="bought_item"]
 [connection signal="bought_item" from="MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item4" to="." method="bought_item"]
