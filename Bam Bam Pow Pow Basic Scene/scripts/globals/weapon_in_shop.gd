@@ -11,6 +11,10 @@ extends Node
 # b) add new hanger sprite sheet
 # c) change number of frames in hanger sprite sheet animation
 
+
+var weapon_list = []
+@onready var weaponMax = 0;
+
 var currentInstance: int = 0 	# Which weapon we're on right now
 var weaponStartup: int = 0		# Prev + to set each Hanger Node to correct weapon index 
 
@@ -27,3 +31,17 @@ var weaponsInShopDesc = ["You punch things with your glass fists","Wh'ack e'm","
 # be so very happy. I tried making this a blank array and appending it. Ya'know
 # LIKE SOMEONE WHO'S NOT CRAZY
 # But every time I tried to append it everything broke and I had to delete the whole thing and do it again
+
+
+func make_weapon(index, name, price, owned, description) -> Dictionary:
+	var weapon: Dictionary = {
+		"index"	: index,
+		"name" 	: name,
+		"price" 	: price,
+		"owned" 	: owned,
+		"description" : description
+	}
+	return weapon
+	
+weapon_list.append(1)
+weaponMax += 1;
