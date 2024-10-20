@@ -72,6 +72,12 @@ func _on_player_attack_index(core, motion):
 					attack = "heavy_down"
 				[CORE.HEAVY, MOTION.SIDE]:
 					attack = "heavy_side"
+				[CORE.SPECIAL, _]:
+					print("No Special for you")
+					return
+				[CORE.SUPER, _]:
+					print("No Super for you")
+					return
 				_:
 					print("Attack Does Not Exist")
 		else:
@@ -80,6 +86,10 @@ func _on_player_attack_index(core, motion):
 					attack = "light_air"
 				CORE.HEAVY:
 					attack = "heavy_air"
+				CORE.SPECIAL:
+					return
+				CORE.SUPER:
+					return
 		if(cancel != ""):
 			attack = cancel
 			
