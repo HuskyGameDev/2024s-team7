@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7euusov16rvy"]
+
+[ext_resource type="Script" path="res://scripts/equipped_item.gd" id="1_afgyy"]
+[ext_resource type="Texture2D" uid="uid://bmlw1dmy1yyuw" path="res://resources/sprites/Shop_sprites.png" id="2_8myyk"]
+
+[node name="EquippedItem" type="VBoxContainer"]
+clip_contents = true
+offset_right = 200.0
+offset_bottom = 235.0
+script = ExtResource("1_afgyy")
+metadata/ID = 0
+
+[node name="SpriteContainer" type="Control" parent="."]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteContainer"]
+position = Vector2(100, 75)
+scale = Vector2(5, 5)
+texture = ExtResource("2_8myyk")
+hframes = 4
+vframes = 5
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 10)
+layout_mode = 2
+text = "Select"
+
+[connection signal="pressed" from="Button" to="." method="_on_sprite_pressed"]

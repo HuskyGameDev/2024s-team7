@@ -1,6 +1,7 @@
 extends Node
 
 var item_list = []
+var equipped_list = [5]
 @onready var itemMax = 0;
 
 enum MULTTYPE {
@@ -10,13 +11,14 @@ enum MULTTYPE {
 	SPECIFIC
 }
 
-func make_item(name, price, owned, effects: Dictionary, sprite_index) -> Dictionary:
+func make_item(name, price, owned, effects: Dictionary, sprite_index, equipped) -> Dictionary:
 	var item: Dictionary = {
 		"name" 		: name,
 		"price" 	: price,
 		"owned" 	: owned,
 		"effects" 	: effects,
-		"sprite" 	: sprite_index
+		"sprite" 	: sprite_index,
+		"equipped"	: equipped
 	}
 	return item
 
@@ -25,11 +27,12 @@ func _ready() -> void:
 	item_list.append(make_item(
 		"Uppercut Scroll",
 		1000,
-		false,
+		true,
 		{
 			"light_up": 0.5
 		},
-		4
+		4,
+		false
 	))
 	itemMax += 1;
 	
@@ -40,7 +43,8 @@ func _ready() -> void:
 		{
 			"light_down": 0.6
 		},
-		4
+		4,
+		false
 	))
 	
 	itemMax += 1;
@@ -52,7 +56,8 @@ func _ready() -> void:
 		{
 			"light": 0.2
 		},
-		0
+		0,
+		false
 	))
 	
 	itemMax += 1;
@@ -60,12 +65,13 @@ func _ready() -> void:
 	item_list.append(make_item(
 		"Bird Punching Glasses",
 		600,
-		false,
+		true,
 		{
 			"light_up": 0.2,
 			"heavy_up": 0.2
 		},
-		11
+		11,
+		false
 	))
 	
 	itemMax += 1;
@@ -78,7 +84,8 @@ func _ready() -> void:
 			"light_side": 0.3,
 			"heavy_side": 0.3
 		},
-		8
+		8,
+		false
 	))
 	
 	itemMax += 1;
@@ -90,7 +97,8 @@ func _ready() -> void:
 		{
 			"heavy_up": 0.6
 		},
-		5
+		5,
+		false
 	))
 	
 	itemMax += 1;
@@ -102,7 +110,8 @@ func _ready() -> void:
 		{
 			"heavy_down": 0.3
 		},
-		5
+		5,
+		false
 	))
 	
 	itemMax += 1;
@@ -114,7 +123,8 @@ func _ready() -> void:
 		{
 			"light_down": 0.2
 		},
-		4
+		4,
+		false
 	))
 	
 	itemMax += 1;
@@ -126,7 +136,8 @@ func _ready() -> void:
 		{
 			"money": 0.2
 		},
-		16
+		16,
+		false
 	))
 	
 	itemMax += 1;
@@ -134,11 +145,12 @@ func _ready() -> void:
 	item_list.append(make_item(
 		"Piggy Bank",
 		2000,
-		false,
+		true,
 		{
 			"money": 1
 		},
-		16
+		16,
+		true
 	))
 	
 	itemMax += 1;
@@ -151,7 +163,8 @@ func _ready() -> void:
 			"light": 1,
 			"heavy": 1
 		},
-		3
+		3,
+		false
 	))
 	
 	itemMax += 1;
@@ -159,11 +172,12 @@ func _ready() -> void:
 	item_list.append(make_item(
 		"A Big Meal",
 		1000,
-		false,
+		true,
 		{
 			"heavy": 0.5
 		},
-		1
+		1,
+		false
 	))
 	
 	itemMax += 1;
@@ -176,7 +190,8 @@ func _ready() -> void:
 			"light_air": 0.4,
 			"heavy_air": 0.4
 		},
-		11
+		11,
+		false
 	))
 	
 	itemMax += 1;
@@ -188,7 +203,8 @@ func _ready() -> void:
 		{
 			"light_air": 0.3
 		},
-		12
+		12,
+		false
 	))
 	
 	itemMax += 1;
@@ -200,7 +216,8 @@ func _ready() -> void:
 		{
 			"heavy_side": 0.5
 		},
-		5
+		5,
+		false
 	))
 	
 	itemMax += 1;
@@ -212,7 +229,8 @@ func _ready() -> void:
 		{
 			"light_side": 0.5
 		},
-		4
+		4,
+		false
 	))
 	
 	itemMax += 1;
@@ -224,7 +242,8 @@ func _ready() -> void:
 		{
 			"light_neutral": 0.4
 		},
-		4
+		4,
+		false
 	))
 	
 	itemMax += 1;
@@ -237,7 +256,8 @@ func _ready() -> void:
 			"light_down": 0.6,
 			"heavy_down": 0.6
 		},
-		9
+		9,
+		false
 	))
 	
 	itemMax += 1;
@@ -249,7 +269,8 @@ func _ready() -> void:
 		{
 			"heavy_air": 0.3
 		},
-		13
+		13,
+		false
 	))
 	
 	itemMax += 1;
@@ -261,7 +282,8 @@ func _ready() -> void:
 		{
 			"money": 0.5
 		},
-		16
+		16,
+		false
 	))
 	
 	itemMax += 1;
@@ -273,7 +295,8 @@ func _ready() -> void:
 		{
 			"heavy_neutral": 0.5
 		},
-		5
+		5,
+		false
 	))
 	
 	itemMax += 1;
@@ -281,12 +304,13 @@ func _ready() -> void:
 	item_list.append(make_item(
 		"Enlightened Centrist",
 		1500,
-		false,
+		true,
 		{
 			"light_neutral": 0.5,
 			"heavy_neutral": 0.5
 		},
-		17
+		17,
+		true
 	))
 	
 	itemMax += 1;
