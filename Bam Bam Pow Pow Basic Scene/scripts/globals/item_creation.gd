@@ -1,8 +1,7 @@
 extends Node
 
-var item_list = []
-var equipped_list = [5]
-@onready var itemMax = 0;
+var item_list = [] # The list of items
+@onready var itemMax = 0; # The number of items currently made and implemented
 
 enum MULTTYPE {
 	MONEY,
@@ -11,6 +10,7 @@ enum MULTTYPE {
 	SPECIFIC
 }
 
+# Make item function that assigns parts of item to whatever they are set as when called
 func make_item(name, price, owned, effects: Dictionary, sprite_index, equipped) -> Dictionary:
 	var item: Dictionary = {
 		"name" 		: name,
@@ -150,7 +150,7 @@ func _ready() -> void:
 			"money": 1
 		},
 		16,
-		true
+		false
 	))
 	
 	itemMax += 1;
@@ -199,7 +199,7 @@ func _ready() -> void:
 	item_list.append(make_item(
 		"Balloon Pack",
 		600,
-		false,
+		true,
 		{
 			"light_air": 0.3
 		},
@@ -310,7 +310,7 @@ func _ready() -> void:
 			"heavy_neutral": 0.5
 		},
 		17,
-		true
+		false
 	))
 	
 	itemMax += 1;

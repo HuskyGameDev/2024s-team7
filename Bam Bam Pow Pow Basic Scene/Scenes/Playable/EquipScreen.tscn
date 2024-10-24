@@ -25,21 +25,25 @@ size_flags_vertical = 4
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="EquippedItem" parent="Control/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_orlww")]
+[node name="EquippedItem1" parent="Control/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_orlww")]
 layout_mode = 2
-metadata/ID = 9
+metadata/ID = -1
 
 [node name="EquippedItem2" parent="Control/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_orlww")]
 layout_mode = 2
+metadata/ID = -1
 
 [node name="EquippedItem3" parent="Control/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_orlww")]
 layout_mode = 2
+metadata/ID = -1
 
 [node name="EquippedItem4" parent="Control/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_orlww")]
 layout_mode = 2
+metadata/ID = -1
 
 [node name="EquippedItem5" parent="Control/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_orlww")]
 layout_mode = 2
+metadata/ID = -1
 
 [node name="MarginContainer3" type="MarginContainer" parent="Control/VBoxContainer"]
 layout_mode = 2
@@ -134,5 +138,22 @@ text = ">
 Next
 Page"
 
+[connection signal="selected_item" from="Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem1" to="." method="_on_equipped_item_selected_item"]
+[connection signal="selected_item" from="Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem2" to="." method="_on_equipped_item_selected_item"]
+[connection signal="selected_item" from="Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem3" to="." method="_on_equipped_item_selected_item"]
+[connection signal="selected_item" from="Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem4" to="." method="_on_equipped_item_selected_item"]
+[connection signal="selected_item" from="Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem5" to="." method="_on_equipped_item_selected_item"]
+[connection signal="pressed" from="Control/VBoxContainer/MarginContainer3/HBoxContainer/EquipButton" to="." method="_on_equip_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/MarginContainer3/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/MarginContainer2/HBoxContainer/LastPageButton" to="." method="_on_last_page_button_pressed"]
+[connection signal="selected_item" from="Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsFirstRow/EquipItem1" to="." method="_on_equip_item_selected_item"]
+[connection signal="selected_item" from="Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsFirstRow/EquipItem2" to="." method="_on_equip_item_selected_item"]
+[connection signal="selected_item" from="Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsFirstRow/EquipItem3" to="." method="_on_equip_item_selected_item"]
+[connection signal="selected_item" from="Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsFirstRow/EquipItem4" to="." method="_on_equip_item_selected_item"]
+[connection signal="selected_item" from="Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsFirstRow/EquipItem5" to="." method="_on_equip_item_selected_item"]
+[connection signal="selected_item" from="Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsSecondRow/EquipItem6" to="." method="_on_equip_item_selected_item"]
+[connection signal="selected_item" from="Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsSecondRow/EquipItem7" to="." method="_on_equip_item_selected_item"]
+[connection signal="selected_item" from="Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsSecondRow/EquipItem8" to="." method="_on_equip_item_selected_item"]
+[connection signal="selected_item" from="Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsSecondRow/EquipItem9" to="." method="_on_equip_item_selected_item"]
+[connection signal="selected_item" from="Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsSecondRow/EquipItem10" to="." method="_on_equip_item_selected_item"]
 [connection signal="pressed" from="Control/VBoxContainer/MarginContainer2/HBoxContainer/NextPageButton" to="." method="_on_next_page_button_pressed"]

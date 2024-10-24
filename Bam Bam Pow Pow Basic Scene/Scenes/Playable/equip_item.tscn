@@ -11,7 +11,7 @@ script = ExtResource("1_ufywy")
 metadata/ID = 0
 
 [node name="SpriteContainer" type="Control" parent="."]
-custom_minimum_size = Vector2(200, 200)
+custom_minimum_size = Vector2(200, 150)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -23,9 +23,14 @@ texture = ExtResource("2_702wy")
 hframes = 4
 vframes = 5
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Name"
+
 [node name="Button" type="Button" parent="."]
 custom_minimum_size = Vector2(200, 10)
 layout_mode = 2
 text = "Select"
 
 [connection signal="pressed" from="Button" to="." method="_on_sprite_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

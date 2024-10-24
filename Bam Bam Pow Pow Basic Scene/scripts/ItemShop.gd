@@ -30,14 +30,16 @@ func _process(_delta):
 	#	ItemStorage.printItems()
 	pass
 
+# A helper function to add money to the players money and display it
 func update_money(change):
 	ItemStorage.money = ItemStorage.money+change
 	moneylabel.text = "Money: " + str(ItemStorage.money)
 
+# Helper function to subtract money from the players total when they buy an item
 func bought_item(money):
 	update_money(-money)
 
-
+# A series of functions that are used to transition to new scenes
 func _on_fight_scene_button_pressed():
 	SceneSwap.scene_swap("res://Scenes/Playable/Fight.tscn");
 
@@ -50,10 +52,12 @@ func _on_weapon_shop_button_pressed():
 func _on_settings_menu_button_pressed():
 	Global.prev_scene = get_tree().current_scene.scene_file_path
 	SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn");
-	
+
+# Redirection to save game function in item_storage script
 func _on_save_button_pressed():
 	ItemStorage.save_game()
 
+# When load game button is pressed, load it and update money and items
 func _on_load_button_pressed():
 	ItemStorage.load_game()
 	moneylabel.text = "Money: " + str(ItemStorage.money)

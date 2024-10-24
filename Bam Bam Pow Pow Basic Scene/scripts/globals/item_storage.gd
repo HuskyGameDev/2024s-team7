@@ -1,7 +1,8 @@
 extends Node
 
-var money
-var itemsList = []
+var money # Money player has
+var itemsList = [] # Array to store all items
+var equipped_items = [-1, -1, -1, -1, -1] # Array of equipped item id's initialized to -1 (not real id)
 
 var moneyItems = []			# Only affect money
 var baseItems = []			# Only affect base multipliers
@@ -31,13 +32,15 @@ func _ready():
 	itemMax = ItemCreation.itemMax
 	fightvisit = 0
 
+# Gives money based on score obtained in fight scene
 func calc_money(score):
 	money += score*self.moneyMult
-	
 
+# Adds to fightvisit to be used in hiding the screen of input hints
 func fightvisitup():
 	fightvisit = fightvisit + 1
 
+# Save game function, stores money player has and whether items are owned
 func save_game():
 	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
 	save_file.store_line(str(money))
@@ -47,6 +50,8 @@ func save_game():
 		else:
 			save_file.store_line(str(0))
 
+# Load game function, updates owned status on items and money depending on what is 
+# in save file
 func load_game():
 	var save_file = FileAccess.open("user://savegame.save", FileAccess.READ)
 	var content = save_file.get_as_text()
@@ -60,11 +65,13 @@ func load_game():
 			itemsList[item_id]["owned"] = false
 		item_id = item_id+1
 
+# Prints all owned items, currently unused
 func printItems():
 	for item in itemsList:
 		if (item["owned"] == true):
 			print(item)
 
+# Deletes save file by overwriting with no money and no items
 func restart_game():
 	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
 	save_file.store_line(str(0))

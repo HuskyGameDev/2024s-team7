@@ -1,21 +1,11 @@
 extends CanvasLayer
 
-@onready var equip1 = $Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem1
-@onready var equip2 = $Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem2
-@onready var equip3 = $Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem3
-@onready var equip4 = $Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem4
-@onready var equip5 = $Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem5
-@onready var item1 = $Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsFirstRow/EquipItem1
-@onready var item2 = $Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsFirstRow/EquipItem2
-@onready var item3 = $Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsFirstRow/EquipItem3
-@onready var item4 = $Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsFirstRow/EquipItem4
-@onready var item5 = $Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsFirstRow/EquipItem5
-@onready var item6 = $Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsSecondRow/EquipItem6
-@onready var item7 = $Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsSecondRow/EquipItem7
-@onready var item8 = $Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsSecondRow/EquipItem8
-@onready var item9 = $Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsSecondRow/EquipItem9
-@onready var item10 = $Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsSecondRow/EquipItem10
+# Get reference to equip/unequip button, cancel selection button,
+# the maximum number of pages, and the currently selected id
+@onready var equip_unequip_button = $Control/VBoxContainer/MarginContainer3/HBoxContainer/EquipButton
+@onready var cancel_button = $Control/VBoxContainer/MarginContainer3/HBoxContainer/CancelButton
 @onready var maxPage = ceil(ItemStorage.itemMax/10.0)
+@onready var selected_id = -1
 signal reload
 
 
@@ -23,19 +13,23 @@ var page = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	# Make equip/unequip button and cancel selection button disappear
+	equip_unequip_button.visible = false
+	cancel_button.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
+# Make sure current page is within allowed pages, else lop
 func valpage():
 	if (page < 1):
 		page = maxPage
 	elif (page > maxPage):
 		page = 1
 
+# Function for going to the next page
 func _on_next_page_button_pressed() -> void:
 	# Increment page and ensure it is still within bounds of available pages
 	page += 1
@@ -57,6 +51,7 @@ func _on_next_page_button_pressed() -> void:
 			curr_item.set_meta("ID", curr_item.get_meta("ID")+10)
 		curr_item.on_reload()
 
+# Function for going to the previous page
 func _on_last_page_button_pressed() -> void:
 	# Decrement page and ensure it is still within the bounds of available pages
 	page -= 1
@@ -78,6 +73,73 @@ func _on_last_page_button_pressed() -> void:
 			curr_item.set_meta("ID", curr_item.get_meta("ID")-10)
 		curr_item.on_reload()
 
+# Change the equipped items to have id's of whatever's in equipped_items array
+# and reload them to display properly
+func reload_equipped() -> void:
+	for i in 5:
+		var curr_eq_item 
+		var curr_eq_item_num = "Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem" + str(i+1)
+		curr_eq_item = get_node(curr_eq_item_num)
+		curr_eq_item.set_meta("ID", ItemStorage.equipped_items[i])
+		curr_eq_item.on_reload()
 
-func _on_button_pressed() -> void:
-	pass # Replace with function body.
+# When selecting a currently equipped item, make equip/unequip button say unequip,
+# make it and cancel selection button visibile, and update selected id
+func _on_equipped_item_selected_item(id: Variant) -> void:
+	equip_unequip_button.visible = true
+	equip_unequip_button.text = "Unequip"
+	cancel_button.visible = true
+	selected_id = id
+
+# When selecting a currently unequipped item, make equip/unequip button say equip,
+# make it and cancel selection button visibile, and update selected id
+func _on_equip_item_selected_item(id: Variant) -> void:
+	equip_unequip_button.visible = true
+	equip_unequip_button.text = "Equip"
+	cancel_button.visible = true
+	selected_id = id
+
+# When the equip/unequip button is pressed, equip or unequip depending on current selection
+func _on_equip_button_pressed() -> void:
+	# If currently selected item is unequipped and there are less than 5 items equipped (max)
+	# equip the currently selected item and show it, then unselect the item
+	if (ItemStorage.itemsList[selected_id]["equipped"] == false):
+		var equipped = 0
+		for i in 5:
+			if (ItemStorage.equipped_items[i] != -1):
+				equipped = equipped + 1
+		if (equipped != 5):
+			ItemStorage.itemsList[selected_id]["equipped"] = true
+			for i in 5:
+				if (ItemStorage.equipped_items[i] == -1):
+					ItemStorage.equipped_items[i] = selected_id
+					break
+			reload_equipped()
+			unselect()
+	else:
+		# If currently selected item is equipped, unequip it and remove it from the equipped
+		# item list, then shift down equipped items positions and show the change and unselect
+		# the current item
+		ItemStorage.itemsList[selected_id]["equipped"] = false
+		for i in 5:
+			if (ItemStorage.equipped_items[i] == selected_id):
+				ItemStorage.equipped_items[i] = -1
+				for j in range(i,5):
+					if (j != 4 && ItemStorage.equipped_items[j+1] != -1):
+						ItemStorage.equipped_items[j] = ItemStorage.equipped_items[j+1]
+					else:
+						ItemStorage.equipped_items[j] = -1
+					
+		reload_equipped()
+		unselect()
+
+# Helper function that removes the equip/unequip and cancel buttons and sets selected_id
+# to -1 (nonexistant id)
+func unselect() -> void:
+	equip_unequip_button.visible = false
+	cancel_button.visible = false
+	selected_id = -1
+
+# When cancel button is pressed, run unselect function
+func _on_cancel_button_pressed() -> void:
+	unselect()

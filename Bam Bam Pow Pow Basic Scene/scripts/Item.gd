@@ -2,8 +2,8 @@ extends VBoxContainer
 
 signal bought_item(money) # Signal for when the item is bought that uses its money stat
 
-# Finds the items label for its cost, its buy button, its sprite in the scene, the node for its id, 
-# the purchase noise, its ID from its ID node, and its audio player
+# Finds the item shop, label for the cost, buy button, sprite, name label, loads the 
+# purchase sound, gets its id, the control node, and the audio player
 @onready var item_shop = get_node("/root/ItemShop")
 @onready var money_label = $HBoxContainer/PriceLabel
 @onready var buy_button = $HBoxContainer/BuyButton
@@ -29,12 +29,14 @@ func _process(_delta):
 # Function to call when reloading the items characteristics in the shop
 func _on_item_shop_reload():
 	id = self.get_meta("ID") # Updates the id variable here based on what the metadata was changed to
-	var lessThanMax = (id < ItemStorage.itemMax)
+	var lessThanMax = (id < ItemStorage.itemMax) # Checks if item's id is less than the max (viable id)
+	# If item is outside viable item numbers but on last page of the item shop
 	if (lessThanMax == false):
 		money_label.visible = false
 		buy_button.visible = false
 		sprite.visible = false
 		name_label.visible = false
+	# If the item is owned, only show its sprite, name, and that it was bought
 	elif (ItemStorage.itemsList[id].owned == true):
 		buy_button.visible = false
 		sprite.visible = true;
