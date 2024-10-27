@@ -21,7 +21,6 @@ func _input(event):
 	if !started && event is InputEventKey:
 		input_screen.visible = false
 		started = true
-		player.position += Vector2(275, 0)
 		time.start()
 
 func _process(delta):

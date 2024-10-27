@@ -57,7 +57,7 @@ format = 2
 layer_0/tile_data = PackedInt32Array(2818051, 1, 0, 2818059, 1, 0, 2818067, 1, 0, 2818075, 1, 0, 2818083, 1, 0, 2818091, 1, 0, 2818099, 1, 0, 2818107, 1, 0, 2818115, 1, 0, 2818123, 1, 0, 2883579, 1, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 393214, 0, 0, 65548, 1, 0, 262156, 1, 0, 327677, 1, 0, 131069, 1, 0)
 
 [node name="player" parent="." instance=ExtResource("3_w7w43")]
-position = Vector2(291, 522)
+position = Vector2(291, 531)
 scale = Vector2(2, 2)
 score = null
 
@@ -164,6 +164,6 @@ Toggle this window appearing in settings"
 [connection signal="attack" from="ComboHandler" to="player" method="_on_signal_transfer_to_state"]
 [connection signal="attack" from="ComboHandler" to="enemy" method="_on_combo_handler_attack"]
 [connection signal="attack_damamge" from="ComboHandler" to="enemy" method="_on_combo_handler_attack_damamge"]
-[connection signal="attack_index" from="ComboHandler" to="player" method="_on_signal_transfer_to_state"]
 [connection signal="attack_index" from="ComboHandler" to="player" method="_on_combo_handler_attack_index"]
+[connection signal="attack_index" from="ComboHandler" to="player" method="_on_signal_transfer_to_state"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

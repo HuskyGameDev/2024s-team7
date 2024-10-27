@@ -18,6 +18,9 @@ func _deferred_scene_swap(scene_path):
 	fade.fade_to_black()
 	
 	await fade.faded
+	# Wait for the scene to be fully loaded before processing input.
+	set_process_input(false)
+	
 	# Fade is complete.
 	cur_scene.queue_free()
 	var new_scene = load(scene_path)
@@ -32,3 +35,5 @@ func _deferred_scene_swap(scene_path):
 	# still need to delete fade
 	get_tree().root.remove_child(fade)
 	fade.queue_free()
+	# Allow input to be processed again.
+	set_process_input(true)
