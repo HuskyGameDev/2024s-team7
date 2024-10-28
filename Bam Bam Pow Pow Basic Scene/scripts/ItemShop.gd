@@ -10,7 +10,8 @@ extends CanvasLayer
 @onready var item7 = $MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item7
 @onready var item8 = $MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item8
 @onready var maxPage = ceil(ItemStorage.itemMax/8.0)
-
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+const WOOD_CLICK = preload("res://resources/sounds/WoodClick.wav")
 
 
 var page = 1 # The item shop always starts on page 1
@@ -41,24 +42,42 @@ func bought_item(money):
 
 # A series of functions that are used to transition to new scenes
 func _on_fight_scene_button_pressed():
+	if (!audio_stream_player.is_playing()):
+			audio_stream_player.stream = WOOD_CLICK
+			audio_stream_player.play()
 	SceneSwap.scene_swap("res://Scenes/Playable/Fight.tscn");
 
 func _on_main_menu_button_pressed():
+	if (!audio_stream_player.is_playing()):
+			audio_stream_player.stream = WOOD_CLICK
+			audio_stream_player.play()
 	SceneSwap.scene_swap("res://Scenes/Playable/MainMenu.tscn");
 
 func _on_weapon_shop_button_pressed():
+	if (!audio_stream_player.is_playing()):
+			audio_stream_player.stream = WOOD_CLICK
+			audio_stream_player.play()
 	SceneSwap.scene_swap("res://Scenes/Playable/WeaponShop.tscn");
 
 func _on_settings_menu_button_pressed():
+	if (!audio_stream_player.is_playing()):
+			audio_stream_player.stream = WOOD_CLICK
+			audio_stream_player.play()
 	Global.prev_scene = get_tree().current_scene.scene_file_path
 	SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn");
 
 # Redirection to save game function in item_storage script
 func _on_save_button_pressed():
+	if (!audio_stream_player.is_playing()):
+			audio_stream_player.stream = WOOD_CLICK
+			audio_stream_player.play()
 	ItemStorage.save_game()
 
 # When load game button is pressed, load it and update money and items
 func _on_load_button_pressed():
+	if (!audio_stream_player.is_playing()):
+			audio_stream_player.stream = WOOD_CLICK
+			audio_stream_player.play()
 	ItemStorage.load_game()
 	moneylabel.text = "Money: " + str(ItemStorage.money)
 	emit_signal("reload")
@@ -72,6 +91,9 @@ func valpage():
 
 # When the next page button is pressed
 func _on_next_page_button_pressed() -> void:
+	if (!audio_stream_player.is_playing()):
+			audio_stream_player.stream = WOOD_CLICK
+			audio_stream_player.play()
 	# Increment page and ensure it is still within bounds of available pages
 	page += 1
 	valpage()

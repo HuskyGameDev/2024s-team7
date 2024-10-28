@@ -9,7 +9,9 @@ signal bought_item(money) # Signal for when the item is bought that uses its mon
 @onready var buy_button = $HBoxContainer/BuyButton
 @onready var sprite = $SpriteContainer/Sprite2D
 @onready var name_label = $NameLabel
-@onready var purchase_noise = preload("res://resources/sounds/Item_Purchase_Coins.wav")
+@onready var purchase_noise = preload("res://resources/sounds/ChaChing.wav")
+@onready var noMoney_noise = preload("res://resources/sounds/Buzz.wav")
+@onready var click_noise = preload("res://resources/sounds/WoodClick.wav")
 @onready var id = self.get_meta("ID")
 @onready var con = get_node("/root/ItemShop/Control")
 @onready var audioPlayer = get_node("/root/ItemShop/AudioStreamPlayer")
@@ -74,3 +76,8 @@ func _on_button_pressed():
 			audioPlayer.stream = purchase_noise
 			audioPlayer.play()
 		emit_signal("bought_item", money) # Emits the signal to say the item was bought with the appropriate cost
+	else:
+		if (!audioPlayer.is_playing()):
+			audioPlayer.stream = noMoney_noise
+			audioPlayer.play()
+		
