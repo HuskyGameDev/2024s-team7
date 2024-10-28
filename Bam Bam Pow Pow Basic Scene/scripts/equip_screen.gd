@@ -50,6 +50,7 @@ func _on_next_page_button_pressed() -> void:
 		else:
 			curr_item.set_meta("ID", curr_item.get_meta("ID")+10)
 		curr_item.on_reload()
+	unselect()
 
 # Function for going to the previous page
 func _on_last_page_button_pressed() -> void:
@@ -72,6 +73,7 @@ func _on_last_page_button_pressed() -> void:
 		else:
 			curr_item.set_meta("ID", curr_item.get_meta("ID")-10)
 		curr_item.on_reload()
+	unselect()
 
 # Change the equipped items to have id's of whatever's in equipped_items array
 # and reload them to display properly
@@ -95,7 +97,10 @@ func _on_equipped_item_selected_item(id: Variant) -> void:
 # make it and cancel selection button visibile, and update selected id
 func _on_equip_item_selected_item(id: Variant) -> void:
 	equip_unequip_button.visible = true
-	equip_unequip_button.text = "Equip"
+	if (ItemStorage.itemsList[id]["equipped"] == false):
+		equip_unequip_button.text = "Equip"
+	else:
+		equip_unequip_button.text = "Unequip"
 	cancel_button.visible = true
 	selected_id = id
 

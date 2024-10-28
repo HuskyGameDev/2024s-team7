@@ -39,8 +39,9 @@ func on_reload() -> void:
 		if (ItemStorage.itemsList[id]["sprite"] != null):
 			sprite.texture = load("res://resources/sprites/Shop_sprites.png")
 			sprite.frame = ItemStorage.itemsList[id]["sprite"]
+		namelabel.visible = true
+		namelabel.text = ItemStorage.itemsList[id]["name"]
 		button.visible = false
-		namelabel.visible = false
 	# If the item is owned by the player, show its sprite, name, and select button
 	else:
 		sprite.visible = true
