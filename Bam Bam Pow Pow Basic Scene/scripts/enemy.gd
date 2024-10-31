@@ -135,6 +135,8 @@ func _physics_process(delta):
 				velocity.x -= weight/50 + velocity.x*0.1
 			if velocity.x < 0:
 				velocity.x += weight/50 - velocity.x*0.1
+		if self.combo > Global.combo:
+			Global.combo = self.combo
 		self.juggle = 0
 		self.combo = 0
 
@@ -184,8 +186,9 @@ func _on_hurtbox_area_entered(hitbox):
 
 func calc_money():
 	var addedtotal: int = score * money_mult
+	Global.score = score
 	ItemStorage.money += (addedtotal)
-	SceneSwap.scene_swap("res://Scenes/Playable/ItemShop.tscn")
+	SceneSwap.scene_swap("res://Scenes/Playable/ResultsScreen.tscn")
 
 
 func _on_player_attack(attack):

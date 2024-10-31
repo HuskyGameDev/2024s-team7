@@ -121,7 +121,7 @@ texture_over = ExtResource("9_i7ld0")
 texture_progress = ExtResource("10_2oyx8")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 30.0
+wait_time = 5.0
 one_shot = true
 
 [node name="WarningScreen" type="ColorRect" parent="."]
@@ -164,6 +164,6 @@ Toggle this window appearing in settings"
 [connection signal="attack" from="ComboHandler" to="player" method="_on_signal_transfer_to_state"]
 [connection signal="attack" from="ComboHandler" to="enemy" method="_on_combo_handler_attack"]
 [connection signal="attack_damamge" from="ComboHandler" to="enemy" method="_on_combo_handler_attack_damamge"]
-[connection signal="attack_index" from="ComboHandler" to="player" method="_on_combo_handler_attack_index"]
 [connection signal="attack_index" from="ComboHandler" to="player" method="_on_signal_transfer_to_state"]
+[connection signal="attack_index" from="ComboHandler" to="player" method="_on_combo_handler_attack_index"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

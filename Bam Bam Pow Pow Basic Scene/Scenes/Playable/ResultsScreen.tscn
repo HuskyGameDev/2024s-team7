@@ -1,0 +1,76 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5bv0i4qblokb"]
+
+[ext_resource type="Script" path="res://scripts/results_screen.gd" id="1_kq846"]
+[ext_resource type="Texture2D" uid="uid://bjp6mrfnrh2bv" path="res://Assets/bg-sakura.PNG" id="2_cf11a"]
+
+[node name="ResultsScreen" type="Node2D"]
+script = ExtResource("1_kq846")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -2.0
+offset_right = 1278.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_cf11a")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 575.0
+offset_top = 144.0
+offset_right = 756.0
+offset_bottom = 205.0
+bbcode_enabled = true
+text = "[font_size=30][color=black][b]Results[/b][/color][/font_size]"
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 531.0
+offset_top = 608.0
+offset_right = 715.0
+offset_bottom = 678.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Click to Continue"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="."]
+offset_left = 549.0
+offset_top = 259.0
+offset_right = 684.0
+offset_bottom = 334.0
+bbcode_enabled = true
+text = "[font_size=30][color=black][b]Score:[/b][/color][/font_size]"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = 387.0
+offset_top = 407.0
+offset_right = 730.0
+offset_bottom = 500.0
+bbcode_enabled = true
+text = "[font_size=30][color=black][b]Longest Combo:[/b][/color][/font_size]"
+
+[node name="Combo" type="RichTextLabel" parent="."]
+offset_left = 680.0
+offset_top = 409.0
+offset_right = 1217.0
+offset_bottom = 455.0
+bbcode_enabled = true
+text = "[font_size=30][color=black][b]0[/b][/color][/font_size]"
+
+[node name="Score" type="RichTextLabel" parent="."]
+offset_left = 677.0
+offset_top = 262.0
+offset_right = 857.0
+offset_bottom = 312.0
+bbcode_enabled = true
+text = "[font_size=30][color=black][b]0[/b][/color][/font_size]"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

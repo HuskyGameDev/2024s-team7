@@ -8,3 +8,6 @@ var fullscreen_on = false
 var resolution_index = 3
 #Remapping
 var is_remapping = false
+#YES
+var score = 0
+var combo = 0
