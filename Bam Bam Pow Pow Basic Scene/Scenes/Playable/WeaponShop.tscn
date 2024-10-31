@@ -1,21 +1,83 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7hqp2kuj8xq5"]
+[gd_scene load_steps=21 format=3 uid="uid://c7hqp2kuj8xq5"]
 
 [ext_resource type="Script" path="res://scripts/weapon_shop.gd" id="1_wkwj5"]
 [ext_resource type="Texture2D" uid="uid://dxunmhf25os5p" path="res://resources/sprites/dragon-in-shop.png" id="2_7m3va"]
 [ext_resource type="Texture2D" uid="uid://dc36bpll4ldvy" path="res://resources/sprites/background-itemshop.png" id="2_8ayfd"]
 [ext_resource type="PackedScene" uid="uid://5n0srb1iavr0" path="res://Scenes/Entities/hanger.tscn" id="3_01yxm"]
+[ext_resource type="PackedScene" uid="uid://cc1ttocg7gplt" path="res://Scenes/Functional/Sprite2DButton.tscn" id="5_8vjnh"]
 [ext_resource type="Texture2D" uid="uid://csaod2ht6ymhf" path="res://resources/sprites/next-prev.png" id="5_75nm7"]
 [ext_resource type="Texture2D" uid="uid://kg8lti6ql3wt" path="res://resources/sprites/caution-symbol.png" id="6_1g72y"]
-[ext_resource type="Texture2D" uid="uid://dj87ja156haea" path="res://resources/sprites/real-box.png" id="6_g8uxk"]
+[ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="6_el8qg"]
+[ext_resource type="PackedScene" uid="uid://dbc7vk84ewdqo" path="res://Scenes/Functional/BasicButton.tscn" id="7_l0lf5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uopw6"]
+shader = ExtResource("6_el8qg")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2sdlv"]
 content_margin_left = 450.0
 content_margin_right = 0.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_40vwc"]
+resource_local_to_scene = true
+shader = ExtResource("6_el8qg")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2i54w"]
+resource_local_to_scene = true
+shader = ExtResource("6_el8qg")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vue0w"]
+resource_local_to_scene = true
+shader = ExtResource("6_el8qg")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w8y6o"]
+resource_local_to_scene = true
+shader = ExtResource("6_el8qg")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_owe7p"]
+resource_local_to_scene = true
+shader = ExtResource("6_el8qg")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8e7f5"]
+resource_local_to_scene = true
+shader = ExtResource("6_el8qg")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s6aln"]
+resource_local_to_scene = true
+shader = ExtResource("6_el8qg")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4futt"]
+resource_local_to_scene = true
+shader = ExtResource("6_el8qg")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tfvo5"]
+resource_local_to_scene = true
+shader = ExtResource("6_el8qg")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
 [node name="WeaponShop" type="CanvasLayer"]
 script = ExtResource("1_wkwj5")
 
 [node name="Background" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_uopw6")
 position = Vector2(640, 360)
 scale = Vector2(4, 4)
 texture = ExtResource("2_8ayfd")
@@ -129,55 +191,24 @@ text = "Equip"
 [node name="FlavorText" type="Label" parent="VBoxContainer/ColorRect/VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="PrevSprite" type="Sprite2D" parent="VBoxContainer/HBoxContainer"]
-position = Vector2(102.75, 39.75)
-scale = Vector2(3.5, 3.5)
+[node name="Prev" parent="VBoxContainer" instance=ExtResource("5_8vjnh")]
+material = SubResource("ShaderMaterial_40vwc")
+position = Vector2(93, 243)
+scale = Vector2(3.71429, 3.71429)
 texture = ExtResource("5_75nm7")
 hframes = 2
 
-[node name="Prev" type="Button" parent="VBoxContainer/HBoxContainer/PrevSprite"]
-self_modulate = Color(1, 1, 1, 0)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -27.0
-offset_top = -9.0
-offset_right = -30.0
-offset_bottom = -12.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-metadata/_edit_use_anchors_ = true
-
-[node name="NextSprite" type="Sprite2D" parent="VBoxContainer/HBoxContainer"]
-position = Vector2(301.75, 39.75)
-scale = Vector2(3.5, 3.5)
+[node name="Next" parent="VBoxContainer" instance=ExtResource("5_8vjnh")]
+material = SubResource("ShaderMaterial_2i54w")
+position = Vector2(314, 243)
+scale = Vector2(3.714, 3.714)
 texture = ExtResource("5_75nm7")
 hframes = 2
 frame = 1
 
-[node name="Next" type="Button" parent="VBoxContainer/HBoxContainer/NextSprite"]
-self_modulate = Color(1, 1, 1, 0)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -27.0
-offset_top = -9.0
-offset_right = -30.0
-offset_bottom = -12.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-metadata/_edit_use_anchors_ = true
-
-[node name="Next" type="Button" parent="VBoxContainer/HBoxContainer"]
-visible = false
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-text = "Next"
+alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -197,21 +228,22 @@ metadata/_edit_group_ = true
 layout_mode = 2
 size_flags_vertical = 10
 
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/MenuButtonRow"]
-custom_minimum_size = Vector2(0, 50)
+[node name="MainMenu" parent="MarginContainer/MenuButtonRow" instance=ExtResource("7_l0lf5")]
+material = SubResource("ShaderMaterial_vue0w")
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("6_g8uxk")
-patch_margin_left = 20
-patch_margin_top = 20
-patch_margin_right = 20
-patch_margin_bottom = 20
 
-[node name="Label" type="Label" parent="MarginContainer/MenuButtonRow/NinePatchRect"]
+[node name="Label" type="Label" parent="MarginContainer/MenuButtonRow/MainMenu"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -12.5
+offset_right = 60.0
+offset_bottom = 12.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 20
@@ -219,33 +251,22 @@ text = "Main Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MainMenuButton" type="Button" parent="MarginContainer/MenuButtonRow/NinePatchRect"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-text = "Main Menu"
-
-[node name="NinePatchRect2" type="NinePatchRect" parent="MarginContainer/MenuButtonRow"]
-custom_minimum_size = Vector2(0, 50)
+[node name="Settings" parent="MarginContainer/MenuButtonRow" instance=ExtResource("7_l0lf5")]
+material = SubResource("ShaderMaterial_w8y6o")
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("6_g8uxk")
-patch_margin_left = 20
-patch_margin_top = 20
-patch_margin_right = 20
-patch_margin_bottom = 20
 
-[node name="Label" type="Label" parent="MarginContainer/MenuButtonRow/NinePatchRect2"]
+[node name="Label" type="Label" parent="MarginContainer/MenuButtonRow/Settings"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = -12.5
+offset_right = 53.5
+offset_bottom = 12.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 20
@@ -253,33 +274,22 @@ text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SettingsMenuButton" type="Button" parent="MarginContainer/MenuButtonRow/NinePatchRect2"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-text = "Settings Menu"
-
-[node name="NinePatchRect3" type="NinePatchRect" parent="MarginContainer/MenuButtonRow"]
-custom_minimum_size = Vector2(0, 50)
+[node name="ItemShop" parent="MarginContainer/MenuButtonRow" instance=ExtResource("7_l0lf5")]
+material = SubResource("ShaderMaterial_owe7p")
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("6_g8uxk")
-patch_margin_left = 20
-patch_margin_top = 20
-patch_margin_right = 20
-patch_margin_bottom = 20
 
-[node name="Label" type="Label" parent="MarginContainer/MenuButtonRow/NinePatchRect3"]
+[node name="Label" type="Label" parent="MarginContainer/MenuButtonRow/ItemShop"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -12.5
+offset_right = 60.0
+offset_bottom = 12.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 20
@@ -287,32 +297,22 @@ text = "Item Shop"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ItemShopButton" type="Button" parent="MarginContainer/MenuButtonRow/NinePatchRect3"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-text = "Item Shop"
-
-[node name="NinePatchRect4" type="NinePatchRect" parent="MarginContainer/MenuButtonRow"]
-custom_minimum_size = Vector2(0, 50)
+[node name="FightScene" parent="MarginContainer/MenuButtonRow" instance=ExtResource("7_l0lf5")]
+material = SubResource("ShaderMaterial_8e7f5")
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("6_g8uxk")
-patch_margin_left = 20
-patch_margin_top = 20
-patch_margin_right = 20
-patch_margin_bottom = 20
 
-[node name="Label" type="Label" parent="MarginContainer/MenuButtonRow/NinePatchRect4"]
+[node name="Label" type="Label" parent="MarginContainer/MenuButtonRow/FightScene"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.5
+offset_top = -12.5
+offset_right = 73.5
+offset_bottom = 12.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 20
@@ -320,33 +320,22 @@ text = "Fight Scene"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="FightSceneButton" type="Button" parent="MarginContainer/MenuButtonRow/NinePatchRect4"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-text = "Fight Scene"
-
-[node name="NinePatchRect5" type="NinePatchRect" parent="MarginContainer/MenuButtonRow"]
-custom_minimum_size = Vector2(0, 50)
+[node name="SaveGame" parent="MarginContainer/MenuButtonRow" instance=ExtResource("7_l0lf5")]
+material = SubResource("ShaderMaterial_s6aln")
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("6_g8uxk")
-patch_margin_left = 20
-patch_margin_top = 20
-patch_margin_right = 20
-patch_margin_bottom = 20
 
-[node name="Label" type="Label" parent="MarginContainer/MenuButtonRow/NinePatchRect5"]
+[node name="Label" type="Label" parent="MarginContainer/MenuButtonRow/SaveGame"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -12.5
+offset_right = 60.0
+offset_bottom = 12.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 20
@@ -354,33 +343,22 @@ text = "Save Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SaveGameButton" type="Button" parent="MarginContainer/MenuButtonRow/NinePatchRect5"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-text = "Save Game"
-
-[node name="NinePatchRect6" type="NinePatchRect" parent="MarginContainer/MenuButtonRow"]
-custom_minimum_size = Vector2(0, 50)
+[node name="LoadGame" parent="MarginContainer/MenuButtonRow" instance=ExtResource("7_l0lf5")]
+material = SubResource("ShaderMaterial_4futt")
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("6_g8uxk")
-patch_margin_left = 20
-patch_margin_top = 20
-patch_margin_right = 20
-patch_margin_bottom = 20
 
-[node name="Label" type="Label" parent="MarginContainer/MenuButtonRow/NinePatchRect6"]
+[node name="Label" type="Label" parent="MarginContainer/MenuButtonRow/LoadGame"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -12.5
+offset_right = 60.0
+offset_bottom = 12.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 20
@@ -388,31 +366,11 @@ text = "Load Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LoadGameButton" type="Button" parent="MarginContainer/MenuButtonRow/NinePatchRect6"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-text = "Load Game"
-
-[node name="HazardButton" type="TextureButton" parent="."]
-anchors_preset = -1
-anchor_left = 0.269
-anchor_top = 0.2
-anchor_right = 0.269
-anchor_bottom = 0.2
-offset_left = 719.68
-offset_top = -128.0
-offset_right = 879.68
-offset_bottom = 32.0
-texture_normal = ExtResource("6_1g72y")
-texture_pressed = ExtResource("6_1g72y")
-stretch_mode = 4
+[node name="HazardButton" parent="." instance=ExtResource("5_8vjnh")]
+material = SubResource("ShaderMaterial_tfvo5")
+position = Vector2(1141.12, 92.5)
+scale = Vector2(5.23333, 5.23333)
+texture = ExtResource("6_1g72y")
 
 [node name="WarningScreen" type="ColorRect" parent="."]
 visible = false
@@ -460,14 +418,13 @@ text = "X"
 [connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger4" to="." method="_on_hanger_hanger_pressed"]
 [connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger5" to="." method="_on_hanger_hanger_pressed"]
 [connection signal="pressed" from="VBoxContainer/ColorRect/VBoxContainer/ToBuy/BuyButton" to="." method="_on_buy_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/PrevSprite/Prev" to="." method="_on_prev_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/NextSprite/Next" to="." method="_on_next_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Next" to="." method="_on_next_pressed"]
-[connection signal="pressed" from="MarginContainer/MenuButtonRow/NinePatchRect/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="MarginContainer/MenuButtonRow/NinePatchRect2/SettingsMenuButton" to="." method="_on_settings_menu_button_pressed"]
-[connection signal="pressed" from="MarginContainer/MenuButtonRow/NinePatchRect3/ItemShopButton" to="." method="_on_item_shop_button_pressed"]
-[connection signal="pressed" from="MarginContainer/MenuButtonRow/NinePatchRect4/FightSceneButton" to="." method="_on_fight_scene_button_pressed"]
-[connection signal="pressed" from="MarginContainer/MenuButtonRow/NinePatchRect5/SaveGameButton" to="." method="_on_save_game_button_pressed"]
-[connection signal="pressed" from="MarginContainer/MenuButtonRow/NinePatchRect6/LoadGameButton" to="." method="_on_load_game_button_pressed"]
-[connection signal="pressed" from="HazardButton" to="." method="_on_hazard_button_pressed"]
+[connection signal="SpriteButtonPressed" from="VBoxContainer/Prev" to="." method="_on_prev_sprite_button_pressed"]
+[connection signal="SpriteButtonPressed" from="VBoxContainer/Next" to="." method="_on_next_sprite_button_pressed"]
+[connection signal="buttonPressed" from="MarginContainer/MenuButtonRow/MainMenu" to="." method="_on_main_menu_button_pressed"]
+[connection signal="buttonPressed" from="MarginContainer/MenuButtonRow/Settings" to="." method="_on_settings_button_pressed"]
+[connection signal="buttonPressed" from="MarginContainer/MenuButtonRow/ItemShop" to="." method="_on_item_shop_button_pressed"]
+[connection signal="buttonPressed" from="MarginContainer/MenuButtonRow/FightScene" to="." method="_on_fight_scene_button_pressed"]
+[connection signal="buttonPressed" from="MarginContainer/MenuButtonRow/SaveGame" to="." method="_on_save_game_button_pressed"]
+[connection signal="buttonPressed" from="MarginContainer/MenuButtonRow/LoadGame" to="." method="_on_load_game_button_pressed"]
+[connection signal="SpriteButtonPressed" from="HazardButton" to="." method="_on_hazard_button_sprite_button_pressed"]
 [connection signal="pressed" from="WarningScreen/Close" to="." method="_on_close_pressed"]

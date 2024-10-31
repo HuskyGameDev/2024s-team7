@@ -1,5 +1,7 @@
 ## Temporary Global Variable set for 10/10 Playtest WeaponShop
 ## This set doesn't include any reference to actual weapons
+## Kept arrays because more efficient access than dictionary during game.
+## No elements added to arrays during runtime.
 
 class_name weapon_in_shop
 extends Node
@@ -11,39 +13,15 @@ extends Node
 # b) add new hanger sprite sheet
 # c) change number of frames in hanger sprite sheet animation
 
-
-var weapon_list = []
-# weapon_list.append(1)
-# WHY WON"
 @onready var weaponMax = 0;
 
 var currentInstance: int = 0 	# Which weapon we're on right now
 var weaponStartup: int = 0		# Prev + to set each Hanger Node to correct weapon index 
 
-# Array of all weapon names
-var weaponsInShopArray = ["Unarmed", "Bat", "Gun", "BBJones", "MorningStar"]
+var weaponsInShopArray = ["Unarmed", "Bat", "Gun", "BBJones", "MorningStar"] # Array of all weapon names
 
-# I wish I could have a goddamn 3d array without like 7 nested for loops. Fuck you Godot.
-# TO DO: Turn these baddies into a Dictionary
-var weaponsInShopCostsArray = [0, 20, 9999999999, 420, 2001911]		#weapon costs
-var weaponOwnership = [true,false,false,false,false]	#weapon ownership (0 = not owned, 1 = owned)
+var weaponsInShopCostsArray = [0, 20, 9999999999, 420, 2001911]		# Weapon costs
+var weaponOwnership = [true,false,false,false,false]		# Weapon ownership
 
 var weaponsInShopDesc = ["You punch things with your glass fists","Wh'ack e'm","M4 carbine Colt AR-15", "Sweet baby", "It's pretty spikey"]
-# I have very strong feelings about this Desc guy and if any of you can fix it I would
-# be so very happy. I tried making this a blank array and appending it. Ya'know
-# LIKE SOMEONE WHO'S NOT CRAZY
-# But every time I tried to append it everything broke and I had to delete the whole thing and do it again
-
-
-func make_weapon(index, name, price, owned, description) -> Dictionary:
-	var weapon: Dictionary = {
-		"index"	: index,
-		"name" 	: name,
-		"price" 	: price,
-		"owned" 	: owned,
-		"description" : description
-	}
-	return weapon
-	
-
-# wrap dictionary declarations inside a ready function
+# When there are more descriptions just append and put the appends in a ready function

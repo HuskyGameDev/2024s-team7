@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbc7vk84ewdqo"]
+
+[ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="1_2qavt"]
+[ext_resource type="Texture2D" uid="uid://dj87ja156haea" path="res://resources/sprites/real-box.png" id="1_iy2s5"]
+[ext_resource type="Script" path="res://scripts/basic_button.gd" id="1_n42gk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lhopr"]
+resource_local_to_scene = true
+shader = ExtResource("1_2qavt")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[node name="BasicButton" type="NinePatchRect"]
+material = SubResource("ShaderMaterial_lhopr")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_iy2s5")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+script = ExtResource("1_n42gk")
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Main Menu"
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,9 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://c76vfrrc8d27k"]
+[gd_scene load_steps=10 format=3 uid="uid://c76vfrrc8d27k"]
 
 [ext_resource type="Script" path="res://scripts/MainMenu.gd" id="1_8i4yj"]
 [ext_resource type="Texture2D" uid="uid://cwexuk7jv1l3r" path="res://resources/sprites/MAIN MENU BG.png" id="2_aqswu"]
 [ext_resource type="Texture2D" uid="uid://ds64mtbtajy78" path="res://resources/sprites/Bam Bam Pow Pow logo.png" id="3_dt2py"]
-[ext_resource type="Texture2D" uid="uid://dj87ja156haea" path="res://resources/sprites/real-box.png" id="4_xbxdj"]
+[ext_resource type="PackedScene" uid="uid://dbc7vk84ewdqo" path="res://Scenes/Functional/BasicButton.tscn" id="4_c6ga6"]
+[ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="5_e1a4t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pm232"]
+resource_local_to_scene = true
+shader = ExtResource("5_e1a4t")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7w5uy"]
+resource_local_to_scene = true
+shader = ExtResource("5_e1a4t")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jmcaq"]
+resource_local_to_scene = true
+shader = ExtResource("5_e1a4t")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4byhv"]
+resource_local_to_scene = true
+shader = ExtResource("5_e1a4t")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -49,20 +74,21 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 10
 
-[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+[node name="New Unlimited" parent="VBoxContainer" instance=ExtResource("4_c6ga6")]
+material = SubResource("ShaderMaterial_pm232")
 layout_mode = 2
-texture = ExtResource("4_xbxdj")
-patch_margin_left = 20
-patch_margin_top = 20
-patch_margin_right = 20
-patch_margin_bottom = 20
 
-[node name="Label" type="Label" parent="VBoxContainer/NinePatchRect"]
+[node name="Label" type="Label" parent="VBoxContainer/New Unlimited"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -12.5
+offset_right = 80.0
+offset_bottom = 12.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 20
@@ -70,38 +96,21 @@ text = "New Infinity"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="New Unlimited" type="Button" parent="VBoxContainer/NinePatchRect"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-theme_override_colors/icon_normal_color = Color(1, 0.792157, 0.145098, 1)
-theme_override_colors/icon_focus_color = Color(1, 0.792157, 0.145098, 1)
-theme_override_colors/icon_pressed_color = Color(1, 0.494118, 0, 1)
-theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/icon_hover_pressed_color = Color(1, 0.494118, 0, 1)
-theme_override_colors/icon_disabled_color = Color(1, 0.792157, 0.145098, 1)
-theme_override_font_sizes/font_size = 20
-text = "New Infinity"
-
-[node name="NinePatchRect2" type="NinePatchRect" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+[node name="Unlimited" parent="VBoxContainer" instance=ExtResource("4_c6ga6")]
+material = SubResource("ShaderMaterial_7w5uy")
 layout_mode = 2
-texture = ExtResource("4_xbxdj")
-patch_margin_left = 20
-patch_margin_top = 20
-patch_margin_right = 20
-patch_margin_bottom = 20
 
-[node name="Label2" type="Label" parent="VBoxContainer/NinePatchRect2"]
+[node name="Label2" type="Label" parent="VBoxContainer/Unlimited"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -87.0
+offset_top = -12.5
+offset_right = 87.0
+offset_bottom = 12.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 20
@@ -109,32 +118,21 @@ text = "Load Infinity"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Unlimited" type="Button" parent="VBoxContainer/NinePatchRect2"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 20
-text = "Load Infinity"
-
-[node name="NinePatchRect3" type="NinePatchRect" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+[node name="Settings" parent="VBoxContainer" instance=ExtResource("4_c6ga6")]
+material = SubResource("ShaderMaterial_jmcaq")
 layout_mode = 2
-texture = ExtResource("4_xbxdj")
-patch_margin_left = 20
-patch_margin_top = 20
-patch_margin_right = 20
-patch_margin_bottom = 20
 
-[node name="Label3" type="Label" parent="VBoxContainer/NinePatchRect3"]
+[node name="Label3" type="Label" parent="VBoxContainer/Settings"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = -12.5
+offset_right = 53.5
+offset_bottom = 12.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 20
@@ -142,48 +140,27 @@ text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Settings" type="Button" parent="VBoxContainer/NinePatchRect3"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 20
-text = "Settings"
-
-[node name="NinePatchRect4" type="NinePatchRect" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+[node name="Quit" parent="VBoxContainer" instance=ExtResource("4_c6ga6")]
+material = SubResource("ShaderMaterial_4byhv")
 layout_mode = 2
-texture = ExtResource("4_xbxdj")
-patch_margin_left = 20
-patch_margin_top = 20
-patch_margin_right = 20
-patch_margin_bottom = 20
 
-[node name="Label4" type="Label" parent="VBoxContainer/NinePatchRect4"]
+[node name="Label4" type="Label" parent="VBoxContainer/Quit"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -12.5
+offset_right = 27.0
+offset_bottom = 12.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 20
 text = "Quit"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Quit" type="Button" parent="VBoxContainer/NinePatchRect4"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 20
-text = "Quit"
 
 [node name="Instructions" type="Label" parent="."]
 visible = false
@@ -205,7 +182,7 @@ PAIR WITH MAIN ATTACKS
 EXAMPLE: 'W' + 'J' FOR UPPERCUT
 DIRECTIONAL ATTACKS ARE PURCHASED"
 
-[connection signal="pressed" from="VBoxContainer/NinePatchRect/New Unlimited" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="VBoxContainer/NinePatchRect2/Unlimited" to="." method="_on_load_game_pressed"]
-[connection signal="pressed" from="VBoxContainer/NinePatchRect3/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="VBoxContainer/NinePatchRect4/Quit" to="." method="_on_quit_pressed"]
+[connection signal="buttonPressed" from="VBoxContainer/New Unlimited" to="." method="_on_new_unlimited_button_pressed"]
+[connection signal="buttonPressed" from="VBoxContainer/Unlimited" to="." method="_on_unlimited_button_pressed"]
+[connection signal="buttonPressed" from="VBoxContainer/Settings" to="." method="_on_settings_button_pressed"]
+[connection signal="buttonPressed" from="VBoxContainer/Quit" to="." method="_on_quit_button_pressed"]

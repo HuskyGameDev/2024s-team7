@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc1ttocg7gplt"]
+
+[ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="1_hhc3m"]
+[ext_resource type="Script" path="res://scripts/sprite_2d_button.gd" id="3_ijcht"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dorkm"]
+resource_local_to_scene = true
+shader = ExtResource("1_hhc3m")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[node name="Sprite2dButton" type="Sprite2D"]
+material = SubResource("ShaderMaterial_dorkm")
+script = ExtResource("3_ijcht")
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

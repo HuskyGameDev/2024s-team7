@@ -14,8 +14,8 @@ func _changeBox(i)-> void:
 	WeaponInShop.currentInstance=i		# Set current instance of weapon global to given i
 	
 	# Set Next/Prev buttons to be visible (default)
-	$VBoxContainer/HBoxContainer/NextSprite/Next.show()
-	$VBoxContainer/HBoxContainer/PrevSprite/Prev.show()
+	$VBoxContainer/Next.show()
+	$VBoxContainer/Prev.show()
 	
 	# --- Set all values in Selected Weapon Screen to correct values given index
 	# Print for testing
@@ -34,10 +34,10 @@ func _changeBox(i)-> void:
 	
 	# If index is >= maxIndex, hide next button
 	if i >= WeaponInShop.weaponsInShopArray.size()-1:
-		$VBoxContainer/HBoxContainer/NextSprite/Next.hide()
+		$VBoxContainer/Next.hide()
 	# If index is <= minIndex, hide prev button
 	if i <= 0:
-		$VBoxContainer/HBoxContainer/PrevSprite/Prev.hide()	
+		$VBoxContainer/Prev.hide()	
 	
 	# Move the scroll container to center selected element
 	$Control/ScrollContainer.set_h_scroll((i)*400)	#Move scroll to separation value of hbox*index
@@ -93,14 +93,14 @@ func _on_buy_button_pressed():
 	_changeBox(i)	#Changebox to new bought/buy settings
 
 ## Accesses previous weapon
-func _on_prev_pressed():
+func _on_prev_sprite_button_pressed():
 	var inst = WeaponInShop.currentInstance	# Grabs current weapon index
 	inst -= 1			# Changes index to previous
 	# Doesn't need to catch edge cases since prev is hidden at edge
 	_changeBox(inst)	# changeBoxes to new index
 	
 ## Accesses next weapon
-func _on_next_pressed():
+func _on_next_sprite_button_pressed():
 	var inst = WeaponInShop.currentInstance	# Grabs current weapon index
 	inst += 1			# Changes index to next
 	# Doesn't need to catch edge cases since next is hidden at edge
@@ -111,12 +111,15 @@ func _on_next_pressed():
 ## Set of buttons that exist in both shops and inventory
 ## Access other scenes and save options
 
+
+
+
 ## Swaps scene to main menu
 func _on_main_menu_button_pressed():
 	SceneSwap.scene_swap("res://Scenes/Playable/MainMenu.tscn");	# Swaps
 
 ## Swaps scene to settings
-func _on_settings_menu_button_pressed():
+func _on_settings_button_pressed():
 	Global.prev_scene = get_tree().current_scene.scene_file_path #I don't know why this is here I copied allen
 	SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn");	# Swaps
 
@@ -145,7 +148,7 @@ func _on_load_game_button_pressed():
 ## the current problems with WeaponShop for playtest
 
 ## When hazard button is clicked: warning popup screen is shown
-func _on_hazard_button_pressed():
+func _on_hazard_button_sprite_button_pressed():
 	$WarningScreen.visible = !$WarningScreen.visible	# Warning popup
 
 
