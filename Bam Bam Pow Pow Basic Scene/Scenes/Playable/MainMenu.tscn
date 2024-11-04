@@ -71,6 +71,9 @@ theme_override_constants/separation = 10
 [node name="New Unlimited" parent="VBoxContainer" instance=ExtResource("4_c6ga6")]
 material = SubResource("ShaderMaterial_pm232")
 layout_mode = 2
+focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../Unlimited")
+focus_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/New Unlimited"]
 layout_mode = 1
@@ -93,6 +96,9 @@ vertical_alignment = 1
 [node name="Unlimited" parent="VBoxContainer" instance=ExtResource("4_c6ga6")]
 material = SubResource("ShaderMaterial_7w5uy")
 layout_mode = 2
+focus_neighbor_top = NodePath("../New Unlimited")
+focus_neighbor_bottom = NodePath("../Controls")
+focus_mode = 2
 
 [node name="Label2" type="Label" parent="VBoxContainer/Unlimited"]
 layout_mode = 1
@@ -112,9 +118,37 @@ text = "Load Infinity"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Controls" parent="VBoxContainer" instance=ExtResource("4_c6ga6")]
+material = SubResource("ShaderMaterial_4byhv")
+layout_mode = 2
+focus_neighbor_top = NodePath("../Unlimited")
+focus_neighbor_bottom = NodePath("../Quit")
+focus_mode = 2
+
+[node name="Label4" type="Label" parent="VBoxContainer/Controls"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -12.5
+offset_right = 27.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Controls"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Quit" parent="VBoxContainer" instance=ExtResource("4_c6ga6")]
 material = SubResource("ShaderMaterial_4byhv")
 layout_mode = 2
+focus_neighbor_top = NodePath("../Controls")
+focus_neighbor_bottom = NodePath("../New Unlimited")
+focus_mode = 2
 
 [node name="Label4" type="Label" parent="VBoxContainer/Quit"]
 layout_mode = 1
@@ -156,4 +190,5 @@ DIRECTIONAL ATTACKS ARE PURCHASED"
 
 [connection signal="buttonPressed" from="VBoxContainer/New Unlimited" to="." method="_on_new_unlimited_button_pressed"]
 [connection signal="buttonPressed" from="VBoxContainer/Unlimited" to="." method="_on_unlimited_button_pressed"]
+[connection signal="buttonPressed" from="VBoxContainer/Controls" to="." method="_on_controls_button_pressed"]
 [connection signal="buttonPressed" from="VBoxContainer/Quit" to="." method="_on_quit_button_pressed"]
