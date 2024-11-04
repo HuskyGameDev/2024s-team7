@@ -11,14 +11,16 @@ enum MULTTYPE {
 }
 
 # Make item function that assigns parts of item to whatever they are set as when called
-func make_item(name, price, owned, effects: Dictionary, sprite_index, equipped) -> Dictionary:
+func make_item(name: String, price: int, owned: bool, effects: Dictionary,
+			   sprite_index: int, equipped: bool, descript: String ="No Description") -> Dictionary:
 	var item: Dictionary = {
 		"name" 		: name,
 		"price" 	: price,
 		"owned" 	: owned,
 		"effects" 	: effects,
 		"sprite" 	: sprite_index,
-		"equipped"	: equipped
+		"equipped"	: equipped,
+		"descript"	: descript
 	}
 	return item
 
@@ -32,7 +34,8 @@ func _ready() -> void:
 			"light_up": 0.5
 		},
 		4,
-		false
+		false,
+		"Adds 0.5 to your light up attack multiplier."
 	))
 	itemMax += 1;
 	

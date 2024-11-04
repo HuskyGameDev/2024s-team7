@@ -21,7 +21,7 @@ enum MULTTYPE {
 }
 
 ## Owned items list
-var owned_items: Array[Dictionary] = []
+#var owned_items: Array[Dictionary] = []
 
 signal reload
 
@@ -60,7 +60,7 @@ func load_game():
 	for i in range(itemsList.size()):
 		if (content.get_slice("\n", item_id+1) == "1"):
 			itemsList[item_id]["owned"] = true
-			owned_items.append(itemsList[item_id])
+			#owned_items.append(itemsList[item_id])
 		else:
 			itemsList[item_id]["owned"] = false
 		item_id = item_id+1

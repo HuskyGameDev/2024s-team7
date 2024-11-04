@@ -70,11 +70,11 @@ func _ready():
 func ready_mults():
 	# This is adding up all of the multipliers and storing them in the 
 	# dictionary in the item storage global.
-	for item in ItemStorage.owned_items:
-		var effects = item["effects"]
-		for key in effects:
-			mults[key] += effects[key] ## TODO: not initializing to 1 whenever hte fight loads
-			
+	for index in ItemStorage.equipped_items:
+		if index != -1:
+			var effects = ItemStorage.itemsList[index]["effects"]
+			for key in effects:
+				mults[key] += effects[key] ## TODO: not initializing to 1 whenever hte fight loads
 	ready_damage()
 	# Send the calcualted damage array to the combo script
 
