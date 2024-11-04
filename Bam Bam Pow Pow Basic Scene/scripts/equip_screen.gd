@@ -6,6 +6,8 @@ extends CanvasLayer
 @onready var cancel_button = $Control/VBoxContainer/MarginContainer3/HBoxContainer/CancelButton
 @onready var maxPage = ceil(ItemStorage.itemMax/10.0)
 @onready var selected_id = -1
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+const WOOD_CLICK = preload("res://resources/sounds/WoodClick.wav")
 signal reload
 
 
@@ -16,6 +18,8 @@ func _ready() -> void:
 	# Make equip/unequip button and cancel selection button disappear
 	equip_unequip_button.visible = false
 	cancel_button.visible = false
+	emit_signal("reload")
+	reload_equipped()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -148,3 +152,31 @@ func unselect() -> void:
 # When cancel button is pressed, run unselect function
 func _on_cancel_button_pressed() -> void:
 	unselect()
+
+
+func _on_main_menu_button_pressed():
+	if (!audio_stream_player.is_playing()):
+			audio_stream_player.stream = WOOD_CLICK
+			audio_stream_player.play()
+	SceneSwap.scene_swap("res://Scenes/Playable/MainMenu.tscn");
+
+func _on_weapon_shop_button_pressed():
+	if (!audio_stream_player.is_playing()):
+			audio_stream_player.stream = WOOD_CLICK
+			audio_stream_player.play()
+	SceneSwap.scene_swap("res://Scenes/Playable/WeaponShop.tscn");
+
+func _on_settings_menu_button_pressed():
+	if (!audio_stream_player.is_playing()):
+			audio_stream_player.stream = WOOD_CLICK
+			audio_stream_player.play()
+	Global.prev_scene = get_tree().current_scene.scene_file_path
+	SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn");
+
+
+func _on_item_scene_button_pressed() -> void:
+	if (!audio_stream_player.is_playing()):
+			audio_stream_player.stream = WOOD_CLICK
+			audio_stream_player.play()
+	Global.prev_scene = get_tree().current_scene.scene_file_path
+	SceneSwap.scene_swap("res://Scenes/Playable/ItemShop.tscn");

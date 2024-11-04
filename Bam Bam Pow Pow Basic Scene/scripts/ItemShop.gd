@@ -59,6 +59,12 @@ func _on_weapon_shop_button_pressed():
 			audio_stream_player.play()
 	SceneSwap.scene_swap("res://Scenes/Playable/WeaponShop.tscn");
 
+func _on_equip_button_pressed() -> void:
+	if (!audio_stream_player.is_playing()):
+			audio_stream_player.stream = WOOD_CLICK
+			audio_stream_player.play()
+	SceneSwap.scene_swap("res://Scenes/Playable/EquipScreen.tscn");
+
 func _on_settings_menu_button_pressed():
 	if (!audio_stream_player.is_playing()):
 			audio_stream_player.stream = WOOD_CLICK

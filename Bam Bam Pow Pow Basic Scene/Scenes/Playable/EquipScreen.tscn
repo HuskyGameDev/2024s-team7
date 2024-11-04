@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://tetnkmhs2l60"]
+[gd_scene load_steps=5 format=3 uid="uid://tetnkmhs2l60"]
 
 [ext_resource type="PackedScene" uid="uid://bdh05d3fan0h3" path="res://Scenes/Playable/equip_item.tscn" id="1_2wmvw"]
 [ext_resource type="Script" path="res://scripts/equip_screen.gd" id="1_il0yl"]
 [ext_resource type="PackedScene" uid="uid://c7euusov16rvy" path="res://Scenes/Playable/equipped_item.tscn" id="2_orlww"]
+[ext_resource type="Texture2D" uid="uid://dj87ja156haea" path="res://resources/sprites/real-box.png" id="4_uss7v"]
 
 [node name="EquipScreen" type="CanvasLayer"]
 script = ExtResource("1_il0yl")
@@ -138,6 +139,180 @@ text = ">
 Next
 Page"
 
+[node name="MenuButtonRow2" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/VBoxContainer/MenuButtonRow2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_uss7v")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/MenuButtonRow2/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="Control/VBoxContainer/MenuButtonRow2/NinePatchRect"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Main Menu"
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="Control/VBoxContainer/MenuButtonRow2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_uss7v")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/MenuButtonRow2/NinePatchRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsMenuButton" type="Button" parent="Control/VBoxContainer/MenuButtonRow2/NinePatchRect2"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Settings Menu"
+
+[node name="NinePatchRect5" type="NinePatchRect" parent="Control/VBoxContainer/MenuButtonRow2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_uss7v")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/MenuButtonRow2/NinePatchRect5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Item Shop"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FightSceneButton" type="Button" parent="Control/VBoxContainer/MenuButtonRow2/NinePatchRect5"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Fight Scene"
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="Control/VBoxContainer/MenuButtonRow2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_uss7v")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/MenuButtonRow2/NinePatchRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Weapon Shop"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WeaponShopButton" type="Button" parent="Control/VBoxContainer/MenuButtonRow2/NinePatchRect3"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="NinePatchRect4" type="NinePatchRect" parent="Control/VBoxContainer/MenuButtonRow2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_uss7v")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/MenuButtonRow2/NinePatchRect4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Fight Scene"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FightSceneButton" type="Button" parent="Control/VBoxContainer/MenuButtonRow2/NinePatchRect4"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Fight Scene"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="selected_item" from="Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem1" to="." method="_on_equipped_item_selected_item"]
 [connection signal="selected_item" from="Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem2" to="." method="_on_equipped_item_selected_item"]
 [connection signal="selected_item" from="Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem3" to="." method="_on_equipped_item_selected_item"]
@@ -157,3 +332,8 @@ Page"
 [connection signal="selected_item" from="Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsSecondRow/EquipItem9" to="." method="_on_equip_item_selected_item"]
 [connection signal="selected_item" from="Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsSecondRow/EquipItem10" to="." method="_on_equip_item_selected_item"]
 [connection signal="pressed" from="Control/VBoxContainer/MarginContainer2/HBoxContainer/NextPageButton" to="." method="_on_next_page_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/MenuButtonRow2/NinePatchRect/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/MenuButtonRow2/NinePatchRect2/SettingsMenuButton" to="." method="_on_settings_menu_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/MenuButtonRow2/NinePatchRect5/FightSceneButton" to="." method="_on_item_scene_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/MenuButtonRow2/NinePatchRect3/WeaponShopButton" to="." method="_on_weapon_shop_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/MenuButtonRow2/NinePatchRect4/FightSceneButton" to="." method="_on_fight_scene_button_pressed"]
