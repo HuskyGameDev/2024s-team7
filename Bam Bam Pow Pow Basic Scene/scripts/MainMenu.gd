@@ -14,11 +14,6 @@ func _on_unlimited_button_pressed():
 	SceneSwap.scene_swap("res://Scenes/Playable/Fight.tscn")
 
 
-func _on_settings_button_pressed():
-	Global.prev_scene = get_tree().current_scene.scene_file_path
-	SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn")
-
-
 func _on_quit_button_pressed():
 	get_tree().quit()
 

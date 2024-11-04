@@ -65,13 +65,6 @@ func _on_equip_button_pressed() -> void:
 			audio_stream_player.play()
 	SceneSwap.scene_swap("res://Scenes/Playable/EquipScreen.tscn");
 
-func _on_settings_menu_button_pressed():
-	if (!audio_stream_player.is_playing()):
-			audio_stream_player.stream = WOOD_CLICK
-			audio_stream_player.play()
-	Global.prev_scene = get_tree().current_scene.scene_file_path
-	SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn");
-
 # Redirection to save game function in item_storage script
 func _on_save_button_pressed():
 	if (!audio_stream_player.is_playing()):

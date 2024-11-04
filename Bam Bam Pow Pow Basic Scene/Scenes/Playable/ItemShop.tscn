@@ -1,21 +1,15 @@
-[gd_scene load_steps=19 format=3 uid="uid://i48tabjyt08t"]
+[gd_scene load_steps=18 format=3 uid="uid://i48tabjyt08t"]
 
 [ext_resource type="Script" path="res://scripts/ItemShop.gd" id="1_ed3xk"]
 [ext_resource type="PackedScene" uid="uid://btqmnmpytpfkq" path="res://Scenes/Functional/Item.tscn" id="2_3qixg"]
 [ext_resource type="Texture2D" uid="uid://dqhwy21a3peoc" path="res://resources/sprites/item-shop-bg.png" id="2_b1eqh"]
-[ext_resource type="PackedScene" path="res://Scenes/Functional/BasicButton.tscn" id="3_exxd0"]
+[ext_resource type="PackedScene" uid="uid://dbc7vk84ewdqo" path="res://Scenes/Functional/BasicButton.tscn" id="3_exxd0"]
 [ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="4_cax4p"]
 [ext_resource type="Texture2D" uid="uid://csaod2ht6ymhf" path="res://resources/sprites/next-prev.png" id="4_jjh7n"]
 [ext_resource type="Texture2D" uid="uid://kg8lti6ql3wt" path="res://resources/sprites/caution-symbol.png" id="6_62woe"]
-[ext_resource type="PackedScene" path="res://Scenes/Functional/Sprite2DButton.tscn" id="7_lh6kn"]
+[ext_resource type="PackedScene" uid="uid://cc1ttocg7gplt" path="res://Scenes/Functional/Sprite2DButton.tscn" id="7_lh6kn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u3mjj"]
-resource_local_to_scene = true
-shader = ExtResource("4_cax4p")
-shader_parameter/onoffMult = false
-shader_parameter/onoffSoftLight = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ok2w"]
 resource_local_to_scene = true
 shader = ExtResource("4_cax4p")
 shader_parameter/onoffMult = false
@@ -129,23 +123,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 20
 text = "Main Menu"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Settings" parent="Control/MarginContainer/MenuButtonRow2" instance=ExtResource("3_exxd0")]
-material = SubResource("ShaderMaterial_8ok2w")
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Label" type="Label" parent="Control/MarginContainer/MenuButtonRow2/Settings"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 20
-text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -371,14 +348,13 @@ theme_override_font_sizes/font_size = 38
 text = "X"
 
 [connection signal="buttonPressed" from="Control/MarginContainer/MenuButtonRow2/MainMenu" to="." method="_on_main_menu_button_pressed"]
-[connection signal="buttonPressed" from="Control/MarginContainer/MenuButtonRow2/Settings" to="." method="_on_settings_menu_button_pressed"]
 [connection signal="buttonPressed" from="Control/MarginContainer/MenuButtonRow2/WeaponShop" to="." method="_on_weapon_shop_button_pressed"]
 [connection signal="buttonPressed" from="Control/MarginContainer/MenuButtonRow2/Equip" to="." method="_on_equip_button_pressed"]
 [connection signal="buttonPressed" from="Control/MarginContainer/MenuButtonRow2/Fight" to="." method="_on_fight_scene_button_pressed"]
 [connection signal="buttonPressed" from="Control/MarginContainer/MenuButtonRow2/Save" to="." method="_on_save_button_pressed"]
 [connection signal="buttonPressed" from="Control/MarginContainer/MenuButtonRow2/Load" to="." method="_on_load_button_pressed"]
-[connection signal="bought_item" from="MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item1" to="." method="_on_item_1_bought_item"]
 [connection signal="bought_item" from="MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item1" to="." method="bought_item"]
+[connection signal="bought_item" from="MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item1" to="." method="_on_item_1_bought_item"]
 [connection signal="bought_item" from="MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item2" to="." method="bought_item"]
 [connection signal="bought_item" from="MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item3" to="." method="bought_item"]
 [connection signal="bought_item" from="MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item4" to="." method="bought_item"]

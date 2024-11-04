@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://c76vfrrc8d27k"]
+[gd_scene load_steps=9 format=3 uid="uid://c76vfrrc8d27k"]
 
 [ext_resource type="Script" path="res://scripts/MainMenu.gd" id="1_8i4yj"]
 [ext_resource type="Texture2D" uid="uid://cwexuk7jv1l3r" path="res://resources/sprites/MAIN MENU BG.png" id="2_aqswu"]
 [ext_resource type="Texture2D" uid="uid://ds64mtbtajy78" path="res://resources/sprites/Bam Bam Pow Pow logo.png" id="3_dt2py"]
-[ext_resource type="PackedScene" path="res://Scenes/Functional/BasicButton.tscn" id="4_c6ga6"]
+[ext_resource type="PackedScene" uid="uid://dbc7vk84ewdqo" path="res://Scenes/Functional/BasicButton.tscn" id="4_c6ga6"]
 [ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="5_e1a4t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pm232"]
@@ -13,12 +13,6 @@ shader_parameter/onoffMult = false
 shader_parameter/onoffSoftLight = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7w5uy"]
-resource_local_to_scene = true
-shader = ExtResource("5_e1a4t")
-shader_parameter/onoffMult = false
-shader_parameter/onoffSoftLight = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jmcaq"]
 resource_local_to_scene = true
 shader = ExtResource("5_e1a4t")
 shader_parameter/onoffMult = false
@@ -118,28 +112,6 @@ text = "Load Infinity"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Settings" parent="VBoxContainer" instance=ExtResource("4_c6ga6")]
-material = SubResource("ShaderMaterial_jmcaq")
-layout_mode = 2
-
-[node name="Label3" type="Label" parent="VBoxContainer/Settings"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -53.5
-offset_top = -12.5
-offset_right = 53.5
-offset_bottom = 12.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 20
-text = "Settings"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Quit" parent="VBoxContainer" instance=ExtResource("4_c6ga6")]
 material = SubResource("ShaderMaterial_4byhv")
 layout_mode = 2
@@ -184,5 +156,4 @@ DIRECTIONAL ATTACKS ARE PURCHASED"
 
 [connection signal="buttonPressed" from="VBoxContainer/New Unlimited" to="." method="_on_new_unlimited_button_pressed"]
 [connection signal="buttonPressed" from="VBoxContainer/Unlimited" to="." method="_on_unlimited_button_pressed"]
-[connection signal="buttonPressed" from="VBoxContainer/Settings" to="." method="_on_settings_button_pressed"]
 [connection signal="buttonPressed" from="VBoxContainer/Quit" to="." method="_on_quit_button_pressed"]
