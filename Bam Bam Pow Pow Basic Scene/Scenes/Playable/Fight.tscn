@@ -156,6 +156,8 @@ Toggle this window appearing in settings"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
+[node name="AudioTimer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="attack_performed" from="player" to="enemy" method="_on_player_attack"]
 [connection signal="player_dir" from="player" to="enemy" method="_on_player_player_dir"]
 [connection signal="damage_readied" from="enemy" to="ComboHandler" method="_on_enemy_damage_readied"]
@@ -164,6 +166,6 @@ Toggle this window appearing in settings"
 [connection signal="attack" from="ComboHandler" to="player" method="_on_signal_transfer_to_state"]
 [connection signal="attack" from="ComboHandler" to="enemy" method="_on_combo_handler_attack"]
 [connection signal="attack_damamge" from="ComboHandler" to="enemy" method="_on_combo_handler_attack_damamge"]
-[connection signal="attack_index" from="ComboHandler" to="player" method="_on_signal_transfer_to_state"]
 [connection signal="attack_index" from="ComboHandler" to="player" method="_on_combo_handler_attack_index"]
+[connection signal="attack_index" from="ComboHandler" to="player" method="_on_signal_transfer_to_state"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

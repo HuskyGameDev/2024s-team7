@@ -72,12 +72,10 @@ func _on_button_pressed():
 		ItemStorage.owned_items.append(ItemStorage.itemsList[id])
 		_on_item_shop_reload()
 		#Plays the purchase noise
-		if (!audioPlayer.is_playing()):
-			audioPlayer.stream = purchase_noise
-			audioPlayer.play()
+		audioPlayer.stream = purchase_noise
+		audioPlayer.play()
 		emit_signal("bought_item", money) # Emits the signal to say the item was bought with the appropriate cost
 	else:
-		if (!audioPlayer.is_playing()):
-			audioPlayer.stream = noMoney_noise
-			audioPlayer.play()
+		audioPlayer.stream = noMoney_noise
+		audioPlayer.play()
 		
