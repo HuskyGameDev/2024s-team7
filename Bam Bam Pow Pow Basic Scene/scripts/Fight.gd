@@ -11,10 +11,7 @@ var started = false
 
 
 func _ready():
-	if (ItemStorage.inputtoggle == true):
-		input_screen.visible = true
-	else:
-		input_screen.visible = false
+	input_screen.visible = true
 	
 
 func _input(event):

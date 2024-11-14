@@ -77,13 +77,13 @@ func load_combo(core_tag) -> void:
 ## This will wait for user input and then attemp to load a combo using the value passed into it
 func _input(event):
 	if cooldown_timer.is_stopped():
-		if InputMap.event_is_action(event, "Punch"):
+		if InputMap.event_is_action(event, "Light"):
 			load_combo(CORE.LIGHT)
-		elif InputMap.event_is_action(event, "Kick"):
+		elif InputMap.event_is_action(event, "Heavy"):
 			load_combo(CORE.HEAVY)
-		elif InputMap.event_is_action(event, "Weapon"):
-			load_combo(CORE.SPECIAL)
 		elif InputMap.event_is_action(event, "Special"):
+			load_combo(CORE.SPECIAL)
+		elif InputMap.event_is_action(event, "Ultimate"):
 			load_combo(CORE.SUPER)
 
 
