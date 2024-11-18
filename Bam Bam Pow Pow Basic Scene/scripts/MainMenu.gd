@@ -10,7 +10,7 @@ func _on_new_unlimited_button_pressed():
 	ItemStorage.restart_game()
 	audio_stream_player.stream = Chime
 	audio_stream_player.play()
-	await get_tree().create_timer(1.0).timeout
+	#await get_tree().create_timer(1.0).timeout
 	SceneSwap.scene_swap("res://Scenes/Playable/Fight.tscn")
 
 

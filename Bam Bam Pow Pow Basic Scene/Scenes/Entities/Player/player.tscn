@@ -3644,7 +3644,6 @@ script = ExtResource("7_i6g50")
 
 [node name="Attacking" type="Node" parent="FSM" index="2"]
 script = ExtResource("8_eh8a0")
-cancel = 0
 
 [node name="Air" type="Node" parent="FSM" index="3"]
 script = ExtResource("11_hly11")

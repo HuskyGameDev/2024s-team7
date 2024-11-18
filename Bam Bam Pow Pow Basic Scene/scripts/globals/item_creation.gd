@@ -11,10 +11,11 @@ enum MULTTYPE {
 }
 
 # Make item function that assigns parts of item to whatever they are set as when called
-func make_item(name: String, price: int, owned: bool, effects: Dictionary,
-			   sprite_index: int, equipped: bool, descript: String ="No Description", on_buy: Dictionary = {"no_effect": 0}) -> Dictionary:
+func make_item(item_name: String, price: int, owned: bool, 
+			   effects: Dictionary, sprite_index: int, equipped: bool, 
+			   descript: Array[String]=["No Description"], on_buy: Dictionary = {"no_effect": 0}) -> Dictionary:
 	var item: Dictionary = {
-		"name" 		: name,
+		"item_name" : item_name,
 		"price" 	: price,
 		"owned" 	: owned,
 		"effects" 	: effects,
@@ -23,6 +24,7 @@ func make_item(name: String, price: int, owned: bool, effects: Dictionary,
 		"equipped"	: equipped,
 		"descript"	: descript
 	}
+	itemMax += 1
 	return item
 
 # Called when the node enters the scene tree for the first time.
@@ -36,9 +38,10 @@ func _ready() -> void:
 		},
 		4,
 		false,
-		"Adds 0.5 to your light up attack multiplier."
+		[
+			"Adds 0.5 to your light up attack multiplier."	
+		]
 	))
-	itemMax += 1;
 	
 	item_list.append(make_item(
 		"Low Blow Scroll",
@@ -48,10 +51,11 @@ func _ready() -> void:
 			"light_down": 0.6
 		},
 		4,
-		false
+		false,
+		[
+			"Adds 0.6 to your light down multiplier."
+		]
 	))
-	
-	itemMax += 1;
 	
 	item_list.append(make_item(
 		"Brass Knuckles",
@@ -61,10 +65,11 @@ func _ready() -> void:
 			"light": 0.2
 		},
 		0,
-		false
+		false,
+		[
+			"Adds 0.2 to your light attacks mutliplier."
+		]
 	))
-	
-	itemMax += 1;
 	
 	item_list.append(make_item(
 		"Bird Punching Glasses",
@@ -75,10 +80,11 @@ func _ready() -> void:
 			"heavy_up": 0.2
 		},
 		11,
-		false
+		false,
+		[
+			"Adds 0.2 to your light and heavy up attacks."
+		]
 	))
-	
-	itemMax += 1;
 
 	item_list.append(make_item(
 		"Danger Short",
@@ -89,10 +95,11 @@ func _ready() -> void:
 			"heavy_side": 0.3
 		},
 		8,
-		false
+		false,
+		[
+			"Adds 0.3 to your light and heavy side attacks."
+		]
 	))
-	
-	itemMax += 1;
 	
 	item_list.append(make_item(
 		"High Kick Scroll",
@@ -102,10 +109,11 @@ func _ready() -> void:
 			"heavy_up": 0.6
 		},
 		5,
-		false
+		false,
+		[
+			"Adds 0.6 to your heavy up attack."
+		]
 	))
-	
-	itemMax += 1;
 	
 	item_list.append(make_item(
 		"Heel Slam Scroll",
@@ -115,10 +123,11 @@ func _ready() -> void:
 			"heavy_down": 0.3
 		},
 		5,
-		false
+		false,
+		[
+			"Adds 0.3 to your heavy down attack."
+		]
 	))
-	
-	itemMax += 1;
 	
 	item_list.append(make_item(
 		"Leg Sweep Scroll",
@@ -128,10 +137,11 @@ func _ready() -> void:
 			"light_down": 0.2
 		},
 		4,
-		false
+		false,
+		[
+			"Adds 0.2 to your light down multiplier."
+		]
 	))
-	
-	itemMax += 1;
 	
 	item_list.append(make_item(
 		"Penny Pouch",
@@ -141,10 +151,11 @@ func _ready() -> void:
 			"money": 0.2
 		},
 		16,
-		false
+		false,
+		[
+			"Adds 0.2 to your money multiplier."
+		]
 	))
-	
-	itemMax += 1;
 	
 	item_list.append(make_item(
 		"Piggy Bank",
@@ -156,8 +167,6 @@ func _ready() -> void:
 		16,
 		false
 	))
-	
-	itemMax += 1;
 	
 	item_list.append(make_item(
 		"Steroids",
@@ -171,8 +180,6 @@ func _ready() -> void:
 		false
 	))
 	
-	itemMax += 1;
-	
 	item_list.append(make_item(
 		"A Big Meal",
 		1000,
@@ -183,8 +190,6 @@ func _ready() -> void:
 		1,
 		false
 	))
-	
-	itemMax += 1;
 	
 	item_list.append(make_item(
 		"Anti-Air Jordans",
@@ -198,8 +203,6 @@ func _ready() -> void:
 		false
 	))
 	
-	itemMax += 1;
-	
 	item_list.append(make_item(
 		"Balloon Pack",
 		600,
@@ -210,8 +213,6 @@ func _ready() -> void:
 		12,
 		false
 	))
-	
-	itemMax += 1;
 	
 	item_list.append(make_item(
 		"Smelly Soles",
@@ -224,8 +225,6 @@ func _ready() -> void:
 		false
 	))
 	
-	itemMax += 1;
-	
 	item_list.append(make_item(
 		"Shoulder Pads",
 		1000,
@@ -237,8 +236,6 @@ func _ready() -> void:
 		false
 	))
 	
-	itemMax += 1;
-	
 	item_list.append(make_item(
 		"Floaty Fist",
 		800,
@@ -249,8 +246,6 @@ func _ready() -> void:
 		4,
 		false
 	))
-	
-	itemMax += 1;
 	
 	item_list.append(make_item(
 		"Cleats",
@@ -264,8 +259,6 @@ func _ready() -> void:
 		false
 	))
 	
-	itemMax += 1;
-	
 	item_list.append(make_item(
 		"Hammer Fist",
 		600,
@@ -276,8 +269,6 @@ func _ready() -> void:
 		13,
 		false
 	))
-	
-	itemMax += 1;
 	
 	item_list.append(make_item(
 		"Ski Mask",
@@ -290,8 +281,6 @@ func _ready() -> void:
 		false
 	))
 	
-	itemMax += 1;
-	
 	item_list.append(make_item(
 		"Spring Fist",
 		1000,
@@ -302,8 +291,6 @@ func _ready() -> void:
 		5,
 		false
 	))
-	
-	itemMax += 1;
 	
 	item_list.append(make_item(
 		"Enlightened Centrist",
@@ -317,8 +304,6 @@ func _ready() -> void:
 		false
 	))
 	
-	itemMax += 1;
-	
 	item_list.append(make_item(
 		"More Hands",
 		3000,
@@ -329,13 +314,13 @@ func _ready() -> void:
 		},
 		17,
 		false,
-		"Allows you to equip 1 more item.",
+		[
+			"Allows you to equip 1 more item."
+		],
 		{
 			"moreequips"	:	1
 		}
 	))
-	
-	itemMax += 1;
 	
 	item_list.append(make_item(
 		"Tentacle Arms",
@@ -347,15 +332,10 @@ func _ready() -> void:
 		},
 		17,
 		false,
-		"Allows you to equip 2 more item.",
+		[
+			"Allows you to equip 2 more item."
+		],
 		{
 			"moreequips"	:	2
 		}
 	))
-	
-	itemMax += 1;
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

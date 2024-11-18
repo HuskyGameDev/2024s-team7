@@ -46,7 +46,7 @@ func _on_item_shop_reload():
 			sprite.texture = load("res://resources/sprites/Shop_sprites.png")
 			sprite.frame = ItemStorage.itemsList[id]["sprite"]
 		name_label.visible = true
-		name_label.text = ItemStorage.itemsList[id]["name"]
+		name_label.text = ItemStorage.itemsList[id]["item_name"]
 		money_label.visible = true
 		money_label.text = "Bought"
 	else: # If the item is not owned by the player
@@ -59,7 +59,7 @@ func _on_item_shop_reload():
 		# label to be accurate and the sprite to be its sprite
 		money = ItemStorage.itemsList[id]["price"]
 		money_label.text = "Price: " + str(ItemStorage.itemsList[id]["price"])
-		name_label.text = ItemStorage.itemsList[id]["name"]
+		name_label.text = ItemStorage.itemsList[id]["item_name"]
 		if (ItemStorage.itemsList[id]["sprite"] != null):
 			sprite.texture = load("res://resources/sprites/Shop_sprites.png")
 			sprite.frame = ItemStorage.itemsList[id]["sprite"]
