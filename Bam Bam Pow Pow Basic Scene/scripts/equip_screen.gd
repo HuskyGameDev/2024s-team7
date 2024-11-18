@@ -136,7 +136,7 @@ func _on_equip_button_pressed() -> void:
 			if (ItemStorage.equipped_items[i] == selected_id):
 				ItemStorage.equipped_items[i] = -1
 				for j in range(i,ItemStorage.maxequips):
-					if (j != 4 && ItemStorage.equipped_items[j+1] != -1):
+					if (j != ItemStorage.maxequips-1 && ItemStorage.equipped_items[j+1] != -1):
 						ItemStorage.equipped_items[j] = ItemStorage.equipped_items[j+1]
 					else:
 						ItemStorage.equipped_items[j] = -1

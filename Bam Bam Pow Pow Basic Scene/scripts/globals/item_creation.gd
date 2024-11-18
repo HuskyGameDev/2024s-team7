@@ -12,12 +12,13 @@ enum MULTTYPE {
 
 # Make item function that assigns parts of item to whatever they are set as when called
 func make_item(name: String, price: int, owned: bool, effects: Dictionary,
-			   sprite_index: int, equipped: bool, descript: String ="No Description") -> Dictionary:
+			   sprite_index: int, equipped: bool, descript: String ="No Description", on_buy: Dictionary = {"no_effect": 0}) -> Dictionary:
 	var item: Dictionary = {
 		"name" 		: name,
 		"price" 	: price,
 		"owned" 	: owned,
 		"effects" 	: effects,
+		"on_buy"	: on_buy,
 		"sprite" 	: sprite_index,
 		"equipped"	: equipped,
 		"descript"	: descript
@@ -314,6 +315,42 @@ func _ready() -> void:
 		},
 		17,
 		false
+	))
+	
+	itemMax += 1;
+	
+	item_list.append(make_item(
+		"More Hands",
+		3000,
+		false,
+		{
+			"light_neutral": 0.5,
+			"heavy_neutral": 0.5
+		},
+		17,
+		false,
+		"Allows you to equip 1 more item.",
+		{
+			"moreequips"	:	1
+		}
+	))
+	
+	itemMax += 1;
+	
+	item_list.append(make_item(
+		"Tentacle Arms",
+		4500,
+		false,
+		{
+			"light_neutral": 0.5,
+			"heavy_neutral": 0.5
+		},
+		17,
+		false,
+		"Allows you to equip 2 more item.",
+		{
+			"moreequips"	:	2
+		}
 	))
 	
 	itemMax += 1;

@@ -22,7 +22,7 @@ signal reload
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#ItemStorage.money += 1000
+	ItemStorage.money += 10000
 	moneylabel.text = "Money: " + str(ItemStorage.money)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -112,7 +112,6 @@ func _on_next_page_button_pressed() -> void:
 		else:
 			curr_item.set_meta("ID", curr_item.get_meta("ID")+8)
 		curr_item._on_item_shop_reload()
-		print(curr_item.get_meta("ID"))
 
 # When the last page button is pressed
 func _on_last_page_button_pressed() -> void:
@@ -136,7 +135,6 @@ func _on_last_page_button_pressed() -> void:
 		else:
 			curr_item.set_meta("ID", curr_item.get_meta("ID")-8)
 		curr_item._on_item_shop_reload()
-		print(curr_item.get_meta("ID"))
 
 
 ##--------------------
