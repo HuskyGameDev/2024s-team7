@@ -26,6 +26,12 @@ size_flags_vertical = 4
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/MarginContainer"]
 layout_mode = 2
 
+[node name="LastPageButton" type="Button" parent="Control/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "<
+Last
+Page"
+
 [node name="EquippedItem1" parent="Control/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_orlww")]
 layout_mode = 2
 metadata/ID = -1
@@ -45,6 +51,12 @@ metadata/ID = -1
 [node name="EquippedItem5" parent="Control/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_orlww")]
 layout_mode = 2
 metadata/ID = -1
+
+[node name="NextPageButton" type="Button" parent="Control/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = ">
+Next
+Page"
 
 [node name="MarginContainer3" type="MarginContainer" parent="Control/VBoxContainer"]
 layout_mode = 2
@@ -313,11 +325,13 @@ text = "Fight Scene"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
+[connection signal="pressed" from="Control/VBoxContainer/MarginContainer/HBoxContainer/LastPageButton" to="." method="_on_equipped_last_page_button_pressed"]
 [connection signal="selected_item" from="Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem1" to="." method="_on_equipped_item_selected_item"]
 [connection signal="selected_item" from="Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem2" to="." method="_on_equipped_item_selected_item"]
 [connection signal="selected_item" from="Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem3" to="." method="_on_equipped_item_selected_item"]
 [connection signal="selected_item" from="Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem4" to="." method="_on_equipped_item_selected_item"]
 [connection signal="selected_item" from="Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem5" to="." method="_on_equipped_item_selected_item"]
+[connection signal="pressed" from="Control/VBoxContainer/MarginContainer/HBoxContainer/NextPageButton" to="." method="_on_equipped_next_page_button_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/MarginContainer3/HBoxContainer/EquipButton" to="." method="_on_equip_button_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/MarginContainer3/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/MarginContainer2/HBoxContainer/LastPageButton" to="." method="_on_last_page_button_pressed"]

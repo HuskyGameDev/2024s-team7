@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var equip_unequip_button = $Control/VBoxContainer/MarginContainer3/HBoxContainer/EquipButton
 @onready var cancel_button = $Control/VBoxContainer/MarginContainer3/HBoxContainer/CancelButton
 @onready var maxPage = ceil(ItemStorage.itemMax/10.0)
+@onready var maxEquippedPage = ceil(ItemStorage.maxequips/5.0)
 @onready var selected_id = -1
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 const WOOD_CLICK = preload("res://resources/sounds/WoodClick.wav")
@@ -12,6 +13,7 @@ signal reload
 
 
 var page = 1
+var equippedpage = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -86,7 +88,7 @@ func reload_equipped() -> void:
 		var curr_eq_item 
 		var curr_eq_item_num = "Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem" + str(i+1)
 		curr_eq_item = get_node(curr_eq_item_num)
-		curr_eq_item.set_meta("ID", ItemStorage.equipped_items[i])
+		curr_eq_item.set_meta("ID", ItemStorage.equipped_items[(equippedpage-1)*5+i])
 		curr_eq_item.on_reload()
 
 # When selecting a currently equipped item, make equip/unequip button say unequip,
@@ -114,12 +116,12 @@ func _on_equip_button_pressed() -> void:
 	# equip the currently selected item and show it, then unselect the item
 	if (ItemStorage.itemsList[selected_id]["equipped"] == false):
 		var equipped = 0
-		for i in 5:
+		for i in ItemStorage.maxequips:
 			if (ItemStorage.equipped_items[i] != -1):
 				equipped = equipped + 1
-		if (equipped != 5):
+		if (equipped != ItemStorage.maxequips):
 			ItemStorage.itemsList[selected_id]["equipped"] = true
-			for i in 5:
+			for i in ItemStorage.maxequips:
 				if (ItemStorage.equipped_items[i] == -1):
 					ItemStorage.equipped_items[i] = selected_id
 					break
@@ -130,10 +132,10 @@ func _on_equip_button_pressed() -> void:
 		# item list, then shift down equipped items positions and show the change and unselect
 		# the current item
 		ItemStorage.itemsList[selected_id]["equipped"] = false
-		for i in 5:
+		for i in ItemStorage.maxequips:
 			if (ItemStorage.equipped_items[i] == selected_id):
 				ItemStorage.equipped_items[i] = -1
-				for j in range(i,5):
+				for j in range(i,ItemStorage.maxequips):
 					if (j != 4 && ItemStorage.equipped_items[j+1] != -1):
 						ItemStorage.equipped_items[j] = ItemStorage.equipped_items[j+1]
 					else:
@@ -180,3 +182,47 @@ func _on_item_scene_button_pressed() -> void:
 			audio_stream_player.play()
 	Global.prev_scene = get_tree().current_scene.scene_file_path
 	SceneSwap.scene_swap("res://Scenes/Playable/ItemShop.tscn");
+
+
+func _on_fight_scene_button_pressed() -> void:
+	if (!audio_stream_player.is_playing()):
+			audio_stream_player.stream = WOOD_CLICK
+			audio_stream_player.play()
+	Global.prev_scene = get_tree().current_scene.scene_file_path
+	SceneSwap.scene_swap("res://Scenes/Playable/Fight.tscn");
+
+func valequippedpage():
+	if (equippedpage < 1):
+		equippedpage = maxEquippedPage
+	elif (equippedpage > maxEquippedPage):
+		equippedpage = 1
+
+
+func _on_equipped_last_page_button_pressed() -> void:
+	equippedpage -= 1
+	valequippedpage()
+	for i in 5:
+		var curr_eq_item 
+		var curr_eq_item_num = "Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem" + str(i+1)
+		curr_eq_item = get_node(curr_eq_item_num)
+		if (((equippedpage-1)*5)+i < ItemStorage.maxequips):
+			curr_eq_item.set_meta("ID", ItemStorage.equipped_items[((equippedpage-1)*5)+i])
+		else:
+			curr_eq_item.set_meta("ID", -1)
+		curr_eq_item.on_reload()
+	unselect()
+
+
+func _on_equipped_next_page_button_pressed() -> void:
+	equippedpage += 1
+	valequippedpage()
+	for i in 5:
+		var curr_eq_item 
+		var curr_eq_item_num = "Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem" + str(i+1)
+		curr_eq_item = get_node(curr_eq_item_num)
+		if (((equippedpage-1)*5)+i < ItemStorage.maxequips):
+			curr_eq_item.set_meta("ID", ItemStorage.equipped_items[((equippedpage-1)*5)+i])
+		else:
+			curr_eq_item.set_meta("ID", -1)
+		curr_eq_item.on_reload()
+	unselect()
