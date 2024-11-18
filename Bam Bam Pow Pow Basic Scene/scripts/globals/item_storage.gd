@@ -2,7 +2,7 @@ extends Node
 
 var money # Money player has
 var itemsList = [] # Array to store all items
-var equipped_items = [-1, -1, -1, -1, -1] # Array of equipped item id's initialized to -1 (not real id)
+
 
 var moneyItems = []			# Only affect money
 var baseItems = []			# Only affect base multipliers
@@ -11,6 +11,10 @@ var specificItems = []		# Allow and multiply a specific attack that is not a bas
 var itemMax = 0
 var fightvisit = 0
 var inputtoggle = true
+
+@onready var maxequips = 6
+var equipped_items = [] # Array of equipped item id's initialized to -1 (not real id)
+
 
 ## To be removed!!!! :|
 enum MULTTYPE {
@@ -31,6 +35,8 @@ func _ready():
 	itemsList = ItemCreation.item_list
 	itemMax = ItemCreation.itemMax
 	fightvisit = 0
+	for i in range(maxequips*3):
+		equipped_items.append(-1)
 
 # Gives money based on score obtained in fight scene
 func calc_money(score):

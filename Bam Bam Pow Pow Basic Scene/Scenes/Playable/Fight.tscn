@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d3qsuqxbit6rg"]
+[gd_scene load_steps=18 format=3 uid="uid://d3qsuqxbit6rg"]
 
 [ext_resource type="Script" path="res://scripts/Fight.gd" id="1_xn2pw"]
 [ext_resource type="Texture2D" uid="uid://cbia7ydbgigan" path="res://resources/sprites/icon.svg" id="2_tpybg"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cfx46l5ghyfp3" path="res://Scenes/Entities/Player/player.tscn" id="3_w7w43"]
 [ext_resource type="Texture2D" uid="uid://bb523jxarvel0" path="res://Assets/tile-sakura .PNG" id="3_xd3ae"]
 [ext_resource type="PackedScene" uid="uid://cqhetuoqkeuty" path="res://Scenes/Entities/enemy.tscn" id="4_boejj"]
+[ext_resource type="Texture2D" uid="uid://bccvdng3t7mr0" path="res://Assets/icon.svg" id="5_ecpwr"]
 [ext_resource type="PackedScene" uid="uid://b8vq6sc31q3x6" path="res://Scenes/Functional/combo.tscn" id="5_xefg3"]
 [ext_resource type="Texture2D" uid="uid://c2pa3fqc042ok" path="res://resources/sprites/clock back new.png" id="8_qstn8"]
 [ext_resource type="Texture2D" uid="uid://bmxls3x41o1a7" path="res://resources/sprites/clock top new.png" id="9_i7ld0"]
@@ -32,6 +33,20 @@ physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_1qjtc")
 sources/0 = SubResource("TileSetAtlasSource_7n84y")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xampy"]
+texture = ExtResource("3_xd3ae")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g1gl4"]
+texture = ExtResource("5_ecpwr")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_7wu4c"]
+sources/1 = SubResource("TileSetAtlasSource_xampy")
+sources/4 = SubResource("TileSetAtlasSource_g1gl4")
+
 [node name="Node" type="Node"]
 script = ExtResource("1_xn2pw")
 
@@ -55,6 +70,11 @@ tile_set = SubResource("TileSet_gik26")
 rendering_quadrant_size = 128
 format = 2
 layer_0/tile_data = PackedInt32Array(2818051, 1, 0, 2818059, 1, 0, 2818067, 1, 0, 2818075, 1, 0, 2818083, 1, 0, 2818091, 1, 0, 2818099, 1, 0, 2818107, 1, 0, 2818115, 1, 0, 2818123, 1, 0, 2883579, 1, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 393214, 0, 0, 65548, 1, 0, 262156, 1, 0, 327677, 1, 0, 131069, 1, 0)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+visible = false
+scale = Vector2(8, 8)
+tile_set = SubResource("TileSet_7wu4c")
 
 [node name="player" parent="." instance=ExtResource("3_w7w43")]
 position = Vector2(291, 531)
@@ -149,6 +169,8 @@ theme_override_font_sizes/normal_font_size = 30
 text = "Press any button to start"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AudioTimer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="attack_performed" from="player" to="enemy" method="_on_player_attack"]
 [connection signal="player_dir" from="player" to="enemy" method="_on_player_player_dir"]

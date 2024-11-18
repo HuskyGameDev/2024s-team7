@@ -1631,6 +1631,21 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector2(0.598, 0.61)]
 }
+tracks/7/type = "audio"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AudioStreamPlayer")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_4o2d2")
+}],
+"times": PackedFloat32Array(0.25)
+}
+tracks/7/use_blend = true
 
 [sub_resource type="Animation" id="Animation_yxkhr"]
 resource_name = "un_heavy_d"
@@ -1744,6 +1759,29 @@ tracks/8/keys = {
 "update": 0,
 "values": [Vector2(0.945, 0.26)]
 }
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("AudioStreamPlayer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 0.491123,
+"start_offset": 0.0,
+"stream": ExtResource("10_hymri")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_hm0km")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_4o2d2")
+}],
+"times": PackedFloat32Array(0.1, 0.2, 0.35)
+}
+tracks/9/use_blend = true
 
 [sub_resource type="Animation" id="Animation_14xa2"]
 resource_name = "un_heavy_n"
@@ -2089,13 +2127,17 @@ tracks/9/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
+"stream": ExtResource("6_eenw4")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
 "stream": ExtResource("8_hm0km")
 }, {
 "end_offset": 0.0,
 "start_offset": 0.0,
 "stream": ExtResource("7_4o2d2")
 }],
-"times": PackedFloat32Array(0.3, 0.4)
+"times": PackedFloat32Array(0.0666667, 0.3, 0.4)
 }
 tracks/9/use_blend = true
 
@@ -2390,11 +2432,15 @@ tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_eenw4")
+}, {
 "end_offset": 0.0125816,
 "start_offset": 0.0,
 "stream": ExtResource("10_hymri")
 }],
-"times": PackedFloat32Array(0.0833333)
+"times": PackedFloat32Array(0.0333333, 0.0833333)
 }
 tracks/8/use_blend = true
 
@@ -3557,7 +3603,7 @@ position = Vector2(76, -7)
 collision_layer = 8
 collision_mask = 4
 monitoring = false
-motion = 3.0
+motion = 5.0
 weight = 10.0
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
@@ -3598,12 +3644,12 @@ script = ExtResource("7_i6g50")
 
 [node name="Attacking" type="Node" parent="FSM" index="2"]
 script = ExtResource("8_eh8a0")
-cancel = 0
 
 [node name="Air" type="Node" parent="FSM" index="3"]
 script = ExtResource("11_hly11")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="8"]
+bus = &"sfx"
 
 [node name="Footsteps" type="AudioStreamPlayer" parent="." index="9"]
 stream = SubResource("AudioStreamRandomizer_7aige")

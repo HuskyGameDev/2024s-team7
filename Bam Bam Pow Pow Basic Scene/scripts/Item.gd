@@ -46,7 +46,7 @@ func _on_item_shop_reload():
 			sprite.texture = load("res://resources/sprites/Shop_sprites.png")
 			sprite.frame = ItemStorage.itemsList[id]["sprite"]
 		name_label.visible = true
-		name_label.text = ItemStorage.itemsList[id]["name"]
+		name_label.text = ItemStorage.itemsList[id]["item_name"]
 		money_label.visible = true
 		money_label.text = "Bought"
 	else: # If the item is not owned by the player
@@ -59,7 +59,7 @@ func _on_item_shop_reload():
 		# label to be accurate and the sprite to be its sprite
 		money = ItemStorage.itemsList[id]["price"]
 		money_label.text = "Price: " + str(ItemStorage.itemsList[id]["price"])
-		name_label.text = ItemStorage.itemsList[id]["name"]
+		name_label.text = ItemStorage.itemsList[id]["item_name"]
 		if (ItemStorage.itemsList[id]["sprite"] != null):
 			sprite.texture = load("res://resources/sprites/Shop_sprites.png")
 			sprite.frame = ItemStorage.itemsList[id]["sprite"]
@@ -69,15 +69,17 @@ func _on_button_pressed():
 	if ItemStorage.money >= money:
 		# Makes the item no longer visible or interactable
 		ItemStorage.itemsList[id]["owned"] = true # Updates the item to be owned by the player in the item storage
-		ItemStorage.owned_items.append(ItemStorage.itemsList[id])
+		#ItemStorage.owned_items.append(ItemStorage.itemsList[id])
+		var effects = ItemStorage.itemsList[id]["on_buy"]
+		for key in effects:
+			if key == "moreequips":
+				ItemStorage.maxequips += effects[key]
 		_on_item_shop_reload()
 		#Plays the purchase noise
-		if (!audioPlayer.is_playing()):
-			audioPlayer.stream = purchase_noise
-			audioPlayer.play()
+		audioPlayer.stream = purchase_noise
+		audioPlayer.play()
 		emit_signal("bought_item", money) # Emits the signal to say the item was bought with the appropriate cost
 	else:
-		if (!audioPlayer.is_playing()):
-			audioPlayer.stream = noMoney_noise
-			audioPlayer.play()
+		audioPlayer.stream = noMoney_noise
+		audioPlayer.play()
 		

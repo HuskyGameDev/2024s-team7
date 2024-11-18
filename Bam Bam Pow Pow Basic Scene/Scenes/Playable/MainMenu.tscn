@@ -194,6 +194,8 @@ PAIR WITH MAIN ATTACKS
 EXAMPLE: 'W' + 'J' FOR UPPERCUT
 DIRECTIONAL ATTACKS ARE PURCHASED"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="buttonPressed" from="VBoxContainer/New Unlimited" to="." method="_on_new_unlimited_button_pressed"]
 [connection signal="buttonPressed" from="VBoxContainer/Unlimited" to="." method="_on_unlimited_button_pressed"]
 [connection signal="buttonPressed" from="VBoxContainer/Controls" to="." method="_on_controls_button_pressed"]

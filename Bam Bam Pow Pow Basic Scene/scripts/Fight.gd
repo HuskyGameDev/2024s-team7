@@ -7,6 +7,8 @@ extends Node
 @onready var combo_label = $HBoxContainer/VBoxContainer/combo
 @onready var time_label = $HBoxContainer/time
 @onready var input_screen = $WarningScreen
+@onready var audio_timer: AudioStreamPlayer = $AudioTimer
+@onready var fiveSecond_noise = preload("res://resources/sounds/fiveseconds.wav")
 var started = false
 
 
@@ -27,6 +29,10 @@ func _process(delta):
 	combo_label.text = "x" + str(enemy.combo)
 	time_label.text = "Time: " + "%.3f" % time.time_left
 	$HBoxContainer/TextureProgressBar.value = (100/time.wait_time)*(time.wait_time-time.time_left)
+	if time.time_left < 5 && time.time_left > 4 && (!audio_timer.is_playing()):
+			audio_timer.stream = fiveSecond_noise
+			audio_timer.play()
+	
 
 func _on_timer_timeout():
 	enemy.calc_money()
