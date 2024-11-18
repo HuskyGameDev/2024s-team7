@@ -11,6 +11,7 @@ var started = false
 
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	input_screen.visible = true
 	
 

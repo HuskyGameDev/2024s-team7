@@ -27,20 +27,6 @@ offset_bottom = 205.0
 bbcode_enabled = true
 text = "[font_size=30][color=black][b]Results[/b][/color][/font_size]"
 
-[node name="Button" type="Button" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 531.0
-offset_top = 608.0
-offset_right = 715.0
-offset_bottom = 678.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Click to Continue"
-
 [node name="RichTextLabel3" type="RichTextLabel" parent="."]
 offset_left = 549.0
 offset_top = 259.0
@@ -73,4 +59,14 @@ offset_bottom = 312.0
 bbcode_enabled = true
 text = "[font_size=30][color=black][b]0[/b][/color][/font_size]"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="Timer" type="Timer" parent="."]
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="."]
+offset_left = 612.0
+offset_top = 600.0
+offset_right = 1003.0
+offset_bottom = 710.0
+bbcode_enabled = true
+text = "[font_size=30][color=black][b]Click any button to continue[/b][/color][/font_size]"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

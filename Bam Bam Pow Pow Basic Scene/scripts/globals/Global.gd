@@ -11,3 +11,4 @@ var is_remapping = false
 #YES
 var score = 0
 var combo = 0
+var MOUSE_SPEED = 400

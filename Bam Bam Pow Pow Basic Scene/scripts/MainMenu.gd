@@ -1,26 +1,35 @@
 extends Control
 
-@onready var index = 0
-
-var buttonList = [0,1,
-2,3]
-
-func _ready():
-	$"VBoxContainer/New Unlimited".grab_focus()
-
-func _input(event):
-	if event is InputEventKey && event.pressed:
-		print(buttonList[index])
-		if event.as_text_keycode() == "W":
-			index = index - 1
-			if index < 0:
-				index = 3
-		if event.as_text_keycode() == "S":
-			index = index + 1
-			if index > 3:
-				index = 0
-		print(buttonList[index])
+func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
+func _physics_process(delta: float) -> void:
+	var direction: Vector2
+	direction.x = Input.get_action_strength("R") - Input.get_action_strength("L") 
+	direction.y = Input.get_action_strength("D") - Input.get_action_strength("U")
+	var movement = Global.MOUSE_SPEED * direction * delta
+	if (movement):
+		get_viewport().warp_mouse(get_global_mouse_position()+movement)
+	if Input.is_action_just_pressed("Light"):
+		simulate_mouse_click()
+
+func simulate_mouse_click():
+	var mp = get_viewport().get_mouse_position()
+	
+	var event = InputEventMouseButton.new()
+	event.button_index = MOUSE_BUTTON_LEFT
+	event.position = mp
+	event.pressed = true
+	
+	Input.parse_input_event(event)
+	
+	var r_event = InputEventMouseButton.new()
+	r_event.button_index = MOUSE_BUTTON_LEFT
+	r_event.position = mp
+	r_event.pressed = false
+	
+	Input.parse_input_event(r_event)
+
 func _on_new_unlimited_button_pressed():
 	ItemStorage.restart_game()
 	SceneSwap.scene_swap("res://Scenes/Playable/Fight.tscn")

@@ -13,6 +13,33 @@ signal reload
 
 var page = 1
 
+func _physics_process(delta: float) -> void:
+	var direction: Vector2
+	direction.x = Input.get_action_strength("R") - Input.get_action_strength("L") 
+	direction.y = Input.get_action_strength("D") - Input.get_action_strength("U")
+	var movement = Global.MOUSE_SPEED * direction * delta
+	if (movement):
+		get_viewport().warp_mouse(get_viewport().get_mouse_position()+movement)
+	if Input.is_action_just_pressed("Light"):
+		simulate_mouse_click()
+
+func simulate_mouse_click():
+	var mp = get_viewport().get_mouse_position()
+	
+	var event = InputEventMouseButton.new()
+	event.button_index = MOUSE_BUTTON_LEFT
+	event.position = mp
+	event.pressed = true
+	
+	Input.parse_input_event(event)
+	
+	var r_event = InputEventMouseButton.new()
+	r_event.button_index = MOUSE_BUTTON_LEFT
+	r_event.position = mp
+	r_event.pressed = false
+	
+	Input.parse_input_event(r_event)
+	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Make equip/unequip button and cancel selection button disappear
@@ -165,13 +192,6 @@ func _on_weapon_shop_button_pressed():
 			audio_stream_player.stream = WOOD_CLICK
 			audio_stream_player.play()
 	SceneSwap.scene_swap("res://Scenes/Playable/WeaponShop.tscn");
-
-func _on_settings_menu_button_pressed():
-	if (!audio_stream_player.is_playing()):
-			audio_stream_player.stream = WOOD_CLICK
-			audio_stream_player.play()
-	Global.prev_scene = get_tree().current_scene.scene_file_path
-	SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn");
 
 
 func _on_item_scene_button_pressed() -> void:

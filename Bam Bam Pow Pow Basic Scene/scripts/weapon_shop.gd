@@ -65,7 +65,33 @@ func _ready():
 	$VBoxContainer/ColorRect/VBoxContainer/ToBuy.hide()
 	$VBoxContainer/ColorRect/VBoxContainer/Bought.show()
 
+func _physics_process(delta: float) -> void:
+	var direction: Vector2
+	direction.x = Input.get_action_strength("R") - Input.get_action_strength("L") 
+	direction.y = Input.get_action_strength("D") - Input.get_action_strength("U")
+	var movement = Global.MOUSE_SPEED * direction * delta
+	if (movement):
+		get_viewport().warp_mouse(get_viewport().get_mouse_position()+movement)
+	if Input.is_action_just_pressed("Light"):
+		simulate_mouse_click()
 
+func simulate_mouse_click():
+	var mp = get_viewport().get_mouse_position()
+	
+	var event = InputEventMouseButton.new()
+	event.button_index = MOUSE_BUTTON_LEFT
+	event.position = mp
+	event.pressed = true
+	
+	Input.parse_input_event(event)
+	
+	var r_event = InputEventMouseButton.new()
+	r_event.button_index = MOUSE_BUTTON_LEFT
+	r_event.position = mp
+	r_event.pressed = false
+	
+	Input.parse_input_event(r_event)
+	
 ## Not necessary yet. Kept only for potential later convenience.
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -117,11 +143,6 @@ func _on_next_sprite_button_pressed():
 ## Swaps scene to main menu
 func _on_main_menu_button_pressed():
 	SceneSwap.scene_swap("res://Scenes/Playable/MainMenu.tscn");	# Swaps
-
-## Swaps scene to settings
-func _on_settings_button_pressed():
-	Global.prev_scene = get_tree().current_scene.scene_file_path #I don't know why this is here I copied allen
-	SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn");	# Swaps
 
 ## Swaps scene to ItemShop
 func _on_item_shop_button_pressed():
