@@ -82,11 +82,11 @@ func _on_button_pressed():
 	else:
 		audioPlayer.stream = noMoney_noise
 		audioPlayer.play()
-		
 
-func _on_sprite_container_mouse_entered() -> void:
+
+func _on_sprite_2d_mouse_entered() -> void:
 	sprite.frame += 19
 
 
-func _on_sprite_container_mouse_exited() -> void:
+func _on_sprite_2d_mouse_exited() -> void:
 	sprite.frame -= 19
