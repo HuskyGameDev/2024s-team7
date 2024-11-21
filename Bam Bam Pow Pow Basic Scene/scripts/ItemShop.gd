@@ -9,6 +9,7 @@ extends CanvasLayer
 @onready var item6 = $MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item6
 @onready var item7 = $MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item7
 @onready var item8 = $MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item8
+@onready var warning = $HazardButton2
 @onready var maxPage = ceil(ItemStorage.itemMax/8.0)
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 const WOOD_CLICK = preload("res://resources/sounds/WoodClick.wav")
@@ -20,22 +21,21 @@ var page = 1 # The item shop always starts on page 1
 
 signal reload
 
+var speed_flash = 1.5
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	ItemStorage.money += 10000
 	moneylabel.text = "Money: " + str(ItemStorage.money)
-	
-	if WeaponInShop.itemsOpened == false:
-		Dialogic.start('itemShop')
-	WeaponInShop.itemsOpened = true
+	print(warning.modulate)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	#if Input.is_action_just_pressed("R"):
-	#	print("Items: ")
-	#	ItemStorage.printItems()
-	pass
+func _process(delta: float) -> void:
+	if warning.modulate.a > 0.99:
+		speed_flash *= -1
+	elif warning.modulate.a < 0.5:
+		speed_flash *= -1
+	warning.modulate = Color(1, 1, 1, warning.modulate.a + speed_flash * delta)
 
 # A helper function to add money to the players money and display it
 func update_money(change):

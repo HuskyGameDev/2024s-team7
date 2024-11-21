@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bdh05d3fan0h3"]
 
 [ext_resource type="Script" path="res://scripts/equip_item.gd" id="1_ufywy"]
-[ext_resource type="Texture2D" uid="uid://bmlw1dmy1yyuw" path="res://resources/sprites/Shop_sprites.png" id="2_702wy"]
+[ext_resource type="Texture2D" uid="uid://em6cr61dw1mi" path="res://resources/sprites/combined_playtest_3_spritesheet.png" id="2_m3sv0"]
 
 [node name="EquipItem" type="VBoxContainer"]
 clip_contents = true
@@ -19,9 +19,9 @@ size_flags_vertical = 0
 [node name="Sprite2D" type="Sprite2D" parent="SpriteContainer"]
 position = Vector2(100, 75)
 scale = Vector2(5, 5)
-texture = ExtResource("2_702wy")
-hframes = 4
-vframes = 5
+texture = ExtResource("2_m3sv0")
+hframes = 8
+vframes = 7
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
@@ -32,5 +32,5 @@ custom_minimum_size = Vector2(200, 10)
 layout_mode = 2
 text = "Select"
 
-[connection signal="pressed" from="Button" to="." method="_on_sprite_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_sprite_pressed"]

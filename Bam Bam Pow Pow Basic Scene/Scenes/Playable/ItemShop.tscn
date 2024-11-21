@@ -352,11 +352,7 @@ offset_bottom = 424.0
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 30
 text = "
-LEGEND!
-The scrolls qffect specific attack directions. Red for light, green for heavy.
-The Filled in circles affect all attacks of one type. Red fist for light, green boot for heavy.
-The outlined ones only affect their respective air attacks.
-The arrows affect all attacks in that direction"
+Everything here is meant to somewhat resemble what it affects, play around with the various options inside of the equip screen! Make your build and go beat up that punching bag!"
 
 [node name="Close" type="Button" parent="WarningScreen"]
 layout_mode = 2

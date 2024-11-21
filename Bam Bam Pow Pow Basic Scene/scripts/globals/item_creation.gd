@@ -94,7 +94,7 @@ func _ready() -> void:
 			"light_side": 0.3,
 			"heavy_side": 0.3
 		},
-		4,
+		20,
 		false,
 		[
 			"Adds 0.3 to your light and heavy side attacks."
@@ -288,19 +288,19 @@ func _ready() -> void:
 		{
 			"heavy_neutral": 0.5
 		},
-		5,
+		19,
 		false
 	))
 	
 	item_list.append(make_item(
-		"Enlightened Centrist",
-		1500,
+		"Unfair Gloves",
+		2500,
 		true,
 		{
 			"light_neutral": 0.5,
 			"heavy_neutral": 0.5
 		},
-		17,
+		22,
 		false
 	))
 	
@@ -312,7 +312,7 @@ func _ready() -> void:
 			"light_neutral": 0.5,
 			"heavy_neutral": 0.5
 		},
-		17,
+		21,
 		false,
 		[
 			"Allows you to equip 1 more item."
@@ -323,14 +323,14 @@ func _ready() -> void:
 	))
 	
 	item_list.append(make_item(
-		"Tentacle Arms",
+		"More Unfair Gloves",
 		4500,
 		false,
 		{
-			"light_neutral": 0.5,
-			"heavy_neutral": 0.5
+			"light_neutral": 0.7,
+			"heavy_neutral": 0.7
 		},
-		17,
+		22,
 		false,
 		[
 			"Allows you to equip 2 more item."

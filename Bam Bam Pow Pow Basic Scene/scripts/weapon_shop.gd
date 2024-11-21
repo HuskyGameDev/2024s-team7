@@ -6,6 +6,9 @@
 
 extends CanvasLayer
 
+@onready var warning = $HazardButton
+var speed_flash = 1
+
 ## Handles changes to Selected Weapon screen
 ##
 ## Parameters:
@@ -71,8 +74,12 @@ func _ready():
 
 ## Not necessary yet. Kept only for potential later convenience.
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-	#pass
+func _process(delta):
+	if warning.modulate.a > 0.99:
+		speed_flash *= -1
+	elif warning.modulate.a < 0.5:
+		speed_flash *= -1
+	warning.modulate = Color(1, 1, 1, warning.modulate.a + speed_flash * delta)
 
 
 ## Second function of HangerButton (first in Hanger script)

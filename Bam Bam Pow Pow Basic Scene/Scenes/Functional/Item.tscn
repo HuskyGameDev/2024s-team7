@@ -28,8 +28,8 @@ material = SubResource("ShaderMaterial_bm030")
 position = Vector2(100, 75)
 scale = Vector2(5, 5)
 texture = ExtResource("2_6ao1e")
-hframes = 7
-vframes = 6
+hframes = 8
+vframes = 7
 
 [node name="NameLabel" type="Label" parent="."]
 layout_mode = 2
@@ -50,7 +50,6 @@ text = "Buy"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="SpriteButtonPressed" from="SpriteContainer/Sprite2D" to="." method="_on_sprite_2d_sprite_button_pressed"]
 [connection signal="mouse_entered" from="SpriteContainer/Sprite2D" to="." method="_on_sprite_2d_mouse_entered"]
 [connection signal="mouse_exited" from="SpriteContainer/Sprite2D" to="." method="_on_sprite_2d_mouse_exited"]
 [connection signal="pressed" from="HBoxContainer/BuyButton" to="." method="_on_button_pressed"]

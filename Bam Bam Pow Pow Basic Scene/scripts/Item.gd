@@ -1,6 +1,5 @@
 extends VBoxContainer
 
-signal itemPressed
 signal bought_item(money) # Signal for when the item is bought that uses its money stat
 
 # Finds the item shop, label for the cost, buy button, sprite, name label, loads the 
@@ -19,6 +18,8 @@ signal bought_item(money) # Signal for when the item is bought that uses its mon
 
 var money # The cost of the item
 
+var bonus = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	item_shop.connect("reload", _on_item_shop_reload)
@@ -33,6 +34,7 @@ func _process(_delta):
 func _on_item_shop_reload():
 	id = self.get_meta("ID") # Updates the id variable here based on what the metadata was changed to
 	var lessThanMax = (id < ItemStorage.itemMax) # Checks if item's id is less than the max (viable id)
+	var sprite_frame = ItemStorage.itemsList[id]["sprite"]
 	# If item is outside viable item numbers but on last page of the item shop
 	if (lessThanMax == false):
 		money_label.visible = false
@@ -43,9 +45,9 @@ func _on_item_shop_reload():
 	elif (ItemStorage.itemsList[id].owned == true):
 		buy_button.visible = false
 		sprite.visible = true;
-		if (ItemStorage.itemsList[id]["sprite"] != null):
-			sprite.texture = load("res://resources/sprites/full_item_sprites_playtest_3.png")
-			sprite.frame = ItemStorage.itemsList[id]["sprite"]
+		if (sprite_frame != null):
+			sprite.texture = load("res://resources/sprites/combined_playtest_3_spritesheet.png")
+			sprite.frame = sprite_frame
 		name_label.visible = true
 		name_label.text = ItemStorage.itemsList[id]["item_name"]
 		money_label.visible = true
@@ -61,9 +63,9 @@ func _on_item_shop_reload():
 		money = ItemStorage.itemsList[id]["price"]
 		money_label.text = "Price: " + str(ItemStorage.itemsList[id]["price"])
 		name_label.text = ItemStorage.itemsList[id]["item_name"]
-		if (ItemStorage.itemsList[id]["sprite"] != null):
-			sprite.texture = load("res://resources/sprites/full_item_sprites_playtest_3.png")
-			sprite.frame = ItemStorage.itemsList[id]["sprite"]
+		if (sprite_frame != null):
+			sprite.texture = load("res://resources/sprites/combined_playtest_3_spritesheet.png")
+			sprite.frame = sprite_frame
 
 # When the button attatched to the item is pressed
 func _on_button_pressed():
@@ -86,21 +88,8 @@ func _on_button_pressed():
 
 
 func _on_sprite_2d_mouse_entered() -> void:
-	sprite.frame += 19
+	sprite.frame += 24
 
 
 func _on_sprite_2d_mouse_exited() -> void:
-	sprite.frame -= 19
-	
-	
-## WIP making the dialogic nice
-func _on_sprite_2d_sprite_button_pressed():
-	print("the button worked awooga")
-	itemPressed.emit()
-	#Dialogic.set_variable('ItemDescript', 'awooooga')
-	var lines = ItemStorage.itemsList[id]["descript"]
-	Dialogic.VAR.ItemDescript = lines
-	##for line in lines:
-		##Dialogic.VAR.ItemDescript = line
-
-	Dialogic.start('itemDescriptions')
+	sprite.frame -= 24
