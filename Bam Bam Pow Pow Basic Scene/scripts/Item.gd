@@ -43,7 +43,7 @@ func _on_item_shop_reload():
 		buy_button.visible = false
 		sprite.visible = true;
 		if (ItemStorage.itemsList[id]["sprite"] != null):
-			sprite.texture = load("res://resources/sprites/Shop_sprites.png")
+			sprite.texture = load("res://resources/sprites/full_item_sprites_playtest_3.png")
 			sprite.frame = ItemStorage.itemsList[id]["sprite"]
 		name_label.visible = true
 		name_label.text = ItemStorage.itemsList[id]["item_name"]
@@ -61,7 +61,7 @@ func _on_item_shop_reload():
 		money_label.text = "Price: " + str(ItemStorage.itemsList[id]["price"])
 		name_label.text = ItemStorage.itemsList[id]["item_name"]
 		if (ItemStorage.itemsList[id]["sprite"] != null):
-			sprite.texture = load("res://resources/sprites/Shop_sprites.png")
+			sprite.texture = load("res://resources/sprites/full_item_sprites_playtest_3.png")
 			sprite.frame = ItemStorage.itemsList[id]["sprite"]
 
 # When the button attatched to the item is pressed
@@ -83,3 +83,10 @@ func _on_button_pressed():
 		audioPlayer.stream = noMoney_noise
 		audioPlayer.play()
 		
+
+func _on_sprite_container_mouse_entered() -> void:
+	sprite.frame += 19
+
+
+func _on_sprite_container_mouse_exited() -> void:
+	sprite.frame -= 19

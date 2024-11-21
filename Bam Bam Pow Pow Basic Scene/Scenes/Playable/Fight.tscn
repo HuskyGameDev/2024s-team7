@@ -79,7 +79,6 @@ tile_set = SubResource("TileSet_7wu4c")
 [node name="player" parent="." instance=ExtResource("3_w7w43")]
 position = Vector2(291, 531)
 scale = Vector2(2, 2)
-score = null
 
 [node name="enemy" parent="." instance=ExtResource("4_boejj")]
 position = Vector2(681, 436)
@@ -186,6 +185,6 @@ Toggle this window appearing in settings"
 [connection signal="attack" from="ComboHandler" to="player" method="_on_signal_transfer_to_state"]
 [connection signal="attack" from="ComboHandler" to="enemy" method="_on_combo_handler_attack"]
 [connection signal="attack_damamge" from="ComboHandler" to="enemy" method="_on_combo_handler_attack_damamge"]
-[connection signal="attack_index" from="ComboHandler" to="player" method="_on_signal_transfer_to_state"]
 [connection signal="attack_index" from="ComboHandler" to="player" method="_on_combo_handler_attack_index"]
+[connection signal="attack_index" from="ComboHandler" to="player" method="_on_signal_transfer_to_state"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

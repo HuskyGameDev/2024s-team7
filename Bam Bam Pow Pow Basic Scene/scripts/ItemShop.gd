@@ -24,10 +24,6 @@ signal reload
 func _ready():
 	ItemStorage.money += 10000
 	moneylabel.text = "Money: " + str(ItemStorage.money)
-	
-	if WeaponInShop.itemsOpened == false:
-		Dialogic.start('itemShop')
-	WeaponInShop.itemsOpened = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
