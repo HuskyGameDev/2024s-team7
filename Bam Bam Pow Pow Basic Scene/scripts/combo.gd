@@ -1,9 +1,5 @@
 extends Node
 
-
-
-
-
 ## This enum is for the core ability
 ## NOTE: The assigned values are equal to their index in the damage array
 enum CORE {

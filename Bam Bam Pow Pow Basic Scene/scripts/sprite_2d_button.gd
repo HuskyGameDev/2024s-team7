@@ -8,6 +8,8 @@
 
 extends Sprite2D
 signal SpriteButtonPressed
+signal mouse_entered
+signal mouse_exited
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -37,6 +39,9 @@ func _on_button_button_up():		# Removed Press
 
 func _on_button_mouse_entered():	# Hovering
 	self.material.set_shader_parameter("onoffSoftLight",1)		# Add soft light
+	emit_signal("mouse_entered")
+	
 
 func _on_button_mouse_exited():		# Removed Hover
 	self.material.set_shader_parameter("onoffSoftLight",0)		# Remove soft light
+	emit_signal("mouse_exited")

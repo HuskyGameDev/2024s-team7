@@ -32,6 +32,7 @@ signal x_pos(position)
 
 var attack_performed: String
 var player_dir
+var stale: int = 0
 
 var addedMoney = false
 
@@ -139,6 +140,7 @@ func _physics_process(delta):
 			Global.combo = self.combo
 		self.juggle = 0
 		self.combo = 0
+		self.stale = 0
 
 	move_and_slide()
 
@@ -157,7 +159,7 @@ func _on_hurtbox_area_entered(hitbox):
 		var stream2 = load(stream)
 		audioPlayer.set_stream(stream2)
 		audioPlayer.play()
-		
+	
 	damage = player.weapon[attack_performed].damage + 0.2 * (player.weapon[attack_performed].damage * self.juggle)
 	damage *= player.weapon[attack_performed].mult
 	
@@ -171,11 +173,13 @@ func _on_hurtbox_area_entered(hitbox):
 	velocity.x = 0;
 	velocity.y = 0;
 	
+	stale += player.weapon[attack_performed].hit_stun
+	
 	if player.weapon[attack_performed].knockback < 0:
-		velocity.x += float((-10*player.weapon[attack_performed].knockback)) * player_dir
+		velocity.x += float((-10*player.weapon[attack_performed].knockback)) * player_dir 
 	else:
 		velocity.x += float((10*player.weapon[attack_performed].knockback)) * player_dir
-	velocity.y -= float((100*player.weapon[attack_performed].knockback))
+	velocity.y -= float((10*player.weapon[attack_performed].angle)) - (combo * .01) * stale
 	
 	#player.velocity.x *= .01
 	player.velocity.y *= .75
@@ -190,11 +194,9 @@ func calc_money():
 	ItemStorage.money += (addedtotal)
 	SceneSwap.scene_swap("res://Scenes/Playable/ResultsScreen.tscn")
 
-
 func _on_player_attack(attack):
 	attack_performed = attack
 		
-
 
 func _on_player_player_dir(dir):
 	player_dir = dir

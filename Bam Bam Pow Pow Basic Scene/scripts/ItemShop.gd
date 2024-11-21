@@ -9,9 +9,11 @@ extends CanvasLayer
 @onready var item6 = $MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item6
 @onready var item7 = $MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item7
 @onready var item8 = $MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item8
+@onready var warning = $HazardButton2
 @onready var maxPage = ceil(ItemStorage.itemMax/8.0)
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 const WOOD_CLICK = preload("res://resources/sounds/WoodClick.wav")
+const Chime = preload("res://resources/sounds/StartChime.wav")
 
 
 var page = 1 # The item shop always starts on page 1
@@ -19,45 +21,21 @@ var page = 1 # The item shop always starts on page 1
 
 signal reload
 
-func _physics_process(delta: float) -> void:
-	var direction: Vector2
-	direction.x = Input.get_action_strength("R") - Input.get_action_strength("L") 
-	direction.y = Input.get_action_strength("D") - Input.get_action_strength("U")
-	var movement = Global.MOUSE_SPEED * direction * delta
-	if (movement):
-		get_viewport().warp_mouse(get_viewport().get_mouse_position()+movement)
-	if Input.is_action_just_pressed("Light"):
-		simulate_mouse_click()
+var speed_flash = 1.5
 
-func simulate_mouse_click():
-	var mp = get_viewport().get_mouse_position()
-	
-	var event = InputEventMouseButton.new()
-	event.button_index = MOUSE_BUTTON_LEFT
-	event.position = mp
-	event.pressed = true
-	
-	Input.parse_input_event(event)
-	
-	var r_event = InputEventMouseButton.new()
-	r_event.button_index = MOUSE_BUTTON_LEFT
-	r_event.position = mp
-	r_event.pressed = false
-	
-	Input.parse_input_event(r_event)
-	
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	#ItemStorage.money += 1000
+	#ItemStorage.money += 10000
 	moneylabel.text = "Money: " + str(ItemStorage.money)
+	#print(warning.modulate)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	#if Input.is_action_just_pressed("R"):
-	#	print("Items: ")
-	#	ItemStorage.printItems()
-	pass
+
+func _process(delta: float) -> void:
+	if warning.modulate.a > 0.99:
+		speed_flash *= -1
+	elif warning.modulate.a < 0.5:
+		speed_flash *= -1
+	warning.modulate = Color(1, 1, 1, warning.modulate.a + speed_flash * delta)
 
 # A helper function to add money to the players money and display it
 func update_money(change):
@@ -70,21 +48,18 @@ func bought_item(money):
 
 # A series of functions that are used to transition to new scenes
 func _on_fight_scene_button_pressed():
-	if (!audio_stream_player.is_playing()):
-			audio_stream_player.stream = WOOD_CLICK
-			audio_stream_player.play()
+	audio_stream_player.stream = WOOD_CLICK
+	audio_stream_player.play()
 	SceneSwap.scene_swap("res://Scenes/Playable/Fight.tscn");
 
 func _on_main_menu_button_pressed():
-	if (!audio_stream_player.is_playing()):
-			audio_stream_player.stream = WOOD_CLICK
-			audio_stream_player.play()
+	audio_stream_player.stream = WOOD_CLICK
+	audio_stream_player.play()
 	SceneSwap.scene_swap("res://Scenes/Playable/MainMenu.tscn");
 
 func _on_weapon_shop_button_pressed():
-	if (!audio_stream_player.is_playing()):
-			audio_stream_player.stream = WOOD_CLICK
-			audio_stream_player.play()
+	audio_stream_player.stream = WOOD_CLICK
+	audio_stream_player.play()
 	SceneSwap.scene_swap("res://Scenes/Playable/WeaponShop.tscn");
 
 func _on_equip_button_pressed() -> void:
@@ -93,18 +68,22 @@ func _on_equip_button_pressed() -> void:
 			audio_stream_player.play()
 	SceneSwap.scene_swap("res://Scenes/Playable/EquipScreen.tscn");
 
+func _on_settings_menu_button_pressed():
+	audio_stream_player.stream = WOOD_CLICK
+	audio_stream_player.play()
+	Global.prev_scene = get_tree().current_scene.scene_file_path
+	SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn");
+
 # Redirection to save game function in item_storage script
 func _on_save_button_pressed():
-	if (!audio_stream_player.is_playing()):
-			audio_stream_player.stream = WOOD_CLICK
-			audio_stream_player.play()
+	audio_stream_player.stream = Chime
+	audio_stream_player.play()
 	ItemStorage.save_game()
 
 # When load game button is pressed, load it and update money and items
 func _on_load_button_pressed():
-	if (!audio_stream_player.is_playing()):
-			audio_stream_player.stream = WOOD_CLICK
-			audio_stream_player.play()
+	audio_stream_player.stream = WOOD_CLICK
+	audio_stream_player.play()
 	ItemStorage.load_game()
 	moneylabel.text = "Money: " + str(ItemStorage.money)
 	emit_signal("reload")
@@ -118,9 +97,8 @@ func valpage():
 
 # When the next page button is pressed
 func _on_next_page_button_pressed() -> void:
-	if (!audio_stream_player.is_playing()):
-			audio_stream_player.stream = WOOD_CLICK
-			audio_stream_player.play()
+	audio_stream_player.stream = WOOD_CLICK
+	audio_stream_player.play()
 	# Increment page and ensure it is still within bounds of available pages
 	page += 1
 	valpage()
@@ -139,10 +117,11 @@ func _on_next_page_button_pressed() -> void:
 		else:
 			curr_item.set_meta("ID", curr_item.get_meta("ID")+8)
 		curr_item._on_item_shop_reload()
-		print(curr_item.get_meta("ID"))
 
 # When the last page button is pressed
 func _on_last_page_button_pressed() -> void:
+	audio_stream_player.stream = WOOD_CLICK
+	audio_stream_player.play()
 	# Decrement page and ensure it is still within the bounds of available pages
 	page -= 1
 	valpage()
@@ -161,7 +140,6 @@ func _on_last_page_button_pressed() -> void:
 		else:
 			curr_item.set_meta("ID", curr_item.get_meta("ID")-8)
 		curr_item._on_item_shop_reload()
-		print(curr_item.get_meta("ID"))
 
 
 ##--------------------
