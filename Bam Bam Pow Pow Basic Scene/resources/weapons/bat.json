@@ -3,71 +3,71 @@
 	"damage_type": "PHYSICAL",
 	"light_neutral": {
 		"damage": 10,
-		"knockback": 1.0,
-		"angle": 45.0,
+		"knockback_x": 1.0,
+		"knockback_y": 45.0,
 		"hit_stun": 100,
 		"animation": "path/to/anim"
 	},
 	"light_up": {
 		"damage": 15,
-		"knockback": 1.0,
-		"angle": 45.0,
+		"knockback_x": 1.0,
+		"knockback_y": 45.0,
 		"hit_stun": 150,
 		"animation": "path/to/anim"
 	},
 	"light_down": {
 		"damage": 20,
-		"knockback": 1.5,
-		"angle": -60.0,
+		"knockback_x": 1.5,
+		"knockback_y": -60.0,
 		"hit_stun": 120,
 		"animation": "path/to/anim"
 	},
 	"light_side": {
 		"damage": 25,
-		"knockback": 1.0,
-		"angle": 0.0,
+		"knockback_x": 1.0,
+		"knockback_y": 0.0,
 		"hit_stun": 100,
 		"animation": "path/to/anim"
 	},
 	"light_air": {
 		"damage": 10,
-		"knockback": 0.5,
-		"angle": 10.0,
+		"knockback_x": 0.5,
+		"knockback_y": 10.0,
 		"hit_stun": 50,
 		"animation": "path/to/anim"
 	},
 	"heavy_neutral": {
 		"damage": 10,
-		"knockback": 1.0,
-		"angle": 45.0,
+		"knockback_x": 1.0,
+		"knockback_y": 45.0,
 		"hit_stun": 100,
 		"animation": "path/to/anim"
 	},
 	"heavy_up": {
 		"damage": 25,
-		"knockback": 2.5,
-		"angle": 70.0,
+		"knockback_x": 2.5,
+		"knockback_y": 70.0,
 		"hit_stun": 180,
 		"animation": "path/to/anim"
 	},
 	"heavy_down": {
 		"damage": 30,
-		"knockback": 0.8,
-		"angle": -60.0,
+		"knockback_x": 0.8,
+		"knockback_y": -60.0,
 		"hit_stun": 120,
 		"animation": "path/to/anim"
 	},
 	"heavy_side": {
 		"damage": 25,
-		"knockback": 1.0,
-		"angle": 0.0,
+		"knockback_x": 1.0,
+		"knockback_y": 0.0,
 		"hit_stun": 200,
 		"animation": "path/to/anim"
 	},
 	"heavy_air": {
 		"damage": 10,
-		"knockback": 1.0,
-		"angle": 10.0,
+		"knockback_x": 1.0,
+		"knockback_y": 10.0,
 		"hit_stun": 60,
 		"animation": "path/to/anim"
 	}

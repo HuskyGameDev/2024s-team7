@@ -175,7 +175,9 @@ func _on_hurtbox_area_entered(hitbox):
 		velocity.x += float((-10*player.weapon[attack_performed].knockback)) * player_dir
 	else:
 		velocity.x += float((10*player.weapon[attack_performed].knockback)) * player_dir
-	velocity.y -= float((100*player.weapon[attack_performed].knockback))
+		
+	velocity.y -= float((10*player.weapon[attack_performed].angle))
+	#velocity.y -= float((100*player.weapon[attack_performed].knockback))
 	
 	#player.velocity.x *= .01
 	player.velocity.y *= .75

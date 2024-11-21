@@ -35,8 +35,6 @@ signal attack_damamge(damage_number)
 ## This is the signal that will be emitted once the player does a vailid attack.
 signal attack(core: int, motion: int)
 
-@onready
-var cooldown_timer = $CoolDownTimer
 
 func _on_enemy_damage_readied(damage_array):
 	damage = damage_array
@@ -69,24 +67,17 @@ func check_motion() -> int:
 func load_combo(core_tag) -> void:
 	core = core_tag
 	motion = check_motion()
-	cooldown_timer.start()
 	validate_combo()
 	motion = MOTION.NEUTRAL
 	core = null
 
 ## This will wait for user input and then attemp to load a combo using the value passed into it
 func _input(event):
-	if cooldown_timer.is_stopped():
-		if InputMap.event_is_action(event, "Punch"):
-			load_combo(CORE.LIGHT)
-		elif InputMap.event_is_action(event, "Kick"):
-			load_combo(CORE.HEAVY)
-		elif InputMap.event_is_action(event, "Weapon"):
-			load_combo(CORE.SPECIAL)
-		elif InputMap.event_is_action(event, "Special"):
-			load_combo(CORE.SUPER)
-
-
-func _on_player_delay(delaytimer):
-	cooldown_timer.stop()
-	cooldown_timer.start(delaytimer)
+	if InputMap.event_is_action(event, "Punch"):
+		load_combo(CORE.LIGHT)
+	elif InputMap.event_is_action(event, "Kick"):
+		load_combo(CORE.HEAVY)
+	elif InputMap.event_is_action(event, "Weapon"):
+		load_combo(CORE.SPECIAL)
+	elif InputMap.event_is_action(event, "Special"):
+		load_combo(CORE.SUPER)

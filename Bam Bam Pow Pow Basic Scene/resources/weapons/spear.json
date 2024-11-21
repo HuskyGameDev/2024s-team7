@@ -6,83 +6,83 @@
 		"knockback": 1.2,
 		"angle": 45.0,
 		"hit_stun": 100,
-		"animation": "unarmed/un_light_n"
+		"animation": "un_light_n"
 	},
 	"light_neutral_1": {
 		"damage": 8,
 		"knockback": 1.6,
 		"angle": 45.0,
 		"hit_stun": 100,
-		"animation": "unarmed/un_light_n_1"
+		"animation": "un_light_n_1"
 	},
 	"light_neutral_2": {
 		"damage": 25,
 		"knockback": 7.3,
 		"angle": 45.0,
 		"hit_stun": 100,
-		"animation": "unarmed/un_light_n_2"
+		"animation": "un_light_n_2"
 	},
 	"light_up": {
 		"damage": 30,
 		"knockback": 1.8,
 		"angle": 60.0,
 		"hit_stun": 100,
-		"animation": "unarmed/un_light_u"
+		"animation": "un_light_u"
 	},
 	"light_down": {
 		"damage": 20,
 		"knockback": 1,
 		"angle": -30.0,
 		"hit_stun": 150,
-		"animation": "unarmed/un_light_d"
+		"animation": "un_light_d"
 	},
 	"light_side": {
 		"damage": 80,
 		"knockback": 3,
 		"angle": 30.0,
 		"hit_stun": 100,
-		"animation": "unarmed/un_light_s"
+		"animation": "un_light_s"
 	},
 	"light_air": {
 		"damage": 12,
 		"knockback": 1.0,
 		"angle": 45.0,
 		"hit_stun": 80,
-		"animation": "unarmed/un_light_a"
+		"animation": "un_light_a"
 	},
 	"heavy_neutral": {
 		"damage": 100,
 		"knockback": 8,
 		"angle": 45.0,
 		"hit_stun": 100,
-		"animation": "unarmed/un_heavy_n"
+		"animation": "un_heavy_n"
 	},
 	"heavy_up": {
 		"damage": 150,
 		"knockback": -20,
 		"angle": 70.0,
 		"hit_stun": 200,
-		"animation": "unarmed/un_heavy_u"
+		"animation": "un_heavy_u"
 	},
 	"heavy_down": {
 		"damage": 25,
 		"knockback": 1.5,
 		"angle": -50.0,
 		"hit_stun": 100,
-		"animation": "unarmed/un_heavy_d"
+		"animation": "un_heavy_d"
 	},
 	"heavy_side": {
 		"damage": 8,
 		"knockback": 2.0,
 		"angle": 45.0,
 		"hit_stun": 110,
-		"animation": "unarmed/un_heavy_s"
+		"animation": "un_heavy_s"
 	},
 	"heavy_air": {
 		"damage": 200,
 		"knockback": -40,
 		"angle": 45.0,
 		"hit_stun": 80,
-		"animation": "unarmed/un_heavy_a"
+		"animation": "un_heavy_a"
 	}
 }
