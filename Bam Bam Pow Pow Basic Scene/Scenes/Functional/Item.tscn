@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://btqmnmpytpfkq"]
+[gd_scene load_steps=6 format=3 uid="uid://btqmnmpytpfkq"]
 
 [ext_resource type="Script" path="res://scripts/Item.gd" id="1_iv1pr"]
 [ext_resource type="Texture2D" uid="uid://bmlw1dmy1yyuw" path="res://resources/sprites/Shop_sprites.png" id="2_kk82a"]
+[ext_resource type="PackedScene" uid="uid://cc1ttocg7gplt" path="res://Scenes/Functional/Sprite2DButton.tscn" id="2_x1kpk"]
+[ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="3_ov2w6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u5u1c"]
+resource_local_to_scene = true
+shader = ExtResource("3_ov2w6")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
 
 [node name="Item" type="VBoxContainer"]
 script = ExtResource("1_iv1pr")
@@ -13,7 +21,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="SpriteContainer"]
+[node name="Sprite2D" parent="SpriteContainer" instance=ExtResource("2_x1kpk")]
+material = SubResource("ShaderMaterial_u5u1c")
 position = Vector2(100, 75)
 scale = Vector2(5, 5)
 texture = ExtResource("2_kk82a")
@@ -37,4 +46,5 @@ text = "Price: "
 layout_mode = 2
 text = "Buy"
 
+[connection signal="SpriteButtonPressed" from="SpriteContainer/Sprite2D" to="." method="_on_sprite_2d_sprite_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/BuyButton" to="." method="_on_button_pressed"]

@@ -64,7 +64,10 @@ func _ready():
 	# Since first weapon is Unarmed always bought, set to bought screen
 	$VBoxContainer/ColorRect/VBoxContainer/ToBuy.hide()
 	$VBoxContainer/ColorRect/VBoxContainer/Bought.show()
-
+	
+	if WeaponInShop.weaponsOpened == false:
+		Dialogic.start('weaponShop')
+	WeaponInShop.weaponsOpened = true
 
 ## Not necessary yet. Kept only for potential later convenience.
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
