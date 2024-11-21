@@ -30,7 +30,7 @@ enum MOTION {
 
 
 func Enter():
-	direction = player.dir 
+	direction = player.dir
 	print("State: ATTACK")
 	weapon = get_parent().weapon
 	finished = 0

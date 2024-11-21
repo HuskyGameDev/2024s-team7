@@ -1,10 +1,12 @@
 extends State
 class_name PlayerAir
+var weapon: Weapon
 
 const SPEED = 150.0
 
 func Enter():
-	animator.play("un_fall")
+	weapon = get_parent().weapon
+	animator.play(weapon.name + "/fall")
 	print("State: AIR")
 	pass
 

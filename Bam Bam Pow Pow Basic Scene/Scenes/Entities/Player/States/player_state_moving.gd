@@ -1,12 +1,14 @@
 extends State
 class_name PlayerWalking
+var weapon: Weapon
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
 
 func Enter():
-	animator.play("un_walk")
+	weapon = get_parent().weapon
+	animator.play(weapon.name + "/walk")
 	print("State: WALK")
 	pass
 

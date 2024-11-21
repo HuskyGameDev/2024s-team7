@@ -3,7 +3,8 @@ class_name PlayerIdle
 var weapon: Weapon
 
 func Enter():
-	animator.play("un_idle")
+	weapon = get_parent().weapon
+	animator.play(weapon.name + "/idle")
 	print("State: IDLE")
 	weapon = get_parent().weapon
 	pass

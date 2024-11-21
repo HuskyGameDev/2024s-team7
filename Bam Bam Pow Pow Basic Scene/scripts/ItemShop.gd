@@ -25,9 +25,9 @@ var speed_flash = 1.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	ItemStorage.money += 10000
+	#ItemStorage.money += 10000
 	moneylabel.text = "Money: " + str(ItemStorage.money)
-	print(warning.modulate)
+	#print(warning.modulate)
 
 
 func _process(delta: float) -> void:
