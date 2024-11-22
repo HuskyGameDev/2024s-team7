@@ -6,7 +6,7 @@ var current_state : State
 @export var player : CharacterBody2D
 @export var animator : AnimationPlayer
 @export var initial_state : State
-@onready var weapon: Weapon = Weapon.new("spear")
+@onready var weapon: Weapon = Weapon.new("unarmed")
 
 #NOTE This is a generic finite_state_machine, it handles all states, changes to this code will affect
 	# everything that uses a state machine!

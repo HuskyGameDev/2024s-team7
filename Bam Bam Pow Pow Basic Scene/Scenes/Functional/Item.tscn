@@ -1,19 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://btqmnmpytpfkq"]
+[gd_scene load_steps=3 format=3 uid="uid://btqmnmpytpfkq"]
 
 [ext_resource type="Script" path="res://scripts/Item.gd" id="1_iv1pr"]
-[ext_resource type="Texture2D" uid="uid://enf0gw48m1gp" path="res://resources/sprites/full_item_sprites_playtest_3.png" id="2_6ao1e"]
-[ext_resource type="PackedScene" uid="uid://cc1ttocg7gplt" path="res://Scenes/Functional/Sprite2DButton.tscn" id="2_rxf63"]
-[ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="3_n2g6b"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bm030"]
-resource_local_to_scene = true
-shader = ExtResource("3_n2g6b")
-shader_parameter/onoffMult = false
-shader_parameter/onoffSoftLight = false
+[ext_resource type="Texture2D" uid="uid://bmlw1dmy1yyuw" path="res://resources/sprites/Shop_sprites.png" id="2_kk82a"]
 
 [node name="Item" type="VBoxContainer"]
-offset_right = 200.0
-offset_bottom = 206.0
 script = ExtResource("1_iv1pr")
 metadata/ID = 0
 
@@ -23,13 +13,12 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="Sprite2D" parent="SpriteContainer" instance=ExtResource("2_rxf63")]
-material = SubResource("ShaderMaterial_bm030")
+[node name="Sprite2D" type="Sprite2D" parent="SpriteContainer"]
 position = Vector2(100, 75)
 scale = Vector2(5, 5)
-texture = ExtResource("2_6ao1e")
-hframes = 8
-vframes = 7
+texture = ExtResource("2_kk82a")
+hframes = 4
+vframes = 5
 
 [node name="NameLabel" type="Label" parent="."]
 layout_mode = 2
@@ -48,8 +37,4 @@ text = "Price: "
 layout_mode = 2
 text = "Buy"
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="SpriteContainer/Sprite2D" to="." method="_on_sprite_2d_mouse_entered"]
-[connection signal="mouse_exited" from="SpriteContainer/Sprite2D" to="." method="_on_sprite_2d_mouse_exited"]
 [connection signal="pressed" from="HBoxContainer/BuyButton" to="." method="_on_button_pressed"]

@@ -25,8 +25,3 @@ var weaponOwnership = [true,false,false,false,false]		# Weapon ownership
 
 var weaponsInShopDesc = ["You punch things with your glass fists","Wh'ack e'm","M4 carbine Colt AR-15", "Sweet baby", "It's pretty spikey"]
 # When there are more descriptions just append and put the appends in a ready function
-
-
-## UNRELATED SILLY GLOBALS FOR FIRST SCENE OPENS
-var weaponsOpened = false
-var itemsOpened = false

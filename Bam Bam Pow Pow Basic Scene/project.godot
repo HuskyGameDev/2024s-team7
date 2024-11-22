@@ -26,15 +26,8 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
 
-directories/dch_directory={
-"Drako": "res://dialogic/characters/Drako.dch",
-"Glassy": "res://dialogic/characters/Glassy.dch"
-}
-directories/dtl_directory={
-"itemDescriptions": "res://dialogic/timelines/itemDescriptions.dtl",
-"itemShop": "res://dialogic/timelines/itemShop.dtl",
-"weaponShop": "res://dialogic/timelines/weaponShop.dtl"
-}
+directories/dch_directory={}
+directories/dtl_directory={}
 
 [display]
 

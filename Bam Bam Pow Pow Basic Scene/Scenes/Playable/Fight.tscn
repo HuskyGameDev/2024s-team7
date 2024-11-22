@@ -79,6 +79,7 @@ tile_set = SubResource("TileSet_7wu4c")
 [node name="player" parent="." instance=ExtResource("3_w7w43")]
 position = Vector2(291, 531)
 scale = Vector2(2, 2)
+score = null
 
 [node name="enemy" parent="." instance=ExtResource("4_boejj")]
 position = Vector2(681, 436)
@@ -140,7 +141,7 @@ texture_over = ExtResource("9_i7ld0")
 texture_progress = ExtResource("10_2oyx8")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 20.0
+wait_time = 5.0
 one_shot = true
 
 [node name="WarningScreen" type="ColorRect" parent="."]

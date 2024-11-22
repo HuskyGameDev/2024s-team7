@@ -35,11 +35,11 @@ func on_reload() -> void:
 	elif (ItemStorage.itemsList[id].owned == true && ItemStorage.itemsList[id].equipped == true):
 		sprite.visible = true
 		if (ItemStorage.itemsList[id]["sprite"] != null):
-			sprite.texture = load("res://resources/sprites/combined_playtest_3_spritesheet.png")
+			sprite.texture = load("res://resources/sprites/Shop_sprites.png")
 			sprite.frame = ItemStorage.itemsList[id]["sprite"]
 		button.visible = true
 		namelabel.visible = true
-		namelabel.text = ItemStorage.itemsList[id]["item_name"]
+		namelabel.text = ItemStorage.itemsList[id]["name"]
 	# If the above are not met, show nothing as a failsafe
 	else:
 		sprite.visible = false

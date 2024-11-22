@@ -36,7 +36,7 @@ func _ready() -> void:
 		{
 			"light_up": 0.5
 		},
-		1,
+		4,
 		false,
 		[
 			"Adds 0.5 to your light up attack multiplier."	
@@ -50,7 +50,7 @@ func _ready() -> void:
 		{
 			"light_down": 0.6
 		},
-		0,
+		4,
 		false,
 		[
 			"Adds 0.6 to your light down multiplier."
@@ -64,7 +64,7 @@ func _ready() -> void:
 		{
 			"light": 0.2
 		},
-		2,
+		0,
 		false,
 		[
 			"Adds 0.2 to your light attacks mutliplier."
@@ -79,7 +79,7 @@ func _ready() -> void:
 			"light_up": 0.2,
 			"heavy_up": 0.2
 		},
-		3,
+		11,
 		false,
 		[
 			"Adds 0.2 to your light and heavy up attacks."
@@ -94,7 +94,7 @@ func _ready() -> void:
 			"light_side": 0.3,
 			"heavy_side": 0.3
 		},
-		20,
+		8,
 		false,
 		[
 			"Adds 0.3 to your light and heavy side attacks."
@@ -122,7 +122,7 @@ func _ready() -> void:
 		{
 			"heavy_down": 0.3
 		},
-		6,
+		5,
 		false,
 		[
 			"Adds 0.3 to your heavy down attack."
@@ -136,7 +136,7 @@ func _ready() -> void:
 		{
 			"light_down": 0.2
 		},
-		0,
+		4,
 		false,
 		[
 			"Adds 0.2 to your light down multiplier."
@@ -150,7 +150,7 @@ func _ready() -> void:
 		{
 			"money": 0.2
 		},
-		7,
+		16,
 		false,
 		[
 			"Adds 0.2 to your money multiplier."
@@ -164,7 +164,7 @@ func _ready() -> void:
 		{
 			"money": 1
 		},
-		8,
+		16,
 		false
 	))
 	
@@ -176,7 +176,7 @@ func _ready() -> void:
 			"light": 1,
 			"heavy": 1
 		},
-		9,
+		3,
 		false
 	))
 	
@@ -187,7 +187,7 @@ func _ready() -> void:
 		{
 			"heavy": 0.5
 		},
-		10,
+		1,
 		false
 	))
 	
@@ -221,7 +221,7 @@ func _ready() -> void:
 		{
 			"heavy_side": 0.5
 		},
-		13,
+		5,
 		false
 	))
 	
@@ -232,7 +232,7 @@ func _ready() -> void:
 		{
 			"light_side": 0.5
 		},
-		14,
+		4,
 		false
 	))
 	
@@ -243,7 +243,7 @@ func _ready() -> void:
 		{
 			"light_neutral": 0.4
 		},
-		15,
+		4,
 		false
 	))
 	
@@ -255,7 +255,7 @@ func _ready() -> void:
 			"light_down": 0.6,
 			"heavy_down": 0.6
 		},
-		11,
+		9,
 		false
 	))
 	
@@ -266,7 +266,7 @@ func _ready() -> void:
 		{
 			"heavy_air": 0.3
 		},
-		16,
+		13,
 		false
 	))
 	
@@ -277,7 +277,7 @@ func _ready() -> void:
 		{
 			"money": 0.5
 		},
-		17,
+		16,
 		false
 	))
 	
@@ -288,19 +288,19 @@ func _ready() -> void:
 		{
 			"heavy_neutral": 0.5
 		},
-		19,
+		5,
 		false
 	))
 	
 	item_list.append(make_item(
-		"Unfair Gloves",
-		2500,
+		"Enlightened Centrist",
+		1500,
 		true,
 		{
 			"light_neutral": 0.5,
 			"heavy_neutral": 0.5
 		},
-		22,
+		17,
 		false
 	))
 	
@@ -312,7 +312,7 @@ func _ready() -> void:
 			"light_neutral": 0.5,
 			"heavy_neutral": 0.5
 		},
-		21,
+		17,
 		false,
 		[
 			"Allows you to equip 1 more item."
@@ -323,14 +323,14 @@ func _ready() -> void:
 	))
 	
 	item_list.append(make_item(
-		"More Unfair Gloves",
+		"Tentacle Arms",
 		4500,
 		false,
 		{
-			"light_neutral": 0.7,
-			"heavy_neutral": 0.7
+			"light_neutral": 0.5,
+			"heavy_neutral": 0.5
 		},
-		22,
+		17,
 		false,
 		[
 			"Allows you to equip 2 more item."
