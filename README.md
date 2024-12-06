@@ -3,7 +3,7 @@
 This game is a fun beat 'em up style game where you play as Glassy, the glass cannon of a character. In this alpha build you can beat up a punching bag to your heart's content to earn money. With this money you can enter the shop and purchase upgrades for your character. But beware, you must equip your selection of items on the equipment screen before they begin to work! Then you may resume your quest to build up the biggest combo possible and make all the money!
 
 ### Controls
-The main controls are **WASD** to move and enable directional attacks. Then there are **J**, **K**, **L**, and **;** for the light, heavy, special, super respectively.
+The main controls are **WASD** to move and enable directional attacks. Then there are **J**, **K**, **L**, and **;** for the light, heavy, special, and super respectively.
 
 ### Installation
 Simply unzip all the files, not just the executable, and then run the executable!
