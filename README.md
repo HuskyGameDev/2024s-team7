@@ -17,3 +17,12 @@ Fight
 
 Shop
 ![shop](https://github.com/user-attachments/assets/8fc5f6d5-afa2-40d4-8804-66ed70bde788)
+
+### Credits
+* Matthew Dunham - Team Lead, Programmer
+* Charlie Hesse - Artist, Programmer
+* Connor Piereson - Sound Team
+* Aidan Sanders - Artist
+* Jacob Suiter - Artist, Programmer
+* Allen Wadeen - Programmer
+* Connor Ward - Programmer
