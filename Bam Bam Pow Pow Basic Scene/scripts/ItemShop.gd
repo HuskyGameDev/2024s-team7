@@ -28,6 +28,10 @@ func _ready():
 	#ItemStorage.money += 10000
 	moneylabel.text = "Money: " + str(ItemStorage.money)
 	#print(warning.modulate)
+	
+	if WeaponInShop.itemsOpened == false:
+		Dialogic.start('itemShop')
+	WeaponInShop.itemsOpened = true
 
 
 func _process(delta: float) -> void:

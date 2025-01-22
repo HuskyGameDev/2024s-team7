@@ -375,6 +375,7 @@ text = "X"
 [connection signal="buttonPressed" from="Control/MarginContainer/MenuButtonRow2/Load" to="." method="_on_load_button_pressed"]
 [connection signal="bought_item" from="MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item1" to="." method="bought_item"]
 [connection signal="bought_item" from="MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item1" to="." method="_on_item_1_bought_item"]
+[connection signal="itemPressed" from="MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item1" to="." method="item_pressed"]
 [connection signal="bought_item" from="MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item2" to="." method="bought_item"]
 [connection signal="bought_item" from="MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item3" to="." method="bought_item"]
 [connection signal="bought_item" from="MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item4" to="." method="bought_item"]

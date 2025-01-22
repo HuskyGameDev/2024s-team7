@@ -1,5 +1,6 @@
 extends VBoxContainer
 
+signal itemPressed
 signal bought_item(money) # Signal for when the item is bought that uses its money stat
 
 # Finds the item shop, label for the cost, buy button, sprite, name label, loads the 
@@ -93,3 +94,13 @@ func _on_sprite_2d_mouse_entered() -> void:
 
 func _on_sprite_2d_mouse_exited() -> void:
 	sprite.frame -= 24
+
+## WIP making the dialogic nice
+func _on_sprite_2d_sprite_button_pressed():
+	# print("the button worked awooga")
+	itemPressed.emit()
+	#Dialogic.set_variable('ItemDescript', 'awooooga')
+	var lines = ItemStorage.itemsList[id]["descript"]
+	Dialogic.VAR.ItemDescript = lines
+
+	Dialogic.start('itemDescriptions')
