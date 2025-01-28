@@ -11,6 +11,7 @@ var specificItems = []		# Allow and multiply a specific attack that is not a bas
 var itemMax = 0
 var fightvisit = 0
 var inputtoggle = true
+var EquipScreen = preload("res://Scenes/Playable/EquipScreen.tscn").instantiate()
 
 @onready var maxequips = 6
 var equipped_items = [] # Array of equipped item id's initialized to -1 (not real id)
@@ -52,7 +53,10 @@ func save_game():
 	save_file.store_line(str(money))
 	for i in range(itemsList.size()):
 		if (itemsList[i]["owned"] == true):
-			save_file.store_line(str(1))
+			if (itemsList[i]["equipped"] == true):
+				save_file.store_line(str(2))
+			else:
+				save_file.store_line(str(1))
 		else:
 			save_file.store_line(str(0))
 
@@ -63,10 +67,23 @@ func load_game():
 	var content = save_file.get_as_text()
 	money = int(content.get_slice("\n", 0))
 	var item_id = 0
+	for j in ItemStorage.maxequips:
+		ItemStorage.equipped_items[j] = -1
 	for i in range(itemsList.size()):
 		if (content.get_slice("\n", item_id+1) == "1"):
 			itemsList[item_id]["owned"] = true
 			#owned_items.append(itemsList[item_id])
+		elif (content.get_slice("\n", item_id+1) == "2"):
+			var equipped = 0
+			itemsList[item_id]["owned"] = true
+			itemsList[item_id]["equipped"] = true
+			for j in ItemStorage.maxequips:
+				if (ItemStorage.equipped_items[j] != -1):
+					equipped = equipped + 1
+			if (equipped != ItemStorage.maxequips):
+				ItemStorage.equipped_items[equipped] = item_id
+			if get_tree().current_scene.name == "EquipScreen":
+				EquipScreen.reload_equipped()
 		else:
 			itemsList[item_id]["owned"] = false
 		item_id = item_id+1
