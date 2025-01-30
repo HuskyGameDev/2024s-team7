@@ -17,11 +17,11 @@ config/icon="res://resources/sprites/icon.svg"
 
 [autoload]
 
+WeaponInShop="*res://scripts/globals/weapon_in_shop.gd"
 ItemCreation="*res://scripts/globals/item_creation.gd"
 ItemStorage="*res://scripts/globals/item_storage.gd"
 SceneSwap="*res://scripts/globals/scene_swap.gd"
 Global="*res://scripts/globals/Global.gd"
-WeaponInShop="*res://scripts/globals/weapon_in_shop.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]

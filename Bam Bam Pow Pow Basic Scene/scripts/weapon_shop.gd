@@ -60,6 +60,16 @@ func _changeBox(i)-> void:
 	print("Do you own?", WeaponInShop.weaponOwnership[i])
 	
 
+## Makes all weapons appear if they are not owned and disappear if they are
+func reloadWeapons():
+	for i in WeaponInShop.weaponOwnership.size():
+		if WeaponInShop.weaponOwnership[i]==true:
+			$VBoxContainer/ColorRect/VBoxContainer/ToBuy.hide()
+			$VBoxContainer/ColorRect/VBoxContainer/Bought.show()
+		else:
+			$VBoxContainer/ColorRect/VBoxContainer/ToBuy.show()
+			$VBoxContainer/ColorRect/VBoxContainer/Bought.hide()
+
 ## Sets starting Selected Weapon Box
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -144,12 +154,12 @@ func _on_fight_scene_button_pressed():
 ## Unimplemented
 ## Eventually will save game
 func _on_save_game_button_pressed():
-	pass
+	ItemStorage.save_game()
 
 ## Unimplemented
 ## Eventually will load game
 func _on_load_game_button_pressed():
-	pass
+	ItemStorage.load_game()
 
 
 ##--------------------

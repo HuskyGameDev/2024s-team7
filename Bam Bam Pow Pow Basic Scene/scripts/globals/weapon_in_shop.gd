@@ -18,12 +18,12 @@ extends Node
 var currentInstance: int = 0 	# Which weapon we're on right now
 var weaponStartup: int = 0		# Prev + to set each Hanger Node to correct weapon index 
 
-var weaponsInShopArray = ["Unarmed", "Bat", "Gun", "BBJones", "MorningStar"] # Array of all weapon names
+var weaponsInShopArray = ["Unarmed", "Bat", "Gun", "BBJones", "MorningStar", "spear"] # Array of all weapon names
 
-var weaponsInShopCostsArray = [0, 20, 9999999999, 420, 2001911]		# Weapon costs
-var weaponOwnership = [true,false,false,false,false]		# Weapon ownership
+var weaponsInShopCostsArray = [0, 20, 9999999999, 420, 2001911, 55]		# Weapon costs
+var weaponOwnership = [true,false,false,false,false,true]		# Weapon ownership
 
-var weaponsInShopDesc = ["You punch things with your glass fists","Wh'ack e'm","M4 carbine Colt AR-15", "Sweet baby", "It's pretty spikey"]
+var weaponsInShopDesc = ["You punch things with your glass fists","Wh'ack e'm","M4 carbine Colt AR-15", "Sweet baby", "It's pretty spikey", "speary"]
 # When there are more descriptions just append and put the appends in a ready function
 
 

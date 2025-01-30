@@ -12,6 +12,7 @@ var itemMax = 0
 var fightvisit = 0
 var inputtoggle = true
 var EquipScreen = preload("res://Scenes/Playable/EquipScreen.tscn").instantiate()
+var WeaponShop = preload("res://Scenes/Playable/WeaponShop.tscn").instantiate()
 
 @onready var maxequips = 6
 var equipped_items = [] # Array of equipped item id's initialized to -1 (not real id)
@@ -59,6 +60,11 @@ func save_game():
 				save_file.store_line(str(1))
 		else:
 			save_file.store_line(str(0))
+	for i in range(WeaponInShop.weaponOwnership.size()):
+		if WeaponInShop.weaponOwnership[i] == true:
+			save_file.store_line(str(1))
+		else:
+			save_file.store_line(str(0))
 
 # Load game function, updates owned status on items and money depending on what is 
 # in save file
@@ -87,6 +93,14 @@ func load_game():
 		else:
 			itemsList[item_id]["owned"] = false
 		item_id = item_id+1
+	for i in range(WeaponInShop.weaponOwnership.size()):
+		if (content.get_slice("\n", item_id+1) == "1"):
+			WeaponInShop.weaponOwnership[i] = true
+		else:
+			WeaponInShop.weaponOwnership[i] = false
+		item_id = item_id+1
+	if (get_tree().current_scene.name == "WeaponShop"):
+		WeaponShop.reloadWeapons
 
 # Prints all owned items, currently unused
 func printItems():
