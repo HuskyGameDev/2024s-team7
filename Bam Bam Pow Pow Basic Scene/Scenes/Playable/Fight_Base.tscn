@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://dk80ss5idciud"]
 
-[ext_resource type="Script" path="res://Scenes/Playable/fight_base.gd" id="1_ifxgk"]
+[ext_resource type="Script" path="res://scripts/fight_base.gd" id="1_ifxgk"]
 [ext_resource type="Texture2D" uid="uid://bjp6mrfnrh2bv" path="res://Assets/bg-sakura.PNG" id="2_gsfk7"]
 [ext_resource type="Texture2D" uid="uid://bb523jxarvel0" path="res://Assets/tile-sakura .PNG" id="3_mg7bi"]
 [ext_resource type="Texture2D" uid="uid://cbia7ydbgigan" path="res://resources/sprites/icon.svg" id="4_drnb6"]
