@@ -22,7 +22,7 @@ func _ready():
 	
 	WeaponInShop.weaponStartup += 1		# Set global to next value for following instance
 	# Reset the number for next ready onces reaches end of array
-	if i==WeaponInShop.weaponsInShopArray.size():
+	if i==WeaponInShop.weapons_list.size():
 		WeaponInShop.weaponStartup = 1
 
 

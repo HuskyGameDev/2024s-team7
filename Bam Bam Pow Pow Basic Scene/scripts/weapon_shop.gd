@@ -6,7 +6,16 @@
 
 extends CanvasLayer
 
-@onready var warning = $HazardButton
+@onready var nextButton = $VBoxContainer/Next
+@onready var prevButton = $VBoxContainer/Prev
+@onready var weaponName = $VBoxContainer/ColorRect/VBoxContainer/NameLabel
+@onready var priceLabel = $VBoxContainer/ColorRect/VBoxContainer/ToBuy/PriceLabel
+@onready var flavorText = $VBoxContainer/ColorRect/VBoxContainer/FlavorText
+@onready var scroll = $Control/ScrollContainer
+@onready var toBuy = $VBoxContainer/ColorRect/VBoxContainer/ToBuy
+@onready var bought = $VBoxContainer/ColorRect/VBoxContainer/Bought
+@onready var hazard = $HazardButton
+@onready var warning = $WarningScreen
 var speed_flash = 1
 
 ## Handles changes to Selected Weapon screen
@@ -17,47 +26,47 @@ func _changeBox(i)-> void:
 	WeaponInShop.currentInstance=i		# Set current instance of weapon global to given i
 	
 	# Set Next/Prev buttons to be visible (default)
-	$VBoxContainer/Next.show()
-	$VBoxContainer/Prev.show()
+	nextButton.show()
+	prevButton.show()
 	
 	# --- Set all values in Selected Weapon Screen to correct values given index
 	# Print for testing
 	
 	# Set name of weapon
-	$VBoxContainer/ColorRect/VBoxContainer/NameLabel.text=WeaponInShop.weaponsInShopArray[i]
-	print(WeaponInShop.weaponsInShopArray[i])
+	weaponName.text = WeaponInShop.weapons_list[i]["name"]
+	# print(WeaponInShop.weaponsInShopArray[i])
 	# Set cost of weapon
-	$VBoxContainer/ColorRect/VBoxContainer/ToBuy/PriceLabel.text=str(WeaponInShop.weaponsInShopCostsArray[i])
-	print(str(WeaponInShop.weaponsInShopCostsArray[i]))
+	priceLabel.text = str(WeaponInShop.weapons_list[i]["cost"])
+	# print(str(WeaponInShop.weaponsInShopCostsArray[i]))
 	# Set weapon flavortext
-	$VBoxContainer/ColorRect/VBoxContainer/FlavorText.text=WeaponInShop.weaponsInShopDesc[i]
-	print(WeaponInShop.weaponsInShopDesc[i])
+	flavorText.text = WeaponInShop.weapons_list[i]["description"]
+	# print(WeaponInShop.weaponsInShopDesc[i])
 	
 	# --- Handle whether prev/next exist and should be shown
 	
 	# If index is >= maxIndex, hide next button
-	if i >= WeaponInShop.weaponsInShopArray.size()-1:
-		$VBoxContainer/Next.hide()
+	if i >= WeaponInShop.weapons_list.size()-1:
+		nextButton.hide()
 	# If index is <= minIndex, hide prev button
 	if i <= 0:
-		$VBoxContainer/Prev.hide()	
+		prevButton.hide()	
 	
 	# Move the scroll container to center selected element
-	$Control/ScrollContainer.set_h_scroll((i)*400)	#Move scroll to separation value of hbox*index
+	scroll.set_h_scroll((i)*400)	#Move scroll to separation value of hbox*index
 	# Note: would need to change 400 if separation value is changed
 	# Couldn't figure out how to acess it from HBox :pensive: 
 	
 	
 	# Gross way to find out if weapon i is owned and change Selected Weapon Screen options: 
 	# If it is/isn't owned, change Selected Weapon Screen respectively
-	if WeaponInShop.weaponOwnership[i]==true:
-		$VBoxContainer/ColorRect/VBoxContainer/ToBuy.hide()
-		$VBoxContainer/ColorRect/VBoxContainer/Bought.show()
+	if WeaponInShop.weapons_list[i]["ownership"]==true:
+		toBuy.hide()
+		bought.show()
 	else:
-		$VBoxContainer/ColorRect/VBoxContainer/ToBuy.show()
-		$VBoxContainer/ColorRect/VBoxContainer/Bought.hide()
+		toBuy.show()
+		bought.hide()
 	# Print if weapon i is owned for testing
-	print("Do you own?", WeaponInShop.weaponOwnership[i])
+	print("Do you own?", WeaponInShop.weapons_list[i])
 	
 
 ## Sets starting Selected Weapon Box
@@ -65,8 +74,8 @@ func _changeBox(i)-> void:
 func _ready():
 	_changeBox(0)	# Starts at first weapon, changeBox to first
 	# Since first weapon is Unarmed always bought, set to bought screen
-	$VBoxContainer/ColorRect/VBoxContainer/ToBuy.hide()
-	$VBoxContainer/ColorRect/VBoxContainer/Bought.show()
+	toBuy.hide()
+	bought.show()
 	
 	if WeaponInShop.weaponsOpened == false:
 		Dialogic.start('weaponShop')
@@ -75,11 +84,11 @@ func _ready():
 ## Not necessary yet. Kept only for potential later convenience.
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if warning.modulate.a > 0.99:
+	if hazard.modulate.a > 0.99:
 		speed_flash *= -1
-	elif warning.modulate.a < 0.5:
+	elif hazard.modulate.a < 0.5:
 		speed_flash *= -1
-	warning.modulate = Color(1, 1, 1, warning.modulate.a + speed_flash * delta)
+	hazard.modulate = Color(1, 1, 1, hazard.modulate.a + speed_flash * delta)
 
 
 ## Second function of HangerButton (first in Hanger script)
@@ -144,7 +153,8 @@ func _on_fight_scene_button_pressed():
 ## Unimplemented
 ## Eventually will save game
 func _on_save_game_button_pressed():
-	pass
+	# TEMP UTILITY: MOVES TO SELECTION SCREEN
+	SceneSwap.scene_swap("res://Scenes/Playable/SelectionScreen.tscn")
 
 ## Unimplemented
 ## Eventually will load game
@@ -159,9 +169,9 @@ func _on_load_game_button_pressed():
 
 ## When hazard button is clicked: warning popup screen is shown
 func _on_hazard_button_sprite_button_pressed():
-	$WarningScreen.visible = !$WarningScreen.visible	# Warning popup
+	warning.visible = !warning.visible	# Warning popup
 
 
 ## When close button is clicked: warning popup screen is closed
 func _on_close_pressed():
-	$WarningScreen.hide()	# Close Warning popup
+	warning.hide()	# Close Warning popup
