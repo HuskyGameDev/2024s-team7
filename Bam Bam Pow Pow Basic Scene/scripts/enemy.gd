@@ -25,6 +25,7 @@ signal x_pos(position)
 @onready var animPlayer = $AnimationPlayer
 @onready var player = $"../player"
 
+
 @onready var audioPlayer = get_node("/root/Node/AudioStreamPlayer")
 #@onready var hit_noise1 = preload("res://resources/Hit1.wav")
 #@onready var hit_noise2 = preload("res://resources/Hit2.wav")
@@ -62,6 +63,7 @@ signal damage_readied(damage_array)
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
+	#sprite.texture = load(FightDetails.opponents_list[FightDetails.opponents_progression]["sprite"])
 	animPlayer.play("idle")
 	ready_mults()
 	print(audioPlayer)

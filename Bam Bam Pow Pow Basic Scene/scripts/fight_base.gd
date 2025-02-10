@@ -10,6 +10,7 @@ extends Node
 @onready var fiveSecond_noise = preload("res://resources/sounds/fiveseconds.wav")
 var started = false
 
+
 # Calculate score and HP in other infinityDraft and campaignDraft somehow
 
 func _ready():

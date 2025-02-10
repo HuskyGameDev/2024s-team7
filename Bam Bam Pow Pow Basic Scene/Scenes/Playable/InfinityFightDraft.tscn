@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c0bw77g0g86jq"]
 
-[ext_resource type="Script" path="res://Scenes/Playable/infinity_fight_draft.gd" id="1_giu1h"]
+[ext_resource type="Script" path="res://scripts/infinity_fight_draft.gd" id="1_giu1h"]
 [ext_resource type="PackedScene" uid="uid://dk80ss5idciud" path="res://Scenes/Playable/Fight_Base.tscn" id="1_jg54y"]
 
 [node name="InfinityFightDraft" type="Node"]

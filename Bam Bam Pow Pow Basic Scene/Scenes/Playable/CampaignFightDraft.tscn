@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c55s0tmcletaj"]
 
-[ext_resource type="Script" path="res://Scenes/Playable/campaign_fight_draft.gd" id="1_fnhak"]
+[ext_resource type="Script" path="res://scripts/campaign_fight_draft.gd" id="1_fnhak"]
 [ext_resource type="PackedScene" uid="uid://dk80ss5idciud" path="res://Scenes/Playable/Fight_Base.tscn" id="2_hbt5l"]
 [ext_resource type="Texture2D" uid="uid://dpkq1jmlqlaes" path="res://resources/sprites/hpBOT.png" id="12_1swnk"]
 [ext_resource type="Texture2D" uid="uid://bavffce6575pw" path="res://resources/sprites/hpTOP.png" id="13_apaco"]
