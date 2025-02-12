@@ -20,6 +20,7 @@ signal x_pos(position)
 @export var base_damage: int = 10
 @export var juggle: float = 1
 
+@onready var debuff_indicator = $DebuffIndicator
 @onready var sprite = $Sprite2D
 @onready var collShape = $CollisionShape2D
 @onready var animPlayer = $AnimationPlayer
@@ -163,8 +164,8 @@ func _physics_process(delta):
 ## void: There is no return, this change is internal.
 func change_resistance(resistance: String, modification: float) -> void:
 	resistances[resistance] += modification
-	# TODO: Allow for timers on debuffs in the future.
-
+	## Temporary line
+	debuff_indicator.visible = !debuff_indicator.visible
 
 var damage_delt = 0;
 
