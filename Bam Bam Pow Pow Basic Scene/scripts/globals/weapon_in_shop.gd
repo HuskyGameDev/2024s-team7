@@ -56,6 +56,12 @@ func _ready():
 		false,
 		"It's pretty spikey"
 	))
+	weapons_list.append(make_shop_weapon(
+		"Spear",
+		55,
+		true,
+		"speary"
+	))
 
 
 

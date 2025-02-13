@@ -121,6 +121,9 @@ layout_mode = 2
 [node name="Hanger5" parent="Control/ScrollContainer/HBoxContainer" instance=ExtResource("3_01yxm")]
 layout_mode = 2
 
+[node name="Hanger6" parent="Control/ScrollContainer/HBoxContainer" instance=ExtResource("3_01yxm")]
+layout_mode = 2
+
 [node name="ColorRect" type="ColorRect" parent="Control/ScrollContainer/HBoxContainer"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
@@ -417,6 +420,7 @@ text = "X"
 [connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger3" to="." method="_on_hanger_hanger_pressed"]
 [connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger4" to="." method="_on_hanger_hanger_pressed"]
 [connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger5" to="." method="_on_hanger_hanger_pressed"]
+[connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger6" to="." method="_on_hanger_hanger_pressed"]
 [connection signal="pressed" from="VBoxContainer/ColorRect/VBoxContainer/ToBuy/BuyButton" to="." method="_on_buy_button_pressed"]
 [connection signal="SpriteButtonPressed" from="VBoxContainer/Prev" to="." method="_on_prev_sprite_button_pressed"]
 [connection signal="SpriteButtonPressed" from="VBoxContainer/Next" to="." method="_on_next_sprite_button_pressed"]

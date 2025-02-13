@@ -68,6 +68,16 @@ func _changeBox(i)-> void:
 	# Print if weapon i is owned for testing
 	print("Do you own?", WeaponInShop.weapons_list[i])
 	
+## Makes all weapons appear if they are not owned and disappear if they are
+func reloadWeapons():
+	for i in WeaponInShop.weaponOwnership.size():
+		if WeaponInShop.weaponOwnership[i]==true:
+			toBuy.hide()
+			bought.show()
+		else:
+			toBuy.show()
+			bought.hide()
+	
 
 ## Sets starting Selected Weapon Box
 # Called when the node enters the scene tree for the first time.
@@ -153,13 +163,12 @@ func _on_fight_scene_button_pressed():
 ## Unimplemented
 ## Eventually will save game
 func _on_save_game_button_pressed():
-	# TEMP UTILITY: MOVES TO SELECTION SCREEN
-	SceneSwap.scene_swap("res://Scenes/Playable/SelectionScreen.tscn")
+	ItemStorage.save_game()
 
-## Unimplemented
-## Eventually will load game
+# Loads Game
 func _on_load_game_button_pressed():
-	pass
+	ItemStorage.load_game()
+
 
 
 ##--------------------
