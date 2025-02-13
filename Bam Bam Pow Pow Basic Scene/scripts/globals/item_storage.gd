@@ -16,7 +16,7 @@ var WeaponShop = preload("res://Scenes/Playable/WeaponShop.tscn").instantiate()
 
 @onready var maxequips = 6
 var equipped_items = [] # Array of equipped item id's initialized to -1 (not real id)
-
+@onready var equipped_weapon = "spear"
 
 ## To be removed!!!! :|
 enum MULTTYPE {
@@ -65,6 +65,7 @@ func save_game():
 			save_file.store_line(str(1))
 		else:
 			save_file.store_line(str(0))
+	save_file.store_line(equipped_weapon)
 
 # Load game function, updates owned status on items and money depending on what is 
 # in save file
@@ -106,6 +107,8 @@ func load_game():
 		WeaponShop._changeBox(i)
 	if (get_tree().current_scene.name == "EquipScreen"):
 		EquipScreen.equip_unequip_button.visible = false
+	equipped_weapon = content.get_slice("\n", item_id+1)
+	print(equipped_weapon)
 
 # Prints all owned items, currently unused
 func printItems():
