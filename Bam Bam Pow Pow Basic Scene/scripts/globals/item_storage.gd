@@ -78,6 +78,7 @@ func load_game():
 	for i in range(itemsList.size()):
 		if (content.get_slice("\n", item_id+1) == "1"):
 			itemsList[item_id]["owned"] = true
+			itemsList[item_id]["equipped"] = false
 			#owned_items.append(itemsList[item_id])
 		elif (content.get_slice("\n", item_id+1) == "2"):
 			var equipped = 0
@@ -99,8 +100,12 @@ func load_game():
 		else:
 			WeaponInShop.weaponOwnership[i] = false
 		item_id = item_id+1
+	print(WeaponInShop.weaponOwnership)
 	if (get_tree().current_scene.name == "WeaponShop"):
-		WeaponShop.reloadWeapons
+		var i = WeaponInShop.currentInstance
+		WeaponShop._changeBox(i)
+	if (get_tree().current_scene.name == "EquipScreen"):
+		EquipScreen.equip_unequip_button.visible = false
 
 # Prints all owned items, currently unused
 func printItems():
