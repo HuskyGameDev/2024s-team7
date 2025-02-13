@@ -20,6 +20,7 @@ signal x_pos(position)
 @export var base_damage: int = 10
 @export var juggle: float = 1
 
+@onready var debuff_indicator = $DebuffIndicator
 @onready var sprite = $Sprite2D
 @onready var collShape = $CollisionShape2D
 @onready var animPlayer = $AnimationPlayer
@@ -54,6 +55,13 @@ var mults: Dictionary = {
 	"heavy_down": 0,
 	"heavy_side": 0,
 	"heavy_air": 0,
+}
+
+var resistances: Dictionary = {
+	"PHYSICAL": 0,
+	"FIRE": 0,
+	"COLD": 0,
+	"ELECTRIC": 0
 }
 
 signal damage_readied(damage_array)
@@ -144,6 +152,21 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+
+## This function will apply a modification to the enemy's resistance to the
+## given type.
+##
+## Parameters:
+## resistance		String: This is the type of resistance that is to be modified.
+## modification		float: This is the modification to be applied to that resistance. 
+##
+## Returns:
+## void: There is no return, this change is internal.
+func change_resistance(resistance: String, modification: float) -> void:
+	resistances[resistance] += modification
+	## Temporary line
+	debuff_indicator.visible = !debuff_indicator.visible
+
 var damage_delt = 0;
 
 signal showDmg(dmgNumber)
@@ -162,6 +185,7 @@ func _on_hurtbox_area_entered(hitbox):
 	
 	damage = player.weapon[attack_performed].damage + 0.2 * (player.weapon[attack_performed].damage * self.juggle)
 	damage *= player.weapon[attack_performed].mult
+	damage = calc_resistance(damage, player.weapon[attack_performed].damage_type)
 	
 	self.score += damage
 	self.combo += 1
@@ -187,6 +211,24 @@ func _on_hurtbox_area_entered(hitbox):
 	print(hitbox.get_parent().name + "'s hitbox touched " + name)
 	print(str(damage) + " dealt!")
 	print("Juggle Count: " + str(self.juggle))
+
+
+## This function will determine if the enemy is either resistant or weak to a
+## certain damage type and apply the approriate modifications to the damage.
+##
+## Parameters:
+## dmg_dealt	float: This is the base damage value of the attack after all 
+## 					   multipliers have been calculated.
+## dmg_type		String: This is the type of damage dealt by the attack so that
+## 						it can be used to check what the enemy resistance is to 
+## 						this attack.
+##
+## Returns:
+## float: This will be the resulting damage after it has been modified by the
+## enemy resistances.
+func calc_resistance(dmg_dealt: float, dmg_type: String) -> float:
+	return dmg_dealt - (dmg_dealt * resistances[dmg_type])
+
 
 func calc_money():
 	var addedtotal: int = score * money_mult

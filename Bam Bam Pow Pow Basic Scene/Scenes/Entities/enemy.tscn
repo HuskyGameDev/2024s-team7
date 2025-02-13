@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cqhetuoqkeuty"]
+[gd_scene load_steps=10 format=3 uid="uid://cqhetuoqkeuty"]
 
 [ext_resource type="PackedScene" uid="uid://cuji3bj4q1s1d" path="res://Scenes/Entities/entity_base.tscn" id="1_kuiw3"]
 [ext_resource type="Texture2D" uid="uid://0cjbqnqa5dvf" path="res://resources/sprites/Sandbag_Sprites_PLAYTEST.png" id="2_jtjov"]
+[ext_resource type="Texture2D" uid="uid://d1jtlcgenchd8" path="res://resources/sprites/brokenarmour.png" id="3_bc4iy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_putps"]
 size = Vector2(97, 79)
@@ -156,6 +157,22 @@ shape = SubResource("CapsuleShape2D_f3veo")
 
 [node name="DamageNumberOrigin" type="Node2D" parent="." index="4"]
 position = Vector2(50, -130)
+
+[node name="DebuffIndicator" type="TextureRect" parent="." index="5"]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -28.0
+offset_top = 201.0
+offset_right = 12.0
+offset_bottom = 241.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 0
+texture = ExtResource("3_bc4iy")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 
