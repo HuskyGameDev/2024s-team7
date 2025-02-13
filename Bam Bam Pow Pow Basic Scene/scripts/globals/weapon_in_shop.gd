@@ -56,9 +56,6 @@ func _ready():
 		false,
 		"It's pretty spikey"
 	))
-	
-	#var currentOpponent = opponents_list[opponents_progression]
-
 
 
 

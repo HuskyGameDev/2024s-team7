@@ -28,6 +28,7 @@ FightDetails="*res://scripts/globals/fight_details.gd"
 [dialogic]
 
 directories/dch_directory={
+"Batty": "res://dialogic/characters/Batty.dch",
 "Drako": "res://dialogic/characters/Drako.dch",
 "Glassy": "res://dialogic/characters/Glassy.dch"
 }

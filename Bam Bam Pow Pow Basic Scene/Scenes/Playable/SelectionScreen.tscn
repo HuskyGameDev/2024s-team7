@@ -158,7 +158,7 @@ text = "Inventory"
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_font_sizes/font_size = 20
-text = "Inventory"
+text = "Save"
 
 [node name="ExitLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2

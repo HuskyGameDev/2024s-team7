@@ -40,4 +40,7 @@ func _on_save_sprite_button_pressed():
 
 
 func _on_back_to_fight_sprite_button_pressed():
-	SceneSwap.scene_swap("res://Scenes/Playable/Fight.tscn")
+	if FightDetails.infinity:
+		SceneSwap.scene_swap("res://Scenes/Playable/InfinityFightDraft.tscn")
+	else:
+		SceneSwap.scene_swap("res://Scenes/Playable/CampaignFightDraft.tscn")

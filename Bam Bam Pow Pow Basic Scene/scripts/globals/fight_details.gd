@@ -2,14 +2,20 @@ extends Node
 
 class_name fight_details
 
-var opponents_list = []			# List of opponent detail dictionaries in order of the fights
-var opponents_progression = 0	# Which opponent fight player has made it to
+var op_list = []			# List of opponent detail dictionaries in order of the fights
+var op_progress = 2		# Which opponent fight player has made it to
+var infinity = true				# Keeps track of if in infinity mode
 
-func make_opponent(name: String, health: int, sprite_path: String, floor_path: String,
+# Temp? Copied WeaponShop to handle selecting which campaign fight to do
+var opSelectStartUp = 0
+var opSelectCurrent = 0
+
+func make_opponent(name: String, description: String, health: int, sprite_path: String, floor_path: String,
 			   background_path: String, time: int, defeated: bool, defeatable: bool,
 			   weakness: String, speech: Array[String]=["No Words"]) -> Dictionary:
 	var opponent: Dictionary = {
 		"name":			name,
+		"description":	description,
 		"health":		health,
 		"sprite_path":	sprite_path,
 		"floor_path":	floor_path,
@@ -24,24 +30,93 @@ func make_opponent(name: String, health: int, sprite_path: String, floor_path: S
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	opponents_list.append(make_opponent(
-		"Bat",
-		1000,
-		"res://resources/sprites/Sandbag_Sprites_PLAYTEST.png",
-		"res://Assets/tile-sakura .PNG",
-		"res://Assets/bg-sakura.PNG",
+	#op_list.append(make_opponent(
+		#"Sandbag",
+		#"A tool for training",
+		#0,
+		#"res://resources/sprites/Sandbag_Sprites_PLAYTEST.png",
+		#"res://Assets/tile-sakura .PNG",
+		#"res://Assets/bg-sakura.PNG",
+		#30,
+		#false,
+		#false,
+		#"",
+		#[
+			#"...", "It cannot speak. It is a sandbag."
+		#]
+	#))
+	
+	op_list.append(make_opponent(
+		"Goblin",
+		"He's just a lil' guy that would die in one hit",
+		1,
+		"res://resources/sprites/Shop_sprites.png",
+		"res://Assets/icon.svg",
+		"res://Assets/backtemp.png",
 		30,
 		false,
-		false,
-		"",
+		true,
+		"fire",
 		[
-			"...", "It cannot speak. It is a sandbag."
+			"ooooooooooooooooooooooooooooooooo",
+			"i'm jst a small liddle goblin",
+			"i will die to just one attack :'()"
 		]
 	))
 	
-	opponents_list.append(make_opponent(
+	op_list.append(make_opponent(
 		"Bat",
+		"Rambunctious delinquent.",
 		1000,
+		"res://resources/sprites/temp-batty-spritesheet.png",
+		"res://resources/sprites/mspaint-school-floor.png",
+		"res://resources/sprites/mspaint-school-bg.png",
+		30,
+		false,
+		true,
+		"light",
+		[
+			"Hello! Loser >:D"
+		]
+	))
+	
+	op_list.append(make_opponent(
+		"Sweet Baby Jones",
+		"...",
+		1000,
+		"res://resources/sprites/Shop_sprites.png",
+		"res://Assets/icon.svg",
+		"res://Assets/backtemp.png",
+		30,
+		false,
+		true,
+		"",
+		[
+			"..."
+		]
+	))
+	
+	op_list.append(make_opponent(
+		"Dog",
+		"He's always happy to see you :D",
+		1,
+		"res://resources/sprites/Shop_sprites.png",
+		"res://Assets/icon.svg",
+		"res://Assets/backtemp.png",
+		30,
+		false,
+		true,
+		"light",
+		[
+			"Bark!",
+			"* It seems happy :) *"
+		]
+	))
+		
+	op_list.append(make_opponent(
+		"Wise Man",
+		"He likes to groom his beard",
+		10000,
 		"res://resources/sprites/Shop_sprites.png",
 		"res://Assets/icon.svg",
 		"res://Assets/backtemp.png",
@@ -53,8 +128,7 @@ func _ready():
 			"Hello! Loser >:D"
 		]
 	))
-	
-	var currentOpponent = opponents_list[opponents_progression]
+	var currentOpponent = op_list[op_progress]
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

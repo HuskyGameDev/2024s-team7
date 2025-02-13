@@ -1,25 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://c55s0tmcletaj"]
+[gd_scene load_steps=7 format=3 uid="uid://c55s0tmcletaj"]
 
 [ext_resource type="Script" path="res://scripts/campaign_fight_draft.gd" id="1_fnhak"]
 [ext_resource type="PackedScene" uid="uid://dk80ss5idciud" path="res://Scenes/Playable/Fight_Base.tscn" id="2_hbt5l"]
 [ext_resource type="Texture2D" uid="uid://dpkq1jmlqlaes" path="res://resources/sprites/hpBOT.png" id="12_1swnk"]
 [ext_resource type="Texture2D" uid="uid://bavffce6575pw" path="res://resources/sprites/hpTOP.png" id="13_apaco"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qnu3c"]
+load_path = "res://.godot/imported/bg-sakura.PNG-78af716a0615c288ea40c1d242469144.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b50mc"]
+load_path = "res://.godot/imported/Sandbag_Sprites_PLAYTEST.png-b361d4c681a28339c6b99da985ff9aa2.ctex"
+
 [node name="Node" type="Node"]
 script = ExtResource("1_fnhak")
 
 [node name="FightBase" parent="." instance=ExtResource("2_hbt5l")]
+
+[node name="TextureRect" parent="FightBase" index="0"]
+texture = SubResource("CompressedTexture2D_qnu3c")
+
+[node name="Sprite2D" parent="FightBase/enemy" index="0"]
+texture = SubResource("CompressedTexture2D_b50mc")
 
 [node name="HPbar" type="TextureProgressBar" parent="."]
 offset_left = 138.0
 offset_top = 18.0
 offset_right = 1118.0
 offset_bottom = 58.0
+value = 100.0
 nine_patch_stretch = true
 stretch_margin_left = 100
 stretch_margin_right = 100
 texture_under = ExtResource("12_1swnk")
-texture_over = ExtResource("13_apaco")
+texture_progress = ExtResource("13_apaco")
 
 [node name="HP" type="Label" parent="."]
 anchors_preset = -1
@@ -34,3 +47,9 @@ offset_bottom = 88.16
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "HP: "
+
+[connection signal="timeout" from="FightBase" to="." method="_on_fight_base_timeout"]
+
+[editable path="FightBase"]
+[editable path="FightBase/enemy"]
+[editable path="FightBase/enemy/Hurtbox"]
