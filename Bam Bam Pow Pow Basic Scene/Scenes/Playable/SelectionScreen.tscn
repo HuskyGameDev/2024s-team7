@@ -1,0 +1,201 @@
+[gd_scene load_steps=15 format=3 uid="uid://cysbblmbob7en"]
+
+[ext_resource type="PackedScene" uid="uid://cc1ttocg7gplt" path="res://Scenes/Functional/Sprite2DButton.tscn" id="1_2csh0"]
+[ext_resource type="Script" path="res://scripts/selection_screen.gd" id="1_3w0n4"]
+[ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="2_02nd3"]
+[ext_resource type="Texture2D" uid="uid://gsxrtqcvy00b" path="res://resources/sprites/mspaint-selection-sprites.png" id="3_yrbh0"]
+[ext_resource type="Texture2D" uid="uid://dq0i2jj267tyg" path="res://resources/sprites/glassy-readies-to-fight.png" id="5_p5qbc"]
+[ext_resource type="Texture2D" uid="uid://bk7k0bqeq67ok" path="res://resources/sprites/backtofight.png" id="6_vgn0f"]
+[ext_resource type="Texture2D" uid="uid://rxy7xur8xqgl" path="res://resources/sprites/mspaint-coins-sheet.png" id="7_js4j1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yw7w7"]
+resource_local_to_scene = true
+shader = ExtResource("2_02nd3")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m2vd8"]
+resource_local_to_scene = true
+shader = ExtResource("2_02nd3")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ef103"]
+resource_local_to_scene = true
+shader = ExtResource("2_02nd3")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xfrew"]
+resource_local_to_scene = true
+shader = ExtResource("2_02nd3")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1k2a6"]
+resource_local_to_scene = true
+shader = ExtResource("2_02nd3")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7s51m"]
+resource_local_to_scene = true
+shader = ExtResource("2_02nd3")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7adcm"]
+resource_local_to_scene = true
+shader = ExtResource("2_02nd3")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[node name="Node" type="Node"]
+script = ExtResource("1_3w0n4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.395117, 0.65967, 0.812274, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -639.0
+offset_top = 16.0
+offset_right = 639.0
+offset_bottom = 190.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+metadata/_edit_group_ = true
+
+[node name="SceneSwaps" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+metadata/_edit_group_ = true
+
+[node name="Settings" parent="VBoxContainer/SceneSwaps" instance=ExtResource("1_2csh0")]
+material = SubResource("ShaderMaterial_yw7w7")
+position = Vector2(105, 65)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("3_yrbh0")
+hframes = 6
+
+[node name="ItemShop" parent="VBoxContainer/SceneSwaps" instance=ExtResource("1_2csh0")]
+material = SubResource("ShaderMaterial_m2vd8")
+position = Vector2(318, 65)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("3_yrbh0")
+hframes = 6
+frame = 1
+
+[node name="WeaponShop" parent="VBoxContainer/SceneSwaps" instance=ExtResource("1_2csh0")]
+material = SubResource("ShaderMaterial_ef103")
+position = Vector2(531, 65)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("3_yrbh0")
+hframes = 6
+frame = 2
+
+[node name="Inventory" parent="VBoxContainer/SceneSwaps" instance=ExtResource("1_2csh0")]
+material = SubResource("ShaderMaterial_xfrew")
+position = Vector2(747, 65)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("3_yrbh0")
+hframes = 6
+frame = 3
+
+[node name="Save" parent="VBoxContainer/SceneSwaps" instance=ExtResource("1_2csh0")]
+material = SubResource("ShaderMaterial_1k2a6")
+position = Vector2(963, 65)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("3_yrbh0")
+hframes = 6
+frame = 4
+
+[node name="Exit" parent="VBoxContainer/SceneSwaps" instance=ExtResource("1_2csh0")]
+material = SubResource("ShaderMaterial_7s51m")
+position = Vector2(1174, 66)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("3_yrbh0")
+hframes = 6
+frame = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="SettingsLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 20
+text = "Settings"
+
+[node name="ItemShopLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 20
+text = "Item Shop"
+
+[node name="WeaponShopLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 20
+text = "Weapon Shop"
+
+[node name="InventoryLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 20
+text = "Inventory"
+
+[node name="SaveLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 20
+text = "Save"
+
+[node name="ExitLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 20
+text = "Exit"
+
+[node name="Glassy" type="Sprite2D" parent="."]
+position = Vector2(663, 463)
+scale = Vector2(2.31818, 2.31818)
+texture = ExtResource("5_p5qbc")
+
+[node name="BackToFight" parent="." instance=ExtResource("1_2csh0")]
+material = SubResource("ShaderMaterial_7adcm")
+position = Vector2(1047, 446)
+scale = Vector2(1.23077, 1.23077)
+texture = ExtResource("6_vgn0f")
+
+[node name="coinsLabel" type="Label" parent="."]
+offset_left = 88.0
+offset_top = 255.0
+offset_right = 188.0
+offset_bottom = 286.0
+theme_override_font_sizes/font_size = 25
+text = "Coins:"
+
+[node name="Coins" type="Sprite2D" parent="."]
+position = Vector2(210, 502)
+scale = Vector2(1.25439, 1.52741)
+texture = ExtResource("7_js4j1")
+hframes = 7
+frame = 6
+
+[connection signal="SpriteButtonPressed" from="VBoxContainer/SceneSwaps/Settings" to="." method="_on_settings_sprite_button_pressed"]
+[connection signal="SpriteButtonPressed" from="VBoxContainer/SceneSwaps/ItemShop" to="." method="_on_item_shop_sprite_button_pressed"]
+[connection signal="SpriteButtonPressed" from="VBoxContainer/SceneSwaps/WeaponShop" to="." method="_on_weapon_shop_sprite_button_pressed"]
+[connection signal="SpriteButtonPressed" from="VBoxContainer/SceneSwaps/Inventory" to="." method="_on_inventory_sprite_button_pressed"]
+[connection signal="SpriteButtonPressed" from="VBoxContainer/SceneSwaps/Save" to="." method="_on_save_sprite_button_pressed"]
+[connection signal="SpriteButtonPressed" from="VBoxContainer/SceneSwaps/Exit" to="." method="_on_exit_sprite_button_pressed"]
+[connection signal="SpriteButtonPressed" from="BackToFight" to="." method="_on_back_to_fight_sprite_button_pressed"]

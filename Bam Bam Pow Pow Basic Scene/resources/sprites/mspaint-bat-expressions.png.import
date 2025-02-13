@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5251mq210e3w"
-path="res://.godot/imported/menu.png-1ca4ab18d0c3e66db289ca727c69b1c1.ctex"
+uid="uid://d4mwwhvt7qpsk"
+path="res://.godot/imported/mspaint-bat-expressions.png-0d080c8e3cd276e8bbdb592b7894ce78.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scripts/globals/menu.png"
-dest_files=["res://.godot/imported/menu.png-1ca4ab18d0c3e66db289ca727c69b1c1.ctex"]
+source_file="res://resources/sprites/mspaint-bat-expressions.png"
+dest_files=["res://.godot/imported/mspaint-bat-expressions.png-0d080c8e3cd276e8bbdb592b7894ce78.ctex"]
 
 [params]
 

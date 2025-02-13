@@ -1,0 +1,148 @@
+[gd_scene load_steps=9 format=3 uid="uid://8sgk22qsn38y"]
+
+[ext_resource type="Script" path="res://Scenes/Playable/fight_select.gd" id="1_f6csq"]
+[ext_resource type="PackedScene" uid="uid://dxtghnrjkk6fm" path="res://Scenes/Entities/fight_options.tscn" id="2_le78v"]
+[ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="2_mcet2"]
+[ext_resource type="PackedScene" uid="uid://cc1ttocg7gplt" path="res://Scenes/Functional/Sprite2DButton.tscn" id="6_mdm7y"]
+[ext_resource type="Texture2D" uid="uid://csaod2ht6ymhf" path="res://resources/sprites/next-prev.png" id="7_8tklg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2sdlv"]
+content_margin_left = 450.0
+content_margin_right = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_40vwc"]
+resource_local_to_scene = true
+shader = ExtResource("2_mcet2")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2i54w"]
+resource_local_to_scene = true
+shader = ExtResource("2_mcet2")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[node name="FightSelect" type="CanvasLayer"]
+script = ExtResource("1_f6csq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.53, 0.141333, 0, 1)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2sdlv")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 600
+
+[node name="opSelect" parent="Control/ScrollContainer/HBoxContainer" instance=ExtResource("2_le78v")]
+layout_mode = 2
+
+[node name="opSelect2" parent="Control/ScrollContainer/HBoxContainer" instance=ExtResource("2_le78v")]
+layout_mode = 2
+
+[node name="opSelect3" parent="Control/ScrollContainer/HBoxContainer" instance=ExtResource("2_le78v")]
+layout_mode = 2
+
+[node name="opSelect4" parent="Control/ScrollContainer/HBoxContainer" instance=ExtResource("2_le78v")]
+layout_mode = 2
+
+[node name="opSelect5" parent="Control/ScrollContainer/HBoxContainer" instance=ExtResource("2_le78v")]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -298.0
+offset_right = 200.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(400, 170)
+layout_mode = 2
+color = Color(0.733333, 0.603922, 0.458824, 0.447059)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Name"
+horizontal_alignment = 1
+
+[node name="Fight" type="Button" parent="VBoxContainer/ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "Fight!"
+
+[node name="FlavorText" type="Label" parent="VBoxContainer/ColorRect/VBoxContainer"]
+layout_mode = 2
+
+[node name="Prev" parent="VBoxContainer" instance=ExtResource("6_mdm7y")]
+material = SubResource("ShaderMaterial_40vwc")
+position = Vector2(93, 236)
+scale = Vector2(3.71429, 3.71429)
+texture = ExtResource("7_8tklg")
+hframes = 2
+
+[node name="Next" parent="VBoxContainer" instance=ExtResource("6_mdm7y")]
+material = SubResource("ShaderMaterial_2i54w")
+position = Vector2(314, 236)
+scale = Vector2(3.714, 3.714)
+texture = ExtResource("7_8tklg")
+hframes = 2
+frame = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[connection signal="opPressed" from="Control/ScrollContainer/HBoxContainer/opSelect" to="." method="_on_op_select_op_pressed"]
+[connection signal="opPressed" from="Control/ScrollContainer/HBoxContainer/opSelect2" to="." method="_on_op_select_op_pressed"]
+[connection signal="opPressed" from="Control/ScrollContainer/HBoxContainer/opSelect3" to="." method="_on_op_select_op_pressed"]
+[connection signal="opPressed" from="Control/ScrollContainer/HBoxContainer/opSelect4" to="." method="_on_op_select_op_pressed"]
+[connection signal="opPressed" from="Control/ScrollContainer/HBoxContainer/opSelect5" to="." method="_on_op_select_op_pressed"]
+[connection signal="pressed" from="VBoxContainer/ColorRect/VBoxContainer/Fight" to="." method="_on_fight_pressed"]
+[connection signal="SpriteButtonPressed" from="VBoxContainer/Prev" to="." method="_on_prev_sprite_button_pressed"]
+[connection signal="SpriteButtonPressed" from="VBoxContainer/Next" to="." method="_on_next_sprite_button_pressed"]

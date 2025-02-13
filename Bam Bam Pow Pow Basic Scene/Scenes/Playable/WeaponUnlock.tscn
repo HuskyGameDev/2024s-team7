@@ -1,0 +1,289 @@
+[gd_scene load_steps=32 format=3 uid="uid://doscixtojyfud"]
+
+[ext_resource type="Script" path="res://Scenes/Playable/weapon_unlock.gd" id="1_fq7x5"]
+[ext_resource type="Texture2D" uid="uid://dfw0voc35jj0t" path="res://resources/sprites/mspaint new weapon.png" id="1_israc"]
+[ext_resource type="PackedScene" uid="uid://dbc7vk84ewdqo" path="res://Scenes/Functional/BasicButton.tscn" id="2_c1350"]
+[ext_resource type="Texture2D" uid="uid://b2qr2f8l50ft6" path="res://resources/sprites/mspaint-realise-anim-spritesheet.png" id="3_0l1d7"]
+[ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="3_82wgg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtx78"]
+atlas = ExtResource("1_israc")
+region = Rect2(0, 0, 536, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdrnj"]
+atlas = ExtResource("1_israc")
+region = Rect2(536, 0, 536, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bq1yu"]
+atlas = ExtResource("1_israc")
+region = Rect2(1072, 0, 536, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgxpc"]
+atlas = ExtResource("1_israc")
+region = Rect2(1608, 0, 536, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byu8c"]
+atlas = ExtResource("1_israc")
+region = Rect2(2144, 0, 536, 324)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qva6a"]
+atlas = ExtResource("3_0l1d7")
+region = Rect2(0, 0, 511, 342)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1rqg"]
+atlas = ExtResource("3_0l1d7")
+region = Rect2(511, 0, 511, 342)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58dst"]
+atlas = ExtResource("3_0l1d7")
+region = Rect2(1022, 0, 511, 342)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lik4v"]
+atlas = ExtResource("3_0l1d7")
+region = Rect2(1533, 0, 511, 342)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_telrn"]
+atlas = ExtResource("3_0l1d7")
+region = Rect2(2044, 0, 511, 342)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13hgk"]
+atlas = ExtResource("3_0l1d7")
+region = Rect2(2555, 0, 511, 342)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixabm"]
+atlas = ExtResource("3_0l1d7")
+region = Rect2(0, 342, 511, 342)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxq3y"]
+atlas = ExtResource("3_0l1d7")
+region = Rect2(511, 342, 511, 342)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlcma"]
+atlas = ExtResource("3_0l1d7")
+region = Rect2(1022, 342, 511, 342)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xxcs"]
+atlas = ExtResource("3_0l1d7")
+region = Rect2(1533, 342, 511, 342)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vgae"]
+atlas = ExtResource("3_0l1d7")
+region = Rect2(2044, 342, 511, 342)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsos8"]
+atlas = ExtResource("3_0l1d7")
+region = Rect2(2555, 342, 511, 342)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ki0q"]
+atlas = ExtResource("3_0l1d7")
+region = Rect2(0, 684, 511, 342)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d77ws"]
+atlas = ExtResource("3_0l1d7")
+region = Rect2(511, 684, 511, 342)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ah0v"]
+atlas = ExtResource("3_0l1d7")
+region = Rect2(1022, 684, 511, 342)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kie5i"]
+atlas = ExtResource("3_0l1d7")
+region = Rect2(1533, 684, 511, 342)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eamn7"]
+atlas = ExtResource("3_0l1d7")
+region = Rect2(2044, 684, 511, 342)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8lx2"]
+atlas = ExtResource("3_0l1d7")
+region = Rect2(2555, 684, 511, 342)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gsbgg"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_jtx78")
+}, {
+"duration": 2.5,
+"texture": SubResource("AtlasTexture_sdrnj")
+}, {
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_bq1yu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgxpc")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_byu8c")
+}],
+"loop": false,
+"name": &"default",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 2.6,
+"texture": SubResource("AtlasTexture_qva6a")
+}, {
+"duration": 1.7,
+"texture": SubResource("AtlasTexture_k1rqg")
+}, {
+"duration": 1.1,
+"texture": SubResource("AtlasTexture_58dst")
+}, {
+"duration": 1.6,
+"texture": SubResource("AtlasTexture_lik4v")
+}, {
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_telrn")
+}, {
+"duration": 2.3,
+"texture": SubResource("AtlasTexture_13hgk")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_ixabm")
+}, {
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_lxq3y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlcma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xxcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vgae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsos8")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_2ki0q")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_d77ws")
+}, {
+"duration": 2.6,
+"texture": SubResource("AtlasTexture_4ah0v")
+}, {
+"duration": 1.3,
+"texture": SubResource("AtlasTexture_kie5i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eamn7")
+}, {
+"duration": 1.7,
+"texture": SubResource("AtlasTexture_r8lx2")
+}],
+"loop": false,
+"name": &"new_animation",
+"speed": 6.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qh7i5"]
+resource_local_to_scene = true
+shader = ExtResource("3_82wgg")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_veyst"]
+resource_local_to_scene = true
+shader = ExtResource("3_82wgg")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[node name="Node" type="Node"]
+script = ExtResource("1_fq7x5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(626, 359)
+scale = Vector2(1.56481, 1.56481)
+sprite_frames = SubResource("SpriteFrames_gsbgg")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame = 17
+frame_progress = 1.0
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.541176)
+
+[node name="Label" type="Label" parent="ColorRect2"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 61.0
+offset_right = 150.0
+offset_bottom = 123.0
+grow_horizontal = 2
+theme_override_constants/shadow_outline_size = 0
+theme_override_font_sizes/font_size = 50
+text = "CONTINUE?"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect2"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -246.0
+offset_top = -163.0
+offset_right = 246.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="Yes" parent="ColorRect2/VBoxContainer" instance=ExtResource("2_c1350")]
+material = SubResource("ShaderMaterial_qh7i5")
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect2/VBoxContainer/Yes"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "YES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="No" parent="ColorRect2/VBoxContainer" instance=ExtResource("2_c1350")]
+material = SubResource("ShaderMaterial_veyst")
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect2/VBoxContainer/No"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "NO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="buttonPressed" from="ColorRect2/VBoxContainer/Yes" to="." method="_on_yes_button_pressed"]
+[connection signal="buttonPressed" from="ColorRect2/VBoxContainer/No" to="." method="_on_no_button_pressed"]

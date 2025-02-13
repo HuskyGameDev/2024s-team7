@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2wimgkpulwbr"
-path="res://.godot/imported/ahh.png-3eb6a5202f5e1d9372e88d0f4e574dab.ctex"
+uid="uid://dq0i2jj267tyg"
+path="res://.godot/imported/glassy-readies-to-fight.png-b2a08667e8ba114713b82c4c30b5101e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ahh.png"
-dest_files=["res://.godot/imported/ahh.png-3eb6a5202f5e1d9372e88d0f4e574dab.ctex"]
+source_file="res://resources/sprites/glassy-readies-to-fight.png"
+dest_files=["res://.godot/imported/glassy-readies-to-fight.png-b2a08667e8ba114713b82c4c30b5101e.ctex"]
 
 [params]
 

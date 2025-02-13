@@ -7,12 +7,11 @@ class_name Enemy
 signal health_changed
 signal x_pos(position)
 
-@export var max_health = 100
-@onready var current_health = max_health
+@export var max_health = 1000
+@export var current_health = max_health
 
 # Original Variables
 
-@export var hp: int = 1
 @export var weight: float = 100
 @export var damage: int
 @export var score: int = 0
@@ -26,7 +25,8 @@ signal x_pos(position)
 @onready var animPlayer = $AnimationPlayer
 @onready var player = $"../player"
 
-@onready var audioPlayer = get_node("/root/Node/AudioStreamPlayer")
+
+@onready var audioPlayer = get_node("%AudioStreamPlayer")
 #@onready var hit_noise1 = preload("res://resources/Hit1.wav")
 #@onready var hit_noise2 = preload("res://resources/Hit2.wav")
 #@onready var hit_noise3 = preload("res://resources/Hit3.wav")
@@ -173,7 +173,6 @@ signal showDmg(dmgNumber)
 
 
 func _on_hurtbox_area_entered(hitbox):
-	
 	audioPlayer.stop()
 	if (!audioPlayer.is_playing()):
 		var rng = RandomNumberGenerator.new()
@@ -188,8 +187,12 @@ func _on_hurtbox_area_entered(hitbox):
 	damage = calc_resistance(damage, player.weapon[attack_performed].damage_type)
 	
 	self.score += damage
+	self.current_health -= damage
+	health_changed.emit()
+
 	self.combo += 1
 	self.juggle += 0.5
+
 	
 	animPlayer.play("hurt")
 	showDmg.emit(damage)
@@ -211,6 +214,7 @@ func _on_hurtbox_area_entered(hitbox):
 	print(hitbox.get_parent().name + "'s hitbox touched " + name)
 	print(str(damage) + " dealt!")
 	print("Juggle Count: " + str(self.juggle))
+	
 
 
 ## This function will determine if the enemy is either resistant or weak to a

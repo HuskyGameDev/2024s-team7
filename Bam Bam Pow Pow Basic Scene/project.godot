@@ -23,10 +23,12 @@ ItemStorage="*res://scripts/globals/item_storage.gd"
 SceneSwap="*res://scripts/globals/scene_swap.gd"
 Global="*res://scripts/globals/Global.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+FightDetails="*res://scripts/globals/fight_details.gd"
 
 [dialogic]
 
 directories/dch_directory={
+"Batty": "res://dialogic/characters/Batty.dch",
 "Drako": "res://dialogic/characters/Drako.dch",
 "Glassy": "res://dialogic/characters/Glassy.dch"
 }

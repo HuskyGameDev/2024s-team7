@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2wimgkpulwbr"
-path="res://.godot/imported/ahh.png-3eb6a5202f5e1d9372e88d0f4e574dab.ctex"
+uid="uid://bk7k0bqeq67ok"
+path="res://.godot/imported/backtofight.png-fd4153b458027da80dfb2d6cfd55735c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ahh.png"
-dest_files=["res://.godot/imported/ahh.png-3eb6a5202f5e1d9372e88d0f4e574dab.ctex"]
+source_file="res://resources/sprites/backtofight.png"
+dest_files=["res://.godot/imported/backtofight.png-fd4153b458027da80dfb2d6cfd55735c.ctex"]
 
 [params]
 

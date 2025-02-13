@@ -1,8 +1,3 @@
-## Temporary Global Variable set for 10/10 Playtest WeaponShop
-## This set doesn't include any reference to actual weapons
-## Kept arrays because more efficient access than dictionary during game.
-## No elements added to arrays during runtime.
-
 class_name weapon_in_shop
 extends Node
 
@@ -18,12 +13,64 @@ extends Node
 var currentInstance: int = 0 	# Which weapon we're on right now
 var weaponStartup: int = 0		# Prev + to set each Hanger Node to correct weapon index 
 
-var weaponsInShopArray = ["Unarmed", "Bat", "Gun", "BBJones", "MorningStar", "spear"] # Array of all weapon names
+var weapons_list = []			# List of opponent detail dictionaries in order of the fights
 
-var weaponsInShopCostsArray = [0, 20, 9999999999, 420, 2001911, 55]		# Weapon costs
-var weaponOwnership = [true,false,false,false,false,true]		# Weapon ownership
+func make_shop_weapon(name: String, cost: int, ownership: bool, description: String):
+	var shop_weapon: Dictionary = {
+		"name":			name,
+		"cost":			cost,
+		"ownership":		ownership,
+		"description":	description
+	}
+	return shop_weapon
 
-var weaponsInShopDesc = ["You punch things with your glass fists","Wh'ack e'm","M4 carbine Colt AR-15", "Sweet baby", "It's pretty spikey", "speary"]
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	weapons_list.append(make_shop_weapon(
+		"Unarmed",
+		0,
+		true,
+		"Punch things with your glass fists"
+	))
+	weapons_list.append(make_shop_weapon(
+		"Bat",
+		20,
+		false,
+		"Wh'ack e'm"
+	))
+	weapons_list.append(make_shop_weapon(
+		"Gun",
+		9999999999,
+		false,
+		"M4 carbine Colt AR-15"
+	))
+	weapons_list.append(make_shop_weapon(
+		"BBJones",
+		420,
+		false,
+		"Sweet baby"
+	))
+	weapons_list.append(make_shop_weapon(
+		"MorningStar",
+		2001911,
+		false,
+		"It's pretty spikey"
+	))
+	weapons_list.append(make_shop_weapon(
+		"Spear",
+		55,
+		true,
+		"speary"
+	))
+
+
+
+var weaponsInShopArray = ["Unarmed", "Bat", "Gun", "BBJones", "MorningStar"] # Array of all weapon names
+
+var weaponsInShopCostsArray = [0, 20, 9999999999, 420, 2001911]		# Weapon costs
+var weaponOwnership = [true,false,false,false,false]		# Weapon ownership
+
+var weaponsInShopDesc = ["You punch things with your glass fists","Wh'ack e'm","M4 carbine Colt AR-15", "Sweet baby", "It's pretty spikey"]
 # When there are more descriptions just append and put the appends in a ready function
 
 

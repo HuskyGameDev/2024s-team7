@@ -16,4 +16,4 @@ func _ready() -> void:
 	$Combo.pop_all()
 
 func _on_button_pressed() -> void:
-	SceneSwap.scene_swap("res://Scenes/Playable/ItemShop.tscn")
+	SceneSwap.scene_swap("res://Scenes/Playable/SelectionScreen.tscn")
