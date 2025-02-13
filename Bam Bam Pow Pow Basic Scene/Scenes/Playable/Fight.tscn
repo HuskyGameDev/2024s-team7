@@ -47,7 +47,7 @@ texture_region_size = Vector2i(128, 128)
 sources/1 = SubResource("TileSetAtlasSource_xampy")
 sources/4 = SubResource("TileSetAtlasSource_g1gl4")
 
-[node name="Node" type="Node"]
+[node name="Node2" type="Node"]
 script = ExtResource("1_xn2pw")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -111,13 +111,17 @@ theme_override_constants/separation = -20
 
 [node name="combo indicator" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.87, 0.6525, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 25
 text = "COMBO"
 
 [node name="combo" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.94, 0.868717, 0.0846, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 60
 text = "x"
 horizontal_alignment = 1
