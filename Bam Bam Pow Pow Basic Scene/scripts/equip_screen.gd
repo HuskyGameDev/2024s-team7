@@ -26,7 +26,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_key_pressed(KEY_W):
+		print(ItemStorage.equipped_items[0])
+		print(ItemStorage.itemsList[ItemStorage.equipped_items[0]].equipped)
 
 # Make sure current page is within allowed pages, else lop
 func valpage():
@@ -95,7 +97,10 @@ func reload_equipped() -> void:
 # make it and cancel selection button visibile, and update selected id
 func _on_equipped_item_selected_item(id: Variant) -> void:
 	equip_unequip_button.visible = true
-	equip_unequip_button.text = "Unequip"
+	if (ItemStorage.itemsList[id]["equipped"] == false):
+		equip_unequip_button.text = "Equip"
+	else:
+		equip_unequip_button.text = "Unequip"
 	cancel_button.visible = true
 	selected_id = id
 
@@ -103,6 +108,7 @@ func _on_equipped_item_selected_item(id: Variant) -> void:
 # make it and cancel selection button visibile, and update selected id
 func _on_equip_item_selected_item(id: Variant) -> void:
 	equip_unequip_button.visible = true
+	print(ItemStorage.itemsList[id]["equipped"])
 	if (ItemStorage.itemsList[id]["equipped"] == false):
 		equip_unequip_button.text = "Equip"
 	else:
