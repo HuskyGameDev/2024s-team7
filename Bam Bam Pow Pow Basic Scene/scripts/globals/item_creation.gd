@@ -19,10 +19,10 @@ func make_item(item_name: String, price: int, owned: bool,
 		"price" 	: price,
 		"owned" 	: owned,
 		"effects" 	: effects,
-		"on_buy"	: on_buy,
 		"sprite" 	: sprite_index,
 		"equipped"	: equipped,
-		"descript"	: descript
+		"descript"	: descript,
+		"on_buy"	: on_buy
 	}
 	itemMax += 1
 	return item

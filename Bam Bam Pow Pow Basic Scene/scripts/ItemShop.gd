@@ -25,7 +25,7 @@ var speed_flash = 1.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#ItemStorage.money += 10000
+	ItemStorage.money += 10000
 	moneylabel.text = "Money: " + str(ItemStorage.money)
 	#print(warning.modulate)
 	
@@ -40,6 +40,8 @@ func _process(delta: float) -> void:
 	elif warning.modulate.a < 0.5:
 		speed_flash *= -1
 	warning.modulate = Color(1, 1, 1, warning.modulate.a + speed_flash * delta)
+	if Input.is_key_pressed(KEY_W):
+		print(ItemStorage.maxequips)
 
 # A helper function to add money to the players money and display it
 func update_money(change):
