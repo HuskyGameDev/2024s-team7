@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/Entities/fight_options.gd" id="1_18bpn"]
 [ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="2_gl8wf"]
 [ext_resource type="PackedScene" uid="uid://cc1ttocg7gplt" path="res://Scenes/Functional/Sprite2DButton.tscn" id="4_2jrq0"]
-[ext_resource type="Texture2D" uid="uid://b6ce46f03ajnr" path="res://resources/sprites/mspaint-fight-selection-spritesheet.png" id="4_kwrtp"]
+[ext_resource type="Texture2D" uid="uid://dcgxbxvtq1htg" path="res://resources/sprites/mspaint-fight-selection-spritesheet-playtest1.png" id="4_a0rdf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o416s"]
 resource_local_to_scene = true
@@ -26,7 +26,7 @@ script = ExtResource("1_18bpn")
 material = SubResource("ShaderMaterial_o416s")
 position = Vector2(238.633, 228.625)
 scale = Vector2(2.83594, 2.83594)
-texture = ExtResource("4_kwrtp")
-hframes = 5
+texture = ExtResource("4_a0rdf")
+hframes = 4
 
 [connection signal="SpriteButtonPressed" from="Sprite2dButton" to="." method="_on_button_pressed"]

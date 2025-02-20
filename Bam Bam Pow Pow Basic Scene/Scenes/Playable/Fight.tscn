@@ -178,6 +178,7 @@ directional attacks
 Toggle this window appearing in settings"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
 
 [node name="AudioTimer" type="AudioStreamPlayer" parent="."]
 

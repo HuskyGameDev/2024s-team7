@@ -6,6 +6,7 @@
 
 extends CanvasLayer
 
+# Preload all 'GetNode' s
 @onready var nextButton = $VBoxContainer/Next
 @onready var prevButton = $VBoxContainer/Prev
 @onready var weaponName = $VBoxContainer/ColorRect/VBoxContainer/NameLabel

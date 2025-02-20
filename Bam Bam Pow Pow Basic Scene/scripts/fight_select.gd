@@ -36,7 +36,7 @@ func _changeBox(i)-> void:
 	# --- Handle whether prev/next exist and should be shown
 	
 	# If index is >= maxIndex, hide next button
-	if i >= 4:
+	if i >= 3:
 		nextButton.hide()
 	# If index is <= minIndex, hide prev button
 	if i <= 0:

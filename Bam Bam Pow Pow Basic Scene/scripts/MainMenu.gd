@@ -35,9 +35,11 @@ func _on_quit_button_pressed():
 ## Campaign Buttons Not Here Yet
 func _on_new_campaign_pressed():
 	ItemStorage.restart_game()
-	SceneSwap.scene_swap("res://Scenes/Playable/Fight.tscn")
+	SceneSwap.scene_swap("res://Scenes/Playable/InfinityFightDraft.tscn")
 
 func _on_load_campaign_pressed():
 	ItemStorage.load_game()
-	SceneSwap.scene_swap("res://Scenes/Playable/Fight.tscn")
+	SceneSwap.scene_swap("res://Scenes/Playable/InfinityFightDraft.tscn")
 	
+func _on_campaign_button_pressed():
+	SceneSwap.scene_swap("res://Scenes/Playable/CampaignFightDraft.tscn")

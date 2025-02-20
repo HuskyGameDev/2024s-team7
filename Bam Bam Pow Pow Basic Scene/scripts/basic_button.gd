@@ -26,9 +26,10 @@ signal buttonPressed
 
 
 ## Preload the image resources for basic/hover/pressed boxes
-var basicBox = preload("res://resources/sprites/real-box.png")
-var pressBox = preload("res://resources/sprites/mult-box.png")
-var hoverBox = preload("res://resources/sprites/box-soft-light.png")
+var basicBox = preload("res://resources/sprites/button.png")
+var pressBox = preload("res://resources/sprites/button-just-pressed.png")
+var hoverBox = preload("res://resources/sprites/button-hover.png")
+
 
 var hover = false	# Variable for showing if hovering
 
