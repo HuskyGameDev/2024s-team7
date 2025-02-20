@@ -55,24 +55,35 @@ layout_mode = 2
 bbcode_enabled = true
 text = "[center][font_size=30][color=black][b]Results[/b][/color][/font_size][/center]"
 
-[node name="ScoreLabel" type="RichTextLabel" parent="VBoxContainer"]
-custom_minimum_size = Vector2(100, 50)
-layout_mode = 2
-bbcode_enabled = true
-text = "[center][font_size=30][color=black][b]Score:[/b][/color][/font_size][/center]"
-
-[node name="ComboLabel" type="RichTextLabel" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
-bbcode_enabled = true
-text = "[center][font_size=30][color=black][b]Longest Combo:[/b][/color][/font_size][/center]"
+alignment = 1
 
-[node name="Combo" type="RichTextLabel" parent="VBoxContainer"]
+[node name="ScoreLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+bbcode_enabled = true
+text = "[font_size=30][center][color=black][b]Score:[/b][/color][/center][/font_size]"
+
+[node name="Score" type="RichTextLabel" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 bbcode_enabled = true
 text = "[font_size=30][color=black][b]0[/b][/color][/font_size]"
 
-[node name="Score" type="RichTextLabel" parent="VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ComboLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(350, 50)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center][font_size=30][color=black][b]Longest Combo:[/b][/color][/font_size][/center]"
+
+[node name="Combo" type="RichTextLabel" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 bbcode_enabled = true
 text = "[font_size=30][color=black][b]0[/b][/color][/font_size]"
