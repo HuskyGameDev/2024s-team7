@@ -24,7 +24,11 @@ signal x_pos(position)
 @onready var collShape = $CollisionShape2D
 @onready var animPlayer = $AnimationPlayer
 @onready var player = $"../player"
-@onready var audioPlayer = get_node("/root/Node2/AudioStreamPlayer")
+
+#@onready var audioPlayer = get_node("/root/Node2/AudioStreamPlayer")
+@onready var audioPlayer = get_node("%AudioStreamPlayer")
+
+
 #@onready var hit_noise1 = preload("res://resources/Hit1.wav")
 #@onready var hit_noise2 = preload("res://resources/Hit2.wav")
 #@onready var hit_noise3 = preload("res://resources/Hit3.wav")
@@ -236,7 +240,7 @@ func calc_money():
 	var addedtotal: int = score * money_mult
 	Global.score = score
 	ItemStorage.money += (addedtotal)
-	SceneSwap.scene_swap("res://Scenes/Playable/ResultsScreen.tscn")
+	# SceneSwap.scene_swap("res://Scenes/Playable/ResultsScreen.tscn")
 
 func _on_player_attack(attack):
 	attack_performed = attack

@@ -23,7 +23,7 @@ signal animationStart
 
 func _ready():
 	FightDetails.infinity = false
-	
+
 	# Set all opponent values
 	enemy.max_health = FightDetails.op_list[FightDetails.op_progress]["health"]
 	enemy.current_health = FightDetails.op_list[FightDetails.op_progress]["health"]
@@ -66,8 +66,8 @@ func defeatEnemy():
 	done = true
 	if (!FightDetails.op_list[FightDetails.op_progress]["defeated"]):
 		FightDetails.op_list[FightDetails.op_progress]["defeated"] = true
-		FightDetails.newWeaponNotification = true
-	FightDetails.animation = "win"
+		# FightDetails.newWeaponNotification = true
+	# FightDetails.animation = "win"
 	
 	if (FightDetails.op_progress < FightDetails.op_list.size()+1):	
 		FightDetails.op_progress = FightDetails.op_progress+1
@@ -76,6 +76,8 @@ func defeatEnemy():
 		# animation not accessed for 2/20/25 playtest
 		#SceneSwap.scene_swap("res://Scenes/Playable/AnimationPlayer.tscn")
 		SceneSwap.scene_swap("res://Scenes/Playable/SelectionScreen.tscn")
+	else:
+		SceneSwap.scene_swap("res://Scenes/Playable/FightSelect.tscn")
 
 # Function that runs when timer runs out/you are defeated
 # Changes scene

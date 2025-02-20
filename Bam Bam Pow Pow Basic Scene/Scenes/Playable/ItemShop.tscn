@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://i48tabjyt08t"]
+[gd_scene load_steps=21 format=3 uid="uid://i48tabjyt08t"]
 
 [ext_resource type="Script" path="res://scripts/ItemShop.gd" id="1_ed3xk"]
 [ext_resource type="PackedScene" uid="uid://btqmnmpytpfkq" path="res://Scenes/Functional/Item.tscn" id="2_3qixg"]
@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://dbc7vk84ewdqo" path="res://Scenes/Functional/BasicButton.tscn" id="3_exxd0"]
 [ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="4_cax4p"]
 [ext_resource type="Texture2D" uid="uid://csaod2ht6ymhf" path="res://resources/sprites/next-prev.png" id="4_jjh7n"]
-[ext_resource type="Texture2D" uid="uid://kg8lti6ql3wt" path="res://resources/sprites/caution-symbol.png" id="6_62woe"]
+[ext_resource type="Texture2D" uid="uid://6yrr4w034b3y" path="res://resources/sprites/door-sprites.png" id="6_sgoiq"]
 [ext_resource type="PackedScene" uid="uid://cc1ttocg7gplt" path="res://Scenes/Functional/Sprite2DButton.tscn" id="7_lh6kn"]
+[ext_resource type="Texture2D" uid="uid://b6ql4vuyq2taj" path="res://resources/sprites/hazard-sprites.png" id="9_rg8s4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u3mjj"]
 resource_local_to_scene = true
@@ -46,6 +47,12 @@ shader_parameter/onoffMult = false
 shader_parameter/onoffSoftLight = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6rw4f"]
+resource_local_to_scene = true
+shader = ExtResource("4_cax4p")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hevdg"]
 resource_local_to_scene = true
 shader = ExtResource("4_cax4p")
 shader_parameter/onoffMult = false
@@ -112,6 +119,7 @@ size_flags_horizontal = 0
 text = "Money:"
 
 [node name="MenuButtonRow2" type="HBoxContainer" parent="Control/MarginContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 10
 
@@ -235,6 +243,13 @@ text = "Load Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Sprite2dButton" parent="Control" instance=ExtResource("7_lh6kn")]
+material = SubResource("ShaderMaterial_hevdg")
+position = Vector2(91, 637)
+scale = Vector2(1.46875, 1.46875)
+texture = ExtResource("6_sgoiq")
+hframes = 2
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_left = -2.0
 offset_top = 34.0
@@ -326,7 +341,9 @@ frame = 1
 material = SubResource("ShaderMaterial_b2wwq")
 position = Vector2(860, 90)
 scale = Vector2(5.23333, 5.23333)
-texture = ExtResource("6_62woe")
+texture = ExtResource("9_rg8s4")
+hframes = 2
+frame = 1
 
 [node name="WarningScreen" type="ColorRect" parent="."]
 visible = false
@@ -342,6 +359,7 @@ offset_bottom = 641.08
 color = Color(0.0941176, 0.0941176, 0.0862745, 0.870588)
 
 [node name="MarginContainer" type="MarginContainer" parent="WarningScreen"]
+visible = false
 layout_mode = 0
 offset_left = 39.0001
 offset_top = -23.0
@@ -373,8 +391,11 @@ text = "X"
 [connection signal="buttonPressed" from="Control/MarginContainer/MenuButtonRow2/Fight" to="." method="_on_fight_scene_button_pressed"]
 [connection signal="buttonPressed" from="Control/MarginContainer/MenuButtonRow2/Save" to="." method="_on_save_button_pressed"]
 [connection signal="buttonPressed" from="Control/MarginContainer/MenuButtonRow2/Load" to="." method="_on_load_button_pressed"]
-[connection signal="bought_item" from="MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item1" to="." method="bought_item"]
+[connection signal="SpriteButtonPressed" from="Control/Sprite2dButton" to="." method="_on_sprite_2d_button_sprite_button_pressed"]
+[connection signal="mouse_entered" from="Control/Sprite2dButton" to="." method="_on_sprite_2d_button_mouse_entered"]
+[connection signal="mouse_exited" from="Control/Sprite2dButton" to="." method="_on_sprite_2d_button_mouse_exited"]
 [connection signal="bought_item" from="MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item1" to="." method="_on_item_1_bought_item"]
+[connection signal="bought_item" from="MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item1" to="." method="bought_item"]
 [connection signal="itemPressed" from="MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item1" to="." method="item_pressed"]
 [connection signal="bought_item" from="MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item2" to="." method="bought_item"]
 [connection signal="bought_item" from="MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item3" to="." method="bought_item"]
@@ -386,4 +407,6 @@ text = "X"
 [connection signal="SpriteButtonPressed" from="HBoxContainer/Prev" to="." method="_on_last_page_button_pressed"]
 [connection signal="SpriteButtonPressed" from="HBoxContainer/Next" to="." method="_on_next_page_button_pressed"]
 [connection signal="SpriteButtonPressed" from="HazardButton2" to="." method="_on_hazard_button_pressed"]
+[connection signal="mouse_entered" from="HazardButton2" to="." method="_on_hazard_button_2_mouse_entered"]
+[connection signal="mouse_exited" from="HazardButton2" to="." method="_on_hazard_button_2_mouse_exited"]
 [connection signal="pressed" from="WarningScreen/Close" to="." method="_on_close_pressed"]

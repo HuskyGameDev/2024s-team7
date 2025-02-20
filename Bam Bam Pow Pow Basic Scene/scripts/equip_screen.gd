@@ -8,6 +8,7 @@ extends CanvasLayer
 @onready var maxEquippedPage = ceil(ItemStorage.maxequips/5.0)
 @onready var selected_id = -1
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var exitButton = $Control/Sprite2dButton
 const WOOD_CLICK = preload("res://resources/sounds/WoodClick.wav")
 signal reload
 
@@ -232,3 +233,15 @@ func _on_equipped_next_page_button_pressed() -> void:
 			curr_eq_item.set_meta("ID", -1)
 		curr_eq_item.on_reload()
 	unselect()
+
+
+func _on_sprite_2d_button_sprite_button_pressed():
+	SceneSwap.scene_swap("res://Scenes/Playable/SelectionScreen.tscn")
+
+
+func _on_sprite_2d_button_mouse_entered():
+	exitButton.frame = 1
+
+
+func _on_sprite_2d_button_mouse_exited():
+	exitButton.frame = 0

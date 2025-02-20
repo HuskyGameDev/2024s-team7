@@ -18,6 +18,7 @@ extends CanvasLayer
 @onready var hazard = $HazardButton
 @onready var warning = $WarningScreen
 @onready var warningLabel = $WarningLabel
+@onready var exitButton = $Sprite2dButton
 var speed_flash = 1
 
 ## Handles changes to Selected Weapon screen
@@ -201,3 +202,22 @@ func _on_hazard_button_sprite_button_pressed():
 ## When close button is clicked: warning popup screen is closed
 func _on_close_pressed():
 	warning.hide()	# Close Warning popup
+
+
+func _on_sprite_2d_button_sprite_button_pressed():
+	SceneSwap.scene_swap("res://Scenes/Playable/SelectionScreen.tscn")
+
+
+func _on_sprite_2d_button_mouse_entered():
+	exitButton.frame = 1
+
+
+func _on_sprite_2d_button_mouse_exited():
+	exitButton.frame = 0
+
+
+func _on_hazard_button_mouse_entered():
+	hazard.frame = 0
+
+func _on_hazard_button_mouse_exited():
+	hazard.frame = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c7hqp2kuj8xq5"]
+[gd_scene load_steps=23 format=3 uid="uid://c7hqp2kuj8xq5"]
 
 [ext_resource type="Script" path="res://scripts/weapon_shop.gd" id="1_wkwj5"]
 [ext_resource type="Texture2D" uid="uid://dxunmhf25os5p" path="res://resources/sprites/dragon-in-shop.png" id="2_7m3va"]
@@ -6,9 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://5n0srb1iavr0" path="res://Scenes/Entities/hanger.tscn" id="3_01yxm"]
 [ext_resource type="PackedScene" uid="uid://cc1ttocg7gplt" path="res://Scenes/Functional/Sprite2DButton.tscn" id="5_8vjnh"]
 [ext_resource type="Texture2D" uid="uid://csaod2ht6ymhf" path="res://resources/sprites/next-prev.png" id="5_75nm7"]
-[ext_resource type="Texture2D" uid="uid://kg8lti6ql3wt" path="res://resources/sprites/caution-symbol.png" id="6_1g72y"]
 [ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="6_el8qg"]
 [ext_resource type="PackedScene" uid="uid://dbc7vk84ewdqo" path="res://Scenes/Functional/BasicButton.tscn" id="7_l0lf5"]
+[ext_resource type="Texture2D" uid="uid://b6ql4vuyq2taj" path="res://resources/sprites/hazard-sprites.png" id="9_4os3f"]
+[ext_resource type="Texture2D" uid="uid://6yrr4w034b3y" path="res://resources/sprites/door-sprites.png" id="10_ngnbp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uopw6"]
 shader = ExtResource("6_el8qg")
@@ -68,6 +69,12 @@ shader_parameter/onoffMult = false
 shader_parameter/onoffSoftLight = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tfvo5"]
+resource_local_to_scene = true
+shader = ExtResource("6_el8qg")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tk63a"]
 resource_local_to_scene = true
 shader = ExtResource("6_el8qg")
 shader_parameter/onoffMult = false
@@ -228,6 +235,7 @@ size_flags_vertical = 4
 metadata/_edit_group_ = true
 
 [node name="MenuButtonRow" type="HBoxContainer" parent="MarginContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 10
 
@@ -369,12 +377,6 @@ text = "Load Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HazardButton" parent="." instance=ExtResource("5_8vjnh")]
-material = SubResource("ShaderMaterial_tfvo5")
-position = Vector2(1141.12, 92.5)
-scale = Vector2(5.23333, 5.23333)
-texture = ExtResource("6_1g72y")
-
 [node name="WarningScreen" type="ColorRect" parent="."]
 visible = false
 anchors_preset = -1
@@ -423,6 +425,21 @@ offset_bottom = 483.0
 text = "Placeholder
 "
 
+[node name="HazardButton" parent="." instance=ExtResource("5_8vjnh")]
+material = SubResource("ShaderMaterial_tfvo5")
+position = Vector2(1141.12, 92.5)
+scale = Vector2(5.23333, 5.23333)
+texture = ExtResource("9_4os3f")
+hframes = 2
+frame = 1
+
+[node name="Sprite2dButton" parent="." instance=ExtResource("5_8vjnh")]
+material = SubResource("ShaderMaterial_tk63a")
+position = Vector2(91, 614)
+scale = Vector2(1.9375, 1.9375)
+texture = ExtResource("10_ngnbp")
+hframes = 2
+
 [connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger" to="." method="_on_hanger_hanger_pressed"]
 [connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger2" to="." method="_on_hanger_hanger_pressed"]
 [connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger3" to="." method="_on_hanger_hanger_pressed"]
@@ -439,5 +456,10 @@ text = "Placeholder
 [connection signal="buttonPressed" from="MarginContainer/MenuButtonRow/FightScene" to="." method="_on_fight_scene_button_pressed"]
 [connection signal="buttonPressed" from="MarginContainer/MenuButtonRow/SaveGame" to="." method="_on_save_game_button_pressed"]
 [connection signal="buttonPressed" from="MarginContainer/MenuButtonRow/LoadGame" to="." method="_on_load_game_button_pressed"]
-[connection signal="SpriteButtonPressed" from="HazardButton" to="." method="_on_hazard_button_sprite_button_pressed"]
 [connection signal="pressed" from="WarningScreen/Close" to="." method="_on_close_pressed"]
+[connection signal="SpriteButtonPressed" from="HazardButton" to="." method="_on_hazard_button_sprite_button_pressed"]
+[connection signal="mouse_entered" from="HazardButton" to="." method="_on_hazard_button_mouse_entered"]
+[connection signal="mouse_exited" from="HazardButton" to="." method="_on_hazard_button_mouse_exited"]
+[connection signal="SpriteButtonPressed" from="Sprite2dButton" to="." method="_on_sprite_2d_button_sprite_button_pressed"]
+[connection signal="mouse_entered" from="Sprite2dButton" to="." method="_on_sprite_2d_button_mouse_entered"]
+[connection signal="mouse_exited" from="Sprite2dButton" to="." method="_on_sprite_2d_button_mouse_exited"]

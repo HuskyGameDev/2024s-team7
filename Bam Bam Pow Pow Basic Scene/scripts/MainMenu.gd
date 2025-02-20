@@ -32,14 +32,20 @@ func _on_quit_button_pressed():
 	get_tree().quit()
 
 
-## Campaign Buttons Not Here Yet
-func _on_new_campaign_pressed():
+func _on_new_infinity_pressed():
+	FightDetails.infinity = true
 	ItemStorage.restart_game()
 	SceneSwap.scene_swap("res://Scenes/Playable/InfinityFightDraft.tscn")
 
-func _on_load_campaign_pressed():
+func _on_load_infinity_pressed():
+	FightDetails.infinity = true
 	ItemStorage.load_game()
 	SceneSwap.scene_swap("res://Scenes/Playable/InfinityFightDraft.tscn")
 	
 func _on_campaign_button_pressed():
-	SceneSwap.scene_swap("res://Scenes/Playable/CampaignFightDraft.tscn")
+	FightDetails.infinity = false
+	SceneSwap.scene_swap("res://Scenes/Playable/FightSelect.tscn")
+
+
+func _on_tutorial_button_pressed():
+	SceneSwap.scene_swap("res://Scenes/Playable/tutorial_fight.tscn")

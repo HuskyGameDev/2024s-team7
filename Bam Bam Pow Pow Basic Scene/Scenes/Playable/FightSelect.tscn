@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://8sgk22qsn38y"]
+[gd_scene load_steps=11 format=3 uid="uid://8sgk22qsn38y"]
 
 [ext_resource type="Script" path="res://scripts/fight_select.gd" id="1_f6csq"]
 [ext_resource type="PackedScene" uid="uid://dxtghnrjkk6fm" path="res://Scenes/Entities/fight_options.tscn" id="2_le78v"]
 [ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="2_mcet2"]
 [ext_resource type="PackedScene" uid="uid://cc1ttocg7gplt" path="res://Scenes/Functional/Sprite2DButton.tscn" id="6_mdm7y"]
+[ext_resource type="Texture2D" uid="uid://6yrr4w034b3y" path="res://resources/sprites/door-sprites.png" id="6_pgj15"]
 [ext_resource type="Texture2D" uid="uid://csaod2ht6ymhf" path="res://resources/sprites/next-prev.png" id="7_8tklg"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2sdlv"]
@@ -17,6 +18,12 @@ shader_parameter/onoffMult = false
 shader_parameter/onoffSoftLight = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2i54w"]
+resource_local_to_scene = true
+shader = ExtResource("2_mcet2")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xwl6u"]
 resource_local_to_scene = true
 shader = ExtResource("2_mcet2")
 shader_parameter/onoffMult = false
@@ -64,10 +71,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="opSelect3" parent="Control/ScrollContainer/HBoxContainer" instance=ExtResource("2_le78v")]
-layout_mode = 2
-
-[node name="opSelect4" parent="Control/ScrollContainer/HBoxContainer" instance=ExtResource("2_le78v")]
-visible = false
 layout_mode = 2
 
 [node name="opSelect5" parent="Control/ScrollContainer/HBoxContainer" instance=ExtResource("2_le78v")]
@@ -139,11 +142,20 @@ frame = 1
 layout_mode = 2
 alignment = 1
 
+[node name="Sprite2dButton" parent="." instance=ExtResource("6_mdm7y")]
+material = SubResource("ShaderMaterial_xwl6u")
+position = Vector2(76, 78.1563)
+scale = Vector2(1.59375, 1.59375)
+texture = ExtResource("6_pgj15")
+hframes = 2
+
 [connection signal="opPressed" from="Control/ScrollContainer/HBoxContainer/opSelect" to="." method="_on_op_select_op_pressed"]
 [connection signal="opPressed" from="Control/ScrollContainer/HBoxContainer/opSelect2" to="." method="_on_op_select_op_pressed"]
 [connection signal="opPressed" from="Control/ScrollContainer/HBoxContainer/opSelect3" to="." method="_on_op_select_op_pressed"]
-[connection signal="opPressed" from="Control/ScrollContainer/HBoxContainer/opSelect4" to="." method="_on_op_select_op_pressed"]
 [connection signal="opPressed" from="Control/ScrollContainer/HBoxContainer/opSelect5" to="." method="_on_op_select_op_pressed"]
 [connection signal="pressed" from="VBoxContainer/ColorRect/VBoxContainer/Fight" to="." method="_on_fight_pressed"]
 [connection signal="SpriteButtonPressed" from="VBoxContainer/Prev" to="." method="_on_prev_sprite_button_pressed"]
 [connection signal="SpriteButtonPressed" from="VBoxContainer/Next" to="." method="_on_next_sprite_button_pressed"]
+[connection signal="SpriteButtonPressed" from="Sprite2dButton" to="." method="_on_sprite_2d_button_sprite_button_pressed"]
+[connection signal="mouse_entered" from="Sprite2dButton" to="." method="_on_sprite_2d_button_mouse_entered"]
+[connection signal="mouse_exited" from="Sprite2dButton" to="." method="_on_sprite_2d_button_mouse_exited"]

@@ -10,6 +10,7 @@ extends CanvasLayer
 @onready var flavorText = $VBoxContainer/ColorRect/VBoxContainer/FlavorText
 @onready var scroll = $Control/ScrollContainer
 @onready var fight = $VBoxContainer/ColorRect/VBoxContainer/Fight
+@onready var exitButton = $Sprite2dButton
 
 ## Handles changes to Selected Weapon screen
 ##
@@ -89,3 +90,15 @@ func _on_next_sprite_button_pressed():
 func _on_fight_pressed():
 	FightDetails.op_progress = FightDetails.opSelectCurrent
 	SceneSwap.scene_swap("res://Scenes/Playable/CampaignFightDraft.tscn")
+
+
+func _on_sprite_2d_button_sprite_button_pressed():
+	SceneSwap.scene_swap("res://Scenes/Playable/MainMenu.tscn")
+
+
+func _on_sprite_2d_button_mouse_entered():
+	exitButton.frame = 1
+
+
+func _on_sprite_2d_button_mouse_exited():
+	exitButton.frame = 0

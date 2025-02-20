@@ -3,12 +3,14 @@ extends Node
 @onready var enemy = $Fight_Base/enemy
 @onready var score_label = $score
 
+
 # What we'll need to find a way to handle here:
 
 # Changing score
 # Moving to next correct screen
 
 func _ready():
+	FightDetails.infinity = true
 	# Set opponent health
 	enemy.max_health = FightDetails.op_list[FightDetails.op_progress]["health"]
 

@@ -16,6 +16,17 @@ script = ExtResource("1_fnhak")
 [node name="TextureRect" parent="FightBase" index="0"]
 texture = SubResource("CompressedTexture2D_qnu3c")
 
+[node name="WarningScreen" parent="FightBase" index="11"]
+visible = true
+
+[node name="RichTextLabel" parent="FightBase/WarningScreen/MarginContainer" index="0"]
+text = "Controls:
+J = Light Attacks, K = Heavy Attacks
+W = Up, S = Down, A and D = Side
+Combine directions and attack types to do
+directional attacks
+Toggle this window appearing in settings"
+
 [node name="HPbar" type="TextureProgressBar" parent="."]
 offset_left = 138.0
 offset_top = 18.0

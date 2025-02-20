@@ -30,17 +30,11 @@ FightDetails="*res://scripts/globals/fight_details.gd"
 directories/dch_directory={
 "Batty": "res://dialogic/characters/Batty.dch",
 "Drako": "res://dialogic/characters/Drako.dch",
-"Glassy": "res://dialogic/characters/Glassy.dch",
-"characters/Batty": "res://Dialogic/characters/Batty.dch",
-"characters/Drako": "res://Dialogic/characters/Drako.dch",
-"characters/Glassy": "res://Dialogic/characters/Glassy.dch"
+"Glassy": "res://dialogic/characters/Glassy.dch"
 }
 directories/dtl_directory={
 "itemDescriptions": "res://dialogic/timelines/itemDescriptions.dtl",
 "itemShop": "res://dialogic/timelines/itemShop.dtl",
-"timelines/itemDescriptions": "res://Dialogic/timelines/itemDescriptions.dtl",
-"timelines/itemShop": "res://Dialogic/timelines/itemShop.dtl",
-"timelines/weaponShop": "res://Dialogic/timelines/weaponShop.dtl",
 "weaponShop": "res://dialogic/timelines/weaponShop.dtl"
 }
 extensions_folder="res://addons/dialogic_additions"
@@ -119,16 +113,6 @@ Punch={
 Kick={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":75,"physical_keycode":0,"key_label":0,"unicode":107,"location":0,"echo":false,"script":null)
-]
-}
-Weapon={
-"deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":76,"physical_keycode":0,"key_label":0,"unicode":108,"location":0,"echo":false,"script":null)
-]
-}
-Special={
-"deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":59,"physical_keycode":0,"key_label":0,"unicode":59,"location":0,"echo":false,"script":null)
 ]
 }
 Esc={

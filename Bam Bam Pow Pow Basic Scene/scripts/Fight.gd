@@ -13,6 +13,7 @@ var started = false
 
 
 func _ready():
+	FightDetails.infinity = true
 	if (ItemStorage.inputtoggle == true):
 		input_screen.visible = true
 	else:

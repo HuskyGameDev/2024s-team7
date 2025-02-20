@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bcgms52ybyraw"]
+[gd_scene load_steps=19 format=3 uid="uid://dq4s5v75t8nm4"]
 
 [ext_resource type="Script" path="res://Scenes/Playable/tutorial_fight.gd" id="1_d7tf0"]
 [ext_resource type="Texture2D" uid="uid://bjp6mrfnrh2bv" path="res://Assets/bg-sakura.PNG" id="2_65aek"]
@@ -169,6 +169,7 @@ offset_right = 436.0
 offset_bottom = 75.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
 
 [node name="AudioTimer" type="AudioStreamPlayer" parent="."]
 
@@ -180,6 +181,6 @@ offset_bottom = 75.0
 [connection signal="attack" from="ComboHandler" to="player" method="_on_signal_transfer_to_state"]
 [connection signal="attack" from="ComboHandler" to="enemy" method="_on_combo_handler_attack"]
 [connection signal="attack_damamge" from="ComboHandler" to="enemy" method="_on_combo_handler_attack_damamge"]
-[connection signal="attack_index" from="ComboHandler" to="player" method="_on_combo_handler_attack_index"]
 [connection signal="attack_index" from="ComboHandler" to="player" method="_on_signal_transfer_to_state"]
+[connection signal="attack_index" from="ComboHandler" to="player" method="_on_combo_handler_attack_index"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

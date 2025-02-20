@@ -18,14 +18,15 @@ var i = 0
 func _ready():
 	i = FightDetails.opSelectStartUp;		# Set index for Hanger instance from global	
 	sprite.frame = i			# Set Sprite2d frame to frame at index
-	
+	print("starting: ",i)
 	FightDetails.opSelectStartUp += 1		# Set global to next value for following instance
 	# Reset the number for next ready onces reaches end of array
-	if (i > 3):
+	print("ending: ",i)
+	if (i >= 3):
 		FightDetails.opSelectStartUp = 0
-	if (!FightDetails.op_list[i]["defeated"]):
-		print("unwon")
-		sprite.material.set_shader_parameter("color_burn",1)		# Remove multiply
+	#if (!FightDetails.op_list[i]["defeated"]):
+		#print("unwon")
+		#sprite.material.set_shader_parameter("color_burn",1)		# Remove multiply
 
 
 ## HangerButton press signal. 
