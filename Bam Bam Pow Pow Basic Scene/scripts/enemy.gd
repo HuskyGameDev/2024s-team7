@@ -24,13 +24,7 @@ signal x_pos(position)
 @onready var collShape = $CollisionShape2D
 @onready var animPlayer = $AnimationPlayer
 @onready var player = $"../player"
-
-<<<<<<< Updated upstream
-
-@onready var audioPlayer = get_node("%AudioStreamPlayer")
-=======
 @onready var audioPlayer = get_node("/root/Node2/AudioStreamPlayer")
->>>>>>> Stashed changes
 #@onready var hit_noise1 = preload("res://resources/Hit1.wav")
 #@onready var hit_noise2 = preload("res://resources/Hit2.wav")
 #@onready var hit_noise3 = preload("res://resources/Hit3.wav")

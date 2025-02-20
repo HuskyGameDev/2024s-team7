@@ -16,6 +16,7 @@ extends CanvasLayer
 @onready var bought = $VBoxContainer/ColorRect/VBoxContainer/Bought
 @onready var hazard = $HazardButton
 @onready var warning = $WarningScreen
+@onready var warningLabel = $WarningLabel
 var speed_flash = 1
 
 ## Handles changes to Selected Weapon screen
@@ -87,6 +88,7 @@ func _ready():
 	toBuy.hide()
 	bought.show()
 	
+	warningLabel.hide()
 	if WeaponInShop.weaponsOpened == false:
 		Dialogic.start('weaponShop')
 	WeaponInShop.weaponsOpened = true
@@ -118,9 +120,23 @@ func _on_hanger_hanger_pressed():
 ## nor is it connected to actual money systems
 func _on_buy_button_pressed():
 	var i = WeaponInShop.currentInstance	# Get current weapon idex
-	WeaponInShop.weaponOwnership[i]=true	# Check if current weapon is owned
+	if (ItemStorage.money >= WeaponInShop.weapons_list[i]["cost"]):
+		ItemStorage.money = ItemStorage.money - WeaponInShop.weapons_list[i]["cost"]
+		WeaponInShop.weapons_list[i]["ownership"] = true
+		WeaponInShop.weaponOwnership[i]=true	# Check if current weapon is owned
 	_changeBox(i)	#Changebox to new bought/buy settings
 
+func _on_equip_button_pressed():
+	var i = WeaponInShop.currentInstance
+	var name = WeaponInShop.weapons_list[i]["name"].to_lower()
+	if (name == "unarmed" || name == "spear"):
+		ItemStorage.equipped_weapon = name
+		print(ItemStorage.equipped_weapon)
+	else:
+		warningLabel.text = "Sorry, that weapon is currenlty unimplemented"
+		warningLabel.show()
+		await get_tree().create_timer(.5).timeout
+		warningLabel.hide()
 ## Accesses previous weapon
 func _on_prev_sprite_button_pressed():
 	var inst = WeaponInShop.currentInstance	# Grabs current weapon index

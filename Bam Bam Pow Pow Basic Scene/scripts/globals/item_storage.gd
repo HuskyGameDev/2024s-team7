@@ -1,6 +1,6 @@
 extends Node
 
-var money # Money player has
+var money = 10000 # Money player has
 var itemsList = [] # Array to store all items
 
 

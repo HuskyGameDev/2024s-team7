@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://dxunmhf25os5p" path="res://resources/sprites/dragon-in-shop.png" id="2_7m3va"]
 [ext_resource type="Texture2D" uid="uid://dc36bpll4ldvy" path="res://resources/sprites/background-itemshop.png" id="2_8ayfd"]
 [ext_resource type="PackedScene" uid="uid://5n0srb1iavr0" path="res://Scenes/Entities/hanger.tscn" id="3_01yxm"]
-[ext_resource type="PackedScene" uid="uid://cc1ttocg7gplt" path="res://Scenes/Functional/Sprite2DButton.tscn" id="5_8vjnh"]
+[ext_resource type="PackedScene" path="res://Scenes/Functional/Sprite2DButton.tscn" id="5_8vjnh"]
 [ext_resource type="Texture2D" uid="uid://csaod2ht6ymhf" path="res://resources/sprites/next-prev.png" id="5_75nm7"]
 [ext_resource type="Texture2D" uid="uid://kg8lti6ql3wt" path="res://resources/sprites/caution-symbol.png" id="6_1g72y"]
 [ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="6_el8qg"]
-[ext_resource type="PackedScene" uid="uid://dbc7vk84ewdqo" path="res://Scenes/Functional/BasicButton.tscn" id="7_l0lf5"]
+[ext_resource type="PackedScene" path="res://Scenes/Functional/BasicButton.tscn" id="7_l0lf5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uopw6"]
 shader = ExtResource("6_el8qg")
@@ -415,6 +415,14 @@ size_flags_vertical = 0
 theme_override_font_sizes/font_size = 38
 text = "X"
 
+[node name="WarningLabel" type="Label" parent="."]
+offset_left = 473.0
+offset_top = 365.0
+offset_right = 784.0
+offset_bottom = 483.0
+text = "Placeholder
+"
+
 [connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger" to="." method="_on_hanger_hanger_pressed"]
 [connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger2" to="." method="_on_hanger_hanger_pressed"]
 [connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger3" to="." method="_on_hanger_hanger_pressed"]
@@ -422,6 +430,7 @@ text = "X"
 [connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger5" to="." method="_on_hanger_hanger_pressed"]
 [connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger6" to="." method="_on_hanger_hanger_pressed"]
 [connection signal="pressed" from="VBoxContainer/ColorRect/VBoxContainer/ToBuy/BuyButton" to="." method="_on_buy_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ColorRect/VBoxContainer/Bought/Equip" to="." method="_on_equip_button_pressed"]
 [connection signal="SpriteButtonPressed" from="VBoxContainer/Prev" to="." method="_on_prev_sprite_button_pressed"]
 [connection signal="SpriteButtonPressed" from="VBoxContainer/Next" to="." method="_on_next_sprite_button_pressed"]
 [connection signal="buttonPressed" from="MarginContainer/MenuButtonRow/MainMenu" to="." method="_on_main_menu_button_pressed"]

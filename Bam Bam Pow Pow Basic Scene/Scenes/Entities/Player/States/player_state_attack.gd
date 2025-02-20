@@ -92,6 +92,7 @@ func _on_player_attack_index(core, motion):
 			attack = cancel
 			
 		print(attack)
+		weapon.print_weapon()
 		attack_performed.emit(attack)
 		if animator.has_animation(weapon[attack].animation):
 			animator.stop()
