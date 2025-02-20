@@ -1,0 +1,183 @@
+[gd_scene load_steps=19 format=3 uid="uid://bcgms52ybyraw"]
+
+[ext_resource type="Script" path="res://Scenes/Playable/tutorial_fight.gd" id="1_d7tf0"]
+[ext_resource type="Texture2D" uid="uid://bjp6mrfnrh2bv" path="res://Assets/bg-sakura.PNG" id="2_65aek"]
+[ext_resource type="Texture2D" uid="uid://bb523jxarvel0" path="res://Assets/tile-sakura .PNG" id="3_2qa7k"]
+[ext_resource type="Texture2D" uid="uid://cbia7ydbgigan" path="res://resources/sprites/icon.svg" id="4_g8cvg"]
+[ext_resource type="Texture2D" uid="uid://bccvdng3t7mr0" path="res://Assets/icon.svg" id="5_mj3ly"]
+[ext_resource type="PackedScene" uid="uid://cfx46l5ghyfp3" path="res://Scenes/Entities/Player/player.tscn" id="6_3s246"]
+[ext_resource type="PackedScene" uid="uid://cqhetuoqkeuty" path="res://Scenes/Entities/enemy.tscn" id="7_drc44"]
+[ext_resource type="PackedScene" uid="uid://b8vq6sc31q3x6" path="res://Scenes/Functional/combo.tscn" id="8_g6qxv"]
+[ext_resource type="Texture2D" uid="uid://c2pa3fqc042ok" path="res://resources/sprites/clock back new.png" id="9_2iks2"]
+[ext_resource type="Texture2D" uid="uid://bmxls3x41o1a7" path="res://resources/sprites/clock top new.png" id="10_qrx6a"]
+[ext_resource type="Texture2D" uid="uid://d07sw130xxmn5" path="res://resources/sprites/clock fill new.png" id="11_xm268"]
+[ext_resource type="Script" path="res://Scenes/Playable/popup.gd" id="12_t1mnl"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7n84y"]
+texture = ExtResource("3_2qa7k")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16.5, -16.25, 16.125, -15.875, 16, 16.25, -16.25, 16.5)
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1qjtc"]
+texture = ExtResource("4_g8cvg")
+0:0/size_in_atlas = Vector2i(8, 8)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-63.25, -64.75, 60.25, -64.75, 65.25, 65.5, -64, 64.25)
+
+[sub_resource type="TileSet" id="TileSet_gik26"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_1qjtc")
+sources/0 = SubResource("TileSetAtlasSource_7n84y")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xampy"]
+texture = ExtResource("3_2qa7k")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g1gl4"]
+texture = ExtResource("5_mj3ly")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_7wu4c"]
+sources/1 = SubResource("TileSetAtlasSource_xampy")
+sources/4 = SubResource("TileSetAtlasSource_g1gl4")
+
+[node name="Node" type="Node"]
+script = ExtResource("1_d7tf0")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -46.0
+offset_right = 81.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_65aek")
+
+[node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
+scale = Vector2(4, 4)
+tile_set = SubResource("TileSet_gik26")
+rendering_quadrant_size = 128
+format = 2
+layer_0/tile_data = PackedInt32Array(2818051, 1, 0, 2818059, 1, 0, 2818067, 1, 0, 2818075, 1, 0, 2818083, 1, 0, 2818091, 1, 0, 2818099, 1, 0, 2818107, 1, 0, 2818115, 1, 0, 2818123, 1, 0, 2883579, 1, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 393214, 0, 0, 65548, 1, 0, 262156, 1, 0, 327677, 1, 0, 131069, 1, 0)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+visible = false
+scale = Vector2(8, 8)
+tile_set = SubResource("TileSet_7wu4c")
+
+[node name="player" parent="." instance=ExtResource("6_3s246")]
+position = Vector2(291, 531)
+scale = Vector2(2, 2)
+
+[node name="enemy" parent="." instance=ExtResource("7_drc44")]
+position = Vector2(681, 436)
+
+[node name="ComboHandler" parent="." instance=ExtResource("8_g6qxv")]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -145.5
+offset_right = 145.5
+offset_bottom = 42.0
+grow_horizontal = 2
+
+[node name="score" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Score: "
+horizontal_alignment = 1
+
+[node name="spacer2" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -20
+
+[node name="combo indicator" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.87, 0.6525, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "COMBO"
+
+[node name="combo" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 0.868717, 0.0846, 1)
+theme_override_font_sizes/font_size = 60
+text = "x"
+horizontal_alignment = 1
+
+[node name="spacer" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="time" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Time: "
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer"]
+layout_mode = 2
+fill_mode = 4
+texture_under = ExtResource("9_2iks2")
+texture_over = ExtResource("10_qrx6a")
+texture_progress = ExtResource("11_xm268")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+
+[node name="Popup" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 256.0
+offset_top = 154.0
+offset_right = 989.0
+offset_bottom = 276.0
+script = ExtResource("12_t1mnl")
+
+[node name="ColorRect" type="ColorRect" parent="Popup"]
+layout_mode = 0
+offset_right = 736.0
+offset_bottom = 111.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="Popup/ColorRect"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 29.0
+offset_right = 650.0
+offset_bottom = 79.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AudioTimer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="attack_performed" from="player" to="enemy" method="_on_player_attack"]
+[connection signal="player_dir" from="player" to="enemy" method="_on_player_player_dir"]
+[connection signal="damage_readied" from="enemy" to="ComboHandler" method="_on_enemy_damage_readied"]
+[connection signal="showDmg" from="enemy" to="." method="_on_enemy_show_dmg"]
+[connection signal="x_pos" from="enemy" to="player" method="_on_enemy_x_pos"]
+[connection signal="attack" from="ComboHandler" to="player" method="_on_signal_transfer_to_state"]
+[connection signal="attack" from="ComboHandler" to="enemy" method="_on_combo_handler_attack"]
+[connection signal="attack_damamge" from="ComboHandler" to="enemy" method="_on_combo_handler_attack_damamge"]
+[connection signal="attack_index" from="ComboHandler" to="player" method="_on_signal_transfer_to_state"]
+[connection signal="attack_index" from="ComboHandler" to="player" method="_on_combo_handler_attack_index"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
