@@ -1,10 +1,10 @@
 extends Control
 
-@onready var score = $VBoxContainer/Score
-@onready var combo = $VBoxContainer/Combo
+@onready var score = $VBoxContainer/HBoxContainer/Score
+@onready var combo = $VBoxContainer/HBoxContainer2/Combo
 @onready var results = $VBoxContainer/Results
-@onready var ScoreLabel = $VBoxContainer/ScoreLabel
-@onready var ComboLabel = $VBoxContainer/ComboLabel
+@onready var ScoreLabel = $VBoxContainer/HBoxContainer/ScoreLabel
+@onready var ComboLabel = $VBoxContainer/HBoxContainer2/ComboLabel
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
