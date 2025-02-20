@@ -31,7 +31,7 @@ func make_item(item_name: String, price: int, owned: bool,
 func _ready() -> void:
 	item_list.append(make_item(
 		"Uppercut Scroll",
-		1000,
+		1400,
 		true,
 		{
 			"light_up": 0.5
@@ -39,13 +39,13 @@ func _ready() -> void:
 		1,
 		false,
 		[
-			"Adds 0.5 to your light up attack multiplier."	
+			"Adds a 0.5 multiplier to your light up attacks."	
 		]
 	))
 	
 	item_list.append(make_item(
 		"Low Blow Scroll",
-		1200,
+		1500,
 		false,
 		{
 			"light_down": 0.6
@@ -53,13 +53,13 @@ func _ready() -> void:
 		0,
 		false,
 		[
-			"Adds 0.6 to your light down multiplier."
+			"Adds a 0.6 multiplier to your light down attacks."
 		]
 	))
 	
 	item_list.append(make_item(
 		"Brass Knuckles",
-		400,
+		1000,
 		false,
 		{
 			"light": 0.2
@@ -67,13 +67,13 @@ func _ready() -> void:
 		2,
 		false,
 		[
-			"Adds 0.2 to your light attacks mutliplier."
+			"Adds a 0.2 multiplier to your light attacks."
 		]
 	))
 	
 	item_list.append(make_item(
 		"Bird Punching Glasses",
-		600,
+		900,
 		true,
 		{
 			"light_up": 0.2,
@@ -82,13 +82,13 @@ func _ready() -> void:
 		3,
 		false,
 		[
-			"Adds 0.2 to your light and heavy up attacks."
+			"Adds a 0.2 multiplier to your light up and heavy up attacks."
 		]
 	))
 
 	item_list.append(make_item(
 		"Danger Short",
-		900,
+		1900,
 		false,
 		{
 			"light_side": 0.3,
@@ -97,13 +97,13 @@ func _ready() -> void:
 		20,
 		false,
 		[
-			"Adds 0.3 to your light and heavy side attacks."
+			"Adds a 0.3 multiplier to your light and heavy side attacks."
 		]
 	))
 	
 	item_list.append(make_item(
 		"High Kick Scroll",
-		1200,
+		2200,
 		false,
 		{
 			"heavy_up": 0.6
@@ -111,13 +111,13 @@ func _ready() -> void:
 		5,
 		false,
 		[
-			"Adds 0.6 to your heavy up attack."
+			"Adds a 0.6 multiplier to your heavy up attack."
 		]
 	))
 	
 	item_list.append(make_item(
 		"Heel Slam Scroll",
-		600,
+		1600,
 		false,
 		{
 			"heavy_down": 0.3
@@ -125,13 +125,13 @@ func _ready() -> void:
 		6,
 		false,
 		[
-			"Adds 0.3 to your heavy down attack."
+			"Adds a 0.3 multiplier to your heavy down attack."
 		]
 	))
 	
 	item_list.append(make_item(
 		"Leg Sweep Scroll",
-		400,
+		800,
 		false,
 		{
 			"light_down": 0.2
@@ -139,13 +139,13 @@ func _ready() -> void:
 		0,
 		false,
 		[
-			"Adds 0.2 to your light down multiplier."
+			"Adds a 0.2 multiplier to your light down attacks."
 		]
 	))
 	
 	item_list.append(make_item(
 		"Penny Pouch",
-		400,
+		1500,
 		false,
 		{
 			"money": 0.2
@@ -159,13 +159,16 @@ func _ready() -> void:
 	
 	item_list.append(make_item(
 		"Piggy Bank",
-		2000,
+		5500,
 		true,
 		{
 			"money": 1
 		},
 		8,
-		false
+		false,
+		[
+			"Adds 1 to your money multiplier"
+		]
 	))
 	
 	item_list.append(make_item(
@@ -177,136 +180,172 @@ func _ready() -> void:
 			"heavy": 1
 		},
 		9,
-		false
+		false,
+		[
+			"Adds 1 to your light and heavy attack multiplier"
+		]
 	))
 	
 	item_list.append(make_item(
 		"A Big Meal",
-		1000,
+		2000,
 		true,
 		{
 			"heavy": 0.5
 		},
 		10,
-		false
+		false,
+		[
+			"Adds a 0.5 multiplier to your heavy attacks"
+		]
 	))
 	
 	item_list.append(make_item(
 		"Anti-Air Jordans",
-		1200,
+		2000,
 		false,
 		{
 			"light_air": 0.4,
 			"heavy_air": 0.4
 		},
 		11,
-		false
+		false,
+		[
+			"Extra stylish, adds 0.4 to your light air and heavy air attack multiplier"
+		]
 	))
 	
 	item_list.append(make_item(
 		"Balloon Pack",
-		600,
+		1200,
 		true,
 		{
 			"light_air": 0.3
 		},
 		12,
-		false
+		false,
+		[
+			"Adds 0.3 multiplier to light air attacks"
+		]
 	))
 	
 	item_list.append(make_item(
 		"Smelly Soles",
-		1000,
+		2100,
 		false,
 		{
 			"heavy_side": 0.5
 		},
 		13,
-		false
+		false,
+		[
+			"Stinky, adds a 0.5 multiplier to heavy side attacks"
+		]
 	))
 	
 	item_list.append(make_item(
 		"Shoulder Pads",
-		1000,
+		1500,
 		false,
 		{
 			"light_side": 0.5
 		},
 		14,
-		false
+		false,
+		[
+			"Adds a 0.5 multiplier to the light side attacks"
+		]
 	))
 	
 	item_list.append(make_item(
 		"Floaty Fist",
-		800,
+		1600,
 		false,
 		{
 			"light_neutral": 0.4
 		},
 		15,
-		false
+		false,
+		[
+			"Adds a 0.4 multiplier to light neutral attacks"
+		]
 	))
 	
 	item_list.append(make_item(
 		"Cleats",
-		1800,
+		2800,
 		false,
 		{
 			"light_down": 0.6,
 			"heavy_down": 0.6
 		},
 		11,
-		false
+		false,
+		[
+			"Adds 0.6 to the light down and heavy down multiplier attacks"
+		]
 	))
 	
 	item_list.append(make_item(
 		"Hammer Fist",
-		600,
+		1600,
 		false,
 		{
 			"heavy_air": 0.3
 		},
 		16,
-		false
+		false,
+		[
+			"Adds a 0.3 multiplier to heavy air attacks"
+		]
 	))
 	
 	item_list.append(make_item(
 		"Ski Mask",
-		1000,
+		3000,
 		false,
 		{
 			"money": 0.5
 		},
 		17,
-		false
+		false,
+		[
+			"Adds a 0.5 multiplier to money"
+		]
 	))
 	
 	item_list.append(make_item(
 		"Spring Fist",
-		1000,
+		2000,
 		false,
 		{
 			"heavy_neutral": 0.5
 		},
 		19,
-		false
+		false,
+		[
+			"Adds a 0.5 multiplier to heavy neutral attacks"
+		]
 	))
 	
 	item_list.append(make_item(
 		"Unfair Gloves",
-		2500,
+		2800,
 		true,
 		{
 			"light_neutral": 0.5,
 			"heavy_neutral": 0.5
 		},
 		22,
-		false
+		false,
+		[
+			"Adds 0.5 to your light neutral and heavy neutral attack multiplier"
+		]
 	))
 	
 	item_list.append(make_item(
 		"More Hands",
-		3000,
+		6000,
 		false,
 		{
 			"light_neutral": 0.5,
@@ -315,7 +354,7 @@ func _ready() -> void:
 		21,
 		false,
 		[
-			"Allows you to equip 1 more item."
+			"Allows you to equip 1 more item and adds 0.5 to your light neutral and heavy neutral attack multiplier."
 		],
 		{
 			"moreequips"	:	1
@@ -324,7 +363,7 @@ func _ready() -> void:
 	
 	item_list.append(make_item(
 		"More Unfair Gloves",
-		4500,
+		8500,
 		false,
 		{
 			"light_neutral": 0.7,
@@ -333,9 +372,11 @@ func _ready() -> void:
 		22,
 		false,
 		[
-			"Allows you to equip 2 more item."
+			"Allows you to equip 2 more items, and adds 0.7 to your light neutral and heavy neutral attack multiplier."
 		],
 		{
 			"moreequips"	:	2
 		}
 	))
+	
+	#add a new line for the changes

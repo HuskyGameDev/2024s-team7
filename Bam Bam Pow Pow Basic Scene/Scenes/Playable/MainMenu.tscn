@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/MainMenu.gd" id="1_8i4yj"]
 [ext_resource type="Texture2D" uid="uid://cwexuk7jv1l3r" path="res://resources/sprites/MAIN MENU BG.png" id="2_aqswu"]
 [ext_resource type="Texture2D" uid="uid://ds64mtbtajy78" path="res://resources/sprites/Bam Bam Pow Pow logo.png" id="3_dt2py"]
-[ext_resource type="PackedScene" path="res://Scenes/Functional/BasicButton.tscn" id="4_c6ga6"]
+[ext_resource type="PackedScene" uid="uid://dbc7vk84ewdqo" path="res://Scenes/Functional/BasicButton.tscn" id="4_c6ga6"]
 [ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="5_e1a4t"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pm232"]
@@ -77,6 +77,7 @@ theme_override_constants/separation = 10
 [node name="New Unlimited" parent="VBoxContainer" instance=ExtResource("4_c6ga6")]
 material = SubResource("ShaderMaterial_pm232")
 layout_mode = 2
+texture = null
 
 [node name="Label" type="Label" parent="VBoxContainer/New Unlimited"]
 layout_mode = 1
@@ -99,6 +100,7 @@ vertical_alignment = 1
 [node name="Unlimited" parent="VBoxContainer" instance=ExtResource("4_c6ga6")]
 material = SubResource("ShaderMaterial_7w5uy")
 layout_mode = 2
+texture = null
 
 [node name="Label2" type="Label" parent="VBoxContainer/Unlimited"]
 layout_mode = 1
@@ -121,6 +123,7 @@ vertical_alignment = 1
 [node name="Settings" parent="VBoxContainer" instance=ExtResource("4_c6ga6")]
 material = SubResource("ShaderMaterial_jmcaq")
 layout_mode = 2
+texture = null
 
 [node name="Label3" type="Label" parent="VBoxContainer/Settings"]
 layout_mode = 1
@@ -143,6 +146,7 @@ vertical_alignment = 1
 [node name="Quit" parent="VBoxContainer" instance=ExtResource("4_c6ga6")]
 material = SubResource("ShaderMaterial_4byhv")
 layout_mode = 2
+texture = null
 
 [node name="Label4" type="Label" parent="VBoxContainer/Quit"]
 layout_mode = 1
