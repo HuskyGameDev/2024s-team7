@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c55s0tmcletaj"]
+[gd_scene load_steps=6 format=3 uid="uid://c55s0tmcletaj"]
 
 [ext_resource type="Script" path="res://scripts/campaign_fight_draft.gd" id="1_fnhak"]
 [ext_resource type="PackedScene" uid="uid://dk80ss5idciud" path="res://Scenes/Playable/Fight_Base.tscn" id="2_hbt5l"]
@@ -8,19 +8,13 @@
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qnu3c"]
 load_path = "res://.godot/imported/bg-sakura.PNG-78af716a0615c288ea40c1d242469144.ctex"
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b50mc"]
-load_path = "res://.godot/imported/Sandbag_Sprites_PLAYTEST.png-b361d4c681a28339c6b99da985ff9aa2.ctex"
-
-[node name="Node" type="Node"]
+[node name="Campaign" type="Node"]
 script = ExtResource("1_fnhak")
 
 [node name="FightBase" parent="." instance=ExtResource("2_hbt5l")]
 
 [node name="TextureRect" parent="FightBase" index="0"]
 texture = SubResource("CompressedTexture2D_qnu3c")
-
-[node name="Sprite2D" parent="FightBase/enemy" index="0"]
-texture = SubResource("CompressedTexture2D_b50mc")
 
 [node name="HPbar" type="TextureProgressBar" parent="."]
 offset_left = 138.0

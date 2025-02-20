@@ -13,58 +13,77 @@ extends Node
 
 @onready var hpLabel = $HP
 @onready var hpBar = $HPbar
+@onready var done = false
 
+signal animationStart
 
-signal animationStart(scenario: int)
-@onready var animScene: PackedScene = preload ("res://Scenes/Playable/WeaponUnlock.tscn")
+@onready var animScene = preload ("res://Scenes/Playable/AnimationPlayer.tscn")
 
 
 
 func _ready():
-	FightDetails.op_progress = 2
+	FightDetails.infinity = false
 	
 	# Set all opponent values
 	enemy.max_health = FightDetails.op_list[FightDetails.op_progress]["health"]
+	enemy.current_health = FightDetails.op_list[FightDetails.op_progress]["health"]
 	enemySprite.texture = load(FightDetails.op_list[FightDetails.op_progress]["sprite_path"])
 	
 	# Set all background values
 	background.texture = load(FightDetails.op_list[FightDetails.op_progress]["background_path"])
 	floor.tile_set.get_source(0).texture = load(FightDetails.op_list[FightDetails.op_progress]["floor_path"])
 	
-	enemy.health_changed.connect(update)
-	update()
+	# Connect
+	enemy.health_changed.connect(healthChanged)
+	healthChanged()
 
-func update():
+
+# Function that runs when enemy takes damage:
+# Changes health bar/text on screen; Checks if enemy dies
+func healthChanged():
+	if (done):
+		pass
 	hpBar.value = enemy.current_health * 100 / enemy.max_health 
 	hpLabel.text = "HP: " + str(enemy.current_health)
 	
 	if (enemy.current_health <= 0):
-		var animation = animScene.instantiate()
-		if (!FightDetails.op_list[FightDetails.op_progress]["defeated"]):
-			FightDetails.op_list[FightDetails.op_progress]["defeated"] = true
-			animationStart.connect(animation._onready, 1)
-
-
-func _on_fight_base_timeout():
-	if (enemy.current_health > 0):
-		var animation = animScene.instantiate()
-		animationStart.connect(animation._onready, 0)
-	
+		print("they died")
+		defeatEnemy()
+		# maybe i'll do animation this way, idk. would need to stop fight somehow, 
+		# but would allow argument instead of global
+		#var animation = animScene.instantiate()
+		#add_child(animation)		
+		#animationStart.emit("win")
 		
 
-	#if(FightDetails.infinity):
-		#SceneSwap.scene_swap("res://Scenes/Playable/InfinityFightDraft.tscn")
-	#else:
-		#var animation = animScene.instantiate()
-		#
-#
-#
-	## If enemy isn't defeated, go to recovery. Won't impact infinity
-	##if(Global.score < FightDetails.op_list[FightDetails.op_progress]["health"]):
-		##SceneSwap.scene_swap("res://Scenes/Playable/recovery_screen.tscn")
-	##else:
-		##if(!FightDetails.op_list[FightDetails.op_progress]["defeated"]):
-			##FightDetails.op_list[FightDetails.op.progress]["defeated"] = true
-			##SceneSwap.scene_swap("res://Scenes/Playable/WeaponUnlock.tscn")
-		##else:
-			##SceneSwap.scene_swap("res://Scenes/Playable/SelectionScreen.tscn")
+# Function that runs when an enemy is defeated:
+# Changes the enemy's data to say they've been defeated
+# Manages whether this is a new defeat (ergo new weapon)
+# Moves to next enemy, Changes scene
+func defeatEnemy():
+	if (done):
+		pass
+	done = true
+	if (!FightDetails.op_list[FightDetails.op_progress]["defeated"]):
+		FightDetails.op_list[FightDetails.op_progress]["defeated"] = true
+		FightDetails.newWeaponNotification = true
+	FightDetails.animation = "win"
+	
+	if (FightDetails.op_progress < FightDetails.op_list.size()+1):	
+		FightDetails.op_progress = FightDetails.op_progress+1
+		print("went to next guy")
+		print("fight num: ",FightDetails.op_progress)
+		# animation not accessed for 2/20/25 playtest
+		#SceneSwap.scene_swap("res://Scenes/Playable/AnimationPlayer.tscn")
+		SceneSwap.scene_swap("res://Scenes/Playable/SelectionScreen.tscn")
+
+# Function that runs when timer runs out/you are defeated
+# Changes scene
+func _on_fight_base_timeout():
+	if (enemy.current_health > 0):
+		
+		# FightDetails.animation = "lose"
+		# animation not accessed for 2/20/25 playtest
+		#SceneSwap.scene_swap("res://Scenes/Playable/AnimationPlayer.tscn")
+		SceneSwap.scene_swap("res://Scenes/Playable/SelectionScreen.tscn")
+	

@@ -21,8 +21,11 @@ func _ready():
 	
 	FightDetails.opSelectStartUp += 1		# Set global to next value for following instance
 	# Reset the number for next ready onces reaches end of array
-	if i >= 4:
-		FightDetails.opSelectStartUp = 1
+	if (i > 3):
+		FightDetails.opSelectStartUp = 0
+	if (!FightDetails.op_list[i]["defeated"]):
+		print("unwon")
+		sprite.material.set_shader_parameter("color_burn",1)		# Remove multiply
 
 
 ## HangerButton press signal. 

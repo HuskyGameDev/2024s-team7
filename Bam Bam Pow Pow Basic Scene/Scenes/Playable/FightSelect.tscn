@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://8sgk22qsn38y"]
 
-[ext_resource type="Script" path="res://Scenes/Playable/fight_select.gd" id="1_f6csq"]
+[ext_resource type="Script" path="res://scripts/fight_select.gd" id="1_f6csq"]
 [ext_resource type="PackedScene" uid="uid://dxtghnrjkk6fm" path="res://Scenes/Entities/fight_options.tscn" id="2_le78v"]
 [ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="2_mcet2"]
 [ext_resource type="PackedScene" uid="uid://cc1ttocg7gplt" path="res://Scenes/Functional/Sprite2DButton.tscn" id="6_mdm7y"]
@@ -67,6 +67,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="opSelect4" parent="Control/ScrollContainer/HBoxContainer" instance=ExtResource("2_le78v")]
+visible = false
 layout_mode = 2
 
 [node name="opSelect5" parent="Control/ScrollContainer/HBoxContainer" instance=ExtResource("2_le78v")]

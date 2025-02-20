@@ -134,7 +134,7 @@ modulate = Color(1, 0, 0, 1)
 texture_filter = 1
 position = Vector2(2, 0)
 scale = Vector2(3, 3)
-texture = ExtResource("2_jtjov")
+texture = ExtResource("2_dfxh6")
 hframes = 2
 
 [node name="CollisionShape2D" parent="." index="1"]
