@@ -12,6 +12,7 @@ extends CanvasLayer
 @onready var warning = $HazardButton2
 @onready var maxPage = ceil(ItemStorage.itemMax/8.0)
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var exitButton = $Control/Sprite2dButton
 const WOOD_CLICK = preload("res://resources/sounds/WoodClick.wav")
 const Chime = preload("res://resources/sounds/StartChime.wav")
 
@@ -25,7 +26,7 @@ var speed_flash = 1.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#ItemStorage.money += 10000
+	# ItemStorage.money += 10000
 	moneylabel.text = "Money: " + str(ItemStorage.money)
 	#print(warning.modulate)
 	
@@ -40,6 +41,8 @@ func _process(delta: float) -> void:
 	elif warning.modulate.a < 0.5:
 		speed_flash *= -1
 	warning.modulate = Color(1, 1, 1, warning.modulate.a + speed_flash * delta)
+	if Input.is_key_pressed(KEY_W):
+		print(ItemStorage.maxequips)
 
 # A helper function to add money to the players money and display it
 func update_money(change):
@@ -158,3 +161,20 @@ func _on_hazard_button_pressed():
 ## When close button is clicked: warning popup screen is closed
 func _on_close_pressed():
 	$WarningScreen.hide()	# Close Warning popup
+
+
+func _on_sprite_2d_button_sprite_button_pressed():
+	SceneSwap.scene_swap("res://Scenes/Playable/SelectionScreen.tscn")
+
+func _on_sprite_2d_button_mouse_entered():
+	exitButton.frame = 1
+
+func _on_sprite_2d_button_mouse_exited():
+	exitButton.frame = 0
+
+
+func _on_hazard_button_2_mouse_entered():
+	warning.frame = 0
+
+func _on_hazard_button_2_mouse_exited():
+	warning.frame = 1

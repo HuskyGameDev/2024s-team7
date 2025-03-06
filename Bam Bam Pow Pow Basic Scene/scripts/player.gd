@@ -9,7 +9,7 @@ extends CharacterBody2D
 var inputDir #the direction the player is currently holding (used for detecting moves)
 var attackType #The type of move the player is currently doing
 
-@onready var weapon: Weapon = Weapon.new("spear")
+@onready var weapon: Weapon = Weapon.new(ItemStorage.equipped_weapon)
 signal attack_index(index)
 signal attack_performed(attack)
 signal player_dir(dir)

@@ -7,6 +7,8 @@
 extends Control
 signal hangerPressed
 
+@onready var sprite = $Sprite2dButton
+
 # Index variable that establishes which weapon this script is representing
 var i = 0
 
@@ -15,14 +17,12 @@ var i = 0
 ## Ready also includes the Sprite2d frame declaration
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	i = WeaponInShop.weaponStartup;		# Set index for Hanger instance from global
-	$Sprite2D.frame = i					# Set Sprite2d frame to frame at index
-	
-	$Sprite2dButton.frame = i					# Set Sprite2d frame to frame at index
+	i = WeaponInShop.weaponStartup;		# Set index for Hanger instance from global	
+	sprite.frame = i					# Set Sprite2d frame to frame at index
 	
 	WeaponInShop.weaponStartup += 1		# Set global to next value for following instance
 	# Reset the number for next ready onces reaches end of array
-	if i==WeaponInShop.weaponsInShopArray.size():
+	if i==WeaponInShop.weapons_list.size():
 		WeaponInShop.weaponStartup = 1
 
 

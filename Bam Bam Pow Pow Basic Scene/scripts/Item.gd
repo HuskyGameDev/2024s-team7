@@ -74,10 +74,7 @@ func _on_button_pressed():
 		# Makes the item no longer visible or interactable
 		ItemStorage.itemsList[id]["owned"] = true # Updates the item to be owned by the player in the item storage
 		#ItemStorage.owned_items.append(ItemStorage.itemsList[id])
-		var effects = ItemStorage.itemsList[id]["on_buy"]
-		for key in effects:
-			if key == "moreequips":
-				ItemStorage.maxequips += effects[key]
+		ItemStorage.persistentItemLoad(id)
 		_on_item_shop_reload()
 		#Plays the purchase noise
 		audioPlayer.stream = purchase_noise

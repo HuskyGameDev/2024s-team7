@@ -28,6 +28,9 @@ var damage = []
 signal attack_index(index)
 signal attack_damamge(damage_number)
 
+## This is the signal to cause a debuff to be applied.
+signal change_res(res: String, value: float)
+
 ## This is the signal that will be emitted once the player does a vailid attack.
 signal attack(core: int, motion: int)
 
@@ -65,7 +68,6 @@ func check_motion() -> int:
 func load_combo(core_tag) -> void:
 	core = core_tag
 	motion = check_motion()
-	cooldown_timer.start()
 	validate_combo()
 	motion = MOTION.NEUTRAL
 	core = null
@@ -73,14 +75,32 @@ func load_combo(core_tag) -> void:
 ## This will wait for user input and then attemp to load a combo using the value passed into it
 func _input(event):
 	if cooldown_timer.is_stopped():
-		if InputMap.event_is_action(event, "Punch"):
+		if event.is_action_pressed("Punch", false):
 			load_combo(CORE.LIGHT)
-		elif InputMap.event_is_action(event, "Kick"):
+		elif event.is_action_pressed("Kick", false):
 			load_combo(CORE.HEAVY)
-		elif InputMap.event_is_action(event, "Weapon"):
+		elif event.is_action_pressed("Weapon", false):
 			load_combo(CORE.SPECIAL)
-		elif InputMap.event_is_action(event, "Special"):
+		elif event.is_action_pressed("Special", false):
 			load_combo(CORE.SUPER)
+		elif event.is_action_pressed("Debuff", false):
+			apply_debuff("PHYSICAL", 4.0, -0.5)
+
+
+## This function will signal for a resistance change on the enemy, after a delay
+## it will revert that change.
+##
+## Parameters:
+## type		String: This is the type of resistance that is to be modified.
+## duration	float: This is the amount of time that the debuff is applied.
+## amount	float: This is the modification to be applied to that resistance. 
+##
+## Returns:
+## void: There is no return, this change is internal.
+func apply_debuff(type: String, duration: float, amount: float) -> void:
+	change_res.emit(type, amount)
+	await get_tree().create_timer(duration).timeout
+	change_res.emit(type, -amount)
 
 
 func _on_player_delay(delaytimer):

@@ -28,6 +28,7 @@ FightDetails="*res://scripts/globals/fight_details.gd"
 [dialogic]
 
 directories/dch_directory={
+"Batty": "res://dialogic/characters/Batty.dch",
 "Drako": "res://dialogic/characters/Drako.dch",
 "Glassy": "res://dialogic/characters/Glassy.dch"
 }
@@ -112,16 +113,6 @@ Punch={
 Kick={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":75,"physical_keycode":0,"key_label":0,"unicode":107,"location":0,"echo":false,"script":null)
-]
-}
-Weapon={
-"deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":76,"physical_keycode":0,"key_label":0,"unicode":108,"location":0,"echo":false,"script":null)
-]
-}
-Special={
-"deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":59,"physical_keycode":0,"key_label":0,"unicode":59,"location":0,"echo":false,"script":null)
 ]
 }
 Esc={

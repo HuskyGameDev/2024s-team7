@@ -7,7 +7,7 @@ func _ready() -> void:
 	$"TabContainer/Video & Audio/OptionButton".selected = Global.resolution_index
 	
 func _on_button_pressed():
-	SceneSwap.scene_swap(Global.prev_scene)
+	SceneSwap.scene_swap("res://Scenes/Playable/SelectionScreen.tscn")
 
 func _on_check_button_toggled(toggled_on):
 	Global.fullscreen_on = toggled_on

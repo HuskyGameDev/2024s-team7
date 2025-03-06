@@ -8,6 +8,7 @@ extends CanvasLayer
 @onready var maxEquippedPage = ceil(ItemStorage.maxequips/5.0)
 @onready var selected_id = -1
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var exitButton = $Control/Sprite2dButton
 const WOOD_CLICK = preload("res://resources/sounds/WoodClick.wav")
 signal reload
 
@@ -26,7 +27,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_key_pressed(KEY_W):
+		print(ItemStorage.equipped_items[0])
+		print(ItemStorage.itemsList[ItemStorage.equipped_items[0]].equipped)
 
 # Make sure current page is within allowed pages, else lop
 func valpage():
@@ -95,7 +98,10 @@ func reload_equipped() -> void:
 # make it and cancel selection button visibile, and update selected id
 func _on_equipped_item_selected_item(id: Variant) -> void:
 	equip_unequip_button.visible = true
-	equip_unequip_button.text = "Unequip"
+	if (ItemStorage.itemsList[id]["equipped"] == false):
+		equip_unequip_button.text = "Equip"
+	else:
+		equip_unequip_button.text = "Unequip"
 	cancel_button.visible = true
 	selected_id = id
 
@@ -103,6 +109,7 @@ func _on_equipped_item_selected_item(id: Variant) -> void:
 # make it and cancel selection button visibile, and update selected id
 func _on_equip_item_selected_item(id: Variant) -> void:
 	equip_unequip_button.visible = true
+	print(ItemStorage.itemsList[id]["equipped"])
 	if (ItemStorage.itemsList[id]["equipped"] == false):
 		equip_unequip_button.text = "Equip"
 	else:
@@ -226,3 +233,15 @@ func _on_equipped_next_page_button_pressed() -> void:
 			curr_eq_item.set_meta("ID", -1)
 		curr_eq_item.on_reload()
 	unselect()
+
+
+func _on_sprite_2d_button_sprite_button_pressed():
+	SceneSwap.scene_swap("res://Scenes/Playable/SelectionScreen.tscn")
+
+
+func _on_sprite_2d_button_mouse_entered():
+	exitButton.frame = 1
+
+
+func _on_sprite_2d_button_mouse_exited():
+	exitButton.frame = 0
