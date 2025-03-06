@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdh05d3fan0h3"]
+
+[ext_resource type="Script" path="res://scripts/equip_item.gd" id="1_ufywy"]
+[ext_resource type="Texture2D" uid="uid://bccvdng3t7mr0" path="res://Assets/icon.svg" id="2_niilq"]
+
+[node name="EquipItem" type="VBoxContainer"]
+offset_right = 200.0
+offset_bottom = 200.0
+script = ExtResource("1_ufywy")
+metadata/ID = 0
+
+[node name="Sprite" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+icon = ExtResource("2_niilq")
+
+[connection signal="pressed" from="Sprite" to="." method="_on_sprite_pressed"]

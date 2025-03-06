@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://i48tabjyt08t"]
+
+[ext_resource type="Script" path="res://Scenes/ItemShop.gd" id="1_ed3xk"]
+[ext_resource type="PackedScene" uid="uid://btqmnmpytpfkq" path="res://Scenes/UI/Item.tscn" id="2_3qixg"]
+
+[node name="ItemShop" type="CanvasLayer"]
+script = ExtResource("1_ed3xk")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Item1" parent="Control/MarginContainer" instance=ExtResource("2_3qixg")]
+offset = Vector2(300, 0)
+transform = Transform2D(1, 0, 0, 1, 300, 0)
+
+[node name="Label" parent="Control/MarginContainer/Item1/Control/MarginContainer/VBoxContainer/HBoxContainer" index="1"]
+text = "Price: 100"
+
+[node name="Node" parent="Control/MarginContainer/Item1/Control/MarginContainer/VBoxContainer/HBoxContainer" index="3"]
+metadata/ID = 123
+
+[node name="Item2" parent="Control/MarginContainer" instance=ExtResource("2_3qixg")]
+
+[node name="Node" parent="Control/MarginContainer/Item2/Control/MarginContainer/VBoxContainer/HBoxContainer" index="3"]
+metadata/ID = 345
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="MoneyLabel" type="Label" parent="Control/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Money:"
+
+[connection signal="bought_item" from="Control/MarginContainer/Item1" to="." method="bought_item"]
+[connection signal="bought_item" from="Control/MarginContainer/Item2" to="." method="bought_item"]
+
+[editable path="Control/MarginContainer/Item1"]
+[editable path="Control/MarginContainer/Item2"]

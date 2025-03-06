@@ -1,0 +1,166 @@
+[gd_scene load_steps=3 format=3 uid="uid://i48tabjyt08t"]
+
+[ext_resource type="Script" path="res://scripts/ItemShop.gd" id="1_ed3xk"]
+[ext_resource type="PackedScene" uid="uid://btqmnmpytpfkq" path="res://Scenes/Functional/Item.tscn" id="2_3qixg"]
+
+[node name="ItemShop" type="CanvasLayer" groups=["Items"]]
+script = ExtResource("1_ed3xk")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/MarginContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 50
+
+[node name="MoneyLabel" type="Label" parent="Control/MarginContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Money:"
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_bottom = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="LastPageButton" type="Button" parent="Control/MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "<
+Last
+Page"
+
+[node name="ItemContainer" type="VBoxContainer" parent="Control/MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ItemsFirstRow" type="HBoxContainer" parent="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Item1" parent="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow" instance=ExtResource("2_3qixg")]
+layout_mode = 2
+
+[node name="Item2" parent="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow" instance=ExtResource("2_3qixg")]
+layout_mode = 2
+metadata/ID = 1
+
+[node name="Item3" parent="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow" instance=ExtResource("2_3qixg")]
+layout_mode = 2
+metadata/ID = 2
+
+[node name="Item4" parent="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow" instance=ExtResource("2_3qixg")]
+layout_mode = 2
+metadata/ID = 3
+
+[node name="Item5" parent="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow" instance=ExtResource("2_3qixg")]
+layout_mode = 2
+metadata/ID = 4
+
+[node name="ItemsSecondRow" type="HBoxContainer" parent="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Item6" parent="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow" instance=ExtResource("2_3qixg")]
+layout_mode = 2
+metadata/ID = 5
+
+[node name="Item7" parent="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow" instance=ExtResource("2_3qixg")]
+layout_mode = 2
+metadata/ID = 6
+
+[node name="Item8" parent="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow" instance=ExtResource("2_3qixg")]
+layout_mode = 2
+metadata/ID = 7
+
+[node name="Item9" parent="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow" instance=ExtResource("2_3qixg")]
+layout_mode = 2
+metadata/ID = 8
+
+[node name="Item10" parent="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow" instance=ExtResource("2_3qixg")]
+layout_mode = 2
+metadata/ID = 9
+
+[node name="NextPageButton" type="Button" parent="Control/MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = ">
+Next
+Page"
+
+[node name="MenuButtonRow" type="HBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="MainMenuButton" type="Button" parent="Control/MarginContainer/MenuButtonRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Main Menu"
+
+[node name="SettingsMenuButton" type="Button" parent="Control/MarginContainer/MenuButtonRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Settings Menu"
+
+[node name="FightSceneButton" type="Button" parent="Control/MarginContainer/MenuButtonRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Fight Scene"
+
+[node name="SaveGameButton" type="Button" parent="Control/MarginContainer/MenuButtonRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Save Game"
+
+[node name="LoadGameButton" type="Button" parent="Control/MarginContainer/MenuButtonRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Load Game"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"sfx"
+
+[connection signal="pressed" from="Control/MarginContainer/MarginContainer/HBoxContainer/LastPageButton" to="." method="_on_last_page_button_pressed"]
+[connection signal="bought_item" from="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item1" to="." method="_on_item_1_bought_item"]
+[connection signal="bought_item" from="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item1" to="." method="bought_item"]
+[connection signal="bought_item" from="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item2" to="." method="bought_item"]
+[connection signal="bought_item" from="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item3" to="." method="bought_item"]
+[connection signal="bought_item" from="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item4" to="." method="bought_item"]
+[connection signal="bought_item" from="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item5" to="." method="bought_item"]
+[connection signal="bought_item" from="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item6" to="." method="bought_item"]
+[connection signal="bought_item" from="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item7" to="." method="bought_item"]
+[connection signal="bought_item" from="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item8" to="." method="bought_item"]
+[connection signal="bought_item" from="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item9" to="." method="bought_item"]
+[connection signal="bought_item" from="Control/MarginContainer/MarginContainer/HBoxContainer/ItemContainer/ItemsSecondRow/Item10" to="." method="bought_item"]
+[connection signal="pressed" from="Control/MarginContainer/MarginContainer/HBoxContainer/NextPageButton" to="." method="_on_next_page_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/MenuButtonRow/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/MenuButtonRow/SettingsMenuButton" to="." method="_on_settings_menu_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/MenuButtonRow/FightSceneButton" to="." method="_on_fight_scene_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/MenuButtonRow/SaveGameButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/MenuButtonRow/LoadGameButton" to="." method="_on_load_button_pressed"]
