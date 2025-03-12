@@ -10,8 +10,11 @@ signal timeout
 @onready var input_screen = $WarningScreen
 @onready var clock = $TextureProgressBar
 @onready var audio_timer: AudioStreamPlayer = $AudioTimer
+@onready var audio_stream: AudioStreamPlayer = $MusicPlayer
 @onready var fiveSecond_noise = preload("res://resources/sounds/fiveseconds.wav")
+@onready var music = preload("res://resources/sounds/music/BBPP_song_draft_1.wav")
 var started = false
+var fade_music = false
 
 
 # Calculate score and HP in other infinityDraft and campaignDraft somehow
@@ -29,6 +32,15 @@ func _input(event):
 		started = true
 		Global.combo = 0
 		time.start()
+		audio_stream.stream = music
+		audio_stream.play()
+		
+
+func _physics_process(delta: float) -> void:
+	if fade_music:
+		audio_stream.volume_db /= 10
+		if audio_stream.volume_db < 0.1:
+			audio_stream.stop()
 
 func _process(delta):
 	combo_label.text = "x" + str(enemy.combo)
@@ -37,6 +49,7 @@ func _process(delta):
 	if time.time_left < 5 && time.time_left > 4 && (!audio_timer.is_playing()):
 			audio_timer.stream = fiveSecond_noise
 			audio_timer.play()
+			fade_music = true
 	
 
 func _on_timer_timeout():
