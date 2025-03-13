@@ -28,6 +28,7 @@ func _input(event):
 		input_screen.visible = false
 		started = true
 		Global.combo = 0
+		time.wait_time = ItemStorage.time
 		time.start()
 
 func _process(delta):

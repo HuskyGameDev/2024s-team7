@@ -8,6 +8,9 @@ script = ExtResource("1_giu1h")
 
 [node name="Fight_Base" parent="." instance=ExtResource("1_jg54y")]
 
+[node name="Timer" parent="Fight_Base" index="10"]
+wait_time = 5.0
+
 [node name="score" type="Label" parent="."]
 offset_left = 539.0
 offset_top = 11.0
