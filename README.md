@@ -28,3 +28,4 @@ Shop
 * Connor Ward - Programmer
 * Rayna Miller - Artist, Programmer
 * Steven Maki - Artist, Programmer
+* Keagan Benjamin - Sound Team
