@@ -89,7 +89,7 @@ func _on_next_sprite_button_pressed():
 
 func _on_fight_pressed():
 	FightDetails.op_progress = FightDetails.opSelectCurrent
-	SceneSwap.scene_swap("res://Scenes/Playable/CampaignFightDraft.tscn")
+	SceneSwap.scene_swap("res://Scenes/Playable/CampaignFight.tscn")
 
 
 func _on_sprite_2d_button_sprite_button_pressed():
