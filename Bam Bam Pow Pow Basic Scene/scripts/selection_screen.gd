@@ -4,6 +4,11 @@ extends Node
 @onready var coinsLabel = $coinsLabel
 @onready var coinsCount = ItemStorage.money
 
+# Go to settings on esc
+func _input(event):
+	if Input.is_action_just_pressed('Esc'):
+		SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	coinsLabel.text = "Coins: " + str(coinsCount)

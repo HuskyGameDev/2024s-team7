@@ -48,7 +48,7 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	if Input.is_action_just_pressed('Esc'):
-		SceneSwap.scene_swap("res://Scenes/Playable/ItemShop.tscn")
+		SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn")
 	
 
 func _on_hurtbox_area_entered(hitbox):

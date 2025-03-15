@@ -245,3 +245,8 @@ func _on_sprite_2d_button_mouse_entered():
 
 func _on_sprite_2d_button_mouse_exited():
 	exitButton.frame = 0
+
+# Go to settings on esc
+func _input(event):
+	if Input.is_action_just_pressed('Esc'):
+		SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn")
