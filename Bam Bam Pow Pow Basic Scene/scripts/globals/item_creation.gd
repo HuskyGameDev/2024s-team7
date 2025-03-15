@@ -379,4 +379,56 @@ func _ready() -> void:
 		}
 	))
 	
+	
+	item_list.append(make_item(
+		"Stopwatch",
+		7500,
+		false,
+		{
+			
+		},
+		22,
+		false,
+		[
+			"Gives you 5 more seconds to fight."
+		],
+		{
+			"moretime"	:	5
+		}
+	))
+	
+	item_list.append(make_item(
+		"Pocketwatch",
+		22500,
+		false,
+		{
+			
+		},
+		22,
+		false,
+		[
+			"Gives you 5 more seconds to fight."
+		],
+		{
+			"moretime"	:	5
+		}
+	))
+	
+	item_list.append(make_item(
+		"Grandfather Watch",
+		50000,
+		false,
+		{
+			
+		},
+		22,
+		false,
+		[
+			"Gives you 5 more seconds to fight."
+		],
+		{
+			"moretime"	:	5
+		}
+	))
+	
 	#add a new line for the changes

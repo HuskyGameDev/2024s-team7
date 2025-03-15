@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/Item.gd" id="1_iv1pr"]
 [ext_resource type="Texture2D" uid="uid://enf0gw48m1gp" path="res://resources/sprites/full_item_sprites_playtest_3.png" id="2_6ao1e"]
-[ext_resource type="PackedScene" path="res://Scenes/Functional/Sprite2DButton.tscn" id="2_rxf63"]
+[ext_resource type="PackedScene" uid="uid://cc1ttocg7gplt" path="res://Scenes/Functional/Sprite2DButton.tscn" id="2_rxf63"]
 [ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="3_n2g6b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bm030"]

@@ -190,7 +190,7 @@ unique_name_in_owner = true
 [connection signal="attack" from="ComboHandler" to="player" method="_on_signal_transfer_to_state"]
 [connection signal="attack" from="ComboHandler" to="enemy" method="_on_combo_handler_attack"]
 [connection signal="attack_damamge" from="ComboHandler" to="enemy" method="_on_combo_handler_attack_damamge"]
-[connection signal="attack_index" from="ComboHandler" to="player" method="_on_signal_transfer_to_state"]
 [connection signal="attack_index" from="ComboHandler" to="player" method="_on_combo_handler_attack_index"]
+[connection signal="attack_index" from="ComboHandler" to="player" method="_on_signal_transfer_to_state"]
 [connection signal="change_res" from="ComboHandler" to="enemy" method="change_resistance"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,17 +1,17 @@
 [gd_scene load_steps=6 format=3 uid="uid://c55s0tmcletaj"]
 
-[ext_resource type="Script" path="res://scripts/campaign_fight_draft.gd" id="1_fnhak"]
-[ext_resource type="PackedScene" uid="uid://dk80ss5idciud" path="res://Scenes/Playable/Fight_Base.tscn" id="2_hbt5l"]
-[ext_resource type="Texture2D" uid="uid://dpkq1jmlqlaes" path="res://resources/sprites/hpBOT.png" id="12_1swnk"]
-[ext_resource type="Texture2D" uid="uid://bavffce6575pw" path="res://resources/sprites/hpTOP.png" id="13_apaco"]
+[ext_resource type="Script" path="res://scripts/campaign_fight.gd" id="1_3iac4"]
+[ext_resource type="PackedScene" uid="uid://dk80ss5idciud" path="res://Scenes/Playable/Fight_Base.tscn" id="2_dnsdk"]
+[ext_resource type="Texture2D" uid="uid://dpkq1jmlqlaes" path="res://resources/sprites/hpBOT.png" id="3_cqlvp"]
+[ext_resource type="Texture2D" uid="uid://bavffce6575pw" path="res://resources/sprites/hpTOP.png" id="4_inlt1"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qnu3c"]
 load_path = "res://.godot/imported/bg-sakura.PNG-78af716a0615c288ea40c1d242469144.ctex"
 
 [node name="Campaign" type="Node"]
-script = ExtResource("1_fnhak")
+script = ExtResource("1_3iac4")
 
-[node name="FightBase" parent="." instance=ExtResource("2_hbt5l")]
+[node name="FightBase" parent="." instance=ExtResource("2_dnsdk")]
 
 [node name="TextureRect" parent="FightBase" index="0"]
 texture = SubResource("CompressedTexture2D_qnu3c")
@@ -36,8 +36,8 @@ value = 100.0
 nine_patch_stretch = true
 stretch_margin_left = 100
 stretch_margin_right = 100
-texture_under = ExtResource("12_1swnk")
-texture_progress = ExtResource("13_apaco")
+texture_under = ExtResource("3_cqlvp")
+texture_progress = ExtResource("4_inlt1")
 
 [node name="HP" type="Label" parent="."]
 anchors_preset = -1

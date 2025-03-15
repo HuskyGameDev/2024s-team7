@@ -20,9 +20,12 @@ Shop
 
 ### Credits
 * Matthew Dunham - Team Lead, Programmer
-* Charlie Hesse - Artist, Programmer
+* Gloria Hesse - Artist, Programmer
 * Connor Piereson - Sound Team
 * Aidan Sanders - Artist
 * Jacob Suiter - Artist, Programmer
-* Allen Wadeen - Programmer
+* Allen Wadeen - Artist, Programmer
 * Connor Ward - Programmer
+* Rayna Miller - Artist, Programmer
+* Steven Maki - Artist, Programmer
+* Keagan Benjamin - Sound Team

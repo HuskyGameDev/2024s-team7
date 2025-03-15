@@ -19,6 +19,6 @@ func _ready():
 func _process(delta):
 	score_label.text = "Score: " + str(enemy.score)
 
-
+			
 func _on_fight_base_timeout():
 	SceneSwap.scene_swap("res://Scenes/Playable/ResultsScreen.tscn")

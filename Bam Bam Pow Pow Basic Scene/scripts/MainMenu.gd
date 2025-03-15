@@ -1,10 +1,13 @@
 extends Control
-	
 
-	
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 const WOOD_CLICK = preload("res://resources/sounds/WoodClick.wav")
 const Chime = preload("res://resources/sounds/StartChime.wav")
+
+# Go to settings on esc
+func _input(event):
+	if Input.is_action_just_pressed('Esc'):
+		SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn")
 
 func _on_new_unlimited_button_pressed():
 	ItemStorage.restart_game()
@@ -35,12 +38,12 @@ func _on_quit_button_pressed():
 func _on_new_infinity_pressed():
 	FightDetails.infinity = true
 	ItemStorage.restart_game()
-	SceneSwap.scene_swap("res://Scenes/Playable/InfinityFightDraft.tscn")
+	SceneSwap.scene_swap("res://Scenes/Playable/InfinityFight.tscn")
 
 func _on_load_infinity_pressed():
 	FightDetails.infinity = true
 	ItemStorage.load_game()
-	SceneSwap.scene_swap("res://Scenes/Playable/InfinityFightDraft.tscn")
+	SceneSwap.scene_swap("res://Scenes/Playable/InfinityFight.tscn")
 	
 func _on_campaign_button_pressed():
 	FightDetails.infinity = false
