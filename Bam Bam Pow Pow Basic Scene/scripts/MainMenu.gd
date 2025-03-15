@@ -35,12 +35,12 @@ func _on_quit_button_pressed():
 func _on_new_infinity_pressed():
 	FightDetails.infinity = true
 	ItemStorage.restart_game()
-	SceneSwap.scene_swap("res://Scenes/Playable/InfinityFightDraft.tscn")
+	SceneSwap.scene_swap("res://Scenes/Playable/InfinityFight.tscn")
 
 func _on_load_infinity_pressed():
 	FightDetails.infinity = true
 	ItemStorage.load_game()
-	SceneSwap.scene_swap("res://Scenes/Playable/InfinityFightDraft.tscn")
+	SceneSwap.scene_swap("res://Scenes/Playable/InfinityFight.tscn")
 	
 func _on_campaign_button_pressed():
 	FightDetails.infinity = false
