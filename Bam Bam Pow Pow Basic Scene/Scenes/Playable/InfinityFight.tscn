@@ -18,6 +18,4 @@ theme_override_font_sizes/font_size = 30
 text = "Score: "
 horizontal_alignment = 1
 
-[connection signal="timeout" from="Fight_Base" to="." method="_on_fight_base_timeout"]
-
 [editable path="Fight_Base"]
