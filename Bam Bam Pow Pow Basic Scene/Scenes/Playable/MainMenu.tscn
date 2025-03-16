@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c76vfrrc8d27k"]
+[gd_scene load_steps=12 format=3 uid="uid://c76vfrrc8d27k"]
 
 [ext_resource type="Script" path="res://scripts/MainMenu.gd" id="1_8i4yj"]
 [ext_resource type="Texture2D" uid="uid://cwexuk7jv1l3r" path="res://resources/sprites/MAIN MENU BG.png" id="2_aqswu"]
@@ -19,6 +19,12 @@ shader_parameter/onoffMult = false
 shader_parameter/onoffSoftLight = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ujhj"]
+resource_local_to_scene = true
+shader = ExtResource("5_e1a4t")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_olc1b"]
 resource_local_to_scene = true
 shader = ExtResource("5_e1a4t")
 shader_parameter/onoffMult = false
@@ -154,7 +160,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Tutorial" parent="VBoxContainer" instance=ExtResource("4_c6ga6")]
-material = SubResource("ShaderMaterial_0ujhj")
+material = SubResource("ShaderMaterial_olc1b")
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 

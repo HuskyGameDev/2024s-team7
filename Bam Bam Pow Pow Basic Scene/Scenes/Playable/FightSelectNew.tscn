@@ -1,0 +1,229 @@
+[gd_scene load_steps=20 format=3 uid="uid://ioxq1jf0auui"]
+
+[ext_resource type="Texture2D" uid="uid://dq0i2jj267tyg" path="res://resources/sprites/glassy-readies-to-fight.png" id="1_cbh17"]
+[ext_resource type="Texture2D" uid="uid://co6ck8aurcmbf" path="res://resources/sprites/FightSelector.png" id="2_6ui0v"]
+[ext_resource type="Texture2D" uid="uid://bqf521dowy260" path="res://resources/sprites/scuffness.png" id="3_1qmlj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fcojw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ev24v"]
+texture = ExtResource("2_6ui0v")
+region_rect = Rect2(143, 47, 18, 18)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4h12c"]
+texture = ExtResource("2_6ui0v")
+region_rect = Rect2(175, 47, 18, 18)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l1tim"]
+texture = ExtResource("2_6ui0v")
+region_rect = Rect2(111, 47, 18, 18)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0xbyg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o80wy"]
+texture = ExtResource("2_6ui0v")
+region_rect = Rect2(79, 79, 50, 18)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ee8rp"]
+texture = ExtResource("2_6ui0v")
+region_rect = Rect2(143, 79, 50, 18)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ylrf3"]
+texture = ExtResource("2_6ui0v")
+region_rect = Rect2(15, 79, 50, 18)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p1ap7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_osxpn"]
+texture = ExtResource("2_6ui0v")
+region_rect = Rect2(47, 15, 18, 18)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nh2o6"]
+texture = ExtResource("2_6ui0v")
+region_rect = Rect2(79, 15, 18, 18)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fmny5"]
+texture = ExtResource("2_6ui0v")
+region_rect = Rect2(15, 15, 18, 18)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ofmm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_57h5m"]
+texture = ExtResource("2_6ui0v")
+region_rect = Rect2(143, 15, 18, 18)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b2jn0"]
+texture = ExtResource("2_6ui0v")
+region_rect = Rect2(175, 15, 18, 18)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rimdw"]
+texture = ExtResource("2_6ui0v")
+region_rect = Rect2(111, 15, 18, 18)
+
+[node name="FightSelectNew" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="backgroundContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="leftBackground" type="ColorRect" parent="backgroundContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+color = Color(0.831373, 0.588235, 0.286275, 1)
+
+[node name="rightBackground" type="ColorRect" parent="backgroundContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.180005, 0.180005, 0.180005, 1)
+
+[node name="menuContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="leftMenuContainer" type="MarginContainer" parent="menuContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="leftMenuVBoxContainer" type="VBoxContainer" parent="menuContainer/leftMenuContainer"]
+layout_mode = 2
+
+[node name="selectLabel" type="Label" parent="menuContainer/leftMenuContainer/leftMenuVBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 35
+text = "Select Your Fight!"
+
+[node name="spacer" type="Control" parent="menuContainer/leftMenuContainer/leftMenuVBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="glassyTexture" type="TextureRect" parent="menuContainer/leftMenuContainer/leftMenuVBoxContainer"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("1_cbh17")
+
+[node name="backButton" type="Button" parent="menuContainer/leftMenuContainer/leftMenuVBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_font_sizes/font_size = 22
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fcojw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ev24v")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_4h12c")
+theme_override_styles/normal = SubResource("StyleBoxTexture_l1tim")
+
+[node name="rightMenuContainer" type="MarginContainer" parent="menuContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="rightHBoxContainer" type="HBoxContainer" parent="menuContainer/rightMenuContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="leftVBoxContainer" type="VBoxContainer" parent="menuContainer/rightMenuContainer/rightHBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="posterContainer" type="MarginContainer" parent="menuContainer/rightMenuContainer/rightHBoxContainer/leftVBoxContainer"]
+custom_minimum_size = Vector2(400, 500)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="tempPosterBackground" type="ColorRect" parent="menuContainer/rightMenuContainer/rightHBoxContainer/leftVBoxContainer/posterContainer"]
+layout_mode = 2
+color = Color(0.466181, 0.466181, 0.466181, 1)
+
+[node name="posterContentContainer" type="MarginContainer" parent="menuContainer/rightMenuContainer/rightHBoxContainer/leftVBoxContainer/posterContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="posterContentVBoxContainer" type="VBoxContainer" parent="menuContainer/rightMenuContainer/rightHBoxContainer/leftVBoxContainer/posterContainer/posterContentContainer"]
+layout_mode = 2
+
+[node name="enemyName" type="Label" parent="menuContainer/rightMenuContainer/rightHBoxContainer/leftVBoxContainer/posterContainer/posterContentContainer/posterContentVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 25
+text = "I dont even know
+"
+horizontal_alignment = 1
+
+[node name="spacer" type="Control" parent="menuContainer/rightMenuContainer/rightHBoxContainer/leftVBoxContainer/posterContainer/posterContentContainer/posterContentVBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="enemySprite" type="TextureRect" parent="menuContainer/rightMenuContainer/rightHBoxContainer/leftVBoxContainer/posterContainer/posterContentContainer/posterContentVBoxContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_1qmlj")
+
+[node name="enemyInfoContainer" type="MarginContainer" parent="menuContainer/rightMenuContainer/rightHBoxContainer/leftVBoxContainer/posterContainer/posterContentContainer/posterContentVBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+
+[node name="enemyInfo" type="Label" parent="menuContainer/rightMenuContainer/rightHBoxContainer/leftVBoxContainer/posterContainer/posterContentContainer/posterContentVBoxContainer/enemyInfoContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 18
+text = "This was the mistake added to our game in it's first semester. Yes, this was terrible. Yes, this was for the gun. Why did we do this."
+autowrap_mode = 3
+
+[node name="fightButton" type="Button" parent="menuContainer/rightMenuContainer/rightHBoxContainer/leftVBoxContainer"]
+custom_minimum_size = Vector2(240, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 34
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0xbyg")
+theme_override_styles/hover = SubResource("StyleBoxTexture_o80wy")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ee8rp")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ylrf3")
+text = "Fight"
+
+[node name="rightVBoxContainer" type="VBoxContainer" parent="menuContainer/rightMenuContainer/rightHBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="upButton" type="Button" parent="menuContainer/rightMenuContainer/rightHBoxContainer/rightVBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_p1ap7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_osxpn")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_nh2o6")
+theme_override_styles/normal = SubResource("StyleBoxTexture_fmny5")
+
+[node name="downButton" type="Button" parent="menuContainer/rightMenuContainer/rightHBoxContainer/rightVBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2ofmm")
+theme_override_styles/hover = SubResource("StyleBoxTexture_57h5m")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_b2jn0")
+theme_override_styles/normal = SubResource("StyleBoxTexture_rimdw")
