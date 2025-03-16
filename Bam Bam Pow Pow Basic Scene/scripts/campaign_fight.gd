@@ -57,7 +57,6 @@ func _process(delta):
 	if timer.time_left < 5 && timer.time_left > 4 && (!audio_timer.is_playing()):
 			audio_timer.stream = fiveSecond_noise
 			audio_timer.play()
-	print(timer.wait_time)
 
 ## Function that runs when enemy takes damage:
 ## Changes health bar/text on screen; Checks if enemy dies
