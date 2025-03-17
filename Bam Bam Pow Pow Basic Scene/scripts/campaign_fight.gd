@@ -90,6 +90,7 @@ func defeatEnemy():
 	if (done):
 		pass
 	
+	enemy.calc_money()
 	# Set this fight sequence completed
 	done = true
 	
@@ -129,6 +130,7 @@ func _on_timer_timeout():
 
 # Start timer when Fight Base starts fight
 func _on_fight_base_start():
+	timer.wait_time = ItemStorage.time
 	timer.start()
 
 # Go to settings on esc

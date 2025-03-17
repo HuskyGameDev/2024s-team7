@@ -24,4 +24,5 @@ func _on_fight_base_timeout():
 # Go to Selection on esc
 func _input(event):
 	if Input.is_action_just_pressed('Esc'):
+		enemy.calc_money()
 		SceneSwap.scene_swap("res://Scenes/Playable/SelectionScreen.tscn")
