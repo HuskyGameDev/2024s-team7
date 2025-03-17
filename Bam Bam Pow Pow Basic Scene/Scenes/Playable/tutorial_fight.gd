@@ -75,3 +75,8 @@ func _on_enemy_show_dmg(dmgNumber):
 	damage_label.position += Vector2(-30 + (rand1 * neg) + rand2, -40 + rand1 + rand2 -10)
 	await get_tree().create_timer(0.2).timeout
 	enemy.remove_child(damage_label)
+
+# Go to Main Menu on esc
+func _input(event):
+	if Input.is_action_just_pressed('Esc'):
+		SceneSwap.scene_swap("res://Scenes/Playable/MainMenu.tscn")
