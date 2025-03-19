@@ -8,10 +8,10 @@ func _ready() -> void:
 	cur_scene = root.get_child(root.get_child_count() - 1)
 	
 func scene_swap(scene_path):
+	Global.prev_scene = cur_scene.scene_file_path
 	call_deferred("_deferred_scene_swap", scene_path)
 
 func _deferred_scene_swap(scene_path):
-	
 	# Add fade scene on top.
 	var fade = load("res://Scenes/Functional/fade.tscn").instantiate()
 	get_tree().root.add_child(fade)

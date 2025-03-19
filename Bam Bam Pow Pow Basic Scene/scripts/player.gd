@@ -47,10 +47,6 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	if Input.is_action_just_pressed('Esc'):
-		SceneSwap.scene_swap("res://Scenes/Playable/ItemShop.tscn")
-	
-
 func _on_hurtbox_area_entered(hitbox):
 	var damage = hitbox.motion
 	self.score += damage 

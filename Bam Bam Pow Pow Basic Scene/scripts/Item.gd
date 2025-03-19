@@ -24,7 +24,6 @@ var bonus = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	item_shop.connect("reload", _on_item_shop_reload)
-	item_shop.connect("bought_item", _on_button_pressed)
 	_on_item_shop_reload() # Reloads the items sprite and labels
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,7 +34,9 @@ func _process(_delta):
 func _on_item_shop_reload():
 	id = self.get_meta("ID") # Updates the id variable here based on what the metadata was changed to
 	var lessThanMax = (id < ItemStorage.itemMax) # Checks if item's id is less than the max (viable id)
-	var sprite_frame = ItemStorage.itemsList[id]["sprite"]
+	var sprite_frame = ItemStorage.itemsList[0]["sprite"]
+	if (lessThanMax == true):
+		sprite_frame = ItemStorage.itemsList[id]["sprite"]
 	# If item is outside viable item numbers but on last page of the item shop
 	if (lessThanMax == false):
 		money_label.visible = false
