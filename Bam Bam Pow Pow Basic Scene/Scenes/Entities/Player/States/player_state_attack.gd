@@ -53,6 +53,10 @@ func Update(delta : float):
 	
 
 func _on_player_attack_index(core, motion):
+	print(core)
+	print(motion)
+	if weapon == null:
+		weapon = get_parent().weapon
 	if(cancel != "no"):
 		if player.is_on_floor():
 			match [core, motion]:
@@ -92,7 +96,7 @@ func _on_player_attack_index(core, motion):
 			attack = cancel
 			
 		print(attack)
-		weapon.print_weapon()
+		#weapon.print_weapon()
 		attack_performed.emit(attack)
 		if animator.has_animation(weapon[attack].animation):
 			animator.stop()

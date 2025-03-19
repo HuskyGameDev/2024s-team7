@@ -26,6 +26,9 @@ var hoverBox = preload("res://resources/sprites/button-hover.png")
 
 var hover = false	# Variable for showing if hovering
 
+func _ready() -> void:
+	self.set_texture(basicBox)
+
 # Only signal leaving scene, connect to parent scene like any other button press
 func _on_button_pressed():
 	buttonPressed.emit()			# Emits buttonPressed signal

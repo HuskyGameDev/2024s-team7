@@ -88,6 +88,7 @@ layout_mode = 2
 material = SubResource("ShaderMaterial_a8xhs")
 layout_mode = 2
 size_flags_horizontal = 3
+texture = null
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/New Game"]
 layout_mode = 1
@@ -111,6 +112,7 @@ vertical_alignment = 1
 material = SubResource("ShaderMaterial_3lj1b")
 layout_mode = 2
 size_flags_horizontal = 3
+texture = null
 
 [node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/Load Game"]
 layout_mode = 1
@@ -134,6 +136,7 @@ vertical_alignment = 1
 material = SubResource("ShaderMaterial_ceijq")
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+texture = null
 
 [node name="Label3" type="Label" parent="VBoxContainer/Tutorial"]
 layout_mode = 1
@@ -157,6 +160,7 @@ vertical_alignment = 1
 material = SubResource("ShaderMaterial_2gwy4")
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+texture = null
 
 [node name="Label3" type="Label" parent="VBoxContainer/Settings"]
 layout_mode = 1
@@ -180,6 +184,7 @@ vertical_alignment = 1
 material = SubResource("ShaderMaterial_sgx2m")
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+texture = null
 
 [node name="Label4" type="Label" parent="VBoxContainer/Quit"]
 layout_mode = 1
