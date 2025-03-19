@@ -28,7 +28,7 @@ func _changeBox(i)-> void:
 	# Print for testing
 	
 	# Set name of weapon
-	opName.text = FightDetails.op_list[i]["opName"]
+	opName.text = FightDetails.op_list[i]["name"]
 	# print(WeaponInShop.weaponsInShopArray[i])
 	# Set cost of weapon
 	# Set weapon flavortext
