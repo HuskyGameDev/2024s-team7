@@ -14,7 +14,6 @@ var inputtoggle = true
 var EquipScreen = preload("res://Scenes/Playable/EquipScreen.tscn").instantiate()
 var WeaponShop = preload("res://Scenes/Playable/WeaponShop.tscn").instantiate()
 
-@onready var time = 15
 @onready var maxequips = 5
 var equipped_items = [] # Array of equipped item id's initialized to -1 (not real id)
 @onready var equipped_weapon = "spear"
@@ -125,8 +124,6 @@ func persistentItemLoad(id):
 		if key == "moreequips":
 			print("Max Equips Change")
 			ItemStorage.maxequips += effects[key]
-		if key == "moretime":
-			ItemStorage.time += effects[key]
 
 # Deletes save file by overwriting with no money and no items
 func restart_game():

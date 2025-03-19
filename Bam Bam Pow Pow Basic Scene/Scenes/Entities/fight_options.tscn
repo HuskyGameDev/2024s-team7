@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dxtghnrjkk6fm"]
 
-[ext_resource type="Script" path="res://scripts/fight_options.gd" id="1_18bpn"]
+[ext_resource type="Script" path="res://Scenes/Entities/fight_options.gd" id="1_18bpn"]
 [ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="2_gl8wf"]
 [ext_resource type="PackedScene" uid="uid://cc1ttocg7gplt" path="res://Scenes/Functional/Sprite2DButton.tscn" id="4_2jrq0"]
 [ext_resource type="Texture2D" uid="uid://dcgxbxvtq1htg" path="res://resources/sprites/mspaint-fight-selection-spritesheet-playtest1.png" id="4_a0rdf"]

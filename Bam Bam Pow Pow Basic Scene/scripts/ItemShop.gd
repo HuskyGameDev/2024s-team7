@@ -178,8 +178,3 @@ func _on_hazard_button_2_mouse_entered():
 
 func _on_hazard_button_2_mouse_exited():
 	warning.frame = 1
-
-# Go to settings on esc
-func _input(event):
-	if Input.is_action_just_pressed('Esc'):
-		SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn")

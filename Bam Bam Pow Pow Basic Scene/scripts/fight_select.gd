@@ -12,7 +12,6 @@ extends CanvasLayer
 @onready var fight = $VBoxContainer/ColorRect/VBoxContainer/Fight
 @onready var exitButton = $Sprite2dButton
 
-
 ## Handles changes to Selected Weapon screen
 ##
 ## Parameters:
@@ -90,7 +89,7 @@ func _on_next_sprite_button_pressed():
 
 func _on_fight_pressed():
 	FightDetails.op_progress = FightDetails.opSelectCurrent
-	SceneSwap.scene_swap("res://Scenes/Playable/CampaignFight.tscn")
+	SceneSwap.scene_swap("res://Scenes/Playable/CampaignFightDraft.tscn")
 
 
 func _on_sprite_2d_button_sprite_button_pressed():
@@ -103,8 +102,3 @@ func _on_sprite_2d_button_mouse_entered():
 
 func _on_sprite_2d_button_mouse_exited():
 	exitButton.frame = 0
-
-# Go to settings on esc
-func _input(event):
-	if Input.is_action_just_pressed('Esc'):
-		SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn")

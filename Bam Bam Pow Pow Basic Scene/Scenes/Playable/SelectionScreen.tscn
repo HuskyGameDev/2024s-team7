@@ -192,20 +192,6 @@ texture = ExtResource("7_js4j1")
 hframes = 7
 frame = 6
 
-[node name="FightTypeLabel" type="Label" parent="."]
-offset_left = 892.0
-offset_top = 624.0
-offset_right = 1105.0
-offset_bottom = 673.0
-theme_override_font_sizes/font_size = 40
-text = "Training"
-
-[node name="FightTypeSwitch" type="CheckButton" parent="."]
-offset_left = 1121.0
-offset_top = 643.0
-offset_right = 1165.0
-offset_bottom = 667.0
-
 [connection signal="SpriteButtonPressed" from="VBoxContainer/SceneSwaps/Settings" to="." method="_on_settings_sprite_button_pressed"]
 [connection signal="SpriteButtonPressed" from="VBoxContainer/SceneSwaps/ItemShop" to="." method="_on_item_shop_sprite_button_pressed"]
 [connection signal="SpriteButtonPressed" from="VBoxContainer/SceneSwaps/WeaponShop" to="." method="_on_weapon_shop_sprite_button_pressed"]
@@ -213,4 +199,3 @@ offset_bottom = 667.0
 [connection signal="SpriteButtonPressed" from="VBoxContainer/SceneSwaps/Save" to="." method="_on_save_sprite_button_pressed"]
 [connection signal="SpriteButtonPressed" from="VBoxContainer/SceneSwaps/Exit" to="." method="_on_exit_sprite_button_pressed"]
 [connection signal="SpriteButtonPressed" from="BackToFight" to="." method="_on_back_to_fight_sprite_button_pressed"]
-[connection signal="toggled" from="FightTypeSwitch" to="." method="_on_fight_type_switch_toggled"]

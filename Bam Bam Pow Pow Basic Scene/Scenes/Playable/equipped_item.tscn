@@ -32,5 +32,5 @@ custom_minimum_size = Vector2(200, 10)
 layout_mode = 2
 text = "Select"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_sprite_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -189,7 +189,7 @@ func _on_hurtbox_area_entered(hitbox):
 	damage = calc_resistance(damage, player.weapon[attack_performed].damage_type)
 	
 	self.score += damage
-	self.current_health = clamp((self.current_health - damage), 0, self.max_health)
+	self.current_health -= damage
 	health_changed.emit()
 
 	self.combo += 1
