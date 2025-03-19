@@ -17,6 +17,8 @@ var started = false
 @onready var time_label = $time
 @onready var input_screen = $WarningScreen
 @onready var floor = $TileMap
+@onready var musicplayer: AudioStreamPlayer = $MusicPlayer
+const Song = preload("res://resources/sounds/FightSongDraft.wav")
 
 
 # Calculate score and HP in other infinityDraft and campaignDraft somehow
@@ -39,6 +41,9 @@ func _input(event):
 		started = true
 		Global.combo = 0
 		start.emit()
+		musicplayer.stream = Song
+		musicplayer.volume_db = musicplayer.volume_db - 10
+		musicplayer.play()
 
 func _process(delta):
 	# Set header values (combo, time, visual timer)
