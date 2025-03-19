@@ -1,32 +1,10 @@
-[gd_scene load_steps=17 format=4 uid="uid://dk80ss5idciud"]
+[gd_scene load_steps=8 format=3 uid="uid://dk80ss5idciud"]
 
 [ext_resource type="Script" path="res://scripts/fight_base.gd" id="1_ifxgk"]
-[ext_resource type="Script" path="res://scripts/parallax-clouds.gd" id="2_rvd3b"]
-[ext_resource type="Texture2D" uid="uid://crwvmuq6c0i7s" path="res://resources/sprites/FightBackgrounds/Sakura/parallax-sky-cherry.png" id="2_wuk51"]
-[ext_resource type="Texture2D" uid="uid://dr57okoro63ye" path="res://resources/sprites/FightBackgrounds/Sakura/far clouds.png" id="3_v3y0a"]
-[ext_resource type="Texture2D" uid="uid://c4e67tkcyglwj" path="res://resources/sprites/FightBackgrounds/Sakura/cherry tile.png" id="3_vtjni"]
-[ext_resource type="Texture2D" uid="uid://dkpwaa3pmg0vm" path="res://resources/sprites/FightBackgrounds/Sakura/mid clouds.png" id="4_inum4"]
-[ext_resource type="Texture2D" uid="uid://dt2yj6oldfakh" path="res://resources/sprites/FightBackgrounds/Sakura/close clouds.png" id="5_svulx"]
 [ext_resource type="PackedScene" uid="uid://cfx46l5ghyfp3" path="res://Scenes/Entities/Player/player.tscn" id="6_xn3vh"]
-[ext_resource type="Texture2D" uid="uid://c0dt6fl2tiwpb" path="res://resources/sprites/FightBackgrounds/Sakura/midtrees.png" id="7_3pxy4"]
 [ext_resource type="PackedScene" uid="uid://cqhetuoqkeuty" path="res://Scenes/Entities/enemy.tscn" id="7_l7e77"]
-[ext_resource type="Texture2D" uid="uid://dlhpiyxuagqya" path="res://resources/sprites/FightBackgrounds/Sakura/foretree.png" id="8_8oqra"]
+[ext_resource type="PackedScene" uid="uid://d4jjnsqepebtv" path="res://Scenes/Functional/FightBackground.tscn" id="8_evtkj"]
 [ext_resource type="PackedScene" uid="uid://b8vq6sc31q3x6" path="res://Scenes/Functional/combo.tscn" id="8_kxes6"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tq0jh"]
-texture = ExtResource("3_vtjni")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-1:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_npw0h"]
-tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 0
-physics_layer_0/collision_mask = 0
-sources/0 = SubResource("TileSetAtlasSource_tq0jh")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_my50q"]
 
@@ -36,82 +14,11 @@ normal = Vector2(1, 0)
 [node name="Node" type="Node"]
 script = ExtResource("1_ifxgk")
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-script = ExtResource("2_rvd3b")
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
 
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground"]
-texture_filter = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -52.0
-offset_top = -46.0
-offset_right = 81.0
-offset_bottom = 38.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_wuk51")
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0, 0)
-motion_mirroring = Vector2(1400, 0)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-scale = Vector2(2, 2)
-texture = ExtResource("3_v3y0a")
-centered = false
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0, 0)
-motion_mirroring = Vector2(1400, 0)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
-scale = Vector2(2, 2)
-texture = ExtResource("4_inum4")
-centered = false
-
-[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0, 0)
-motion_mirroring = Vector2(1400, 0)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
-scale = Vector2(2, 2)
-texture = ExtResource("5_svulx")
-centered = false
-
-[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.3, 0.3)
-motion_mirroring = Vector2(1400, 0)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
-scale = Vector2(2, 2)
-texture = ExtResource("7_3pxy4")
-centered = false
-
-[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.6, 0.6)
-motion_mirroring = Vector2(1400, 0)
-metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer6"]
-scale = Vector2(2, 2)
-texture = ExtResource("8_8oqra")
-centered = false
-
-[node name="FloorTiles" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(320, 0)
-
-[node name="TileMapLayer" type="TileMapLayer" parent="ParallaxBackground/FloorTiles"]
-light_mask = 0
-position = Vector2(0, -32)
-scale = Vector2(4, 4)
-tile_map_data = PackedByteArray("AAAAAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAABAAUAAAAAAAAAAAA=")
-tile_set = SubResource("TileSet_npw0h")
-rendering_quadrant_size = 32
+[node name="ParallaxElements" parent="." instance=ExtResource("8_evtkj")]
+layer = -50
 
 [node name="player" parent="." instance=ExtResource("6_xn3vh")]
 position = Vector2(328, 528)
@@ -127,42 +34,6 @@ drag_horizontal_enabled = true
 position = Vector2(1108, 448)
 
 [node name="ComboHandler" parent="." instance=ExtResource("8_kxes6")]
-
-[node name="WarningScreen" type="ColorRect" parent="."]
-visible = false
-anchors_preset = -1
-anchor_left = 0.594
-anchor_top = 0.011
-anchor_right = 0.594
-anchor_bottom = 0.011
-offset_left = -512.32
-offset_top = 80.08
-offset_right = 351.68
-offset_bottom = 422.08
-color = Color(0.0941176, 0.0941176, 0.0862745, 0.870588)
-
-[node name="MarginContainer" type="MarginContainer" parent="WarningScreen"]
-visible = false
-layout_mode = 0
-offset_left = 40.0
-offset_top = 16.0
-offset_right = 848.0
-offset_bottom = 327.0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="WarningScreen/MarginContainer"]
-visible = false
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 30
-text = "Controls:
-J = Light Attacks, K = Heavy Attacks
-L = Special Attacks, ; = Super Attacks
-W = Up, S = Down, A and D = Side
-Combine directions and attack types to do
-directional attacks
-Toggle this window appearing in settings"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -204,6 +75,7 @@ shape = SubResource("WorldBoundaryShape2D_vi03k")
 [connection signal="attack_performed" from="player" to="enemy" method="_on_player_attack"]
 [connection signal="player_dir" from="player" to="enemy" method="_on_player_player_dir"]
 [connection signal="damage_readied" from="enemy" to="ComboHandler" method="_on_enemy_damage_readied"]
+[connection signal="hit" from="enemy" to="." method="_on_enemy_hit"]
 [connection signal="showDmg" from="enemy" to="." method="_on_enemy_show_dmg"]
 [connection signal="x_pos" from="enemy" to="player" method="_on_enemy_x_pos"]
 [connection signal="attack" from="ComboHandler" to="player" method="_on_signal_transfer_to_state"]
