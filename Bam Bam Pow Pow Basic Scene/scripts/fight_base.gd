@@ -12,8 +12,7 @@ var started = false
 # Node References
 @onready var enemy = $enemy
 @onready var player = $player
-@onready var time = $Timer
-@onready var combo_label = $combo
+@onready var combo_label = $CanvasLayer/combo
 @onready var time_label = $time
 @onready var input_screen = $WarningScreen
 @onready var floor = $TileMap
@@ -21,9 +20,9 @@ var started = false
 
 # Calculate score and HP in other infinityDraft and campaignDraft somehow
 
-func _ready():
+#func _ready():
 	# Set tile texture to default
-	floor.tile_set.get_source(0).texture = load("res://resources/sprites/FightBackgrounds/Sakura/cherry tile.png")
+	#floor.tile_set.get_source(0).texture = load("res://resources/sprites/FightBackgrounds/Sakura/cherry tile.png")
 	
 	# Warning screen, tells player controls
 	#if (ItemStorage.inputtoggle == true):
