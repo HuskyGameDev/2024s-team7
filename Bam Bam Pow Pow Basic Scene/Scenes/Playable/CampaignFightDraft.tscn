@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://c55s0tmcletaj"]
+
+[ext_resource type="Script" path="res://scripts/campaign_fight_draft.gd" id="1_fnhak"]
+[ext_resource type="PackedScene" uid="uid://dk80ss5idciud" path="res://Scenes/Playable/Fight_Base.tscn" id="2_hbt5l"]
+[ext_resource type="Texture2D" uid="uid://dpkq1jmlqlaes" path="res://resources/sprites/hpBOT.png" id="12_1swnk"]
+[ext_resource type="Texture2D" uid="uid://bavffce6575pw" path="res://resources/sprites/hpTOP.png" id="13_apaco"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qnu3c"]
+load_path = "res://.godot/imported/bg-sakura.PNG-78af716a0615c288ea40c1d242469144.ctex"
+
+[node name="Campaign" type="Node"]
+script = ExtResource("1_fnhak")
+
+[node name="FightBase" parent="." instance=ExtResource("2_hbt5l")]
+
+[node name="TextureRect" parent="FightBase" index="0"]
+texture = SubResource("CompressedTexture2D_qnu3c")
+
+[node name="WarningScreen" parent="FightBase" index="11"]
+visible = true
+
+[node name="RichTextLabel" parent="FightBase/WarningScreen/MarginContainer" index="0"]
+text = "Controls:
+J = Light Attacks, K = Heavy Attacks
+W = Up, S = Down, A and D = Side
+Combine directions and attack types to do
+directional attacks
+Toggle this window appearing in settings"
+
+[node name="HPbar" type="TextureProgressBar" parent="."]
+offset_left = 138.0
+offset_top = 18.0
+offset_right = 1118.0
+offset_bottom = 58.0
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 100
+stretch_margin_right = 100
+texture_under = ExtResource("12_1swnk")
+texture_progress = ExtResource("13_apaco")
+
+[node name="HP" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.477
+anchor_top = 0.022
+anchor_right = 0.477
+anchor_bottom = 0.022
+offset_left = -428.56
+offset_top = 51.16
+offset_right = -308.56
+offset_bottom = 88.16
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "HP: "
+
+[connection signal="timeout" from="FightBase" to="." method="_on_fight_base_timeout"]
+
+[editable path="FightBase"]
+[editable path="FightBase/enemy"]
+[editable path="FightBase/enemy/Hurtbox"]
