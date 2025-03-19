@@ -13,11 +13,11 @@ var infinity = true				# Keeps track of if in infinity mode
 var opSelectStartUp = 0
 var opSelectCurrent = 0
 
-func make_opponent(name: String, description: String, health: int, sprite_path: String, floor_path: String,
+func make_opponent(opName: String, description: String, health: int, sprite_path: String, floor_path: String,
 			   background_path: String, time: int, defeated: bool, defeatable: bool,
 			   weakness: String, speech: Array[String]=["No Words"]) -> Dictionary:
 	var opponent: Dictionary = {
-		"name":			name,
+		"opName":		opName,
 		"description":	description,
 		"health":		health,
 		"sprite_path":	sprite_path,
