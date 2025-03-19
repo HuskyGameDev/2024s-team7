@@ -160,19 +160,10 @@ Debuff={
 
 [layer_names]
 
-2d_render/layer_1="Environment"
-2d_render/layer_2="Player"
-2d_render/layer_3="Enemy"
 2d_physics/layer_1="Environment"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Enemy"
 2d_physics/layer_4="Attacks"
-
-[physics]
-
-2d/layer_3=""
-2d/layer_2=""
-2d/layer_1=""
 
 [rendering]
 

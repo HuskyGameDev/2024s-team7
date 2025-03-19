@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c55s0tmcletaj"]
+[gd_scene load_steps=9 format=3 uid="uid://c55s0tmcletaj"]
 
 [ext_resource type="Script" path="res://scripts/campaign_fight.gd" id="1_3iac4"]
 [ext_resource type="PackedScene" uid="uid://dk80ss5idciud" path="res://Scenes/Playable/Fight_Base.tscn" id="2_dnsdk"]
@@ -8,14 +8,26 @@
 [ext_resource type="Texture2D" uid="uid://bavffce6575pw" path="res://resources/sprites/hpTOP.png" id="4_inlt1"]
 [ext_resource type="Texture2D" uid="uid://d07sw130xxmn5" path="res://resources/sprites/clock fill new.png" id="5_8ciuu"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qnu3c"]
+load_path = "res://.godot/imported/bg-sakura.PNG-78af716a0615c288ea40c1d242469144.ctex"
+
 [node name="Campaign" type="Node"]
 script = ExtResource("1_3iac4")
 
 [node name="FightBase" parent="." instance=ExtResource("2_dnsdk")]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="TextureRect" parent="FightBase" index="0"]
+texture = SubResource("CompressedTexture2D_qnu3c")
 
-[node name="HPbar" type="TextureProgressBar" parent="CanvasLayer"]
+[node name="RichTextLabel" parent="FightBase/WarningScreen/MarginContainer" index="0"]
+text = "Controls:
+J = Light Attacks, K = Heavy Attacks
+W = Up, S = Down, A and D = Side
+Combine directions and attack types to do
+directional attacks
+Toggle this window appearing in settings"
+
+[node name="HPbar" type="TextureProgressBar" parent="."]
 offset_left = 138.0
 offset_top = 18.0
 offset_right = 1118.0
@@ -27,7 +39,7 @@ stretch_margin_right = 100
 texture_under = ExtResource("3_cqlvp")
 texture_progress = ExtResource("4_inlt1")
 
-[node name="HP" type="Label" parent="CanvasLayer"]
+[node name="HP" type="Label" parent="."]
 anchors_preset = -1
 anchor_left = 0.477
 anchor_top = 0.022
@@ -41,7 +53,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "HP: "
 
-[node name="TimeLabel" type="Label" parent="CanvasLayer"]
+[node name="TimeLabel" type="Label" parent="."]
 offset_left = 1133.0
 offset_top = 139.0
 offset_right = 1253.0
@@ -50,7 +62,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Time: "
 
-[node name="TimerSprite" type="TextureProgressBar" parent="CanvasLayer"]
+[node name="TimerSprite" type="TextureProgressBar" parent="."]
 offset_left = 1146.0
 offset_top = 6.0
 offset_right = 1274.0
