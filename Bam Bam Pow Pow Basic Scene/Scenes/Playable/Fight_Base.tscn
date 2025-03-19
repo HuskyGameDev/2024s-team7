@@ -31,7 +31,7 @@ position_smoothing_enabled = true
 drag_horizontal_enabled = true
 
 [node name="enemy" parent="." instance=ExtResource("7_l7e77")]
-position = Vector2(1108, 448)
+position = Vector2(944, 448)
 
 [node name="ComboHandler" parent="." instance=ExtResource("8_kxes6")]
 

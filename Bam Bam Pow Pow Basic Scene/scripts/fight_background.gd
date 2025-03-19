@@ -6,8 +6,8 @@
 ## This scene also holds the functions to change the background
 
 # Note: If you'd like to change the background without script, just edit
-# the exported variables. Match String exactly if using Background Setup.
-# Background Setup overrides other exported variables.
+# the exported variables in Inspector. Match String exactly if using Background 
+# Setup. Background Setup overrides other exported variables.
 
 
 extends ParallaxBackground
@@ -16,7 +16,7 @@ extends ParallaxBackground
 @onready var still_background = $TextureRect
 @onready var bg_floor = $FloorTiles/TileMapLayer
 
-# Exported variables, available to change in Inspector
+# Default background values
 @export var background_setup_function = "sakura"
 @export var still_background_texture = "res://resources/sprites/FightBackgrounds/Sakura/parallax-sky-cherry.png"
 @export var floor_tile_texture = "res://resources/sprites/FightBackgrounds/Sakura/cherry tile.png"
@@ -25,14 +25,20 @@ extends ParallaxBackground
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if !FightDetails.infinity:
+		background_setup_function = FightDetails.op_list[FightDetails.op_progress]["background_setup_function"]
+	
 	# Run setup function of current background
 	match background_setup_function:
 		"sakura":
 			sakura()
-		"sweetBabyJones":
-			sweetBabyJones()
+		"dungeon":
+			dungeon()
+		"jonestown":
+			jonestown()
 		"dog":
 			dog()
+	
 	# Set still background and floor
 	still_background.texture = load(still_background_texture)
 	bg_floor.tile_set.get_source(0).texture = load(floor_tile_texture)
@@ -148,10 +154,16 @@ func sakura():
 	var closeTreesLayer = _add_layer(.6)
 	var closeTreesSprite = _add_sprite(closeTreesLayer, "res://resources/sprites/FightBackgrounds/Sakura/foretree.png")
 
-func sweetBabyJones():
-	pass
+## Adds background for dungeon (goblin)
+func dungeon():
+	still_background_texture = "res://resources/sprites/background-itemshop.png"
+	
+## Adds background for Jonestown (sweet baby jones)
+func jonestown():
+	still_background_texture = "res://resources/sprites/mspaint-bbjo-bg.png"
+	floor_tile_texture = "res://resources/sprites/bbjo-mspaint-floor.png"
 
+## Doesn't add background atm
 func dog():
 	pass
-
 	
