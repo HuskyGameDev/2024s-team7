@@ -15,11 +15,11 @@ var weaponStartup: int = 0		# Prev + to set each Hanger Node to correct weapon i
 
 var weapons_list = []			# List of opponent detail dictionaries in order of the fights
 
-func make_shop_weapon(name: String, cost: int, ownership: bool, description: String):
+func make_shop_weapon(weaponName: String, cost: int, ownership: bool, description: String):
 	var shop_weapon: Dictionary = {
-		"name":			name,
+		"weaponName":	weaponName,
 		"cost":			cost,
-		"ownership":		ownership,
+		"ownership":	ownership,
 		"description":	description
 	}
 	return shop_weapon
