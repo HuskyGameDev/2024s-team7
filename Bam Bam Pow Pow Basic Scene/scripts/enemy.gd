@@ -1,16 +1,12 @@
 extends CharacterBody2D
 
-# Add class for reference
 class_name Enemy
 
-# Campaign Specific Variables
-signal health_changed
+signal hit
 signal x_pos(position)
 
 @export var max_health = 1000
 @export var current_health = max_health
-
-# Original Variables
 
 @export var weight: float = 100
 @export var damage: int
@@ -25,7 +21,6 @@ signal x_pos(position)
 @onready var animPlayer = $AnimationPlayer
 @onready var player = $"../player"
 
-#@onready var audioPlayer = get_node("/root/Node2/AudioStreamPlayer")
 @onready var audioPlayer = get_node("%AudioStreamPlayer")
 
 
@@ -190,7 +185,7 @@ func _on_hurtbox_area_entered(hitbox):
 	
 	self.score += damage
 	self.current_health = clamp((self.current_health - damage), 0, self.max_health)
-	health_changed.emit()
+	hit.emit()
 
 	self.combo += 1
 	self.juggle += 0.5
