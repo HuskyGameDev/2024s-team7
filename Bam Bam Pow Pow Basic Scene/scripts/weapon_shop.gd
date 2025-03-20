@@ -36,7 +36,7 @@ func _changeBox(i)-> void:
 	# Print for testing
 	
 	# Set name of weapon
-	weaponName.text = WeaponInShop.weapons_list[i]["name"]
+	weaponName.text = WeaponInShop.weapons_list[i]["weaponName"]
 	# print(WeaponInShop.weaponsInShopArray[i])
 	# Set cost of weapon
 	priceLabel.text = str(WeaponInShop.weapons_list[i]["cost"])
@@ -130,9 +130,9 @@ func _on_buy_button_pressed():
 
 func _on_equip_button_pressed():
 	var i = WeaponInShop.currentInstance
-	var name = WeaponInShop.weapons_list[i]["name"].to_lower()
+	var weaponName = WeaponInShop.weapons_list[i]["weaponName"].to_lower()
 	if (name == "spear"):
-		ItemStorage.equipped_weapon = name
+		ItemStorage.equipped_weapon = weaponName
 		print(ItemStorage.equipped_weapon)
 	else:
 		warningLabel.text = "Sorry, that weapon is currenlty unimplemented"
