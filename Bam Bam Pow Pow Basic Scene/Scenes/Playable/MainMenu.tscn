@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c76vfrrc8d27k"]
+[gd_scene load_steps=11 format=3 uid="uid://c76vfrrc8d27k"]
 
 [ext_resource type="Script" path="res://scripts/MainMenu.gd" id="1_8i4yj"]
 [ext_resource type="Texture2D" uid="uid://cwexuk7jv1l3r" path="res://resources/sprites/MAIN MENU BG.png" id="2_aqswu"]
@@ -18,13 +18,7 @@ shader = ExtResource("5_e1a4t")
 shader_parameter/onoffMult = false
 shader_parameter/onoffSoftLight = false
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ujhj"]
-resource_local_to_scene = true
-shader = ExtResource("5_e1a4t")
-shader_parameter/onoffMult = false
-shader_parameter/onoffSoftLight = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_it4r2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ceijq"]
 resource_local_to_scene = true
 shader = ExtResource("5_e1a4t")
 shader_parameter/onoffMult = false
@@ -90,13 +84,13 @@ theme_override_constants/separation = 10
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="New Infinity" parent="VBoxContainer/HBoxContainer" instance=ExtResource("4_c6ga6")]
+[node name="New Game" parent="VBoxContainer/HBoxContainer" instance=ExtResource("4_c6ga6")]
 material = SubResource("ShaderMaterial_a8xhs")
 layout_mode = 2
 size_flags_horizontal = 3
 texture = null
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/New Infinity"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/New Game"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -110,17 +104,17 @@ offset_bottom = 12.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 20
-text = "New Infinity"
+text = "New Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Load Infinity" parent="VBoxContainer/HBoxContainer" instance=ExtResource("4_c6ga6")]
+[node name="Load Game" parent="VBoxContainer/HBoxContainer" instance=ExtResource("4_c6ga6")]
 material = SubResource("ShaderMaterial_3lj1b")
 layout_mode = 2
 size_flags_horizontal = 3
 texture = null
 
-[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/Load Infinity"]
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/Load Game"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -134,35 +128,12 @@ offset_bottom = 12.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 20
-text = "Load Infinity"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Campaign" parent="VBoxContainer" instance=ExtResource("4_c6ga6")]
-material = SubResource("ShaderMaterial_0ujhj")
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-
-[node name="Label3" type="Label" parent="VBoxContainer/Campaign"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -53.5
-offset_top = -12.5
-offset_right = 53.5
-offset_bottom = 12.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 20
-text = "Campaign"
+text = "Load Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Tutorial" parent="VBoxContainer" instance=ExtResource("4_c6ga6")]
-material = SubResource("ShaderMaterial_it4r2")
+material = SubResource("ShaderMaterial_ceijq")
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 texture = null
@@ -255,9 +226,8 @@ DIRECTIONAL ATTACKS ARE PURCHASED"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
-[connection signal="buttonPressed" from="VBoxContainer/HBoxContainer/New Infinity" to="." method="_on_new_infinity_pressed"]
-[connection signal="buttonPressed" from="VBoxContainer/HBoxContainer/Load Infinity" to="." method="_on_load_infinity_pressed"]
-[connection signal="buttonPressed" from="VBoxContainer/Campaign" to="." method="_on_campaign_button_pressed"]
+[connection signal="buttonPressed" from="VBoxContainer/HBoxContainer/New Game" to="." method="_on_new_game_button_pressed"]
+[connection signal="buttonPressed" from="VBoxContainer/HBoxContainer/Load Game" to="." method="_on_load_game_button_pressed"]
 [connection signal="buttonPressed" from="VBoxContainer/Tutorial" to="." method="_on_tutorial_button_pressed"]
 [connection signal="buttonPressed" from="VBoxContainer/Settings" to="." method="_on_settings_button_pressed"]
 [connection signal="buttonPressed" from="VBoxContainer/Quit" to="." method="_on_quit_button_pressed"]
