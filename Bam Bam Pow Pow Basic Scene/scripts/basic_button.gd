@@ -18,6 +18,13 @@ signal buttonPressed
 
 @onready var button = $"."
 
+
+# Tween values for button scaling animation
+#@onready var tween = get_tree().create_tween()
+#@onready tween.tween_property(button, "scale", Vector2(), 1)
+
+
+
 ## Preload the image resources for basic/hover/pressed boxes
 var basicBox = preload("res://resources/sprites/button.png")
 var pressBox = preload("res://resources/sprites/button-just-pressed.png")
@@ -52,7 +59,6 @@ func _on_button_button_down():	# On press:
 	self.set_texture(pressBox)	# Set texture to press
 	#self.material.set_shader_parameter("onoffMult",1)		# Add multiply
 
-
 ##-----------
 ## Determine if button hovered; change image accordingly
 
@@ -60,8 +66,22 @@ func _on_button_mouse_entered():		# On hover:
 	self.set_texture(hoverBox)		# Set texture to hover
 	hover = true		# Is hovering
 	#self.material.set_shader_parameter("onoffSoftLight",1)		# Add soft light
+	
+	# tween growth on hover
+	button.pivot_offset = button.size/2
+	#start_tween(button, "scale", Vector2.ONE * tween_intensity, tween_duration)
+
 
 func _on_button_mouse_exited():		# On hover removed:
 	self.set_texture(basicBox)		# Set texture to basic
 	hover = false	# Is not hovering
 	#self.material.set_shader_parameter("onoffSoftLight",0)		# Add soft light
+	
+	button.pivot_offset = button.size/2
+	#start_tween(button, "scale", Vector2.ONE, tween_duration)
+
+
+func start_tween(object: Object, property: String, final_val: Variant, duration: float):
+		var tween = create_tween()
+		tween.tween_property(object, property, final_val, duration)
+		

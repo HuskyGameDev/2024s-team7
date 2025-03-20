@@ -17,36 +17,45 @@ func _ready():
 	popup.visible = (ItemStorage.inputtoggle == true)
 	
 func _process(delta):
-	if step == 0:
-		popup.show_message("Move using A and D.")
-		if Input.is_action_just_pressed("R") or Input.is_action_just_pressed("L"):
-			step += 1
-	elif step == 1:
-		popup.show_message("Press J for light attacks.")
-		if Input.is_action_just_pressed("Punch"):
-			step += 1
-	elif step == 2: 
-		popup.show_message("Press K for heavy attacks.")
-		if Input.is_action_just_pressed("Kick"):
-			step += 1
-	elif step == 3:
-		popup.show_message("Press W and J for a high light attack")
-		if Input.is_action_just_pressed("Punch"):
-			step += 1	
-	elif step == 4:
-		popup.show_message("Press W and K for a high heavy attack")
-		if Input.is_action_just_pressed("Kick"):
-			step += 1
-	elif step == 5:
-		popup.show_message("Press S and J for a crouching light attack")
-		if Input.is_action_just_pressed("Punch"):
-			step += 1
-	elif step == 6:
-		popup.show_message("Press S and K for a crouching heavy attack")
-		if Input.is_action_just_pressed("Kick"):
-			step += 1
-	elif step == 7:
-		popup.show_message("Press esc to leave the tutorial")
+	match step:
+		0:
+			popup.show_message("Move using A and D.")
+			if Input.is_action_just_pressed("R") or Input.is_action_just_pressed("L"):
+				step += 1
+		1:
+			popup.show_message("Press J for light attacks.")
+			if Input.is_action_just_pressed("Punch"):
+				step += 1
+		2: 
+			popup.show_message("Press K for heavy attacks.")
+			if Input.is_action_just_pressed("Kick"):
+				step += 1
+		3:
+			popup.show_message("Press W and J for a high light attack")
+			if Input.is_action_just_pressed("Punch"):
+				step += 1	
+		4:
+			popup.show_message("Press W and K for a high heavy attack")
+			if Input.is_action_just_pressed("Kick"):
+				step += 1
+		5:
+			popup.show_message("Press S and J for a low light attack")
+			if Input.is_action_just_pressed("Punch"):
+				step += 1
+		6:
+			popup.show_message("Press S and K for a low heavy attack")
+			if Input.is_action_just_pressed("Kick"):
+				step += 1
+		7:
+			popup.show_message("Press D|A and J for a light forward strike")
+			if Input.is_action_just_pressed("Punch"):
+				step += 1
+		8:
+			popup.show_message("Press D|A and K for a heavy forward strike")
+			if Input.is_action_just_pressed("Kick"):
+				step += 1
+		9:
+			popup.show_message("Press esc to leave the tutorial")
 
 	#if Input.is_action_pressed("Esc"):
 		#SceneSwap.scene_swap("res://Scenes/Playable/ItemShop.tscn")
@@ -75,8 +84,3 @@ func _on_enemy_show_dmg(dmgNumber):
 	damage_label.position += Vector2(-30 + (rand1 * neg) + rand2, -40 + rand1 + rand2 -10)
 	await get_tree().create_timer(0.2).timeout
 	enemy.remove_child(damage_label)
-
-# Go to Main Menu on esc
-func _input(event):
-	if Input.is_action_just_pressed('Esc'):
-		SceneSwap.scene_swap("res://Scenes/Playable/MainMenu.tscn")

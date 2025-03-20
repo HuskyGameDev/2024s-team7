@@ -1,19 +1,19 @@
-[gd_scene load_steps=18 format=3 uid="uid://dk80ss5idciud"]
+[gd_scene load_steps=18 format=3 uid="uid://d3qsuqxbit6rg"]
 
-[ext_resource type="Script" path="res://scripts/fight_base.gd" id="1_ifxgk"]
-[ext_resource type="Texture2D" uid="uid://bjp6mrfnrh2bv" path="res://Assets/bg-sakura.PNG" id="2_gsfk7"]
-[ext_resource type="Texture2D" uid="uid://bb523jxarvel0" path="res://Assets/tile-sakura .PNG" id="3_mg7bi"]
-[ext_resource type="Texture2D" uid="uid://cbia7ydbgigan" path="res://resources/sprites/icon.svg" id="4_drnb6"]
-[ext_resource type="Texture2D" uid="uid://bccvdng3t7mr0" path="res://Assets/icon.svg" id="5_ag3w6"]
-[ext_resource type="PackedScene" uid="uid://cfx46l5ghyfp3" path="res://Scenes/Entities/Player/player.tscn" id="6_xn3vh"]
-[ext_resource type="PackedScene" uid="uid://cqhetuoqkeuty" path="res://Scenes/Entities/enemy.tscn" id="7_l7e77"]
-[ext_resource type="PackedScene" uid="uid://b8vq6sc31q3x6" path="res://Scenes/Functional/combo.tscn" id="8_kxes6"]
-[ext_resource type="Texture2D" uid="uid://c2pa3fqc042ok" path="res://resources/sprites/clock back new.png" id="9_wdno0"]
-[ext_resource type="Texture2D" uid="uid://bmxls3x41o1a7" path="res://resources/sprites/clock top new.png" id="10_50tiu"]
-[ext_resource type="Texture2D" uid="uid://d07sw130xxmn5" path="res://resources/sprites/clock fill new.png" id="11_spfx2"]
+[ext_resource type="Script" path="res://scripts/Fight.gd" id="1_xn2pw"]
+[ext_resource type="Texture2D" uid="uid://cbia7ydbgigan" path="res://resources/sprites/icon.svg" id="2_tpybg"]
+[ext_resource type="Texture2D" uid="uid://bjp6mrfnrh2bv" path="res://Assets/bg-sakura.PNG" id="2_ua6bn"]
+[ext_resource type="PackedScene" uid="uid://cfx46l5ghyfp3" path="res://Scenes/Entities/Player/player.tscn" id="3_w7w43"]
+[ext_resource type="Texture2D" uid="uid://bb523jxarvel0" path="res://Assets/tile-sakura .PNG" id="3_xd3ae"]
+[ext_resource type="PackedScene" uid="uid://cqhetuoqkeuty" path="res://Scenes/Entities/enemy.tscn" id="4_boejj"]
+[ext_resource type="Texture2D" uid="uid://bccvdng3t7mr0" path="res://Assets/icon.svg" id="5_ecpwr"]
+[ext_resource type="PackedScene" uid="uid://b8vq6sc31q3x6" path="res://Scenes/Functional/combo.tscn" id="5_xefg3"]
+[ext_resource type="Texture2D" uid="uid://c2pa3fqc042ok" path="res://resources/sprites/clock back new.png" id="8_qstn8"]
+[ext_resource type="Texture2D" uid="uid://bmxls3x41o1a7" path="res://resources/sprites/clock top new.png" id="9_i7ld0"]
+[ext_resource type="Texture2D" uid="uid://d07sw130xxmn5" path="res://resources/sprites/clock fill new.png" id="10_2oyx8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7n84y"]
-texture = ExtResource("3_mg7bi")
+texture = ExtResource("3_xd3ae")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16.5, -16.25, 16.125, -15.875, 16, 16.25, -16.25, 16.5)
@@ -22,7 +22,7 @@ texture_region_size = Vector2i(32, 32)
 1:1/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1qjtc"]
-texture = ExtResource("4_drnb6")
+texture = ExtResource("2_tpybg")
 0:0/size_in_atlas = Vector2i(8, 8)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-63.25, -64.75, 60.25, -64.75, 65.25, 65.5, -64, 64.25)
@@ -34,12 +34,12 @@ sources/1 = SubResource("TileSetAtlasSource_1qjtc")
 sources/0 = SubResource("TileSetAtlasSource_7n84y")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xampy"]
-texture = ExtResource("3_mg7bi")
+texture = ExtResource("3_xd3ae")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g1gl4"]
-texture = ExtResource("5_ag3w6")
+texture = ExtResource("5_ecpwr")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 
@@ -47,8 +47,8 @@ texture_region_size = Vector2i(128, 128)
 sources/1 = SubResource("TileSetAtlasSource_xampy")
 sources/4 = SubResource("TileSetAtlasSource_g1gl4")
 
-[node name="Node" type="Node"]
-script = ExtResource("1_ifxgk")
+[node name="Node2" type="Node"]
+script = ExtResource("1_xn2pw")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
@@ -61,7 +61,7 @@ offset_right = 81.0
 offset_bottom = 38.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_gsfk7")
+texture = ExtResource("2_ua6bn")
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -76,59 +76,78 @@ visible = false
 scale = Vector2(8, 8)
 tile_set = SubResource("TileSet_7wu4c")
 
-[node name="player" parent="." instance=ExtResource("6_xn3vh")]
+[node name="player" parent="." instance=ExtResource("3_w7w43")]
 position = Vector2(291, 531)
 scale = Vector2(2, 2)
 
-[node name="enemy" parent="." instance=ExtResource("7_l7e77")]
-position = Vector2(1050, 450)
+[node name="enemy" parent="." instance=ExtResource("4_boejj")]
+position = Vector2(681, 436)
 
-[node name="ComboHandler" parent="." instance=ExtResource("8_kxes6")]
+[node name="ComboHandler" parent="." instance=ExtResource("5_xefg3")]
 
-[node name="combo indicator" type="Label" parent="."]
-offset_left = 22.0
-offset_top = 18.0
-offset_right = 105.0
-offset_bottom = 49.0
-theme_override_colors/font_color = Color(0.87, 0.6525, 0, 1)
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -145.5
+offset_right = 145.5
+offset_bottom = 42.0
+grow_horizontal = 2
+
+[node name="score" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Score: "
+horizontal_alignment = 1
+
+[node name="spacer2" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -20
+
+[node name="combo indicator" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 25
 text = "COMBO"
 
-[node name="combo" type="Label" parent="."]
-offset_left = 26.0
-offset_top = 56.0
-offset_right = 66.0
-offset_bottom = 130.0
-theme_override_colors/font_color = Color(0.94, 0.868717, 0.0846, 1)
+[node name="combo" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 60
 text = "x"
 horizontal_alignment = 1
 
-[node name="time" type="Label" parent="."]
-offset_left = 1133.0
-offset_top = 144.0
-offset_right = 1253.0
-offset_bottom = 181.0
+[node name="spacer" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="time" type="Label" parent="HBoxContainer"]
+layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "Time: "
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-offset_left = 1139.0
-offset_top = 8.0
-offset_right = 1267.0
-offset_bottom = 136.0
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HBoxContainer"]
+layout_mode = 2
 fill_mode = 4
-texture_under = ExtResource("9_wdno0")
-texture_over = ExtResource("10_50tiu")
-texture_progress = ExtResource("11_spfx2")
+texture_under = ExtResource("8_qstn8")
+texture_over = ExtResource("9_i7ld0")
+texture_progress = ExtResource("10_2oyx8")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 20.0
 one_shot = true
 
 [node name="WarningScreen" type="ColorRect" parent="."]
-visible = false
 anchors_preset = -1
 anchor_left = 0.594
 anchor_top = 0.011
@@ -161,7 +180,7 @@ Toggle this window appearing in settings"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioTimer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="attack_performed" from="player" to="enemy" method="_on_player_attack"]
 [connection signal="player_dir" from="player" to="enemy" method="_on_player_player_dir"]
@@ -171,6 +190,7 @@ unique_name_in_owner = true
 [connection signal="attack" from="ComboHandler" to="player" method="_on_signal_transfer_to_state"]
 [connection signal="attack" from="ComboHandler" to="enemy" method="_on_combo_handler_attack"]
 [connection signal="attack_damamge" from="ComboHandler" to="enemy" method="_on_combo_handler_attack_damamge"]
-[connection signal="attack_index" from="ComboHandler" to="player" method="_on_signal_transfer_to_state"]
 [connection signal="attack_index" from="ComboHandler" to="player" method="_on_combo_handler_attack_index"]
+[connection signal="attack_index" from="ComboHandler" to="player" method="_on_signal_transfer_to_state"]
+[connection signal="change_res" from="ComboHandler" to="enemy" method="change_resistance"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
