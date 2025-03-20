@@ -58,6 +58,11 @@ func _process(delta):
 			audio_timer.stream = fiveSecond_noise
 			audio_timer.play()
 
+func set_enemy_values(opponent_health: int, opponent_sprite_path: String):
+	enemy.max_health = opponent_health
+	enemy.current_health = opponent_health
+	enemySprite.texture = load(opponent_sprite_path)
+
 ## Function that runs when enemy takes damage:
 ## Changes health bar/text on screen; Checks if enemy dies
 func healthChanged():
