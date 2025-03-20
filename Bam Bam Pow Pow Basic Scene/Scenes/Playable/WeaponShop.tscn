@@ -105,7 +105,10 @@ anchor_bottom = 1.0
 offset_top = 16.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_2sdlv")
+follow_focus = true
+vertical_scroll_mode = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/ScrollContainer"]
 layout_mode = 2
@@ -135,6 +138,9 @@ layout_mode = 2
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
+
+[node name="HScrollBar" type="HScrollBar" parent="Control/ScrollContainer"]
+layout_mode = 2
 
 [node name="Dra\'ko" type="Sprite2D" parent="."]
 position = Vector2(640, 360)

@@ -21,6 +21,7 @@ offset_right = 4.0
 offset_bottom = 4.0
 size_flags_horizontal = 6
 size_flags_vertical = 6
+mouse_default_cursor_shape = 2
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
