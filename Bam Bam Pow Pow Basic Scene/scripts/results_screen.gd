@@ -6,6 +6,11 @@ extends Control
 @onready var ScoreLabel = $VBoxContainer/HBoxContainer/ScoreLabel
 @onready var ComboLabel = $VBoxContainer/HBoxContainer2/ComboLabel
 
+# Go to settings on esc
+func _input(event):
+	if Input.is_action_just_pressed('Esc'):
+		SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	score.text = ''

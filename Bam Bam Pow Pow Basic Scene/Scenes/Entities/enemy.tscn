@@ -138,6 +138,7 @@ texture = ExtResource("2_dfxh6")
 hframes = 2
 
 [node name="CollisionShape2D" parent="." index="1"]
+visible = false
 position = Vector2(-2, 152)
 shape = SubResource("RectangleShape2D_putps")
 
@@ -147,6 +148,7 @@ libraries = {
 }
 
 [node name="Hurtbox" parent="." index="3"]
+visible = false
 collision_layer = 4
 collision_mask = 8
 monitorable = false

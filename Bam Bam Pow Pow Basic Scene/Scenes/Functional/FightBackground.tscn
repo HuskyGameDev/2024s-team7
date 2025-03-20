@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=4 uid="uid://kolwld1det5b"]
+
+[ext_resource type="Script" path="res://scripts/fight_background.gd" id="1_d01lr"]
+[ext_resource type="Texture2D" uid="uid://crwvmuq6c0i7s" path="res://resources/sprites/FightBackgrounds/Sakura/parallax-sky-cherry.png" id="2_fvj5n"]
+[ext_resource type="Texture2D" uid="uid://c4e67tkcyglwj" path="res://resources/sprites/FightBackgrounds/Sakura/cherry tile.png" id="3_s7r0b"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r235m"]
+texture = ExtResource("3_s7r0b")
+texture_region_size = Vector2i(32, 32)
+use_texture_padding = false
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_p4hxy"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 0
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_r235m")
+
+[node name="FightBackground" type="ParallaxBackground"]
+script = ExtResource("1_d01lr")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -52.0
+offset_top = -46.0
+offset_right = 81.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_fvj5n")
+
+[node name="FloorTiles" type="ParallaxLayer" parent="."]
+z_index = 1
+motion_mirroring = Vector2(320, 0)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="FloorTiles"]
+light_mask = 0
+position = Vector2(0, -32)
+scale = Vector2(4, 4)
+tile_map_data = PackedByteArray("AAAAAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAABAAUAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_p4hxy")
+rendering_quadrant_size = 32
