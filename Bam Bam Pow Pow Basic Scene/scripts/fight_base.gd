@@ -8,10 +8,9 @@ signal timeout
 @onready var combo_label = $combo
 @onready var time_label = $time
 @onready var input_screen = $WarningScreen
-@onready var clock = $TextureProgressBar
-@onready var audio_timer: AudioStreamPlayer = $AudioTimer
-@onready var fiveSecond_noise = preload("res://resources/sounds/fiveseconds.wav")
-var started = false
+@onready var floor = $TileMap
+@onready var musicplayer: AudioStreamPlayer = $MusicPlayer
+const Song = preload("res://resources/sounds/FightSongDraft.wav")
 
 
 # Calculate score and HP in other infinityDraft and campaignDraft somehow
@@ -28,7 +27,10 @@ func _input(event):
 		input_screen.visible = false
 		started = true
 		Global.combo = 0
-		time.start()
+		start.emit()
+		musicplayer.stream = Song
+		musicplayer.volume_db = musicplayer.volume_db - 10
+		musicplayer.play()
 
 func _process(delta):
 	combo_label.text = "x" + str(enemy.combo)

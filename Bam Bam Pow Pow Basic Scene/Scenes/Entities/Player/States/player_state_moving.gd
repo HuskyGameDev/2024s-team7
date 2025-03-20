@@ -5,7 +5,6 @@ var weapon: Weapon
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
-
 func Enter():
 	weapon = get_parent().weapon
 	animator.play(weapon.name + "/walk")
@@ -18,7 +17,13 @@ func Update(delta : float):
 	if direction:
 		player.velocity.x = direction * SPEED
 	else:
+		player.velocity.x = 0
 		state_transition.emit(self,"Idle")
+		
+	#Handle Jumping
+	if(Input.is_action_just_pressed("U")):
+		player.velocity.y = -500
+		state_transition.emit(self,"Air")
 
 	player.move_and_slide()
 
