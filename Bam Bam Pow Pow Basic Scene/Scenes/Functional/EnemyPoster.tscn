@@ -1,9 +1,43 @@
-[gd_scene format=3 uid="uid://bs6fusk6ou32m"]
+[gd_scene load_steps=3 format=3 uid="uid://bs6fusk6ou32m"]
 
-[node name="EnemyPoster" type="Control"]
+[ext_resource type="Script" path="res://scripts/enemy_poster.gd" id="1_ckvq5"]
+[ext_resource type="Texture2D" uid="uid://bqf521dowy260" path="res://resources/sprites/scuffness.png" id="1_kpwf1"]
+
+[node name="EnemyPoster" type="Control" node_paths=PackedStringArray("enemy_picture")]
+custom_minimum_size = Vector2(450, 600)
 layout_mode = 3
+anchors_preset = 0
+offset_right = 450.0
+offset_bottom = 600.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+script = ExtResource("1_ckvq5")
+enemy_picture = NodePath("enemyPosterContentContainer/enemyPictureMarginContainer")
+
+[node name="posterBackground" type="ColorRect" parent="."]
+layout_mode = 2
+offset_right = 450.0
+offset_bottom = 600.0
+color = Color(0.259294, 0.259294, 0.259294, 1)
+
+[node name="enemyPosterContentContainer" type="MarginContainer" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="enemyPictureMarginContainer" type="MarginContainer" parent="enemyPosterContentContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="enemyPicture" type="TextureRect" parent="enemyPosterContentContainer/enemyPictureMarginContainer"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture = ExtResource("1_kpwf1")
