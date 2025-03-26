@@ -27,7 +27,8 @@ func _input(event):
 		Global.combo = 0
 		start.emit()
 		musicplayer.stream = Song
-		musicplayer.volume_db = musicplayer.volume_db - 10
+		if (musicplayer.volume_db > -10):
+			musicplayer.volume_db = musicplayer.volume_db - 10
 		musicplayer.play()
 
 func _process(delta):

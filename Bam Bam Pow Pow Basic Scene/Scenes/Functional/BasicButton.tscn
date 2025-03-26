@@ -37,6 +37,8 @@ size_flags_vertical = 0
 mouse_default_cursor_shape = 2
 text = "Main Menu"
 
+[node name="ButtonAudio" type="AudioStreamPlayer" parent="."]
+
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
