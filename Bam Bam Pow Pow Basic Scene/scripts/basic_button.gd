@@ -16,18 +16,19 @@
 extends NinePatchRect
 signal buttonPressed
 
-@onready var button = $"."
+@onready var button = $Button
+@export var tooltip: String
 
 ## Preload the image resources for basic/hover/pressed boxes
 var basicBox = preload("res://resources/sprites/button.png")
 var pressBox = preload("res://resources/sprites/button-just-pressed.png")
 var hoverBox = preload("res://resources/sprites/button-hover.png")
 
-
 var hover = false	# Variable for showing if hovering
 
 func _ready() -> void:
 	self.set_texture(basicBox)
+	#button.tooltip_text = tooltip
 
 # Only signal leaving scene, connect to parent scene like any other button press
 func _on_button_pressed():
