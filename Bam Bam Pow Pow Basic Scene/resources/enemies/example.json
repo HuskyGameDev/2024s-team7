@@ -1,0 +1,7 @@
+{
+	"name": "Example Enemy",
+	"description": "This is an example description for an enemy that is quite long",
+	"picture_path": "res://resources/sprites/scuffness.png",
+	"picture_location": "TOP_RIGHT",
+	"picture_margins": [0, 0, 20, 0]
+}

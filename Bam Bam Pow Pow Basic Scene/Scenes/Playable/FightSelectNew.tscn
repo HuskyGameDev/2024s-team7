@@ -141,6 +141,7 @@ size_flags_horizontal = 3
 
 [node name="rightHBoxContainer" type="HBoxContainer" parent="menuContainer/rightMenuContainer"]
 layout_mode = 2
+theme_override_constants/separation = 20
 alignment = 1
 
 [node name="leftVBoxContainer" type="VBoxContainer" parent="menuContainer/rightMenuContainer/rightHBoxContainer"]
@@ -149,7 +150,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="posterContainer" type="MarginContainer" parent="menuContainer/rightMenuContainer/rightHBoxContainer/leftVBoxContainer"]
-custom_minimum_size = Vector2(400, 500)
+custom_minimum_size = Vector2(450, 600)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
