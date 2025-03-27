@@ -5850,7 +5850,7 @@ states/special/position = Vector2(448.584, -40.7131)
 states/weapon/node = SubResource("AnimationNodeStateMachine_3saak")
 states/weapon/position = Vector2(309.584, -40.7131)
 transitions = ["idle", "punch", SubResource("AnimationNodeStateMachineTransition_6dmhu"), "punch", "idle", SubResource("AnimationNodeStateMachineTransition_djpjj"), "idle", "kick", SubResource("AnimationNodeStateMachineTransition_uojlm"), "kick", "idle", SubResource("AnimationNodeStateMachineTransition_d3lg6"), "idle", "weapon", SubResource("AnimationNodeStateMachineTransition_2hvxu"), "weapon", "idle", SubResource("AnimationNodeStateMachineTransition_np3x2"), "special", "idle", SubResource("AnimationNodeStateMachineTransition_agile"), "idle", "special", SubResource("AnimationNodeStateMachineTransition_n8eiu")]
-graph_offset = Vector2(-305.416, 16.377)
+graph_offset = Vector2(-305.416, -116.115)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7aige"]
 random_pitch = 1.97

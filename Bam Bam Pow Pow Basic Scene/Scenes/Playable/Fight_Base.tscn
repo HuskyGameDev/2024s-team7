@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/fight_base.gd" id="1_ifxgk"]
 [ext_resource type="PackedScene" uid="uid://cfx46l5ghyfp3" path="res://Scenes/Entities/Player/player.tscn" id="6_xn3vh"]
 [ext_resource type="PackedScene" uid="uid://cqhetuoqkeuty" path="res://Scenes/Entities/enemy.tscn" id="7_l7e77"]
-[ext_resource type="PackedScene" uid="uid://d4jjnsqepebtv" path="res://Scenes/Functional/FightBackground.tscn" id="8_evtkj"]
+[ext_resource type="PackedScene" uid="uid://kolwld1det5b" path="res://Scenes/Functional/FightBackground.tscn" id="8_evtkj"]
 [ext_resource type="PackedScene" uid="uid://b8vq6sc31q3x6" path="res://Scenes/Functional/combo.tscn" id="8_kxes6"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_my50q"]
