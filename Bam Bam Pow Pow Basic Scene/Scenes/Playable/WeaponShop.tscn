@@ -249,6 +249,7 @@ size_flags_vertical = 10
 material = SubResource("ShaderMaterial_vue0w")
 layout_mode = 2
 size_flags_horizontal = 3
+texture = null
 
 [node name="Label" type="Label" parent="MarginContainer/MenuButtonRow/MainMenu"]
 layout_mode = 1
@@ -272,6 +273,7 @@ vertical_alignment = 1
 material = SubResource("ShaderMaterial_w8y6o")
 layout_mode = 2
 size_flags_horizontal = 3
+texture = null
 
 [node name="Label" type="Label" parent="MarginContainer/MenuButtonRow/Settings"]
 layout_mode = 1
@@ -295,6 +297,7 @@ vertical_alignment = 1
 material = SubResource("ShaderMaterial_owe7p")
 layout_mode = 2
 size_flags_horizontal = 3
+texture = null
 
 [node name="Label" type="Label" parent="MarginContainer/MenuButtonRow/ItemShop"]
 layout_mode = 1
@@ -318,6 +321,7 @@ vertical_alignment = 1
 material = SubResource("ShaderMaterial_8e7f5")
 layout_mode = 2
 size_flags_horizontal = 3
+texture = null
 
 [node name="Label" type="Label" parent="MarginContainer/MenuButtonRow/FightScene"]
 layout_mode = 1
@@ -341,6 +345,7 @@ vertical_alignment = 1
 material = SubResource("ShaderMaterial_s6aln")
 layout_mode = 2
 size_flags_horizontal = 3
+texture = null
 
 [node name="Label" type="Label" parent="MarginContainer/MenuButtonRow/SaveGame"]
 layout_mode = 1
@@ -364,6 +369,7 @@ vertical_alignment = 1
 material = SubResource("ShaderMaterial_4futt")
 layout_mode = 2
 size_flags_horizontal = 3
+texture = null
 
 [node name="Label" type="Label" parent="MarginContainer/MenuButtonRow/LoadGame"]
 layout_mode = 1
