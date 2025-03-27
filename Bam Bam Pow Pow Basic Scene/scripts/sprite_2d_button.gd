@@ -14,6 +14,7 @@ signal mouse_exited
 @onready var hoverDivider = (self.hframes * self.vframes)/ 2
 
 @export var hoverWhiteStandard = false
+@export var soundStandard = false
 @onready var audio = $AudioPlayer
 const WOOD_CLICK = preload("res://resources/sounds/WoodClick.wav")
 const Snap = preload("res://resources/sounds/Snap.mp3")
@@ -27,10 +28,11 @@ func _ready():
 func _on_button_pressed():
 	SpriteButtonPressed.emit()	# Emits buttonPressed signal
 	#print("emit")	# Test if button is emitting
-	audio.stream = WOOD_CLICK
-	if (audio.volume_db != 0):
-		audio.volume_db = 0
-	audio.play()
+	if soundStandard:
+		audio.stream = WOOD_CLICK
+		if (audio.volume_db != 0):
+			audio.volume_db = 0
+		audio.play()
 	
 ## Color changes for hover/press using selfLayerEffects shader:
 
@@ -55,10 +57,11 @@ func removeWhite():
 
 func _on_button_mouse_entered():	# Hovering
 	self.material.set_shader_parameter("onoffSoftLight",1)		# Add soft light
-	audio.stream = Snap
-	if (audio.volume_db != -10):
-		audio.volume_db = -10
-	audio.play()
+	if soundStandard:
+		audio.stream = Snap
+		if (audio.volume_db != -10):
+			audio.volume_db = -10
+		audio.play()
 	if hoverWhiteStandard:
 		hoverWhite()
 	emit_signal("mouse_entered")
