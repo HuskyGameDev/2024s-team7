@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dk80ss5idciud"]
+[gd_scene load_steps=9 format=3 uid="uid://dk80ss5idciud"]
 
 [ext_resource type="Script" path="res://scripts/fight_base.gd" id="1_ifxgk"]
+[ext_resource type="Texture2D" uid="uid://btfkrmpw2jvl3" path="res://resources/sprites/Header/Header-Base.png" id="6_u6y6e"]
 [ext_resource type="PackedScene" uid="uid://cfx46l5ghyfp3" path="res://Scenes/Entities/Player/player.tscn" id="6_xn3vh"]
 [ext_resource type="PackedScene" uid="uid://cqhetuoqkeuty" path="res://Scenes/Entities/enemy.tscn" id="7_l7e77"]
-[ext_resource type="PackedScene" uid="uid://d4jjnsqepebtv" path="res://Scenes/Functional/FightBackground.tscn" id="8_evtkj"]
+[ext_resource type="PackedScene" uid="uid://kolwld1det5b" path="res://Scenes/Functional/FightBackground.tscn" id="8_evtkj"]
 [ext_resource type="PackedScene" uid="uid://b8vq6sc31q3x6" path="res://Scenes/Functional/combo.tscn" id="8_kxes6"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_my50q"]
@@ -37,6 +38,14 @@ position = Vector2(944, 448)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_u6y6e")
+
 [node name="combo indicator" type="Label" parent="CanvasLayer"]
 offset_left = 22.0
 offset_top = 18.0
@@ -47,10 +56,10 @@ theme_override_font_sizes/font_size = 25
 text = "COMBO"
 
 [node name="combo" type="Label" parent="CanvasLayer"]
-offset_left = 26.0
-offset_top = 56.0
-offset_right = 66.0
-offset_bottom = 130.0
+offset_left = 11.0
+offset_top = 40.0
+offset_right = 51.0
+offset_bottom = 114.0
 theme_override_colors/font_color = Color(0.94, 0.868717, 0.0846, 1)
 theme_override_font_sizes/font_size = 60
 text = "x"

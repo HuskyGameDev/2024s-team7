@@ -21,4 +21,8 @@ func _input(event):
 
 # Change header values when Enemy hit
 func _on_enemy_hit():
-	score_label.text = "Score: " + str(enemy.score)
+	score_label.text = "SCORE: " + str(enemy.score)
+
+
+func _on_exit_button_button_pressed():
+	SceneSwap.scene_swap("res://Scenes/Playable/ResultsScreen.tscn")

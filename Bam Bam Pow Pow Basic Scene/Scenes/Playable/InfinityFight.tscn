@@ -1,25 +1,77 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0bw77g0g86jq"]
+[gd_scene load_steps=6 format=3 uid="uid://c0bw77g0g86jq"]
 
 [ext_resource type="Script" path="res://scripts/infinity_fight.gd" id="1_bp1p6"]
 [ext_resource type="PackedScene" uid="uid://dk80ss5idciud" path="res://Scenes/Playable/Fight_Base.tscn" id="2_1h8e8"]
+[ext_resource type="PackedScene" uid="uid://dbc7vk84ewdqo" path="res://Scenes/Functional/BasicButton.tscn" id="3_iquwx"]
+[ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="4_fmdap"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5mpfo"]
+resource_local_to_scene = true
+shader = ExtResource("4_fmdap")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
 
 [node name="InfinityFightDraft" type="Node"]
 script = ExtResource("1_bp1p6")
 
 [node name="Fight_Base" parent="." instance=ExtResource("2_1h8e8")]
 
+[node name="combo indicator" parent="Fight_Base/CanvasLayer" index="1"]
+offset_left = 40.0
+offset_top = 16.0
+offset_right = 123.0
+offset_bottom = 47.0
+
+[node name="combo" parent="Fight_Base/CanvasLayer" index="2"]
+offset_left = 16.0
+offset_right = 56.0
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
 
 [node name="score" type="Label" parent="CanvasLayer"]
-offset_left = 539.0
-offset_top = 11.0
-offset_right = 679.0
-offset_bottom = 48.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = 24.0
+offset_right = 80.0
+offset_bottom = 61.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.941176, 0.870588, 0.0862745, 1)
 theme_override_font_sizes/font_size = 30
-text = "Score: "
+text = "SCORE: 0"
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitButton" parent="CanvasLayer" instance=ExtResource("3_iquwx")]
+material = SubResource("ShaderMaterial_5mpfo")
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_left = -176.0
+offset_top = 8.0
+offset_right = -24.0
+offset_bottom = 72.0
+grow_horizontal = 0
+grow_vertical = 1
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/ExitButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "Exit"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="hit" from="Fight_Base/enemy" to="." method="_on_enemy_hit"]
+[connection signal="buttonPressed" from="CanvasLayer/ExitButton" to="." method="_on_exit_button_button_pressed"]
 
 [editable path="Fight_Base"]
