@@ -1,9 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bs6fusk6ou32m"]
+[gd_scene load_steps=2 format=3 uid="uid://bs6fusk6ou32m"]
 
 [ext_resource type="Script" path="res://scripts/enemy_poster.gd" id="1_ckvq5"]
-[ext_resource type="Texture2D" uid="uid://bqf521dowy260" path="res://resources/sprites/scuffness.png" id="1_kpwf1"]
 
-[node name="EnemyPoster" type="Control" node_paths=PackedStringArray("enemy_picture")]
+[node name="EnemyPoster" type="Control" node_paths=PackedStringArray("enemy_vbox_container", "enemy_name_label", "enemy_picture_container", "enemy_picture", "enemy_description_label")]
 custom_minimum_size = Vector2(450, 600)
 layout_mode = 3
 anchors_preset = 0
@@ -12,7 +11,11 @@ offset_bottom = 600.0
 size_flags_horizontal = 0
 size_flags_vertical = 4
 script = ExtResource("1_ckvq5")
-enemy_picture = NodePath("enemyPosterContentContainer/enemyPictureMarginContainer")
+enemy_vbox_container = NodePath("posterContentContainer/contentVBoxContainer")
+enemy_name_label = NodePath("posterContentContainer/contentVBoxContainer/enemyNameLabel")
+enemy_picture_container = NodePath("posterContentContainer/contentVBoxContainer/enemyPictureMarginContainer")
+enemy_picture = NodePath("posterContentContainer/contentVBoxContainer/enemyPictureMarginContainer/enemyPicture")
+enemy_description_label = NodePath("posterContentContainer/contentVBoxContainer/enemyDescriptionLabel")
 
 [node name="posterBackground" type="ColorRect" parent="."]
 layout_mode = 2
@@ -20,7 +23,7 @@ offset_right = 450.0
 offset_bottom = 600.0
 color = Color(0.259294, 0.259294, 0.259294, 1)
 
-[node name="enemyPosterContentContainer" type="MarginContainer" parent="."]
+[node name="posterContentContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,12 +35,24 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="enemyPictureMarginContainer" type="MarginContainer" parent="enemyPosterContentContainer"]
+[node name="contentVBoxContainer" type="VBoxContainer" parent="posterContentContainer"]
+layout_mode = 2
+
+[node name="enemyNameLabel" type="Label" parent="posterContentContainer/contentVBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+horizontal_alignment = 1
+
+[node name="enemyPictureMarginContainer" type="MarginContainer" parent="posterContentContainer/contentVBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 4
+size_flags_vertical = 10
 
-[node name="enemyPicture" type="TextureRect" parent="enemyPosterContentContainer/enemyPictureMarginContainer"]
+[node name="enemyPicture" type="TextureRect" parent="posterContentContainer/contentVBoxContainer/enemyPictureMarginContainer"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
-texture = ExtResource("1_kpwf1")
+
+[node name="enemyDescriptionLabel" type="Label" parent="posterContentContainer/contentVBoxContainer"]
+custom_minimum_size = Vector2(410, 0)
+layout_mode = 2
+autowrap_mode = 3

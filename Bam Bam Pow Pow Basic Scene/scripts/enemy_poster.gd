@@ -1,34 +1,89 @@
 ## This is the scene which will display all the information about a specific
-## enemy. All of the configuration of that poster will be called through this 
-## script.
+## enemy. All of the configuration of that poster is provided via a JSON file.
 
 extends Control
 
-## This is the **container** holding the enemy picture on the poster. The name
-## is as such to simplify the code here.
-@export var enemy_picture: MarginContainer
+## This is the name of the enemy to load. This has to match the name of the JSON
+## file associated with this enemy.
+@export var enemy_to_load: String="example"
 
+## This is the container fo the enemy vbox.
+@export var enemy_vbox_container: VBoxContainer
 
-## This enum simplifies the adjustment to the size flags needed to move the
-## picture to the desired location.
-enum Location {
-	TOP_LEFT,
-	TOP_CENTER,
-	TOP_RIGHT,
-	CENTER_LEFT,
-	CENTER_CENTER,
-	CENTER_RIGHT,
-	BOTTOM_LEFT,
-	BOTTOM_CENTER,
-	BOTTOM_RIGHT
-}
+## This is the enemy name node.
+@export var enemy_name_label: Label
 
+## This is the **container** holding the enemy picture on the poster.
+@export var enemy_picture_container: MarginContainer
 
-## This is a temporary ready function to test out the values. This will be
-## replaced with a proper function to initialize based on some values.
+## This is the enemy picture node.
+@export var enemy_picture: TextureRect
+
+## This is the enemy description node.
+@export var enemy_description_label: Label
+	
+
+## This is the ready function for the enemy poster. This will setup all of the
+## variables for the enemy and make the poster look as directed by the JSON.
+##
+## Parameters:
+## None
+##
+## Returns:
+## void: This is a ready function with no return.
 func _ready() -> void:
-	set_picture_location(Location.BOTTOM_RIGHT)
-	set_picture_margins(0, 0, 200, 20)
+	var path = "res://resources/enemies/" + enemy_to_load + ".json"
+	var enemy = get_json(path)
+	set_enemy_name(enemy.name)
+	set_picture(enemy.picture_path)
+	set_picture_location(enemy.picture_location)
+	set_picture_margins(enemy.picture_margins)
+	set_enemy_description(enemy.description)
+	
+
+## Check to see if the JSON file exists, if so then retrieve its data.
+##
+## Parameters:
+## String	path: The path to the JSON file.
+##
+## Returns:
+## Dictionary: This is the data for the self.
+func get_json(path: String) -> Dictionary:
+	if FileAccess.file_exists(path):
+		var file = FileAccess.open(path, FileAccess.READ)
+		var data = JSON.parse_string(file.get_as_text())
+		if data is Dictionary:
+			return data
+		else:
+			printerr("Error reading from file.")
+			return {}
+	else:
+		printerr("Enemy file does not exist.")
+		return {}
+
+
+## This function will set the name of the enemy on the poster.
+##
+## Parameters:
+## String	enemy_name: The name of the enemy. Defaults to "No Name" if no name
+## is given.
+## 
+## Returns:
+## void: This is a setter with no return.
+func set_enemy_name(enemy_name: String="No Name") -> void:
+	enemy_name_label.text = enemy_name
+
+
+## This function will set the picture for the enemy poster.
+##
+## Parameters:
+## String	picture_path: The path to the picture for the enemy. Defaults to a
+## debug sprite if no path is specified.
+##
+## Returns:
+## void: This is a setter with no return.
+func set_picture(picture_path: String="res://resources/sprites/rhe_square.png") -> void:
+	enemy_picture.texture = load(picture_path)
 
 
 ## This function will set the picture location for the enemy's poster.
@@ -39,35 +94,41 @@ func _ready() -> void:
 ##
 ## Returns:
 ## void: This is a setter with no return.
-func set_picture_location(location: Location) -> void:
+func set_picture_location(location: String="TOP_LEFT") -> void:
 	match location:
-		Location.TOP_LEFT:
-			enemy_picture.size_flags_horizontal 	= Control.SIZE_SHRINK_BEGIN
-			enemy_picture.size_flags_vertical 	= Control.SIZE_SHRINK_BEGIN
-		Location.TOP_CENTER:
-			enemy_picture.size_flags_horizontal 	= Control.SIZE_SHRINK_CENTER
-			enemy_picture.size_flags_vertical 	= Control.SIZE_SHRINK_BEGIN
-		Location.TOP_RIGHT:
-			enemy_picture.size_flags_horizontal 	= Control.SIZE_SHRINK_END
-			enemy_picture.size_flags_vertical 	= Control.SIZE_SHRINK_BEGIN
-		Location.CENTER_LEFT:
-			enemy_picture.size_flags_horizontal 	= Control.SIZE_SHRINK_BEGIN
-			enemy_picture.size_flags_vertical 	= Control.SIZE_SHRINK_CENTER
-		Location.CENTER_CENTER:
-			enemy_picture.size_flags_horizontal 	= Control.SIZE_SHRINK_CENTER
-			enemy_picture.size_flags_vertical 	= Control.SIZE_SHRINK_CENTER
-		Location.CENTER_RIGHT:
-			enemy_picture.size_flags_horizontal 	= Control.SIZE_SHRINK_END
-			enemy_picture.size_flags_vertical 	= Control.SIZE_SHRINK_CENTER
-		Location.BOTTOM_LEFT:
-			enemy_picture.size_flags_horizontal 	= Control.SIZE_SHRINK_BEGIN
-			enemy_picture.size_flags_vertical 	= Control.SIZE_SHRINK_END
-		Location.BOTTOM_CENTER:
-			enemy_picture.size_flags_horizontal 	= Control.SIZE_SHRINK_CENTER
-			enemy_picture.size_flags_vertical 	= Control.SIZE_SHRINK_END
-		Location.BOTTOM_RIGHT:
-			enemy_picture.size_flags_horizontal 	= Control.SIZE_SHRINK_END
-			enemy_picture.size_flags_vertical 	= Control.SIZE_SHRINK_END
+		"TOP_LEFT":
+			enemy_picture_container.size_flags_horizontal 	= Control.SIZE_SHRINK_BEGIN
+			enemy_picture_container.size_flags_vertical 	= Control.SIZE_SHRINK_BEGIN
+		"TOP_CENTER":
+			enemy_picture_container.size_flags_horizontal 	= Control.SIZE_SHRINK_CENTER
+			enemy_picture_container.size_flags_vertical 	= Control.SIZE_SHRINK_BEGIN
+		"TOP_RIGHT":
+			enemy_picture_container.size_flags_horizontal 	= Control.SIZE_SHRINK_END
+			enemy_picture_container.size_flags_vertical 	= Control.SIZE_SHRINK_BEGIN
+		"CENTER_LEFT":
+			enemy_picture_container.size_flags_horizontal 	= Control.SIZE_SHRINK_BEGIN
+			enemy_picture_container.size_flags_vertical 	= Control.SIZE_SHRINK_CENTER
+		"CENTER_CENTER":
+			enemy_picture_container.size_flags_horizontal 	= Control.SIZE_SHRINK_CENTER
+			enemy_picture_container.size_flags_vertical 	= Control.SIZE_SHRINK_CENTER
+		"CENTER_RIGHT":
+			enemy_picture_container.size_flags_horizontal 	= Control.SIZE_SHRINK_END
+			enemy_picture_container.size_flags_vertical 	= Control.SIZE_SHRINK_CENTER
+		"BOTTOM_LEFT":
+			enemy_picture_container.size_flags_horizontal 	= Control.SIZE_SHRINK_BEGIN
+			enemy_picture_container.size_flags_vertical 	= Control.SIZE_SHRINK_END
+			enemy_picture_container.size_flags_vertical		+= Control.SIZE_EXPAND
+			enemy_vbox_container.move_child(enemy_description_label, 1)
+		"BOTTOM_CENTER":
+			enemy_picture_container.size_flags_horizontal 	= Control.SIZE_SHRINK_CENTER
+			enemy_picture_container.size_flags_vertical 	= Control.SIZE_SHRINK_END
+			enemy_picture_container.size_flags_vertical		+= Control.SIZE_EXPAND
+			enemy_vbox_container.move_child(enemy_description_label, 1)
+		"BOTTOM_RIGHT":
+			enemy_picture_container.size_flags_horizontal 	= Control.SIZE_SHRINK_END
+			enemy_picture_container.size_flags_vertical 	= Control.SIZE_SHRINK_END
+			enemy_picture_container.size_flags_vertical		+= Control.SIZE_EXPAND
+			enemy_vbox_container.move_child(enemy_description_label, 1)
 
 
 ## This function will set the picture margins for the enemy's poster. This
@@ -80,15 +141,25 @@ func set_picture_location(location: Location) -> void:
 ## on the right side of the image moving it to the left.
 ##
 ## Parameters:
-## int	left	: The left margin for the picture.
-## int	top		: The top margin for the picture.
-## int	right	: The right margin for the picture.
-## int	bottom	: The bottom margin for the picture.
+## Array[int]	margins: This is the array of margins for the picture. The order
+## of margins is as follows: left, top, right, bottom.
 ##
 ## Returns:
 ## void: This is a setter with no return.
-func set_picture_margins(left: int, top: int, right: int, bottom: int) -> void:
-	enemy_picture.add_theme_constant_override("margin_left", left)
-	enemy_picture.add_theme_constant_override("margin_top", top)
-	enemy_picture.add_theme_constant_override("margin_right", right)
-	enemy_picture.add_theme_constant_override("margin_bottom", bottom)
+func set_picture_margins(margins: Array) -> void:
+	enemy_picture_container.add_theme_constant_override("margin_left", margins[0])
+	enemy_picture_container.add_theme_constant_override("margin_top", margins[1])
+	enemy_picture_container.add_theme_constant_override("margin_right", margins[2])
+	enemy_picture_container.add_theme_constant_override("margin_bottom", margins[3])
+	
+
+## This function will set the enemy description to the desired description.
+## 
+## Paramteres:
+## String	description: This is the description for the enemy on the poster.
+## This value defaults to "No description" if nothing is passed to it.
+## 
+## Returns:
+## void: This is a setter with no return.
+func set_enemy_description(description: String="No description") -> void:
+	enemy_description_label.text = description
