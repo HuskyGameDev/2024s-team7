@@ -10,24 +10,33 @@ extends Sprite2D
 signal SpriteButtonPressed
 signal mouse_entered
 signal mouse_exited
+signal button_down
+signal button_up
+
+
 @onready var button = $Button
 @onready var hoverDivider = (self.hframes * self.vframes)/ 2
-
-@export var hoverWhiteStandard = false
-@export var soundStandard = false
 @onready var audio = $AudioPlayer
 const WOOD_CLICK = preload("res://resources/sounds/WoodClick.wav")
 const Snap = preload("res://resources/sounds/Snap.mp3")
+
+@export var hoverWhiteStandard = false
+@export var pressStandard = false
+@export var soundStandard = false
+# Haven't gotten tooltip to show up yet :pensive:
+@export var tooltip: String
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Make button resize to Sprite2d given image
 	button.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	button.tooltip_text = tooltip
 
-# Only signal leaving scene, connect to parent scene like any other button press
+# Connect to parent scene like any other button press
 func _on_button_pressed():
 	SpriteButtonPressed.emit()	# Emits buttonPressed signal
 	#print("emit")	# Test if button is emitting
+
 	if soundStandard:
 		audio.stream = WOOD_CLICK
 		if (audio.volume_db != 0):
@@ -41,10 +50,21 @@ func _on_button_pressed():
 
 func _on_button_button_down():		# Pressed
 	self.material.set_shader_parameter("onoffMult",1)		# Add multiply
-	
+	if pressStandard:
+		pressSprite()
+	button_down.emit()
+
 func _on_button_button_up():		# Removed Press
 	self.material.set_shader_parameter("onoffMult",0)		# Remove multiply
-	
+	if pressStandard:
+		unpressSprite()
+	button_up.emit()
+
+func pressSprite():
+	self.frame = frame + 1
+
+func unpressSprite():
+	self.frame = frame - 1
 
 ##-----------
 ## Determine if hover, add white outline and softlight
@@ -57,15 +77,16 @@ func removeWhite():
 
 func _on_button_mouse_entered():	# Hovering
 	self.material.set_shader_parameter("onoffSoftLight",1)		# Add soft light
+  
 	if soundStandard:
 		audio.stream = Snap
 		if (audio.volume_db != -10):
 			audio.volume_db = -10
 		audio.play()
+
 	if hoverWhiteStandard:
 		hoverWhite()
 	emit_signal("mouse_entered")
-	
 
 func _on_button_mouse_exited():		# Removed Hover
 	self.material.set_shader_parameter("onoffSoftLight",0)		# Remove soft light

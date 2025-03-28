@@ -1,12 +1,20 @@
-[gd_scene load_steps=15 format=3 uid="uid://cysbblmbob7en"]
+[gd_scene load_steps=52 format=3 uid="uid://cysbblmbob7en"]
 
 [ext_resource type="PackedScene" uid="uid://cc1ttocg7gplt" path="res://Scenes/Functional/Sprite2DButton.tscn" id="1_2csh0"]
 [ext_resource type="Script" path="res://scripts/selection_screen.gd" id="1_3w0n4"]
 [ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="2_02nd3"]
-[ext_resource type="Texture2D" uid="uid://gsxrtqcvy00b" path="res://resources/sprites/mspaint-selection-sprites.png" id="3_yrbh0"]
-[ext_resource type="Texture2D" uid="uid://dq0i2jj267tyg" path="res://resources/sprites/glassy-readies-to-fight.png" id="5_p5qbc"]
-[ext_resource type="Texture2D" uid="uid://bk7k0bqeq67ok" path="res://resources/sprites/backtofight.png" id="6_vgn0f"]
-[ext_resource type="Texture2D" uid="uid://rxy7xur8xqgl" path="res://resources/sprites/mspaint-coins-sheet.png" id="7_js4j1"]
+[ext_resource type="Texture2D" uid="uid://c3suhak1xeafx" path="res://resources/sprites/selection-bg.png" id="2_f0mvq"]
+[ext_resource type="Texture2D" uid="uid://uoxctx3deby6" path="res://resources/sprites/top-buttons-selection.png" id="5_x4udo"]
+[ext_resource type="Texture2D" uid="uid://c5wi6a5lrvj6a" path="res://resources/sprites/coins-spritesheet.png" id="6_fegfi"]
+[ext_resource type="Texture2D" uid="uid://bypoceminx2ql" path="res://resources/sprites/fight-button-bg-spritesheet.png" id="8_18q6b"]
+[ext_resource type="Texture2D" uid="uid://3gwkabw1b3k7" path="res://resources/sprites/pig-sprite-sheet.png" id="9_d8k4x"]
+[ext_resource type="Texture2D" uid="uid://db2iebnpu3co4" path="res://resources/sprites/pig-speech-bubble.png" id="9_gv7qy"]
+[ext_resource type="Texture2D" uid="uid://4hnd6pxd81q1" path="res://resources/sprites/fists-punchy-spritesheet.png" id="9_mvk3h"]
+[ext_resource type="Texture2D" uid="uid://cl5jqbdyfjv4h" path="res://resources/sprites/Coin.png" id="10_vrpda"]
+[ext_resource type="Texture2D" uid="uid://cngisaqxws5w8" path="res://resources/sprites/campaign-button-sprite_sheet.png" id="12_h5v5y"]
+[ext_resource type="Texture2D" uid="uid://cd677kcyfk448" path="res://resources/sprites/training-button-spritesheet.png" id="13_68j8t"]
+[ext_resource type="Texture2D" uid="uid://5leqnax6w6ig" path="res://resources/sprites/glassy-readies-spritesheet.png" id="13_ycg0v"]
+[ext_resource type="AudioStream" uid="uid://b2g7xb2nbo5ju" path="res://resources/sounds/oink.mp3" id="14_05pke"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yw7w7"]
 resource_local_to_scene = true
@@ -50,18 +58,305 @@ shader = ExtResource("2_02nd3")
 shader_parameter/onoffMult = false
 shader_parameter/onoffSoftLight = false
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_15i1s"]
+atlas = ExtResource("9_mvk3h")
+region = Rect2(0, 200, 199, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlp5f"]
+atlas = ExtResource("9_mvk3h")
+region = Rect2(199, 200, 199, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7wj6"]
+atlas = ExtResource("9_mvk3h")
+region = Rect2(398, 200, 199, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rsp2"]
+atlas = ExtResource("9_mvk3h")
+region = Rect2(597, 200, 199, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gu0f4"]
+atlas = ExtResource("9_mvk3h")
+region = Rect2(0, 0, 199, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5u8bv"]
+atlas = ExtResource("9_mvk3h")
+region = Rect2(199, 0, 199, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hsjcu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15i1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlp5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7wj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rsp2")
+}],
+"loop": true,
+"name": &"hoverPunch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 6.0,
+"texture": SubResource("AtlasTexture_gu0f4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5u8bv")
+}],
+"loop": true,
+"name": &"idleFists",
+"speed": 1.25
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b8kxh"]
+resource_local_to_scene = true
+shader = ExtResource("2_02nd3")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ic0gc"]
+resource_local_to_scene = true
+shader = ExtResource("2_02nd3")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xbpjb"]
+resource_local_to_scene = true
+shader = ExtResource("2_02nd3")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u63jx"]
+atlas = ExtResource("13_ycg0v")
+region = Rect2(0, 0, 296, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8k4t7"]
+atlas = ExtResource("13_ycg0v")
+region = Rect2(296, 0, 296, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4eoog"]
+atlas = ExtResource("13_ycg0v")
+region = Rect2(592, 0, 296, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcn6l"]
+atlas = ExtResource("13_ycg0v")
+region = Rect2(888, 0, 296, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0l18"]
+atlas = ExtResource("13_ycg0v")
+region = Rect2(0, 282, 296, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5oopf"]
+atlas = ExtResource("13_ycg0v")
+region = Rect2(296, 282, 296, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpmmq"]
+atlas = ExtResource("13_ycg0v")
+region = Rect2(592, 282, 296, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfhd8"]
+atlas = ExtResource("13_ycg0v")
+region = Rect2(888, 282, 296, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ff3m6"]
+atlas = ExtResource("13_ycg0v")
+region = Rect2(0, 564, 296, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0a2ux"]
+atlas = ExtResource("13_ycg0v")
+region = Rect2(296, 564, 296, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_586wj"]
+atlas = ExtResource("13_ycg0v")
+region = Rect2(592, 564, 296, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otei5"]
+atlas = ExtResource("13_ycg0v")
+region = Rect2(888, 564, 296, 282)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5nmx0"]
+animations = [{
+"frames": [{
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_u63jx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8k4t7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4eoog")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcn6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0l18")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5oopf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpmmq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfhd8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ff3m6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0a2ux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_586wj")
+}, {
+"duration": 50.0,
+"texture": SubResource("AtlasTexture_otei5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otei5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_586wj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0a2ux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ff3m6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfhd8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpmmq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5oopf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0l18")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcn6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4eoog")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8k4t7")
+}, {
+"duration": 50.0,
+"texture": SubResource("AtlasTexture_u63jx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.5
+}]
+
+[sub_resource type="Animation" id="Animation_7jm8d"]
+resource_name = "FightButton"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_pfvnd"]
+resource_name = "HoverFightButton"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.766667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_su6js"]
+resource_name = "HoverPressFightButton"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.733333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_cu536"]
+resource_name = "PressFightButton"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_57xjt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7h4ab"]
+_data = {
+"FightButton": SubResource("Animation_7jm8d"),
+"HoverFightButton": SubResource("Animation_pfvnd"),
+"HoverPressFightButton": SubResource("Animation_su6js"),
+"PressFightButton": SubResource("Animation_cu536"),
+"RESET": SubResource("Animation_57xjt")
+}
+
 [node name="Node" type="Node"]
 script = ExtResource("1_3w0n4")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-color = Color(0.395117, 0.65967, 0.812274, 1)
+texture = ExtResource("2_f0mvq")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 5
@@ -83,51 +378,70 @@ metadata/_edit_group_ = true
 [node name="Settings" parent="VBoxContainer/SceneSwaps" instance=ExtResource("1_2csh0")]
 material = SubResource("ShaderMaterial_yw7w7")
 position = Vector2(105, 65)
-scale = Vector2(1.25, 1.25)
-texture = ExtResource("3_yrbh0")
-hframes = 6
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("5_x4udo")
+hframes = 4
+vframes = 3
+hoverWhiteStandard = true
+tooltip = "Settings"
 
 [node name="ItemShop" parent="VBoxContainer/SceneSwaps" instance=ExtResource("1_2csh0")]
 material = SubResource("ShaderMaterial_m2vd8")
 position = Vector2(318, 65)
-scale = Vector2(1.25, 1.25)
-texture = ExtResource("3_yrbh0")
-hframes = 6
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("5_x4udo")
+hframes = 4
+vframes = 3
 frame = 1
+hoverWhiteStandard = true
+tooltip = "Item Shop"
 
 [node name="WeaponShop" parent="VBoxContainer/SceneSwaps" instance=ExtResource("1_2csh0")]
 material = SubResource("ShaderMaterial_ef103")
 position = Vector2(531, 65)
-scale = Vector2(1.25, 1.25)
-texture = ExtResource("3_yrbh0")
-hframes = 6
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("5_x4udo")
+hframes = 4
+vframes = 3
 frame = 2
+hoverWhiteStandard = true
+tooltip = "Weapon Shop"
 
 [node name="Inventory" parent="VBoxContainer/SceneSwaps" instance=ExtResource("1_2csh0")]
 material = SubResource("ShaderMaterial_xfrew")
 position = Vector2(747, 65)
-scale = Vector2(1.25, 1.25)
-texture = ExtResource("3_yrbh0")
-hframes = 6
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("5_x4udo")
+hframes = 4
+vframes = 3
 frame = 3
+hoverWhiteStandard = true
+tooltip = "Inventory"
 
 [node name="Save" parent="VBoxContainer/SceneSwaps" instance=ExtResource("1_2csh0")]
 material = SubResource("ShaderMaterial_1k2a6")
 position = Vector2(963, 65)
-scale = Vector2(1.25, 1.25)
-texture = ExtResource("3_yrbh0")
-hframes = 6
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("5_x4udo")
+hframes = 4
+vframes = 3
 frame = 4
+hoverWhiteStandard = true
+tooltip = "Save"
 
 [node name="Exit" parent="VBoxContainer/SceneSwaps" instance=ExtResource("1_2csh0")]
 material = SubResource("ShaderMaterial_7s51m")
 position = Vector2(1174, 66)
-scale = Vector2(1.25, 1.25)
-texture = ExtResource("3_yrbh0")
-hframes = 6
+scale = Vector2(2.3, 2.3)
+texture = ExtResource("5_x4udo")
+hframes = 4
+vframes = 3
 frame = 5
+hoverWhiteStandard = true
+tooltip = "Exit"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="SettingsLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
@@ -166,45 +480,105 @@ size_flags_horizontal = 6
 theme_override_font_sizes/font_size = 20
 text = "Exit"
 
-[node name="Glassy" type="Sprite2D" parent="."]
-position = Vector2(663, 463)
-scale = Vector2(2.31818, 2.31818)
-texture = ExtResource("5_p5qbc")
+[node name="Coins" type="Sprite2D" parent="."]
+position = Vector2(320, 360)
+scale = Vector2(2, 2)
+texture = ExtResource("6_fegfi")
+hframes = 4
+vframes = 2
 
 [node name="BackToFight" parent="." instance=ExtResource("1_2csh0")]
 material = SubResource("ShaderMaterial_7adcm")
-position = Vector2(1047, 446)
-scale = Vector2(1.23077, 1.23077)
-texture = ExtResource("6_vgn0f")
+position = Vector2(1061, 368)
+scale = Vector2(2, 2)
+texture = ExtResource("8_18q6b")
+hframes = 4
+vframes = 2
+metadata/_edit_group_ = true
 
-[node name="coinsLabel" type="Label" parent="."]
-offset_left = 88.0
-offset_top = 255.0
-offset_right = 188.0
-offset_bottom = 286.0
-theme_override_font_sizes/font_size = 25
-text = "Coins:"
+[node name="Punchy" type="AnimatedSprite2D" parent="BackToFight"]
+sprite_frames = SubResource("SpriteFrames_hsjcu")
+animation = &"hoverPunch"
+autoplay = "idleFists"
 
-[node name="Coins" type="Sprite2D" parent="."]
-position = Vector2(210, 502)
-scale = Vector2(1.25439, 1.52741)
-texture = ExtResource("7_js4j1")
-hframes = 7
-frame = 6
+[node name="PigSpeech" type="Sprite2D" parent="."]
+position = Vector2(264, 408)
+scale = Vector2(2, 2)
+texture = ExtResource("9_gv7qy")
 
-[node name="FightTypeLabel" type="Label" parent="."]
-offset_left = 892.0
-offset_top = 624.0
-offset_right = 1105.0
-offset_bottom = 673.0
-theme_override_font_sizes/font_size = 40
-text = "Training"
+[node name="MarginContainer" type="MarginContainer" parent="PigSpeech"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = -24.0
+offset_right = -71.0
+offset_bottom = -52.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
 
-[node name="FightTypeSwitch" type="CheckButton" parent="."]
-offset_left = 1121.0
-offset_top = 643.0
-offset_right = 1165.0
-offset_bottom = 667.0
+[node name="coinsLabel" type="Label" parent="PigSpeech/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 20
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+max_lines_visible = 2
+
+[node name="Coin" type="Sprite2D" parent="PigSpeech"]
+position = Vector2(-36, -24)
+texture = ExtResource("10_vrpda")
+
+[node name="PiggyBank" parent="." instance=ExtResource("1_2csh0")]
+material = SubResource("ShaderMaterial_b8kxh")
+position = Vector2(136, 552)
+scale = Vector2(2, 2)
+texture = ExtResource("9_d8k4x")
+hframes = 5
+frame = 1
+
+[node name="CampaignButton" parent="." instance=ExtResource("1_2csh0")]
+z_index = 1
+material = SubResource("ShaderMaterial_ic0gc")
+position = Vector2(976, 624)
+scale = Vector2(2, 2)
+texture = ExtResource("12_h5v5y")
+hframes = 2
+vframes = 2
+hoverWhiteStandard = true
+metadata/_edit_group_ = true
+
+[node name="TrainingButton" parent="." instance=ExtResource("1_2csh0")]
+material = SubResource("ShaderMaterial_xbpjb")
+position = Vector2(1146, 624)
+scale = Vector2(2, 2)
+texture = ExtResource("13_68j8t")
+hframes = 2
+vframes = 2
+frame = 1
+hoverWhiteStandard = true
+
+[node name="Glassy" type="AnimatedSprite2D" parent="."]
+position = Vector2(645, 440)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_5nmx0")
+autoplay = "default"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../BackToFight")
+libraries = {
+"": SubResource("AnimationLibrary_7h4ab")
+}
+autoplay = "FightButton"
+speed_scale = 0.2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_05pke")
 
 [connection signal="SpriteButtonPressed" from="VBoxContainer/SceneSwaps/Settings" to="." method="_on_settings_sprite_button_pressed"]
 [connection signal="SpriteButtonPressed" from="VBoxContainer/SceneSwaps/ItemShop" to="." method="_on_item_shop_sprite_button_pressed"]
@@ -213,4 +587,11 @@ offset_bottom = 667.0
 [connection signal="SpriteButtonPressed" from="VBoxContainer/SceneSwaps/Save" to="." method="_on_save_sprite_button_pressed"]
 [connection signal="SpriteButtonPressed" from="VBoxContainer/SceneSwaps/Exit" to="." method="_on_exit_sprite_button_pressed"]
 [connection signal="SpriteButtonPressed" from="BackToFight" to="." method="_on_back_to_fight_sprite_button_pressed"]
-[connection signal="toggled" from="FightTypeSwitch" to="." method="_on_fight_type_switch_toggled"]
+[connection signal="button_down" from="BackToFight" to="." method="_on_back_to_fight_button_down"]
+[connection signal="button_up" from="BackToFight" to="." method="_on_back_to_fight_button_up"]
+[connection signal="mouse_entered" from="BackToFight" to="." method="_on_back_to_fight_mouse_entered"]
+[connection signal="mouse_exited" from="BackToFight" to="." method="_on_back_to_fight_mouse_exited"]
+[connection signal="SpriteButtonPressed" from="PiggyBank" to="." method="_on_piggy_bank_sprite_button_pressed"]
+[connection signal="SpriteButtonPressed" from="CampaignButton" to="." method="_on_campaign_button_sprite_button_pressed"]
+[connection signal="SpriteButtonPressed" from="TrainingButton" to="." method="_on_training_button_sprite_button_pressed"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

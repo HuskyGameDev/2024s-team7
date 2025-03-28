@@ -37,7 +37,7 @@ func _ready():
 		"He's just a lil' guy that would die in one hit",
 		1,
 		"res://resources/sprites/lvl1gob-mspaint-spritesheet.png",
-		"dungeon",
+		"cave",
 		30,
 		false,
 		true,
