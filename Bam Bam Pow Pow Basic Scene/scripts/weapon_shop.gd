@@ -131,7 +131,10 @@ func _on_buy_button_pressed():
 func _on_equip_button_pressed():
 	var i = WeaponInShop.currentInstance
 	var weaponName = WeaponInShop.weapons_list[i]["weaponName"].to_lower()
-	if (name == "spear"):
+	if (weaponName == "spear"):
+		ItemStorage.equipped_weapon = weaponName
+		print(ItemStorage.equipped_weapon)
+	elif (weaponName == "unarmed"):
 		ItemStorage.equipped_weapon = weaponName
 		print(ItemStorage.equipped_weapon)
 	else:

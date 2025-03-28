@@ -13,11 +13,17 @@ signal mouse_exited
 signal button_down
 signal button_up
 
+
 @onready var button = $Button
 @onready var hoverDivider = (self.hframes * self.vframes)/ 2
+@onready var audio = $AudioPlayer
+const WOOD_CLICK = preload("res://resources/sounds/WoodClick.wav")
+const Snap = preload("res://resources/sounds/Snap.mp3")
 
 @export var hoverWhiteStandard = false
 @export var pressStandard = false
+@export var soundStandard = false
+# Haven't gotten tooltip to show up yet :pensive:
 @export var tooltip: String
 
 # Called when the node enters the scene tree for the first time.
@@ -26,10 +32,16 @@ func _ready():
 	button.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	button.tooltip_text = tooltip
 
-# Only signal leaving scene, connect to parent scene like any other button press
+# Connect to parent scene like any other button press
 func _on_button_pressed():
 	SpriteButtonPressed.emit()	# Emits buttonPressed signal
 	#print("emit")	# Test if button is emitting
+
+	if soundStandard:
+		audio.stream = WOOD_CLICK
+		if (audio.volume_db != 0):
+			audio.volume_db = 0
+		audio.play()
 	
 ## Color changes for hover/press using selfLayerEffects shader:
 
@@ -65,6 +77,13 @@ func removeWhite():
 
 func _on_button_mouse_entered():	# Hovering
 	self.material.set_shader_parameter("onoffSoftLight",1)		# Add soft light
+  
+	if soundStandard:
+		audio.stream = Snap
+		if (audio.volume_db != -10):
+			audio.volume_db = -10
+		audio.play()
+
 	if hoverWhiteStandard:
 		hoverWhite()
 	emit_signal("mouse_entered")

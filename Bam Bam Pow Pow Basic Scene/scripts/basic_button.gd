@@ -17,12 +17,15 @@ extends NinePatchRect
 signal buttonPressed
 
 @onready var button = $Button
+@onready var audio = $ButtonAudio
 @export var tooltip: String
 
 ## Preload the image resources for basic/hover/pressed boxes
 var basicBox = preload("res://resources/sprites/button.png")
 var pressBox = preload("res://resources/sprites/button-just-pressed.png")
 var hoverBox = preload("res://resources/sprites/button-hover.png")
+const WOOD_CLICK = preload("res://resources/sounds/WoodClick.wav")
+const Snap = preload("res://resources/sounds/Snap.mp3")
 
 var hover = false	# Variable for showing if hovering
 
@@ -51,6 +54,10 @@ func _on_button_button_up():		# On press removed:
 
 func _on_button_button_down():	# On press:
 	self.set_texture(pressBox)	# Set texture to press
+	audio.stream = WOOD_CLICK
+	if (audio.volume_db != 0):
+		audio.volume_db = 0
+	audio.play()
 	#self.material.set_shader_parameter("onoffMult",1)		# Add multiply
 
 
@@ -60,6 +67,10 @@ func _on_button_button_down():	# On press:
 func _on_button_mouse_entered():		# On hover:
 	self.set_texture(hoverBox)		# Set texture to hover
 	hover = true		# Is hovering
+	audio.stream = Snap
+	if (audio.volume_db != -10):
+		audio.volume_db = -10
+	audio.play()
 	#self.material.set_shader_parameter("onoffSoftLight",1)		# Add soft light
 
 func _on_button_mouse_exited():		# On hover removed:
