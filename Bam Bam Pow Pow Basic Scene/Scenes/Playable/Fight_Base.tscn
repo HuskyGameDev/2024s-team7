@@ -39,6 +39,7 @@ position = Vector2(944, 448)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0.796078)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
