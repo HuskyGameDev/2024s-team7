@@ -33,6 +33,7 @@ directories/dch_directory={
 "Glassy": "res://dialogic/characters/Glassy.dch"
 }
 directories/dtl_directory={
+"SavedNotification": "res://dialogic/timelines/SavedNotification.dtl",
 "itemDescriptions": "res://dialogic/timelines/itemDescriptions.dtl",
 "itemShop": "res://dialogic/timelines/itemShop.dtl",
 "weaponShop": "res://dialogic/timelines/weaponShop.dtl"

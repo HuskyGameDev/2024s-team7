@@ -43,7 +43,7 @@ func _input(event):
 
 func _on_load_game_button_pressed():
 	ItemStorage.load_game()
-	SceneSwap.scene_swap("res://Scenes/Playable/InfinityFight.tscn")
+	SceneSwap.scene_swap("res://Scenes/Playable/SelectionScreen.tscn")
 	
 func _on_new_game_button_pressed():
 	FightDetails.infinity = false
