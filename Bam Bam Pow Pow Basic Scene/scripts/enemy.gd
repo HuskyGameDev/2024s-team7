@@ -234,7 +234,7 @@ func calc_money():
 	var addedtotal: int = score * money_mult
 	Global.added_coins = addedtotal
 	Global.score = score
-	ItemStorage.money += (addedtotal)
+	#ItemStorage.money += (addedtotal)
 	# SceneSwap.scene_swap("res://Scenes/Playable/ResultsScreen.tscn")
 
 func _on_player_attack(attack):

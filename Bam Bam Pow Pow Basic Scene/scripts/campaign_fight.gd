@@ -10,7 +10,6 @@
 ## TODO:
 ## Dialogic interaction with enemies (Issue #28)
 ## Some special event on fight end (win, lose)
-## On loss lose coins as hospital bill
 
 extends Node
 
@@ -24,12 +23,14 @@ extends Node
 @onready var timeLabel = $CanvasLayer/TimeLabel
 @onready var timerSprite = $CanvasLayer/TimerSprite
 @onready var audio_timer: AudioStreamPlayer = $AudioTimer
+@onready var canvas_layer = $CanvasLayer
 
 @onready var currentEnemy = FightDetails.op_list[FightDetails.op_progress]
 @onready var currentEnemyIndex = FightDetails.op_progress
 
 @onready var done = false
 @onready var fiveSecond_noise = preload("res://resources/sounds/fiveseconds.wav")
+var results = preload("res://Scenes/Playable/ResultsScreen.tscn").instantiate()
 
 func _ready():
 	# Set fight type to Campaign
@@ -78,12 +79,16 @@ func healthChanged():
 func defeatEnemy():
 	# Change all necessary values given fight ended
 	done = true
+	FightDetails.win = true
 	enemy.calc_money()
+	
+	Global.time_left = timer.time_left
+	
 	# # Set the global value of whether opponent has ever been defeated
 	if (!currentEnemy["defeated"]):
 		currentEnemy["defeated"] = true
 		#FightDetails.newWeaponNotification = true
-		
+	
 	# Set current enemy to the next in list
 	#
 	# Check if reached end of enemies
@@ -91,23 +96,25 @@ func defeatEnemy():
 		FightDetails.op_progress = currentEnemyIndex + 1
 		print("went to next guy")
 		print("fight num: ",FightDetails.op_progress)
-		SceneSwap.scene_swap("res://Scenes/Playable/ResultsScreen.tscn")
-	# If reached end, leave Campaign
-	else:
-		SceneSwap.scene_swap("res://Scenes/Playable/ResultsScreen.tscn")
+	timer.stop()
+	canvas_layer.add_child(results)
+	#SceneSwap.scene_swap("res://Scenes/Playable/ResultsScreen.tscn")
 
 ## Function that runs when timer runs out
 ## Changes scene
 func _on_timer_timeout():
 	enemy.calc_money()
 	if (enemy.current_health > 0):
-		SceneSwap.scene_swap("res://Scenes/Playable/ResultsScreen.tscn")
+		FightDetails.win = false
+		timer.stop()
+		canvas_layer.add_child(results)
+		#SceneSwap.scene_swap("res://Scenes/Playable/ResultsScreen.tscn")
 
 # Start timer when Fight Base starts fight
 func _on_fight_base_start():
 	timer.wait_time = ItemStorage.time
 	timer.start()
-
+	
 # Go to settings on esc
 func _input(event):
 	if Input.is_action_just_pressed('Esc'):

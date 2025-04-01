@@ -6,6 +6,7 @@ var animation = ""
 var newWeaponNotification = false
 
 var high_score = 0
+var win = false
 
 var op_list = []			# List of opponent detail dictionaries in order of the fights
 var op_progress = 0		# Which opponent fight player has made it to
@@ -45,7 +46,7 @@ func _ready():
 		false,
 		true,
 		"fire",
-		0,
+		50,
 		[
 			"ooooooooooooooooooooooooooooooooo",
 			"i'm jst a small liddle goblin",
@@ -63,7 +64,7 @@ func _ready():
 		false,
 		true,
 		"light",
-		0,
+		50,
 		[
 			"Hello! Loser >:D"
 		]
@@ -79,7 +80,7 @@ func _ready():
 		false,
 		true,
 		"",
-		0,
+		50,
 		[
 			"..."
 		]
@@ -95,7 +96,7 @@ func _ready():
 		false,
 		true,
 		"light",
-		0,
+		50,
 		[
 			"Hmmmmmmmm"
 		]
