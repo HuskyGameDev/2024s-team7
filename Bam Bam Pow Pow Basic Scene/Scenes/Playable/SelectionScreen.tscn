@@ -363,9 +363,8 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -639.0
-offset_top = 16.0
 offset_right = 639.0
-offset_bottom = 190.0
+offset_bottom = 174.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 metadata/_edit_group_ = true
@@ -441,7 +440,6 @@ hoverWhiteStandard = true
 tooltip = "Exit"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-visible = false
 layout_mode = 2
 
 [node name="SettingsLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
@@ -541,6 +539,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("9_d8k4x")
 hframes = 5
 frame = 1
+soundStandard = false
 
 [node name="CampaignButton" parent="." instance=ExtResource("1_2csh0")]
 z_index = 1

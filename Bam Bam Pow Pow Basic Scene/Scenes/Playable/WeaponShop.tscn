@@ -1,15 +1,19 @@
-[gd_scene load_steps=23 format=3 uid="uid://c7hqp2kuj8xq5"]
+[gd_scene load_steps=22 format=3 uid="uid://c7hqp2kuj8xq5"]
 
 [ext_resource type="Script" path="res://scripts/weapon_shop.gd" id="1_wkwj5"]
 [ext_resource type="Texture2D" uid="uid://dxunmhf25os5p" path="res://resources/sprites/dragon-in-shop.png" id="2_7m3va"]
 [ext_resource type="Texture2D" uid="uid://dc36bpll4ldvy" path="res://resources/sprites/background-itemshop.png" id="2_8ayfd"]
 [ext_resource type="PackedScene" uid="uid://5n0srb1iavr0" path="res://Scenes/Entities/hanger.tscn" id="3_01yxm"]
 [ext_resource type="PackedScene" uid="uid://cc1ttocg7gplt" path="res://Scenes/Functional/Sprite2DButton.tscn" id="5_8vjnh"]
-[ext_resource type="Texture2D" uid="uid://csaod2ht6ymhf" path="res://resources/sprites/next-prev.png" id="5_75nm7"]
 [ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="6_el8qg"]
+[ext_resource type="Texture2D" uid="uid://cdagg8ov4jnos" path="res://resources/sprites/button.png" id="6_rmsbf"]
+[ext_resource type="FontFile" uid="uid://bsodwni6sfoxc" path="res://resources/fonts/PixeloidSans-Bold.ttf" id="7_ietxf"]
 [ext_resource type="PackedScene" uid="uid://dbc7vk84ewdqo" path="res://Scenes/Functional/BasicButton.tscn" id="7_l0lf5"]
 [ext_resource type="Texture2D" uid="uid://b6ql4vuyq2taj" path="res://resources/sprites/hazard-sprites.png" id="9_4os3f"]
+[ext_resource type="FontFile" uid="uid://sij7camlufba" path="res://resources/fonts/PixeloidSans.ttf" id="9_oscq3"]
 [ext_resource type="Texture2D" uid="uid://6yrr4w034b3y" path="res://resources/sprites/door-sprites.png" id="10_ngnbp"]
+[ext_resource type="Texture2D" uid="uid://d1fiq2dit7paw" path="res://resources/sprites/next-prev-spritesheet.png" id="11_lxp8k"]
+[ext_resource type="Texture2D" uid="uid://cl5jqbdyfjv4h" path="res://resources/sprites/Coin.png" id="14_m5fex"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uopw6"]
 shader = ExtResource("6_el8qg")
@@ -20,6 +24,12 @@ shader_parameter/onoffSoftLight = false
 content_margin_left = 450.0
 content_margin_right = 0.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f6m70"]
+resource_local_to_scene = true
+shader = ExtResource("6_el8qg")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_40vwc"]
 resource_local_to_scene = true
 shader = ExtResource("6_el8qg")
@@ -27,42 +37,6 @@ shader_parameter/onoffMult = false
 shader_parameter/onoffSoftLight = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2i54w"]
-resource_local_to_scene = true
-shader = ExtResource("6_el8qg")
-shader_parameter/onoffMult = false
-shader_parameter/onoffSoftLight = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vue0w"]
-resource_local_to_scene = true
-shader = ExtResource("6_el8qg")
-shader_parameter/onoffMult = false
-shader_parameter/onoffSoftLight = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w8y6o"]
-resource_local_to_scene = true
-shader = ExtResource("6_el8qg")
-shader_parameter/onoffMult = false
-shader_parameter/onoffSoftLight = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_owe7p"]
-resource_local_to_scene = true
-shader = ExtResource("6_el8qg")
-shader_parameter/onoffMult = false
-shader_parameter/onoffSoftLight = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8e7f5"]
-resource_local_to_scene = true
-shader = ExtResource("6_el8qg")
-shader_parameter/onoffMult = false
-shader_parameter/onoffSoftLight = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s6aln"]
-resource_local_to_scene = true
-shader = ExtResource("6_el8qg")
-shader_parameter/onoffMult = false
-shader_parameter/onoffSoftLight = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4futt"]
 resource_local_to_scene = true
 shader = ExtResource("6_el8qg")
 shader_parameter/onoffMult = false
@@ -109,6 +83,7 @@ mouse_default_cursor_shape = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_2sdlv")
 follow_focus = true
 vertical_scroll_mode = 0
+metadata/_edit_lock_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/ScrollContainer"]
 layout_mode = 2
@@ -131,263 +106,133 @@ layout_mode = 2
 [node name="Hanger5" parent="Control/ScrollContainer/HBoxContainer" instance=ExtResource("3_01yxm")]
 layout_mode = 2
 
-[node name="Hanger6" parent="Control/ScrollContainer/HBoxContainer" instance=ExtResource("3_01yxm")]
-layout_mode = 2
-
 [node name="ColorRect" type="ColorRect" parent="Control/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(500, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 color = Color(1, 1, 1, 0)
 
-[node name="HScrollBar" type="HScrollBar" parent="Control/ScrollContainer"]
+[node name="HScrollBar" type="HScrollBar" parent="Control/ScrollContainer/HBoxContainer"]
 layout_mode = 2
 
 [node name="Dra\'ko" type="Sprite2D" parent="."]
 position = Vector2(640, 360)
 scale = Vector2(4, 4)
 texture = ExtResource("2_7m3va")
+metadata/_edit_lock_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 832.0
-offset_top = 352.0
-offset_right = 1232.0
-offset_bottom = 640.0
-
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
-custom_minimum_size = Vector2(400, 200)
-layout_mode = 2
-color = Color(0.733333, 0.603922, 0.458824, 0.447059)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ColorRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="NameLabel" type="Label" parent="VBoxContainer/ColorRect/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "Name"
-horizontal_alignment = 1
-
-[node name="ToBuy" type="HBoxContainer" parent="VBoxContainer/ColorRect/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="Price" type="Label" parent="VBoxContainer/ColorRect/VBoxContainer/ToBuy"]
-layout_mode = 2
-text = "Price:"
-
-[node name="PriceLabel" type="Label" parent="VBoxContainer/ColorRect/VBoxContainer/ToBuy"]
-layout_mode = 2
-text = "0"
-
-[node name="BuyButton" type="Button" parent="VBoxContainer/ColorRect/VBoxContainer/ToBuy"]
-layout_mode = 2
-text = "Buy"
-
-[node name="Bought" type="HBoxContainer" parent="VBoxContainer/ColorRect/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="Bought!" type="Label" parent="VBoxContainer/ColorRect/VBoxContainer/Bought"]
-layout_mode = 2
-text = "Bought!"
-
-[node name="Equip" type="Button" parent="VBoxContainer/ColorRect/VBoxContainer/Bought"]
-layout_mode = 2
-text = "Equip"
-
-[node name="FlavorText" type="Label" parent="VBoxContainer/ColorRect/VBoxContainer"]
-layout_mode = 2
-
-[node name="Prev" parent="VBoxContainer" instance=ExtResource("5_8vjnh")]
-material = SubResource("ShaderMaterial_40vwc")
-position = Vector2(93, 243)
-scale = Vector2(3.71429, 3.71429)
-texture = ExtResource("5_75nm7")
-hframes = 2
-
-[node name="Next" parent="VBoxContainer" instance=ExtResource("5_8vjnh")]
-material = SubResource("ShaderMaterial_2i54w")
-position = Vector2(314, 243)
-scale = Vector2(3.714, 3.714)
-texture = ExtResource("5_75nm7")
-hframes = 2
-frame = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = 656.0
-offset_right = -16.0
-offset_bottom = -16.0
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 198.857
+offset_top = 12.0
+offset_right = 604.857
+offset_bottom = 206.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+texture = ExtResource("6_rmsbf")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
 metadata/_edit_group_ = true
 
-[node name="MenuButtonRow" type="HBoxContainer" parent="MarginContainer"]
-visible = false
+[node name="ColorRect" type="ColorRect" parent="NinePatchRect"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(400, 200)
 layout_mode = 2
-size_flags_vertical = 10
+offset_top = -3.0
+offset_right = 406.0
+offset_bottom = 197.0
 
-[node name="MainMenu" parent="MarginContainer/MenuButtonRow" instance=ExtResource("7_l0lf5")]
-material = SubResource("ShaderMaterial_vue0w")
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 25.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NameLabel" type="Label" parent="NinePatchRect/ColorRect/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-texture = null
+theme_override_fonts/font = ExtResource("7_ietxf")
+theme_override_font_sizes/font_size = 40
+text = "Name"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/MenuButtonRow/MainMenu"]
+[node name="EquipBuyHBox" type="HBoxContainer" parent="NinePatchRect/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+
+[node name="Price" type="Label" parent="NinePatchRect/ColorRect/VBoxContainer/EquipBuyHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Price: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyEquipButton" parent="NinePatchRect/ColorRect/VBoxContainer/EquipBuyHBox" instance=ExtResource("7_l0lf5")]
+self_modulate = Color(1, 0.270588, 0.207843, 1)
+material = SubResource("ShaderMaterial_f6m70")
+custom_minimum_size = Vector2(70, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+standard_sound = false
+
+[node name="BuyEquipLabel" type="Label" parent="NinePatchRect/ColorRect/VBoxContainer/EquipBuyHBox/BuyEquipButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -60.0
-offset_top = -12.5
-offset_right = 60.0
-offset_bottom = 12.5
+offset_left = -20.0
+offset_top = -10.0
+offset_right = 20.0
+offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 20
-text = "Main Menu"
+theme_override_fonts/font = ExtResource("7_ietxf")
+text = "BUY"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Settings" parent="MarginContainer/MenuButtonRow" instance=ExtResource("7_l0lf5")]
-material = SubResource("ShaderMaterial_w8y6o")
+[node name="FlavorText" type="Label" parent="NinePatchRect/ColorRect/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-texture = null
-
-[node name="Label" type="Label" parent="MarginContainer/MenuButtonRow/Settings"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -53.5
-offset_top = -12.5
-offset_right = 53.5
-offset_bottom = 12.5
-grow_horizontal = 2
-grow_vertical = 2
+theme_override_fonts/font = ExtResource("9_oscq3")
 theme_override_font_sizes/font_size = 20
-text = "Settings"
+text = "Empty"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ItemShop" parent="MarginContainer/MenuButtonRow" instance=ExtResource("7_l0lf5")]
-material = SubResource("ShaderMaterial_owe7p")
-layout_mode = 2
-size_flags_horizontal = 3
-texture = null
+[node name="Prev" parent="." instance=ExtResource("5_8vjnh")]
+material = SubResource("ShaderMaterial_40vwc")
+position = Vector2(929.857, 603)
+scale = Vector2(3.71429, 3.71429)
+texture = ExtResource("11_lxp8k")
+hframes = 2
+vframes = 2
+hoverWhiteStandard = true
 
-[node name="Label" type="Label" parent="MarginContainer/MenuButtonRow/ItemShop"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -60.0
-offset_top = -12.5
-offset_right = 60.0
-offset_bottom = 12.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 20
-text = "Item Shop"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="FightScene" parent="MarginContainer/MenuButtonRow" instance=ExtResource("7_l0lf5")]
-material = SubResource("ShaderMaterial_8e7f5")
-layout_mode = 2
-size_flags_horizontal = 3
-texture = null
-
-[node name="Label" type="Label" parent="MarginContainer/MenuButtonRow/FightScene"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -73.5
-offset_top = -12.5
-offset_right = 73.5
-offset_bottom = 12.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 20
-text = "Fight Scene"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="SaveGame" parent="MarginContainer/MenuButtonRow" instance=ExtResource("7_l0lf5")]
-material = SubResource("ShaderMaterial_s6aln")
-layout_mode = 2
-size_flags_horizontal = 3
-texture = null
-
-[node name="Label" type="Label" parent="MarginContainer/MenuButtonRow/SaveGame"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -60.0
-offset_top = -12.5
-offset_right = 60.0
-offset_bottom = 12.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 20
-text = "Save Game"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LoadGame" parent="MarginContainer/MenuButtonRow" instance=ExtResource("7_l0lf5")]
-material = SubResource("ShaderMaterial_4futt")
-layout_mode = 2
-size_flags_horizontal = 3
-texture = null
-
-[node name="Label" type="Label" parent="MarginContainer/MenuButtonRow/LoadGame"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -60.0
-offset_top = -12.5
-offset_right = 60.0
-offset_bottom = 12.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 20
-text = "Load Game"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Next" parent="." instance=ExtResource("5_8vjnh")]
+material = SubResource("ShaderMaterial_2i54w")
+position = Vector2(1150.86, 603)
+scale = Vector2(3.714, 3.714)
+texture = ExtResource("11_lxp8k")
+hframes = 2
+vframes = 2
+frame = 1
+hoverWhiteStandard = true
 
 [node name="WarningScreen" type="ColorRect" parent="."]
 visible = false
@@ -430,6 +275,7 @@ theme_override_font_sizes/font_size = 38
 text = "X"
 
 [node name="WarningLabel" type="Label" parent="."]
+visible = false
 offset_left = 473.0
 offset_top = 365.0
 offset_right = 784.0
@@ -438,6 +284,7 @@ text = "Placeholder
 "
 
 [node name="HazardButton" parent="." instance=ExtResource("5_8vjnh")]
+visible = false
 material = SubResource("ShaderMaterial_tfvo5")
 position = Vector2(1141.12, 92.5)
 scale = Vector2(5.23333, 5.23333)
@@ -447,31 +294,51 @@ frame = 1
 
 [node name="Sprite2dButton" parent="." instance=ExtResource("5_8vjnh")]
 material = SubResource("ShaderMaterial_tk63a")
-position = Vector2(91, 614)
+position = Vector2(1146, 118)
 scale = Vector2(1.9375, 1.9375)
 texture = ExtResource("10_ngnbp")
 hframes = 2
+hoverWhiteStandard = true
+
+[node name="MoneyHBox" type="HBoxContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -432.0
+offset_top = -72.0
+offset_right = -37.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Coin" type="TextureRect" parent="MoneyHBox"]
+layout_mode = 2
+texture = ExtResource("14_m5fex")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="MoneyLabel" type="Label" parent="MoneyHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "0"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+bus = &"sfx"
 
 [connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger" to="." method="_on_hanger_hanger_pressed"]
 [connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger2" to="." method="_on_hanger_hanger_pressed"]
 [connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger3" to="." method="_on_hanger_hanger_pressed"]
 [connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger4" to="." method="_on_hanger_hanger_pressed"]
 [connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger5" to="." method="_on_hanger_hanger_pressed"]
-[connection signal="hangerPressed" from="Control/ScrollContainer/HBoxContainer/Hanger6" to="." method="_on_hanger_hanger_pressed"]
-[connection signal="pressed" from="VBoxContainer/ColorRect/VBoxContainer/ToBuy/BuyButton" to="." method="_on_buy_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/ColorRect/VBoxContainer/Bought/Equip" to="." method="_on_equip_button_pressed"]
-[connection signal="SpriteButtonPressed" from="VBoxContainer/Prev" to="." method="_on_prev_sprite_button_pressed"]
-[connection signal="SpriteButtonPressed" from="VBoxContainer/Next" to="." method="_on_next_sprite_button_pressed"]
-[connection signal="buttonPressed" from="MarginContainer/MenuButtonRow/MainMenu" to="." method="_on_main_menu_button_pressed"]
-[connection signal="buttonPressed" from="MarginContainer/MenuButtonRow/Settings" to="." method="_on_settings_button_pressed"]
-[connection signal="buttonPressed" from="MarginContainer/MenuButtonRow/ItemShop" to="." method="_on_item_shop_button_pressed"]
-[connection signal="buttonPressed" from="MarginContainer/MenuButtonRow/FightScene" to="." method="_on_fight_scene_button_pressed"]
-[connection signal="buttonPressed" from="MarginContainer/MenuButtonRow/SaveGame" to="." method="_on_save_game_button_pressed"]
-[connection signal="buttonPressed" from="MarginContainer/MenuButtonRow/LoadGame" to="." method="_on_load_game_button_pressed"]
+[connection signal="buttonPressed" from="NinePatchRect/ColorRect/VBoxContainer/EquipBuyHBox/BuyEquipButton" to="." method="_on_buy_equip_button_button_pressed"]
+[connection signal="SpriteButtonPressed" from="Prev" to="." method="_on_prev_sprite_button_pressed"]
+[connection signal="SpriteButtonPressed" from="Next" to="." method="_on_next_sprite_button_pressed"]
 [connection signal="pressed" from="WarningScreen/Close" to="." method="_on_close_pressed"]
 [connection signal="SpriteButtonPressed" from="HazardButton" to="." method="_on_hazard_button_sprite_button_pressed"]
 [connection signal="mouse_entered" from="HazardButton" to="." method="_on_hazard_button_mouse_entered"]
 [connection signal="mouse_exited" from="HazardButton" to="." method="_on_hazard_button_mouse_exited"]
 [connection signal="SpriteButtonPressed" from="Sprite2dButton" to="." method="_on_sprite_2d_button_sprite_button_pressed"]
-[connection signal="mouse_entered" from="Sprite2dButton" to="." method="_on_sprite_2d_button_mouse_entered"]
-[connection signal="mouse_exited" from="Sprite2dButton" to="." method="_on_sprite_2d_button_mouse_exited"]

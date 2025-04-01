@@ -13,7 +13,7 @@ enum MULTTYPE {
 # Make item function that assigns parts of item to whatever they are set as when called
 func make_item(item_name: String, price: int, owned: bool, 
 			   effects: Dictionary, sprite_index: int, equipped: bool, 
-			   descript: Array[String]=["No Description"], on_buy: Dictionary = {"no_effect": 0}) -> Dictionary:
+			   descript: String = "No Description", on_buy: Dictionary = {"no_effect": 0}) -> Dictionary:
 	var item: Dictionary = {
 		"item_name" : item_name,
 		"price" 	: price,
@@ -38,9 +38,7 @@ func _ready() -> void:
 		},
 		1,
 		false,
-		[
-			"Adds a 0.5 multiplier to your light up attacks."	
-		]
+		"Adds a 0.5 multiplier to your light up attacks."	
 	))
 	
 	item_list.append(make_item(
@@ -52,9 +50,7 @@ func _ready() -> void:
 		},
 		0,
 		false,
-		[
-			"Adds a 0.6 multiplier to your light down attacks."
-		]
+		"Adds a 0.6 multiplier to your light down attacks."
 	))
 	
 	item_list.append(make_item(
@@ -66,9 +62,7 @@ func _ready() -> void:
 		},
 		2,
 		false,
-		[
-			"Adds a 0.2 multiplier to your light attacks."
-		]
+		"Adds a 0.2 multiplier to your light attacks."
 	))
 	
 	item_list.append(make_item(
@@ -81,9 +75,7 @@ func _ready() -> void:
 		},
 		3,
 		false,
-		[
-			"Adds a 0.2 multiplier to your light up and heavy up attacks."
-		]
+		"Adds a 0.2 multiplier to your light up and heavy up attacks."
 	))
 
 	item_list.append(make_item(
@@ -96,9 +88,7 @@ func _ready() -> void:
 		},
 		20,
 		false,
-		[
-			"Adds a 0.3 multiplier to your light and heavy side attacks."
-		]
+		"Adds a 0.3 multiplier to your light and heavy side attacks."
 	))
 	
 	item_list.append(make_item(
@@ -110,9 +100,7 @@ func _ready() -> void:
 		},
 		5,
 		false,
-		[
-			"Adds a 0.6 multiplier to your heavy up attack."
-		]
+		"Adds a 0.6 multiplier to your heavy up attack."
 	))
 	
 	item_list.append(make_item(
@@ -124,9 +112,7 @@ func _ready() -> void:
 		},
 		6,
 		false,
-		[
-			"Adds a 0.3 multiplier to your heavy down attack."
-		]
+		"Adds a 0.3 multiplier to your heavy down attack."
 	))
 	
 	item_list.append(make_item(
@@ -138,9 +124,7 @@ func _ready() -> void:
 		},
 		0,
 		false,
-		[
-			"Adds a 0.2 multiplier to your light down attacks."
-		]
+		"Adds a 0.2 multiplier to your light down attacks."
 	))
 	
 	item_list.append(make_item(
@@ -152,9 +136,7 @@ func _ready() -> void:
 		},
 		7,
 		false,
-		[
-			"Adds 0.2 to your money multiplier."
-		]
+		"Adds 0.2 to your money multiplier."
 	))
 	
 	item_list.append(make_item(
@@ -166,9 +148,7 @@ func _ready() -> void:
 		},
 		8,
 		false,
-		[
-			"Adds 1 to your money multiplier"
-		]
+		"Adds 1 to your money multiplier"
 	))
 	
 	item_list.append(make_item(
@@ -181,9 +161,7 @@ func _ready() -> void:
 		},
 		9,
 		false,
-		[
-			"Adds 1 to your light and heavy attack multiplier"
-		]
+		"Adds 1 to your light and heavy attack multiplier"
 	))
 	
 	item_list.append(make_item(
@@ -195,9 +173,7 @@ func _ready() -> void:
 		},
 		10,
 		false,
-		[
-			"Adds a 0.5 multiplier to your heavy attacks"
-		]
+		"Adds a 0.5 multiplier to your heavy attacks"
 	))
 	
 	item_list.append(make_item(
@@ -210,9 +186,7 @@ func _ready() -> void:
 		},
 		11,
 		false,
-		[
-			"Extra stylish, adds 0.4 to your light air and heavy air attack multiplier"
-		]
+		"Extra stylish, adds 0.4 to your light air and heavy air attack multiplier"
 	))
 	
 	item_list.append(make_item(
@@ -224,9 +198,7 @@ func _ready() -> void:
 		},
 		12,
 		false,
-		[
-			"Adds 0.3 multiplier to light air attacks"
-		]
+		"Adds 0.3 multiplier to light air attacks"
 	))
 	
 	item_list.append(make_item(
@@ -238,9 +210,7 @@ func _ready() -> void:
 		},
 		13,
 		false,
-		[
-			"Stinky, adds a 0.5 multiplier to heavy side attacks"
-		]
+		"Stinky, adds a 0.5 multiplier to heavy side attacks"
 	))
 	
 	item_list.append(make_item(
@@ -252,9 +222,7 @@ func _ready() -> void:
 		},
 		14,
 		false,
-		[
-			"Adds a 0.5 multiplier to the light side attacks"
-		]
+		"Adds a 0.5 multiplier to the light side attacks"
 	))
 	
 	item_list.append(make_item(
@@ -266,9 +234,7 @@ func _ready() -> void:
 		},
 		15,
 		false,
-		[
-			"Adds a 0.4 multiplier to light neutral attacks"
-		]
+		"Adds a 0.4 multiplier to light neutral attacks"
 	))
 	
 	item_list.append(make_item(
@@ -281,9 +247,7 @@ func _ready() -> void:
 		},
 		11,
 		false,
-		[
-			"Adds 0.6 to the light down and heavy down multiplier attacks"
-		]
+		"Adds 0.6 to the light down and heavy down multiplier attacks"
 	))
 	
 	item_list.append(make_item(
@@ -295,9 +259,7 @@ func _ready() -> void:
 		},
 		16,
 		false,
-		[
-			"Adds a 0.3 multiplier to heavy air attacks"
-		]
+		"Adds a 0.3 multiplier to heavy air attacks"
 	))
 	
 	item_list.append(make_item(
@@ -309,9 +271,7 @@ func _ready() -> void:
 		},
 		17,
 		false,
-		[
-			"Adds a 0.5 multiplier to money"
-		]
+		"Adds a 0.5 multiplier to money"
 	))
 	
 	item_list.append(make_item(
@@ -323,9 +283,7 @@ func _ready() -> void:
 		},
 		19,
 		false,
-		[
-			"Adds a 0.5 multiplier to heavy neutral attacks"
-		]
+		"Adds a 0.5 multiplier to heavy neutral attacks"
 	))
 	
 	item_list.append(make_item(
@@ -338,9 +296,7 @@ func _ready() -> void:
 		},
 		22,
 		false,
-		[
-			"Adds 0.5 to your light neutral and heavy neutral attack multiplier"
-		]
+		"Adds 0.5 to your light neutral and heavy neutral attack multiplier"
 	))
 	
 	item_list.append(make_item(
@@ -353,9 +309,7 @@ func _ready() -> void:
 		},
 		21,
 		false,
-		[
-			"Allows you to equip 1 more item and adds 0.5 to your light neutral and heavy neutral attack multiplier."
-		],
+		"Allows you to equip 1 more item and adds 0.5 to your light neutral and heavy neutral attack multiplier.",
 		{
 			"moreequips"	:	1
 		}
@@ -371,9 +325,7 @@ func _ready() -> void:
 		},
 		22,
 		false,
-		[
-			"Allows you to equip 2 more items, and adds 0.7 to your light neutral and heavy neutral attack multiplier."
-		],
+		"Allows you to equip 2 more items, and adds 0.7 to your light neutral and heavy neutral attack multiplier.",
 		{
 			"moreequips"	:	2
 		}
@@ -389,9 +341,7 @@ func _ready() -> void:
 		},
 		22,
 		false,
-		[
-			"Gives you 5 more seconds to fight."
-		],
+		"Gives you 5 more seconds to fight.",
 		{
 			"moretime"	:	5
 		}
@@ -406,9 +356,7 @@ func _ready() -> void:
 		},
 		22,
 		false,
-		[
-			"Gives you 5 more seconds to fight."
-		],
+		"Gives you 5 more seconds to fight.",
 		{
 			"moretime"	:	5
 		}
@@ -423,9 +371,7 @@ func _ready() -> void:
 		},
 		22,
 		false,
-		[
-			"Gives you 5 more seconds to fight."
-		],
+		"Gives you 5 more seconds to fight.",
 		{
 			"moretime"	:	5
 		}

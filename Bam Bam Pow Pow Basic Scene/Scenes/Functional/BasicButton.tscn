@@ -38,6 +38,7 @@ mouse_default_cursor_shape = 2
 text = "Main Menu"
 
 [node name="ButtonAudio" type="AudioStreamPlayer" parent="."]
+bus = &"sfx"
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
