@@ -2544,7 +2544,7 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id="Animation_062po"]
 resource_name = "walk"
-length = 0.3
+length = 0.6
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -2553,7 +2553,7 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.266667),
+"times": PackedFloat32Array(0, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [3, 4, 2]
@@ -3949,7 +3949,7 @@ tracks/7/use_blend = true
 
 [sub_resource type="Animation" id="Animation_d8ose"]
 resource_name = "walk"
-length = 0.31
+length = 0.48
 loop_mode = 1
 step = 0.02
 tracks/0/type = "value"
@@ -3971,7 +3971,7 @@ tracks/1/path = NodePath("AnimatedSprite2D:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28),
+"times": PackedFloat32Array(0, 0.06, 0.12, 0.18, 0.24, 0.3, 0.36, 0.42),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [33, 34, 35, 36, 37, 38, 39, 40]
