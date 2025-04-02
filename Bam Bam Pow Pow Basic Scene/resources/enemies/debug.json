@@ -1,0 +1,7 @@
+{
+	"name": "Debug Enemy",
+	"description": "This is an example description for an enemy that is quite long",
+	"picture_path": "res://resources/sprites/rhe_square.png",
+	"picture_location": "TOP_LEFT",
+	"picture_margins": [50, 0, 0, 0]
+}

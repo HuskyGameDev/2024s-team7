@@ -11,6 +11,7 @@ offset_bottom = 600.0
 size_flags_horizontal = 0
 size_flags_vertical = 4
 script = ExtResource("1_ckvq5")
+enemy_to_load = "debug"
 enemy_vbox_container = NodePath("posterContentContainer/contentVBoxContainer")
 enemy_name_label = NodePath("posterContentContainer/contentVBoxContainer/enemyNameLabel")
 enemy_picture_container = NodePath("posterContentContainer/contentVBoxContainer/enemyPictureMarginContainer")
