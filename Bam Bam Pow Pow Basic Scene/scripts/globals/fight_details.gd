@@ -16,8 +16,8 @@ var infinity = true		# Keeps track of if in infinity mode
 var opSelectStartUp = 0
 var opSelectCurrent = 0
 
-func make_opponent(opName: String, description: String, health: int, sprite_path: String, background_setup_function: String, time: int, defeated: bool, defeatable: bool,
-			   weakness: String, record: float, speech: Array[String]=["No Words"]) -> Dictionary:
+func make_opponent(opName: String, description: String, health: int, sprite_path: String, background_setup_function: String, time: int, defeated: bool, first_try: bool,
+			   weakness: String, record: float) -> Dictionary:
 	var opponent: Dictionary = {
 		"opName":		opName,
 		"description":	description,
@@ -25,11 +25,10 @@ func make_opponent(opName: String, description: String, health: int, sprite_path
 		"sprite_path":	sprite_path,
 		"background_setup_function":	background_setup_function,
 		"time":			time,
-		"defeated": 		defeated,
-		"defeatable":	defeatable,
+		"defeated": 	defeated,
+		"first_try":	first_try,
 		"weakness":		weakness,
 		"record":		record,
-		"speech": 		speech,
 	}
 	return opponent
 
@@ -37,7 +36,7 @@ func make_opponent(opName: String, description: String, health: int, sprite_path
 func _ready():
 	
 	op_list.append(make_opponent(
-		"Goblin",
+		"Lvl 1 Goblin",
 		"He's just a lil' guy that would die in one hit",
 		1,
 		"res://resources/sprites/lvl1gob-mspaint-spritesheet.png",
@@ -47,15 +46,10 @@ func _ready():
 		true,
 		"fire",
 		50,
-		[
-			"ooooooooooooooooooooooooooooooooo",
-			"i'm jst a small liddle goblin",
-			"i will die to just one attack :'()"
-		]
 	))
 	
 	op_list.append(make_opponent(
-		"Bat",
+		"Batty",
 		"Rambunctious delinquent.",
 		300,
 		"res://resources/sprites/temp-batty-spritesheet.png",
@@ -65,9 +59,32 @@ func _ready():
 		true,
 		"light",
 		50,
-		[
-			"Hello! Loser >:D"
-		]
+	))
+	
+	op_list.append(make_opponent(
+		"Sir Plomp",
+		"Flippers with finesse.",
+		1000,
+		"res://resources/sprites/temp-batty-spritesheet.png",
+		"school",
+		30,
+		false,
+		true,
+		"light",
+		50,
+	))
+	
+	op_list.append(make_opponent(
+		"Moon",
+		"Traveled a long way for this.",
+		1500,
+		"res://resources/sprites/temp-batty-spritesheet.png",
+		"school",
+		30,
+		false,
+		true,
+		"light",
+		50,
 	))
 	
 	op_list.append(make_opponent(
@@ -81,14 +98,11 @@ func _ready():
 		true,
 		"",
 		50,
-		[
-			"..."
-		]
 	))
 	
 	op_list.append(make_opponent(
-		"Wise Man",
-		"He likes to groom his beard",
+		"Baltimore",
+		"Women love me, fish fear me",
 		8000,
 		"res://resources/sprites/master-mspaint-spritesheet.png",
 		"sakura",
@@ -97,7 +111,4 @@ func _ready():
 		true,
 		"light",
 		50,
-		[
-			"Hmmmmmmmm"
-		]
 	))

@@ -5859,6 +5859,7 @@ stream_0/stream = ExtResource("12_eh0ky")
 stream_1/stream = ExtResource("19_e5t2i")
 
 [node name="player" instance=ExtResource("1_vkhv8")]
+process_mode = 1
 position = Vector2(2.86467, 0)
 collision_layer = 2
 script = ExtResource("2_01k3i")

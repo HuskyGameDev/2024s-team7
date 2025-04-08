@@ -1,0 +1,42 @@
+HI
+# #
+# Startup
+label Startup (Startup)
+if {FirstFight} == true:
+	"Sir Plomp": Eww, a peasant thinks he can match me.
+	"Sir Plomp": You'll never reach my status, fool.
+	[end_timeline]
+else:
+	"Sir Plomp": Back for more, hmm. I guess I can put up with your lack of class again.
+	[end_timeline]
+[end_timeline]
+# 
+# First Hit
+label FirstHit (FirstHit)
+if {FirstFight} == true:
+	"Sir Plomp": Excuse me but where are your manners?
+	"Sir Plomp": How dare you approach me!
+	[end_timeline]
+else:
+	"Sir Plomp": Hark! How dare you take steps in my hall.
+	[end_timeline]
+[end_timeline]
+# #
+# Glassy Wins
+label GlassyWins (GlassyWins)
+if {FirstFight} == true:
+	"Sir Plomp": I suppose I underestimated how refined you can be, Glassy...
+	[end_timeline]
+else:
+	"Sir Plomp": Back... to.. the.... colony.......
+	[end_timeline]
+# #
+# Glassy Loses
+label GlassyLoses (GlassyLoses)
+if {FirstFight} == true:
+	"Sir Plomp": Your remains will be perfect beside my exquisitely crafted crystal wineglasses!
+	[end_timeline]
+else:
+	"Sir Plomp": Defeating you was far simpler than my afternoon tea.
+	[end_timeline]
+[end_timeline]

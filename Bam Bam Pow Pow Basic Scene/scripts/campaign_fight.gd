@@ -42,8 +42,15 @@ func _ready():
 	# Connect 'health_changed' from enemy scene to local 'healthChanged' function
 	enemy.hit.connect(healthChanged)
 	healthChanged()
-	#_start_dialog("Startup")
-	Dialogic.start("lvl1Goblin", "Startup")
+	
+	if currentEnemy["first_try"]:
+		Dialogic.VAR.FirstFight = true
+		currentEnemy["first_try"] = false
+	else:
+		Dialogic.VAR.FirstFight = false
+
+	
+	_start_dialog("Startup")
 
 func _process(delta):
 	# Set timer label values
@@ -76,7 +83,7 @@ func healthChanged():
 		print("they died")
 		defeatEnemy()
 
-## Function that runs when an enemy is defeated:
+## Function that runs when an enemy's health reaches 0:
 ## Changes the enemy's data to say they've been defeated,
 ## Manages whether this is a new defeat (ergo new weapon),
 ## Moves to next enemy, Changes scene
@@ -87,7 +94,9 @@ func defeatEnemy():
 	done = true
 	FightDetails.win = true
 	enemy.calc_money()
-	
+	#TODO: make this time taken instead of time left
+	# Not done yet bc I need to actually set the max time to the one in the enemy dict
+	# Problem: idk how the adding to the timer works. will need to make sure no conflicts.
 	Global.time_left = timer.time_left
 	
 	# # Set the global value of whether opponent has ever been defeated
@@ -102,12 +111,12 @@ func defeatEnemy():
 		FightDetails.op_progress = currentEnemyIndex + 1
 		print("went to next guy")
 		print("fight num: ",FightDetails.op_progress)
-	timer.stop()
-	Dialogic.start("lvl1Goblin", "GlassyWins")
+	_start_dialog("GlassyWins")
 	await timeline_ended
+	get_tree().paused = true
 	await get_tree().create_timer(.5).timeout
 	canvas_layer.add_child(results)
-	get_tree().paused = true
+
 	#SceneSwap.scene_swap("res://Scenes/Playable/ResultsScreen.tscn")
 
 ## Function that runs when timer runs out
@@ -116,26 +125,24 @@ func _on_timer_timeout():
 	enemy.calc_money()
 	if (enemy.current_health > 0):
 		FightDetails.win = false
-		timer.stop()
-		Dialogic.start("lvl1Goblin", "GlassyLoses")
+		_start_dialog("GlassyLoses")
 		Dialogic.timeline_ended.connect(_on_timeline_ended)
 		await timeline_ended
 		await get_tree().create_timer(.5).timeout
 		canvas_layer.add_child(results)
 		get_tree().paused = true
-		#SceneSwap.scene_swap("res://Scenes/Playable/ResultsScreen.tscn")
 
 # Start timer when Fight Base starts fight
 func _on_fight_base_start():
-	Dialogic.process_mode = Node.PROCESS_MODE_ALWAYS
-	Dialogic.start("lvl1Goblin", "FirstHit")
-	await timeline_ended
+	await get_tree().create_timer(.3).timeout
 	timer.wait_time = ItemStorage.time
 	timer.start()
+	_start_dialog("FirstHit")
 
-#func _start_dialog(label_name):
-	#get_tree().paused = true
-	#Dialogic.start("lvl1Goblin", label_name)
+func _start_dialog(label_name):
+	Dialogic.start(currentEnemy["opName"], label_name).process_mode = Node.PROCESS_MODE_ALWAYS
+	Dialogic.process_mode = Node.PROCESS_MODE_ALWAYS
+	get_tree().paused = true
 
 # Go to settings on esc
 func _input(event):
@@ -143,7 +150,5 @@ func _input(event):
 		SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn")
 		
 func _on_timeline_ended():
-	#get_tree().paused = false
+	get_tree().paused = false
 	timeline_ended.emit()
-	#canvas_layer.add_child(results)
-	#get_tree().paused = true

@@ -1,0 +1,36 @@
+HI
+label Startup (Startup)
+if {FirstFight} == true:
+	Moon: Well, aren't you shiny. Just like the sun.
+	Moon: Every sun sets eventually—
+	Moon: Now it's your time.
+	[end_timeline]
+else:
+	Moon: Another day, another night.
+	[end_timeline]
+[end_timeline]
+label FirstHit (FirstHit)
+if {FirstFight} == true:
+	*The sun gasps*
+	Moon: The sun never touches the moon!
+	[end_timeline]
+else:
+	Moon: I have no desire to see myself fade into new moon >\:^(
+	[end_timeline]
+[end_timeline]
+label GlassyWins (GlassyWins)
+if {FirstFight} == true:
+	Moon: I guess today...
+	Moon: I'm a new moon..
+	[end_timeline]
+else:
+	Moon: People are going to wonder why the moon's phase never changes.
+	[end_timeline]
+label GlassyLoses (GlassyLoses)
+if {FirstFight} == true:
+	Moon: I have reached the conclusion that you are no sun.
+	[end_timeline]
+else:
+	Moon: Imposter begone!
+	[end_timeline]
+[end_timeline]

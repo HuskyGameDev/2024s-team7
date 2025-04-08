@@ -1,0 +1,45 @@
+HI
+#
+# Startup
+label Startup (Startup)
+if {FirstFight} == true:
+	Baltimore: Now you're a sight for sore eyes!
+	Baltimore: Think land-blubber like yourself can take me on? I'd like to see you try.
+	[end_timeline]
+else:
+	Baltimore: Yar har! Show me what you can really do this time!
+	[end_timeline]
+[end_timeline]
+# 
+# First Hit
+label FirstHit (FirstHit)
+if {FirstFight} == true:
+	Baltimore: Glad to see you're willing to take me on.
+	[end_timeline]
+else:
+	Baltimore: That's it!
+	[end_timeline]
+[end_timeline]
+#
+# Glassy Wins
+label GlassyWins (GlassyWins)
+if {FirstFight} == true:
+	Baltimore: Alright now,
+	Baltimore: REEL it in— y'a got me.
+	[end_timeline]
+else:
+	Baltimore: Good, good!
+	Baltimore: For a land-blubber, I mean.
+	[end_timeline]
+#
+# Glassy Loses
+label GlassyLoses (GlassyLoses)
+if {FirstFight} == true:
+	Baltimore: Now block it!
+	!
+	Baltimore: Or not...
+	[end_timeline]
+else:
+	Baltimore: Can't reel in this whale using those same moves.
+	[end_timeline]
+[end_timeline]

@@ -32,7 +32,7 @@ func _ready() -> void:
 	item_list.append(make_item(
 		"Uppercut Scroll",
 		1400,
-		true,
+		false,
 		{
 			"light_up": 0.5
 		},
@@ -68,7 +68,7 @@ func _ready() -> void:
 	item_list.append(make_item(
 		"Bird Punching Glasses",
 		900,
-		true,
+		false,
 		{
 			"light_up": 0.2,
 			"heavy_up": 0.2
@@ -142,7 +142,7 @@ func _ready() -> void:
 	item_list.append(make_item(
 		"Piggy Bank",
 		5500,
-		true,
+		false,
 		{
 			"money": 1
 		},
@@ -167,7 +167,7 @@ func _ready() -> void:
 	item_list.append(make_item(
 		"A Big Meal",
 		2000,
-		true,
+		false,
 		{
 			"heavy": 0.5
 		},
@@ -192,7 +192,7 @@ func _ready() -> void:
 	item_list.append(make_item(
 		"Balloon Pack",
 		1200,
-		true,
+		false,
 		{
 			"light_air": 0.3
 		},
@@ -289,7 +289,7 @@ func _ready() -> void:
 	item_list.append(make_item(
 		"Unfair Gloves",
 		2800,
-		true,
+		false,
 		{
 			"light_neutral": 0.5,
 			"heavy_neutral": 0.5
