@@ -24,6 +24,7 @@ size_flags_vertical = 6
 mouse_default_cursor_shape = 2
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"sfx"
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

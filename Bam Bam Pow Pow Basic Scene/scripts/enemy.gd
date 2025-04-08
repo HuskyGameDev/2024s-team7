@@ -230,11 +230,11 @@ func _on_hurtbox_area_entered(hitbox):
 func calc_resistance(dmg_dealt: float, dmg_type: String) -> float:
 	return dmg_dealt - (dmg_dealt * resistances[dmg_type])
 
-
 func calc_money():
 	var addedtotal: int = score * money_mult
+	Global.added_coins = addedtotal
 	Global.score = score
-	ItemStorage.money += (addedtotal)
+	#ItemStorage.money += (addedtotal)
 	# SceneSwap.scene_swap("res://Scenes/Playable/ResultsScreen.tscn")
 
 func _on_player_attack(attack):

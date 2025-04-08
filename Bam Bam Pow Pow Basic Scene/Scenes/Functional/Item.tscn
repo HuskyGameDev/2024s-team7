@@ -1,11 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://btqmnmpytpfkq"]
+[gd_scene load_steps=9 format=3 uid="uid://btqmnmpytpfkq"]
 
 [ext_resource type="Script" path="res://scripts/Item.gd" id="1_iv1pr"]
 [ext_resource type="Texture2D" uid="uid://enf0gw48m1gp" path="res://resources/sprites/full_item_sprites_playtest_3.png" id="2_6ao1e"]
 [ext_resource type="PackedScene" uid="uid://cc1ttocg7gplt" path="res://Scenes/Functional/Sprite2DButton.tscn" id="2_rxf63"]
 [ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="3_n2g6b"]
+[ext_resource type="PackedScene" uid="uid://dbc7vk84ewdqo" path="res://Scenes/Functional/BasicButton.tscn" id="5_518mt"]
+[ext_resource type="FontFile" uid="uid://bsodwni6sfoxc" path="res://resources/fonts/PixeloidSans-Bold.ttf" id="6_aggic"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bm030"]
+resource_local_to_scene = true
+shader = ExtResource("3_n2g6b")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gobvb"]
 resource_local_to_scene = true
 shader = ExtResource("3_n2g6b")
 shader_parameter/onoffMult = false
@@ -44,13 +52,35 @@ size_flags_horizontal = 4
 layout_mode = 2
 text = "Price: "
 
-[node name="BuyButton" type="Button" parent="HBoxContainer"]
+[node name="BuyButton" parent="HBoxContainer" instance=ExtResource("5_518mt")]
+self_modulate = Color(1, 0.270588, 0.207843, 1)
+material = SubResource("ShaderMaterial_gobvb")
+custom_minimum_size = Vector2(65, 45)
 layout_mode = 2
-text = "Buy"
+size_flags_horizontal = 4
+standard_sound = false
+
+[node name="BuyButtonLabel" type="Label" parent="HBoxContainer/BuyButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -10.0
+offset_right = 20.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_aggic")
+text = "BUY"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="SpriteButtonPressed" from="SpriteContainer/Sprite2D" to="." method="_on_sprite_2d_sprite_button_pressed"]
 [connection signal="mouse_entered" from="SpriteContainer/Sprite2D" to="." method="_on_sprite_2d_mouse_entered"]
 [connection signal="mouse_exited" from="SpriteContainer/Sprite2D" to="." method="_on_sprite_2d_mouse_exited"]
-[connection signal="pressed" from="HBoxContainer/BuyButton" to="." method="_on_button_pressed"]
+[connection signal="buttonPressed" from="HBoxContainer/BuyButton" to="." method="_on_button_pressed"]
