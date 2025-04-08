@@ -104,6 +104,7 @@ func _on_buy_equip_button_button_pressed():
 	match(buy_equip_label.text):
 		"BUY":
 			var i = WeaponInShop.currentInstance	# Get current weapon idex
+			var weaponName = WeaponInShop.weapons_list[i]["weaponName"].to_lower()
 			if (ItemStorage.money >= WeaponInShop.weapons_list[i]["cost"]):
 				audio_player.stream = load("res://resources/sounds/Item_Purchase_Coins.wav")
 				ItemStorage.money = ItemStorage.money - WeaponInShop.weapons_list[i]["cost"]

@@ -98,6 +98,7 @@ func defeatEnemy():
 		print("fight num: ",FightDetails.op_progress)
 	timer.stop()
 	canvas_layer.add_child(results)
+	get_tree().paused = true
 	#SceneSwap.scene_swap("res://Scenes/Playable/ResultsScreen.tscn")
 
 ## Function that runs when timer runs out
@@ -108,6 +109,7 @@ func _on_timer_timeout():
 		FightDetails.win = false
 		timer.stop()
 		canvas_layer.add_child(results)
+		get_tree().paused = true
 		#SceneSwap.scene_swap("res://Scenes/Playable/ResultsScreen.tscn")
 
 # Start timer when Fight Base starts fight

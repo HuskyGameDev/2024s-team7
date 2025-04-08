@@ -46,6 +46,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_u6y6e")
+metadata/_edit_lock_ = true
 
 [node name="combo indicator" type="Label" parent="CanvasLayer"]
 offset_left = 22.0
