@@ -21,15 +21,16 @@ func _ready():
 
 # When a key is pressed, perform actions
 func _input(event):
-	# Start fight
-	if !started && event is InputEventKey:
-		started = true
-		Global.combo = 0
-		start.emit()
-		musicplayer.stream = Song
-		if (musicplayer.volume_db > -10):
-			musicplayer.volume_db = musicplayer.volume_db - 10
-		musicplayer.play()
+	pass
+	## Start fight
+	#if !started && event is InputEventKey:
+		#started = true
+		#Global.combo = 0
+		#start.emit()
+		#musicplayer.stream = Song
+		#if (musicplayer.volume_db > -10):
+			#musicplayer.volume_db = musicplayer.volume_db - 10
+		#musicplayer.play()
 
 func _process(delta):
 	pass
@@ -58,4 +59,13 @@ func _on_enemy_show_dmg(dmgNumber):
 
 # Change header values when Enemy hit
 func _on_enemy_hit():
+	# Start fight
+	if !started:
+		started = true
+		Global.combo = 0
+		start.emit()
+		musicplayer.stream = Song
+		if (musicplayer.volume_db > -10):
+			musicplayer.volume_db = musicplayer.volume_db - 10
+		musicplayer.play()
 	combo_label.text = "x" + str(enemy.combo)

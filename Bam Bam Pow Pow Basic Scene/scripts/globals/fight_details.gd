@@ -57,7 +57,7 @@ func _ready():
 	op_list.append(make_opponent(
 		"Bat",
 		"Rambunctious delinquent.",
-		1000,
+		300,
 		"res://resources/sprites/temp-batty-spritesheet.png",
 		"school",
 		30,

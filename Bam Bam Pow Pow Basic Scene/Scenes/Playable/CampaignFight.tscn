@@ -23,7 +23,6 @@ z_as_relative = false
 position = Vector2(1044, 456)
 
 [node name="TextureRect" parent="FightBase/CanvasLayer" index="0"]
-metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

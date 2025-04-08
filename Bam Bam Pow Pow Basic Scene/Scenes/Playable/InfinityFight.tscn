@@ -26,7 +26,6 @@ z_as_relative = false
 position = Vector2(1044, 456)
 
 [node name="TextureRect" parent="Fight_Base/CanvasLayer" index="0"]
-metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
 [node name="combo indicator" parent="Fight_Base/CanvasLayer" index="1"]

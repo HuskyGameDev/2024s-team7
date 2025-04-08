@@ -30,12 +30,16 @@ FightDetails="*res://scripts/globals/fight_details.gd"
 directories/dch_directory={
 "Batty": "res://dialogic/characters/Batty.dch",
 "Drako": "res://dialogic/characters/Drako.dch",
-"Glassy": "res://dialogic/characters/Glassy.dch"
+"Glassy": "res://dialogic/characters/Glassy.dch",
+"Lvl 1 Goblin": "res://dialogic/characters/Lvl 1 Goblin.dch",
+"Sweet Baby Jones": "res://dialogic/characters/Sweet Baby Jones.dch"
 }
 directories/dtl_directory={
 "SavedNotification": "res://dialogic/timelines/SavedNotification.dtl",
 "itemDescriptions": "res://dialogic/timelines/itemDescriptions.dtl",
 "itemShop": "res://dialogic/timelines/itemShop.dtl",
+"lvl1Goblin": "res://dialogic/timelines/lvl1Goblin.dtl",
+"sweetBabyJones": "res://dialogic/timelines/sweetBabyJones.dtl",
 "weaponShop": "res://dialogic/timelines/weaponShop.dtl"
 }
 extensions_folder="res://addons/dialogic_additions"
@@ -62,8 +66,9 @@ glossary/default_case_sensitive=true
 layout/style_list=[]
 layout/default_style="Default"
 variables={
-"ItemDescript": "none",
-"bees": ""
+"FightState": "",
+"FirstFight": false,
+"ItemDescript": "none"
 }
 
 [display]

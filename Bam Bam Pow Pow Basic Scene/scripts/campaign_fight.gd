@@ -12,7 +12,7 @@
 ## Some special event on fight end (win, lose)
 
 extends Node
-
+signal timeline_ended
 ## Node references
 @onready var enemy = $FightBase/enemy
 @onready var enemySprite = $FightBase/enemy/Sprite2D
@@ -33,6 +33,8 @@ extends Node
 var results = preload("res://Scenes/Playable/ResultsScreen.tscn").instantiate()
 
 func _ready():
+	#Dialogic.process_mode = Node.PROCESS_MODE_ALWAYS
+	Dialogic.timeline_ended.connect(_on_timeline_ended)
 	# Set fight type to Campaign
 	# Put here as well mainly for testing. Is set when Campaign/Infinity is in-game
 	FightDetails.infinity = false
@@ -40,6 +42,8 @@ func _ready():
 	# Connect 'health_changed' from enemy scene to local 'healthChanged' function
 	enemy.hit.connect(healthChanged)
 	healthChanged()
+	#_start_dialog("Startup")
+	Dialogic.start("lvl1Goblin", "Startup")
 
 func _process(delta):
 	# Set timer label values
@@ -77,6 +81,8 @@ func healthChanged():
 ## Manages whether this is a new defeat (ergo new weapon),
 ## Moves to next enemy, Changes scene
 func defeatEnemy():
+	if Dialogic.Text.is_textbox_visible():
+		await timeline_ended
 	# Change all necessary values given fight ended
 	done = true
 	FightDetails.win = true
@@ -97,6 +103,9 @@ func defeatEnemy():
 		print("went to next guy")
 		print("fight num: ",FightDetails.op_progress)
 	timer.stop()
+	Dialogic.start("lvl1Goblin", "GlassyWins")
+	await timeline_ended
+	await get_tree().create_timer(.5).timeout
 	canvas_layer.add_child(results)
 	get_tree().paused = true
 	#SceneSwap.scene_swap("res://Scenes/Playable/ResultsScreen.tscn")
@@ -108,16 +117,33 @@ func _on_timer_timeout():
 	if (enemy.current_health > 0):
 		FightDetails.win = false
 		timer.stop()
+		Dialogic.start("lvl1Goblin", "GlassyLoses")
+		Dialogic.timeline_ended.connect(_on_timeline_ended)
+		await timeline_ended
+		await get_tree().create_timer(.5).timeout
 		canvas_layer.add_child(results)
 		get_tree().paused = true
 		#SceneSwap.scene_swap("res://Scenes/Playable/ResultsScreen.tscn")
 
 # Start timer when Fight Base starts fight
 func _on_fight_base_start():
+	Dialogic.process_mode = Node.PROCESS_MODE_ALWAYS
+	Dialogic.start("lvl1Goblin", "FirstHit")
+	await timeline_ended
 	timer.wait_time = ItemStorage.time
 	timer.start()
-	
+
+#func _start_dialog(label_name):
+	#get_tree().paused = true
+	#Dialogic.start("lvl1Goblin", label_name)
+
 # Go to settings on esc
 func _input(event):
 	if Input.is_action_just_pressed('Esc'):
 		SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn")
+		
+func _on_timeline_ended():
+	#get_tree().paused = false
+	timeline_ended.emit()
+	#canvas_layer.add_child(results)
+	#get_tree().paused = true
