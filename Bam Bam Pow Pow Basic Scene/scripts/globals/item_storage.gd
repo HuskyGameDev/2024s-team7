@@ -61,8 +61,8 @@ func save_game():
 				save_file.store_line(str(1))
 		else:
 			save_file.store_line(str(0))
-	for i in range(WeaponInShop.weaponOwnership.size()):
-		if WeaponInShop.weaponOwnership[i] == true:
+	for i in range(WeaponInShop.weapons_list.size()):
+		if WeaponInShop.weapons_list[i]["ownership"] == true:
 			save_file.store_line(str(1))
 		else:
 			save_file.store_line(str(0))
@@ -98,13 +98,13 @@ func load_game():
 		else:
 			itemsList[item_id]["owned"] = false
 		item_id = item_id+1
-	for i in range(WeaponInShop.weaponOwnership.size()):
+	for i in range(WeaponInShop.weapons_list.size()):
 		if (content.get_slice("\n", item_id+1) == "1"):
-			WeaponInShop.weaponOwnership[i] = true
+			WeaponInShop.weapons_list[i]["ownership"] = true
 		else:
-			WeaponInShop.weaponOwnership[i] = false
+			WeaponInShop.weapons_list[i]["ownership"] = false
 		item_id = item_id+1
-	print(WeaponInShop.weaponOwnership)
+	print(WeaponInShop.weapons_list)
 	if (get_tree().current_scene.name == "WeaponShop"):
 		var i = WeaponInShop.currentInstance
 		WeaponShop._changeBox(i)
