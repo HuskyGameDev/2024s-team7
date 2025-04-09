@@ -28,7 +28,6 @@ var speed_flash = 1.5
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# ItemStorage.money += 10000
-	print(Dialogic.get_signal_list())
 	moneylabel.text = "Money: " + str(ItemStorage.money)
 	#print(warning.modulate)
 	if WeaponInShop.itemsOpened == false:

@@ -108,7 +108,7 @@ position = Vector2(642, 366)
 scale = Vector2(3.97266, 4.05833)
 sprite_frames = SubResource("SpriteFrames_rwhhi")
 animation = &"talk"
-frame_progress = 0.83443
+frame_progress = 0.195037
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
