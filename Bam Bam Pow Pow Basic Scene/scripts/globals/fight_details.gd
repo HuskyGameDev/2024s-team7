@@ -2,6 +2,7 @@ extends Node
 
 class_name fight_details
 
+signal shatter
 var animation = ""
 var newWeaponNotification = false
 
@@ -16,10 +17,11 @@ var infinity = true		# Keeps track of if in infinity mode
 var opSelectStartUp = 0
 var opSelectCurrent = 0
 
-func make_opponent(opName: String, description: String, health: int, sprite_path: String, background_setup_function: String, time: int, defeated: bool, first_try: bool,
+func make_opponent(opName: String, opName_no_space: String, description: String, health: int, sprite_path: String, background_setup_function: String, time: int, defeated: bool, first_try: bool,
 			   weakness: String, record: float) -> Dictionary:
 	var opponent: Dictionary = {
 		"opName":		opName,
+		"opName_no_space": opName_no_space,
 		"description":	description,
 		"health":		health,
 		"sprite_path":	sprite_path,
@@ -37,6 +39,7 @@ func _ready():
 	
 	op_list.append(make_opponent(
 		"Lvl 1 Goblin",
+		"Lvl1Goblin",
 		"He's just a lil' guy that would die in one hit",
 		1,
 		"res://resources/sprites/lvl1gob-mspaint-spritesheet.png",
@@ -49,6 +52,7 @@ func _ready():
 	))
 	
 	op_list.append(make_opponent(
+		"Batty",
 		"Batty",
 		"Rambunctious delinquent.",
 		300,
@@ -63,6 +67,7 @@ func _ready():
 	
 	op_list.append(make_opponent(
 		"Sir Plomp",
+		"SirPlomp",
 		"Flippers with finesse.",
 		1000,
 		"res://resources/sprites/temp-batty-spritesheet.png",
@@ -75,6 +80,7 @@ func _ready():
 	))
 	
 	op_list.append(make_opponent(
+		"Moon",
 		"Moon",
 		"Traveled a long way for this.",
 		1500,
@@ -89,6 +95,7 @@ func _ready():
 	
 	op_list.append(make_opponent(
 		"Sweet Baby Jones",
+		"SweetBabyJones",
 		"...",
 		3000,
 		"res://resources/sprites/bbjo-mspaint-spritesheet.png",
@@ -102,6 +109,7 @@ func _ready():
 	
 	op_list.append(make_opponent(
 		"Baltimore",
+		"Baltimore",
 		"Women love me, fish fear me",
 		8000,
 		"res://resources/sprites/master-mspaint-spritesheet.png",
@@ -113,3 +121,5 @@ func _ready():
 		50,
 	))
 	
+func do_shatter():
+	shatter.emit()

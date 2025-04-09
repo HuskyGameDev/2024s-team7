@@ -24,6 +24,8 @@ signal timeline_ended
 @onready var timerSprite = $CanvasLayer/TimerSprite
 @onready var audio_timer: AudioStreamPlayer = $AudioTimer
 @onready var canvas_layer = $CanvasLayer
+@onready var enemy_animation_player = $FightBase/enemy/AnimationPlayer
+@onready var player_FSM = $FightBase/player/FSM
 
 @onready var currentEnemy = FightDetails.op_list[FightDetails.op_progress]
 @onready var currentEnemyIndex = FightDetails.op_progress
@@ -35,6 +37,7 @@ var results = preload("res://Scenes/Playable/ResultsScreen.tscn").instantiate()
 func _ready():
 	#Dialogic.process_mode = Node.PROCESS_MODE_ALWAYS
 	Dialogic.timeline_ended.connect(_on_timeline_ended)
+	FightDetails.shatter.connect(on_shatter)
 	# Set fight type to Campaign
 	# Put here as well mainly for testing. Is set when Campaign/Infinity is in-game
 	FightDetails.infinity = false
@@ -48,7 +51,6 @@ func _ready():
 		currentEnemy["first_try"] = false
 	else:
 		Dialogic.VAR.FirstFight = false
-
 	
 	_start_dialog("Startup")
 
@@ -152,3 +154,8 @@ func _input(event):
 func _on_timeline_ended():
 	get_tree().paused = false
 	timeline_ended.emit()
+
+# Does not exist yet.
+# I deleted Shattered node (child of FSM) because I couldn't figure out how to get it to work.
+func on_shatter():
+	player_FSM.force_change_state("Shattered")

@@ -11,7 +11,7 @@ else:
 [end_timeline]
 label FirstHit (FirstHit)
 if {FirstFight} == true:
-	*The sun gasps*
+	*The moon gasps*
 	Moon: The sun never touches the moon!
 	[end_timeline]
 else:

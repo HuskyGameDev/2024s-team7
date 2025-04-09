@@ -14,6 +14,9 @@ script = ExtResource("1_3iac4")
 
 [node name="FightBase" parent="." instance=ExtResource("2_dnsdk")]
 
+[node name="ParallaxElements" parent="FightBase" index="1"]
+background_setup_function = "sakura"
+
 [node name="player" parent="FightBase" index="2"]
 z_index = 1
 z_as_relative = false
@@ -21,7 +24,7 @@ position = Vector2(328, 536)
 
 [node name="enemy" parent="FightBase" index="3"]
 z_as_relative = false
-position = Vector2(1044, 456)
+position = Vector2(1064, 520)
 
 [node name="TextureRect" parent="FightBase/CanvasLayer" index="0"]
 metadata/_edit_group_ = true
