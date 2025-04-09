@@ -20,6 +20,8 @@ extends CanvasLayer
 @onready var warningLabel = $WarningLabel
 @onready var exitButton = $Sprite2dButton
 var speed_flash = 1
+signal timeline_started
+signal timeline_ended
 
 ## Handles changes to Selected Weapon screen
 ##
@@ -92,8 +94,19 @@ func _ready():
 	
 	warningLabel.hide()
 	if WeaponInShop.weaponsOpened == false:
+		Dialogic.connect("timeline_started", Callable(self,"_on_dialogue_started"))
+		Dialogic.connect("timeline_ended", Callable(self,"_on_dialogue_ended"))
+		$AnimatedSprite2D.play("talk")
 		Dialogic.start('weaponShop')
 	WeaponInShop.weaponsOpened = true
+
+func _on_dialogue_started():
+	pass
+
+func _on_dialogue_ended():
+	$AnimatedSprite2D.stop()
+	$AnimatedSprite2D.frame = 0
+	
 
 ## Not necessary yet. Kept only for potential later convenience.
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
