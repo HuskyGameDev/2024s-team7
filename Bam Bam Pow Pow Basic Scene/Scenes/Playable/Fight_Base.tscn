@@ -21,6 +21,7 @@ unique_name_in_owner = true
 
 [node name="ParallaxElements" parent="." instance=ExtResource("8_evtkj")]
 layer = -50
+background_setup_function = "dog_park"
 
 [node name="player" parent="." instance=ExtResource("6_xn3vh")]
 position = Vector2(328, 528)

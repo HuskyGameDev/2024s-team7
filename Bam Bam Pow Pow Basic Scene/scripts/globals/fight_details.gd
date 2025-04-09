@@ -53,7 +53,7 @@ func _ready():
 		"Rambunctious delinquent.",
 		300,
 		"res://resources/sprites/temp-batty-spritesheet.png",
-		"school",
+		"sakura",
 		30,
 		false,
 		true,
@@ -66,7 +66,7 @@ func _ready():
 		"Flippers with finesse.",
 		1000,
 		"res://resources/sprites/temp-batty-spritesheet.png",
-		"school",
+		"fancy",
 		30,
 		false,
 		true,
@@ -79,7 +79,7 @@ func _ready():
 		"Traveled a long way for this.",
 		1500,
 		"res://resources/sprites/temp-batty-spritesheet.png",
-		"school",
+		"moon",
 		30,
 		false,
 		true,
@@ -112,3 +112,4 @@ func _ready():
 		"light",
 		50,
 	))
+	

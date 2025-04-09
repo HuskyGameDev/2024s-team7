@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://iq81ahbinktl"
-path="res://.godot/imported/Sun.png-fe2f3df6ab3d286ff71e7011298f3a3d.ctex"
+uid="uid://dyalaxb1fdil1"
+path="res://.godot/imported/sign.png-17796bb47f61620ee666792e093f2ed4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/sprites/FightBackgrounds/Jonestown/Sun.png"
-dest_files=["res://.godot/imported/Sun.png-fe2f3df6ab3d286ff71e7011298f3a3d.ctex"]
+source_file="res://resources/sprites/FightBackgrounds/Dog Park/sign.png"
+dest_files=["res://.godot/imported/sign.png-17796bb47f61620ee666792e093f2ed4.ctex"]
 
 [params]
 

@@ -36,8 +36,12 @@ func _ready():
 			cave()
 		"jonestown":
 			jonestown()
-		"dog":
-			dog()
+		"fancy":
+			fancy()
+		"dog_park":
+			dog_park()
+		"moon":
+			moon()
 	
 	# Set still background and floor
 	still_background.texture = load(still_background_texture)
@@ -177,11 +181,11 @@ func sakura():
 	
 	# Tree Layers:
 	#
-	# Create and fill third layer:
+	# Create and fill fourth layer:
 	var midTreesLayer = _add_layer(.3)
 	var midTreesSprite = _add_sprite(midTreesLayer, "res://resources/sprites/FightBackgrounds/Sakura/midtrees.png")
 	#
-	# Create and fill third layer:
+	# Create and fill fifth layer:
 	var closeTreesLayer = _add_layer(.6)
 	var closeTreesSprite = _add_sprite(closeTreesLayer, "res://resources/sprites/FightBackgrounds/Sakura/foretree.png")
 
@@ -203,9 +207,6 @@ func cave():
 func jonestown():
 	still_background_texture = "res://resources/sprites/FightBackgrounds/Jonestown/Sky.png"
 	bg_floor.visible = false
-	
-	var sunLayer = _add_layer(0)
-	var sunSprite = _add_sprite(sunLayer, "res://resources/sprites/FightBackgrounds/Jonestown/Sun.png")
 	
 	var farCloudLayer = _add_layer(0)
 	var farCloudSprite = _add_sprite(farCloudLayer, "res://resources/sprites/FightBackgrounds/Jonestown/Cloud2.png")
@@ -239,10 +240,52 @@ func moon():
 	var closeHillsLayer = _add_layer(1)
 	var closeHillsSprite = _add_sprite(closeHillsLayer, "res://resources/sprites/FightBackgrounds/Moon/close-hill.png")
 
-## Doesn't add background atm
-func dog():
-	pass
+## Adds all frames necessary for Sakura background
+func dog_park():
+	# Set still background and floor
+	still_background_texture = "res://resources/sprites/FightBackgrounds/Sakura/parallax-sky-cherry.png"
+	bg_floor.visible = false
 	
+	# Create all layers:
+	var farCloudsLayer = _add_layer(0)
+	var farCloudsSprite = _add_sprite(farCloudsLayer, "res://resources/sprites/FightBackgrounds/Sakura/far clouds.png")
+	_make_moving_objects_dict(farCloudsLayer, -4, 0)
 	
+	var midCloudsLayer = _add_layer(0)
+	var midCloudsSprite = _add_sprite(midCloudsLayer, "res://resources/sprites/FightBackgrounds/Sakura/mid clouds.png")
+	_make_moving_objects_dict(midCloudsLayer, -8, 0)
+	
+	var closeCloudsLayer = _add_layer(0)
+	var closeCloudsSprite = _add_sprite(closeCloudsLayer, "res://resources/sprites/FightBackgrounds/Sakura/close clouds.png")
+	_make_moving_objects_dict(closeCloudsLayer, -12, 0)
+	
+	var far_hill_layer = _add_layer(.5)
+	var far_hill_sprite = _add_sprite(far_hill_layer, "res://resources/sprites/FightBackgrounds/Dog Park/far-hill.png")
+	
+	var close_hill_layer = _add_layer(1)
+	var close_hill_sprite = _add_sprite(close_hill_layer, "res://resources/sprites/FightBackgrounds/Dog Park/close-hill.png")
+	
+	var sign_layer = _add_layer(1)
+	var sign_sprite = _add_sprite(sign_layer, "res://resources/sprites/FightBackgrounds/Dog Park/sign.png")
+	sign_layer.motion_mirroring.x = 0
 
+## Adds all frames necessary for Sakura background
+func fancy():
+	# Set still background and floor
+	bg_floor.visible = false
 	
+	# Create all layers:
+	var back_layer = _add_layer(0)
+	var back_sprite = _add_sprite(back_layer, "res://resources/sprites/FightBackgrounds/Fancy/Walls_Floor.png")
+	
+	var paintings_layer = _add_layer(.9)
+	var paintings_sprite = _add_sprite(paintings_layer, "res://resources/sprites/FightBackgrounds/Fancy/Paintings.png")
+	
+	var plant_layer = _add_layer(.96)
+	var plant_sprite = _add_sprite(plant_layer, "res://resources/sprites/FightBackgrounds/Fancy/Plant.png")
+	
+	var columns_layer = _add_layer(.98)
+	var columns_sprite = _add_sprite(columns_layer, "res://resources/sprites/FightBackgrounds/Fancy/Columns.png")
+	
+	var chandelier_layer = _add_layer(1.15)
+	var chandelier_sprite = _add_sprite(chandelier_layer, "res://resources/sprites/FightBackgrounds/Fancy/Chandelier.png")
