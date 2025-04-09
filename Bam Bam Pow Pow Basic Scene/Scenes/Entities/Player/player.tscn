@@ -1,8 +1,9 @@
-[gd_scene load_steps=279 format=3 uid="uid://cfx46l5ghyfp3"]
+[gd_scene load_steps=285 format=3 uid="uid://cfx46l5ghyfp3"]
 
 [ext_resource type="PackedScene" uid="uid://cuji3bj4q1s1d" path="res://Scenes/Entities/entity_base.tscn" id="1_vkhv8"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="2_01k3i"]
 [ext_resource type="Texture2D" uid="uid://ds4v3mo2b0xwy" path="res://resources/sprites/Player_Sprites_PLAYTEST.png" id="3_fj7bh"]
+[ext_resource type="Texture2D" uid="uid://c47qoqrpjm7qx" path="res://resources/sprites/glassy_shattering_spritesheet.png" id="4_d8dof"]
 [ext_resource type="PackedScene" uid="uid://buj5ef30juvcd" path="res://Scenes/Entities/Hitboxes/hitbox.tscn" id="4_hxr67"]
 [ext_resource type="Texture2D" uid="uid://c71sox3ekf2k5" path="res://resources/sprites/B2P2-Glassy-Weapons-Unarmed.png" id="4_i73hw"]
 [ext_resource type="Texture2D" uid="uid://djkv4jbwsqf1k" path="res://resources/sprites/weapon_spear.png" id="4_tvu61"]
@@ -188,6 +189,22 @@ region = Rect2(384, 1152, 192, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ibie4"]
 atlas = ExtResource("3_fj7bh")
 region = Rect2(576, 1152, 192, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lq45y"]
+atlas = ExtResource("4_d8dof")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4vfr"]
+atlas = ExtResource("4_d8dof")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpkcl"]
+atlas = ExtResource("4_d8dof")
+region = Rect2(0, 192, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ryql"]
+atlas = ExtResource("4_d8dof")
+region = Rect2(192, 192, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gx5sx"]
 atlas = ExtResource("4_tvu61")
@@ -786,6 +803,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"Playtest",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lq45y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4vfr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpkcl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ryql")
+}],
+"loop": true,
+"name": &"Shatter",
 "speed": 5.0
 }, {
 "frames": [{
@@ -2571,6 +2605,44 @@ tracks/1/keys = {
 "values": [true, true]
 }
 
+[sub_resource type="Animation" id="Animation_7j4oc"]
+resource_name = "shatter"
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [],
+"times": PackedFloat32Array()
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Shatter"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333333, 0.1, 0.233333, 0.366667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xgo3l"]
 _data = {
 "RESET": SubResource("Animation_t7b2i"),
@@ -2582,6 +2654,7 @@ _data = {
 "p_jab": SubResource("Animation_antc1"),
 "p_upper": SubResource("Animation_g6fyr"),
 "s_g u n": SubResource("Animation_3axfr"),
+"shatter": SubResource("Animation_7j4oc"),
 "un_fall": SubResource("Animation_e564n"),
 "un_idle": SubResource("Animation_8h5ei"),
 "un_walk": SubResource("Animation_hh8vq"),
@@ -5850,7 +5923,7 @@ states/special/position = Vector2(448.584, -40.7131)
 states/weapon/node = SubResource("AnimationNodeStateMachine_3saak")
 states/weapon/position = Vector2(309.584, -40.7131)
 transitions = ["idle", "punch", SubResource("AnimationNodeStateMachineTransition_6dmhu"), "punch", "idle", SubResource("AnimationNodeStateMachineTransition_djpjj"), "idle", "kick", SubResource("AnimationNodeStateMachineTransition_uojlm"), "kick", "idle", SubResource("AnimationNodeStateMachineTransition_d3lg6"), "idle", "weapon", SubResource("AnimationNodeStateMachineTransition_2hvxu"), "weapon", "idle", SubResource("AnimationNodeStateMachineTransition_np3x2"), "special", "idle", SubResource("AnimationNodeStateMachineTransition_agile"), "idle", "special", SubResource("AnimationNodeStateMachineTransition_n8eiu")]
-graph_offset = Vector2(-305.416, -116.115)
+graph_offset = Vector2(-305.416, -157.596)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7aige"]
 random_pitch = 1.97
@@ -5908,8 +5981,8 @@ position = Vector2(76, -7)
 collision_layer = 8
 collision_mask = 4
 monitoring = false
-motion = 5.0
-weight = 10.0
+motion = 0.5
+weight = 0.5
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2(-33.625, 33)
@@ -5949,6 +6022,7 @@ script = ExtResource("7_i6g50")
 
 [node name="Attacking" type="Node" parent="FSM" index="2"]
 script = ExtResource("8_eh8a0")
+cancel = 0
 
 [node name="Air" type="Node" parent="FSM" index="3"]
 script = ExtResource("11_hly11")

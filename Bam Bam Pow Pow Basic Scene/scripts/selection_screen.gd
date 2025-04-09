@@ -76,6 +76,7 @@ func _on_save_sprite_button_pressed():
 	ItemStorage.save_game()
 	Dialogic.start('SavedNotification')
 
+#TODO: Replace this back to fight animation handling with a blended animation tree (capture mode)
 func _on_back_to_fight_sprite_button_pressed():
 	if FightDetails.infinity:
 		SceneSwap.scene_swap("res://Scenes/Playable/InfinityFight.tscn")
