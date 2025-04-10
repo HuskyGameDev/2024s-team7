@@ -1,36 +1,43 @@
-[gd_scene load_steps=11 format=3 uid="uid://c76vfrrc8d27k"]
+[gd_scene load_steps=13 format=3 uid="uid://c76vfrrc8d27k"]
 
 [ext_resource type="Script" path="res://scripts/MainMenu.gd" id="1_8i4yj"]
-[ext_resource type="Texture2D" uid="uid://cwexuk7jv1l3r" path="res://resources/sprites/MAIN MENU BG.png" id="2_aqswu"]
-[ext_resource type="Texture2D" uid="uid://ds64mtbtajy78" path="res://resources/sprites/Bam Bam Pow Pow logo.png" id="3_dt2py"]
-[ext_resource type="PackedScene" uid="uid://dbc7vk84ewdqo" path="res://Scenes/Functional/BasicButton.tscn" id="4_c6ga6"]
+[ext_resource type="Texture2D" uid="uid://kykh0r7grr4w" path="res://resources/sprites/title screen background.png" id="2_rr2of"]
+[ext_resource type="Texture2D" uid="uid://bv0v2hr76jsbr" path="res://resources/sprites/Logo_main_menu_full.png" id="3_hgp2o"]
+[ext_resource type="PackedScene" uid="uid://cc1ttocg7gplt" path="res://Scenes/Functional/Sprite2DButton.tscn" id="4_ok530"]
 [ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="5_e1a4t"]
+[ext_resource type="Texture2D" uid="uid://dhr7geb5igl86" path="res://resources/sprites/Main-Menu-Buttons-Spritesheet.png" id="6_g56m3"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a8xhs"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n2c3k"]
 resource_local_to_scene = true
 shader = ExtResource("5_e1a4t")
 shader_parameter/onoffMult = false
 shader_parameter/onoffSoftLight = false
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3lj1b"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g27kd"]
 resource_local_to_scene = true
 shader = ExtResource("5_e1a4t")
 shader_parameter/onoffMult = false
 shader_parameter/onoffSoftLight = false
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ceijq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ncf5v"]
 resource_local_to_scene = true
 shader = ExtResource("5_e1a4t")
 shader_parameter/onoffMult = false
 shader_parameter/onoffSoftLight = false
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2gwy4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0lp7l"]
 resource_local_to_scene = true
 shader = ExtResource("5_e1a4t")
 shader_parameter/onoffMult = false
 shader_parameter/onoffSoftLight = false
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sgx2m"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y8slo"]
+resource_local_to_scene = true
+shader = ExtResource("5_e1a4t")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_prfk6"]
 resource_local_to_scene = true
 shader = ExtResource("5_e1a4t")
 shader_parameter/onoffMult = false
@@ -44,190 +51,98 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8i4yj")
+metadata/_edit_lock_ = true
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Bg" type="TextureRect" parent="CanvasLayer"]
+self_modulate = Color(0.643137, 0.466667, 0.760784, 0.709804)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_aqswu")
+texture = ExtResource("2_rr2of")
+metadata/_edit_lock_ = true
 
-[node name="TextureRect" type="TextureRect" parent="TextureRect"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -254.5
-offset_right = 254.5
-offset_bottom = 426.0
-grow_horizontal = 2
-texture = ExtResource("3_dt2py")
-stretch_mode = 4
+[node name="Logo" type="TextureRect" parent="CanvasLayer"]
+offset_left = 393.0
+offset_top = 122.0
+offset_right = 978.0
+offset_bottom = 478.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_hgp2o")
+metadata/_edit_lock_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -211.0
-offset_top = -350.0
-offset_right = 212.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/separation = 10
+[node name="New" parent="CanvasLayer" instance=ExtResource("4_ok530")]
+material = SubResource("ShaderMaterial_n2c3k")
+position = Vector2(182, 114)
+scale = Vector2(2, 2)
+texture = ExtResource("6_g56m3")
+hframes = 4
+vframes = 3
+hoverWhiteStandard = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
+[node name="Load" parent="CanvasLayer" instance=ExtResource("4_ok530")]
+material = SubResource("ShaderMaterial_g27kd")
+position = Vector2(256, 238)
+scale = Vector2(2, 2)
+texture = ExtResource("6_g56m3")
+hframes = 4
+vframes = 3
+frame = 1
+hoverWhiteStandard = true
 
-[node name="New Game" parent="VBoxContainer/HBoxContainer" instance=ExtResource("4_c6ga6")]
-material = SubResource("ShaderMaterial_a8xhs")
-layout_mode = 2
-size_flags_horizontal = 3
-texture = null
+[node name="Tutorial" parent="CanvasLayer" instance=ExtResource("4_ok530")]
+material = SubResource("ShaderMaterial_ncf5v")
+position = Vector2(173, 363)
+scale = Vector2(1.818, 2)
+texture = ExtResource("6_g56m3")
+hframes = 4
+vframes = 3
+frame = 2
+hoverWhiteStandard = true
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/New Game"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -80.0
-offset_top = -12.5
-offset_right = 80.0
-offset_bottom = 12.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 20
-text = "New Game"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Settings" parent="CanvasLayer" instance=ExtResource("4_ok530")]
+material = SubResource("ShaderMaterial_0lp7l")
+position = Vector2(221, 455)
+scale = Vector2(2, 2)
+texture = ExtResource("6_g56m3")
+hframes = 4
+vframes = 3
+frame = 3
+hoverWhiteStandard = true
 
-[node name="Load Game" parent="VBoxContainer/HBoxContainer" instance=ExtResource("4_c6ga6")]
-material = SubResource("ShaderMaterial_3lj1b")
-layout_mode = 2
-size_flags_horizontal = 3
-texture = null
+[node name="Credit" parent="CanvasLayer" instance=ExtResource("4_ok530")]
+material = SubResource("ShaderMaterial_y8slo")
+position = Vector2(308, 556)
+scale = Vector2(2, 2)
+texture = ExtResource("6_g56m3")
+hframes = 4
+vframes = 3
+frame = 4
+hoverWhiteStandard = true
 
-[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/Load Game"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -87.0
-offset_top = -12.5
-offset_right = 87.0
-offset_bottom = 12.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 20
-text = "Load Game"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Exit" parent="CanvasLayer" instance=ExtResource("4_ok530")]
+material = SubResource("ShaderMaterial_prfk6")
+position = Vector2(447, 641)
+scale = Vector2(2, 2)
+texture = ExtResource("6_g56m3")
+hframes = 4
+vframes = 3
+frame = 5
+hoverWhiteStandard = true
 
-[node name="Tutorial" parent="VBoxContainer" instance=ExtResource("4_c6ga6")]
-material = SubResource("ShaderMaterial_ceijq")
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-texture = null
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
 
-[node name="Label3" type="Label" parent="VBoxContainer/Tutorial"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -53.5
-offset_top = -12.5
-offset_right = 53.5
-offset_bottom = 12.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 20
-text = "Tutorial"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Settings" parent="VBoxContainer" instance=ExtResource("4_c6ga6")]
-material = SubResource("ShaderMaterial_2gwy4")
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-texture = null
-
-[node name="Label3" type="Label" parent="VBoxContainer/Settings"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -53.5
-offset_top = -12.5
-offset_right = 53.5
-offset_bottom = 12.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 20
-text = "Settings"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Quit" parent="VBoxContainer" instance=ExtResource("4_c6ga6")]
-material = SubResource("ShaderMaterial_sgx2m")
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-texture = null
-
-[node name="Label4" type="Label" parent="VBoxContainer/Quit"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -27.0
-offset_top = -12.5
-offset_right = 27.0
-offset_bottom = 12.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 20
-text = "Quit"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Instructions" type="Label" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 18.0
-offset_top = 234.0
-offset_right = 524.0
-offset_bottom = 611.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 23
-text = "----CONTROLS----
-MAIN ATTACKS:
-'J' = PUNCH
-'K' = KICK
-'L' = WEAPON
-';' = ???????
-'W', 'A', 'S', 'D' FOR DIRECTIONAL ATTACKS
-PAIR WITH MAIN ATTACKS
-EXAMPLE: 'W' + 'J' FOR UPPERCUT
-DIRECTIONAL ATTACKS ARE PURCHASED"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-
-[connection signal="buttonPressed" from="VBoxContainer/HBoxContainer/New Game" to="." method="_on_new_game_button_pressed"]
-[connection signal="buttonPressed" from="VBoxContainer/HBoxContainer/Load Game" to="." method="_on_load_game_button_pressed"]
-[connection signal="buttonPressed" from="VBoxContainer/Tutorial" to="." method="_on_tutorial_button_pressed"]
-[connection signal="buttonPressed" from="VBoxContainer/Settings" to="." method="_on_settings_button_pressed"]
-[connection signal="buttonPressed" from="VBoxContainer/Quit" to="." method="_on_quit_button_pressed"]
+[connection signal="SpriteButtonPressed" from="CanvasLayer/New" to="." method="_on_new_game_button_pressed"]
+[connection signal="SpriteButtonPressed" from="CanvasLayer/Load" to="." method="_on_load_game_button_pressed"]
+[connection signal="SpriteButtonPressed" from="CanvasLayer/Tutorial" to="." method="_on_tutorial_button_pressed"]
+[connection signal="SpriteButtonPressed" from="CanvasLayer/Settings" to="." method="_on_settings_button_pressed"]
+[connection signal="SpriteButtonPressed" from="CanvasLayer/Credit" to="." method="_on_credit_button_pressed"]
+[connection signal="SpriteButtonPressed" from="CanvasLayer/Exit" to="." method="_on_quit_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
