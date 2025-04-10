@@ -1,14 +1,28 @@
-[gd_scene load_steps=9 format=3 uid="uid://tetnkmhs2l60"]
+[gd_scene load_steps=13 format=3 uid="uid://tetnkmhs2l60"]
 
 [ext_resource type="PackedScene" uid="uid://bdh05d3fan0h3" path="res://Scenes/Playable/equip_item.tscn" id="1_2wmvw"]
 [ext_resource type="Script" path="res://scripts/equip_screen.gd" id="1_il0yl"]
 [ext_resource type="PackedScene" uid="uid://c7euusov16rvy" path="res://Scenes/Playable/equipped_item.tscn" id="2_orlww"]
+[ext_resource type="Texture2D" uid="uid://buidfqxrf7c41" path="res://resources/sprites/equip screen v2.png" id="2_qp66k"]
 [ext_resource type="Texture2D" uid="uid://dj87ja156haea" path="res://resources/sprites/real-box.png" id="4_uss7v"]
 [ext_resource type="PackedScene" uid="uid://cc1ttocg7gplt" path="res://Scenes/Functional/Sprite2DButton.tscn" id="5_i1xdc"]
 [ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="6_id0th"]
 [ext_resource type="Texture2D" uid="uid://6yrr4w034b3y" path="res://resources/sprites/door-sprites.png" id="7_ybuf3"]
+[ext_resource type="Texture2D" uid="uid://d1fiq2dit7paw" path="res://resources/sprites/next-prev-spritesheet.png" id="9_mpmoi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4l8q8"]
+resource_local_to_scene = true
+shader = ExtResource("6_id0th")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5bio8"]
+resource_local_to_scene = true
+shader = ExtResource("6_id0th")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_drf7v"]
 resource_local_to_scene = true
 shader = ExtResource("6_id0th")
 shader_parameter/onoffMult = false
@@ -17,18 +31,158 @@ shader_parameter/onoffSoftLight = false
 [node name="EquipScreen" type="CanvasLayer"]
 script = ExtResource("1_il0yl")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qp66k")
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2dButton" parent="Control" instance=ExtResource("5_i1xdc")]
+material = SubResource("ShaderMaterial_4l8q8")
+position = Vector2(1207, 92)
+scale = Vector2(1.80469, 1.80469)
+texture = ExtResource("7_ybuf3")
+hframes = 2
+
+[node name="EquippedItems" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="EquippedItem1" parent="Control/EquippedItems" instance=ExtResource("2_orlww")]
+layout_mode = 0
+offset_left = 207.0
+offset_top = 51.0
+offset_right = 407.0
+offset_bottom = 286.0
+scale = Vector2(0.8, 0.8)
+
+[node name="EquippedItem2" parent="Control/EquippedItems" instance=ExtResource("2_orlww")]
+layout_mode = 0
+offset_left = 374.0
+offset_top = 116.0
+offset_right = 574.0
+offset_bottom = 351.0
+scale = Vector2(0.8, 0.8)
+
+[node name="EquippedItem3" parent="Control/EquippedItems" instance=ExtResource("2_orlww")]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 173.0
+offset_right = 289.0
+offset_bottom = 408.0
+scale = Vector2(0.8, 0.8)
+
+[node name="EquippedItem4" parent="Control/EquippedItems" instance=ExtResource("2_orlww")]
+layout_mode = 0
+offset_left = 287.0
+offset_top = 261.0
+offset_right = 487.0
+offset_bottom = 496.0
+scale = Vector2(0.8, 0.8)
+
+[node name="EquippedItem5" parent="Control/EquippedItems" instance=ExtResource("2_orlww")]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 319.0
+offset_right = 263.0
+offset_bottom = 554.0
+scale = Vector2(0.8, 0.8)
+
+[node name="EquipItems" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="EquipItem1" parent="Control/EquipItems" instance=ExtResource("1_2wmvw")]
+layout_mode = 0
+offset_left = 5.0
+offset_top = -220.0
+offset_right = 205.0
+offset_bottom = 15.0
+
+[node name="EquipItem2" parent="Control/EquipItems" instance=ExtResource("1_2wmvw")]
+layout_mode = 0
+offset_left = 225.0
+offset_top = -220.0
+offset_right = 425.0
+offset_bottom = 15.0
+metadata/ID = 1
+
+[node name="EquipItem3" parent="Control/EquipItems" instance=ExtResource("1_2wmvw")]
+layout_mode = 0
+offset_left = 440.0
+offset_top = -220.0
+offset_right = 640.0
+offset_bottom = 15.0
+metadata/ID = 2
+
+[node name="EquipItem4" parent="Control/EquipItems" instance=ExtResource("1_2wmvw")]
+layout_mode = 0
+offset_left = 645.0
+offset_top = -220.0
+offset_right = 845.0
+offset_bottom = 15.0
+metadata/ID = 3
+
+[node name="EquipItem5" parent="Control/EquipItems" instance=ExtResource("1_2wmvw")]
+layout_mode = 0
+offset_left = 865.0
+offset_top = -220.0
+offset_right = 1065.0
+offset_bottom = 15.0
+metadata/ID = 4
+
+[node name="EquipItem6" parent="Control/EquipItems" instance=ExtResource("1_2wmvw")]
+layout_mode = 0
+offset_left = 1075.0
+offset_top = -220.0
+offset_right = 1275.0
+offset_bottom = 15.0
+metadata/ID = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 2
+offset_left = 698.0
+offset_top = 181.0
+offset_right = 1159.0
+offset_bottom = 327.0
+
+[node name="EquipButton" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Equip/Unequip
+"
+
+[node name="CancelButton" type="Button" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cancel
+"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 4
 
@@ -70,22 +224,8 @@ Page"
 [node name="MarginContainer3" type="MarginContainer" parent="Control/VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/MarginContainer3"]
-layout_mode = 2
-
-[node name="EquipButton" type="Button" parent="Control/VBoxContainer/MarginContainer3/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Equip/Unequip
-"
-
-[node name="CancelButton" type="Button" parent="Control/VBoxContainer/MarginContainer3/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Cancel
-"
-
 [node name="MarginContainer2" type="MarginContainer" parent="Control/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 420)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -333,15 +473,72 @@ size_flags_horizontal = 3
 size_flags_vertical = 0
 text = "Fight Scene"
 
-[node name="Sprite2dButton" parent="Control" instance=ExtResource("5_i1xdc")]
-material = SubResource("ShaderMaterial_4l8q8")
-position = Vector2(1199, 632)
-scale = Vector2(1.80469, 1.80469)
-texture = ExtResource("7_ybuf3")
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control"]
+offset_left = 197.0
+offset_top = 559.0
+offset_right = 599.0
+offset_bottom = 665.0
+alignment = 1
+
+[node name="Prev" parent="Control/HBoxContainer2" instance=ExtResource("5_i1xdc")]
+material = SubResource("ShaderMaterial_5bio8")
+position = Vector2(-166, -51)
+texture = ExtResource("9_mpmoi")
 hframes = 2
+vframes = 2
+hoverWhiteStandard = true
+
+[node name="Next" parent="Control/HBoxContainer2" instance=ExtResource("5_i1xdc")]
+material = SubResource("ShaderMaterial_drf7v")
+position = Vector2(1050, -56)
+texture = ExtResource("9_mpmoi")
+hframes = 2
+vframes = 2
+frame = 1
+hoverWhiteStandard = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control"]
+offset_left = 197.0
+offset_top = 559.0
+offset_right = 599.0
+offset_bottom = 665.0
+alignment = 1
+
+[node name="Prev" parent="Control/HBoxContainer3" instance=ExtResource("5_i1xdc")]
+material = SubResource("ShaderMaterial_5bio8")
+position = Vector2(-29, -460)
+texture = ExtResource("9_mpmoi")
+hframes = 2
+vframes = 2
+hoverWhiteStandard = true
+
+[node name="Next" parent="Control/HBoxContainer3" instance=ExtResource("5_i1xdc")]
+material = SubResource("ShaderMaterial_drf7v")
+position = Vector2(353, -462)
+texture = ExtResource("9_mpmoi")
+hframes = 2
+vframes = 2
+frame = 1
+hoverWhiteStandard = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
+[connection signal="SpriteButtonPressed" from="Control/Sprite2dButton" to="." method="_on_sprite_2d_button_sprite_button_pressed"]
+[connection signal="mouse_entered" from="Control/Sprite2dButton" to="." method="_on_sprite_2d_button_mouse_entered"]
+[connection signal="mouse_exited" from="Control/Sprite2dButton" to="." method="_on_sprite_2d_button_mouse_exited"]
+[connection signal="selected_item" from="Control/EquippedItems/EquippedItem1" to="." method="_on_equipped_item_selected_item"]
+[connection signal="selected_item" from="Control/EquippedItems/EquippedItem2" to="." method="_on_equipped_item_selected_item"]
+[connection signal="selected_item" from="Control/EquippedItems/EquippedItem3" to="." method="_on_equipped_item_selected_item"]
+[connection signal="selected_item" from="Control/EquippedItems/EquippedItem4" to="." method="_on_equipped_item_selected_item"]
+[connection signal="selected_item" from="Control/EquippedItems/EquippedItem5" to="." method="_on_equipped_item_selected_item"]
+[connection signal="selected_item" from="Control/EquipItems/EquipItem1" to="." method="_on_equip_item_selected_item"]
+[connection signal="selected_item" from="Control/EquipItems/EquipItem2" to="." method="_on_equip_item_selected_item"]
+[connection signal="selected_item" from="Control/EquipItems/EquipItem3" to="." method="_on_equip_item_selected_item"]
+[connection signal="selected_item" from="Control/EquipItems/EquipItem4" to="." method="_on_equip_item_selected_item"]
+[connection signal="selected_item" from="Control/EquipItems/EquipItem5" to="." method="_on_equip_item_selected_item"]
+[connection signal="selected_item" from="Control/EquipItems/EquipItem6" to="." method="_on_equip_item_selected_item"]
+[connection signal="pressed" from="Control/HBoxContainer/EquipButton" to="." method="_on_equip_button_pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/MarginContainer/HBoxContainer/LastPageButton" to="." method="_on_equipped_last_page_button_pressed"]
 [connection signal="selected_item" from="Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem1" to="." method="_on_equipped_item_selected_item"]
 [connection signal="selected_item" from="Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem2" to="." method="_on_equipped_item_selected_item"]
@@ -349,8 +546,6 @@ hframes = 2
 [connection signal="selected_item" from="Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem4" to="." method="_on_equipped_item_selected_item"]
 [connection signal="selected_item" from="Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem5" to="." method="_on_equipped_item_selected_item"]
 [connection signal="pressed" from="Control/VBoxContainer/MarginContainer/HBoxContainer/NextPageButton" to="." method="_on_equipped_next_page_button_pressed"]
-[connection signal="pressed" from="Control/VBoxContainer/MarginContainer3/HBoxContainer/EquipButton" to="." method="_on_equip_button_pressed"]
-[connection signal="pressed" from="Control/VBoxContainer/MarginContainer3/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/MarginContainer2/HBoxContainer/LastPageButton" to="." method="_on_last_page_button_pressed"]
 [connection signal="selected_item" from="Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsFirstRow/EquipItem1" to="." method="_on_equip_item_selected_item"]
 [connection signal="selected_item" from="Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsFirstRow/EquipItem2" to="." method="_on_equip_item_selected_item"]
@@ -368,6 +563,7 @@ hframes = 2
 [connection signal="pressed" from="Control/VBoxContainer/MenuButtonRow2/NinePatchRect5/FightSceneButton" to="." method="_on_item_scene_button_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/MenuButtonRow2/NinePatchRect3/WeaponShopButton" to="." method="_on_weapon_shop_button_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/MenuButtonRow2/NinePatchRect4/FightSceneButton" to="." method="_on_fight_scene_button_pressed"]
-[connection signal="SpriteButtonPressed" from="Control/Sprite2dButton" to="." method="_on_sprite_2d_button_sprite_button_pressed"]
-[connection signal="mouse_entered" from="Control/Sprite2dButton" to="." method="_on_sprite_2d_button_mouse_entered"]
-[connection signal="mouse_exited" from="Control/Sprite2dButton" to="." method="_on_sprite_2d_button_mouse_exited"]
+[connection signal="SpriteButtonPressed" from="Control/HBoxContainer2/Prev" to="." method="_on_last_page_button_pressed"]
+[connection signal="SpriteButtonPressed" from="Control/HBoxContainer2/Next" to="." method="_on_next_page_button_pressed"]
+[connection signal="SpriteButtonPressed" from="Control/HBoxContainer3/Prev" to="." method="_on_equipped_last_page_button_pressed"]
+[connection signal="SpriteButtonPressed" from="Control/HBoxContainer3/Next" to="." method="_on_equipped_next_page_button_pressed"]

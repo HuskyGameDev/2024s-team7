@@ -45,3 +45,19 @@ func on_reload() -> void:
 		sprite.visible = false
 		button.visible = false
 		namelabel.visible = false
+
+
+func _on_sprite_2d_mouse_entered() -> void:
+	sprite.frame += 24
+
+
+func _on_sprite_2d_mouse_exited() -> void:
+	sprite.frame -= 24
+
+func _on_sprite_2d_sprite_button_pressed():
+	# print("the button worked awooga")
+	#Dialogic.set_variable('ItemDescript', 'awooooga')
+	var lines = ItemStorage.itemsList[id]["descript"]
+	Dialogic.VAR.ItemDescript = lines
+
+	Dialogic.start('itemDescriptions')

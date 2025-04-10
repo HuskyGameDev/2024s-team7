@@ -15,7 +15,7 @@ var EquipScreen = preload("res://Scenes/Playable/EquipScreen.tscn").instantiate(
 var WeaponShop = preload("res://Scenes/Playable/WeaponShop.tscn").instantiate()
 
 @onready var time = 15
-@onready var maxequips = 5
+@onready var maxequips = 6
 var equipped_items = [] # Array of equipped item id's initialized to -1 (not real id)
 @onready var equipped_weapon = "unarmed"
 

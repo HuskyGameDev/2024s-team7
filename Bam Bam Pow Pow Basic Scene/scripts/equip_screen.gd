@@ -2,8 +2,8 @@ extends CanvasLayer
 
 # Get reference to equip/unequip button, cancel selection button,
 # the maximum number of pages, and the currently selected id
-@onready var equip_unequip_button = $Control/VBoxContainer/MarginContainer3/HBoxContainer/EquipButton
-@onready var cancel_button = $Control/VBoxContainer/MarginContainer3/HBoxContainer/CancelButton
+@onready var equip_unequip_button = $Control/HBoxContainer/EquipButton
+@onready var cancel_button = $Control/HBoxContainer/CancelButton
 @onready var maxPage = ceil(ItemStorage.itemMax/10.0)
 @onready var maxEquippedPage = ceil(ItemStorage.maxequips/5.0)
 @onready var selected_id = -1
@@ -46,18 +46,15 @@ func _on_next_page_button_pressed() -> void:
 	# For each of the 10 items onscreen, find their path, then change their metadata to the current metadata+10. 
 	# If that is above the maximum page (Ie the page with the last items), change it instead to i. 
 	# Finally, reload that item.
-	for i in 10:
+	for i in 6:
 		var curr_item;
-		var curr_item_num;
-		if (i < 5):
-			curr_item_num = "Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsFirstRow/EquipItem" + str(i+1)
-		else:
-			curr_item_num = "Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsSecondRow/EquipItem" + str(i+1)
+		var curr_item_num; 
+		curr_item_num = "Control/EquipItems/EquipItem" + str(i+1)
 		curr_item = get_node(curr_item_num)
-		if ((curr_item.get_meta("ID") + 10) >= ceil(ItemStorage.itemMax/10.0)*10):
+		if ((curr_item.get_meta("ID") + 6) >= ceil(ItemStorage.itemMax/6.0)*6):
 			curr_item.set_meta("ID", i)
 		else:
-			curr_item.set_meta("ID", curr_item.get_meta("ID")+10)
+			curr_item.set_meta("ID", curr_item.get_meta("ID")+6)
 		curr_item.on_reload()
 	unselect()
 
@@ -69,18 +66,15 @@ func _on_last_page_button_pressed() -> void:
 	# For each of the 10 items onscreen, find their path, then change their metadata to it-10. If that is below
 	# 0, change it instead to the maximum page's first item + i (Ie going below 0 makes that page the last page)
 	# Finally, reload that item.
-	for i in 10:
+	for i in 6:
 		var curr_item;
 		var curr_item_num;
-		if (i < 5):
-			curr_item_num = "Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsFirstRow/EquipItem" + str(i+1)
-		else:
-			curr_item_num = "Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsSecondRow/EquipItem" + str(i+1)
+		curr_item_num = "Control/EquipItems/EquipItem" + str(i+1)
 		curr_item = get_node(curr_item_num)
-		if ((curr_item.get_meta("ID") - 10) < 0):
-			curr_item.set_meta("ID", ((ItemStorage.itemMax/10)*10)+i)
+		if ((curr_item.get_meta("ID") - 6) < 0):
+			curr_item.set_meta("ID", ((ItemStorage.itemMax/6)*6)+i)
 		else:
-			curr_item.set_meta("ID", curr_item.get_meta("ID")-10)
+			curr_item.set_meta("ID", curr_item.get_meta("ID")-6)
 		curr_item.on_reload()
 	unselect()
 
@@ -89,7 +83,7 @@ func _on_last_page_button_pressed() -> void:
 func reload_equipped() -> void:
 	for i in 5:
 		var curr_eq_item 
-		var curr_eq_item_num = "Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem" + str(i+1)
+		var curr_eq_item_num = "Control/EquippedItems/EquippedItem" + str(i+1)
 		curr_eq_item = get_node(curr_eq_item_num)
 		curr_eq_item.set_meta("ID", ItemStorage.equipped_items[(equippedpage-1)*5+i])
 		curr_eq_item.on_reload()
@@ -209,8 +203,8 @@ func _on_equipped_last_page_button_pressed() -> void:
 	equippedpage -= 1
 	valequippedpage()
 	for i in 5:
-		var curr_eq_item 
-		var curr_eq_item_num = "Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem" + str(i+1)
+		var curr_eq_item
+		var curr_eq_item_num = "Control/EquippedItems/EquippedItem" + str(i+1)
 		curr_eq_item = get_node(curr_eq_item_num)
 		if (((equippedpage-1)*5)+i < ItemStorage.maxequips):
 			curr_eq_item.set_meta("ID", ItemStorage.equipped_items[((equippedpage-1)*5)+i])
@@ -225,7 +219,7 @@ func _on_equipped_next_page_button_pressed() -> void:
 	valequippedpage()
 	for i in 5:
 		var curr_eq_item 
-		var curr_eq_item_num = "Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem" + str(i+1)
+		var curr_eq_item_num = "Control/EquippedItems/EquippedItem" + str(i+1)
 		curr_eq_item = get_node(curr_eq_item_num)
 		if (((equippedpage-1)*5)+i < ItemStorage.maxequips):
 			curr_eq_item.set_meta("ID", ItemStorage.equipped_items[((equippedpage-1)*5)+i])
