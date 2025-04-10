@@ -4,16 +4,44 @@ var keylist = [KEY_W, KEY_S, KEY_A, KEY_D, KEY_J, KEY_K, KEY_L, KEY_SEMICOLON]
 
 @onready var fullscreen_check = $"TabContainer/Video & Audio/MarginContainer/VBoxContainer/FullscreenHBox/FullscreenCheckButton"
 @onready var resolution_options = $"TabContainer/Video & Audio/MarginContainer/VBoxContainer/ResolutionHBox/ResolutionOptionButton"
+var is_pause_overlay = false
 func _ready() -> void:
 	fullscreen_check.button_pressed = Global.fullscreen_on
 	resolution_options.selected = Global.resolution_index
+	if is_pause_overlay:
+		process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _input(event):
 	if Input.is_action_just_pressed('Esc'):
-		SceneSwap.scene_swap(Global.prev_scene)
+		if is_pause_overlay:
+			var parent_nodes = get_ancestors()
+			for node in parent_nodes:
+				var pause_manager = node.get_node_or_null("PauseManager")
+				if pause_manager:
+					pause_manager.unpause_game()
+					return
+		else:
+			SceneSwap.scene_swap(Global.prev_scene)
 
 func _on_button_pressed():
-	SceneSwap.scene_swap(Global.prev_scene)
+	if is_pause_overlay:
+		var parent_nodes = get_ancestors()
+		for node in parent_nodes:
+			var pause_manager = node.get_node_or_null("PauseManager")
+			if pause_manager:
+				pause_manager.unpause_game()
+				return
+	else:
+		SceneSwap.scene_swap(Global.prev_scene)
+
+#Helper function	
+func get_ancestors():
+	var ancestors = []
+	var parent = get_parent()
+	while parent:
+		ancestors.append(parent)
+		parent = parent.get_parent()
+	return ancestors
 
 func _on_check_button_toggled(toggled_on):
 	Global.fullscreen_on = toggled_on
