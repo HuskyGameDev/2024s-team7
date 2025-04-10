@@ -33,6 +33,7 @@ signal timeline_ended
 @onready var done = false
 @onready var fiveSecond_noise = preload("res://resources/sounds/fiveseconds.wav")
 var results = preload("res://Scenes/Playable/ResultsScreen.tscn").instantiate()
+var pause_manager
 
 func _ready():
 	#Dialogic.process_mode = Node.PROCESS_MODE_ALWAYS
@@ -52,6 +53,9 @@ func _ready():
 		Dialogic.VAR.FirstFight = false
 	
 	_start_dialog("Startup")
+	pause_manager = load("res://scripts/pause_manager.gd").new()
+	pause_manager.name = "PauseManager"
+	add_child(pause_manager)
 
 func _process(delta):
 	# Set timer label values
@@ -84,7 +88,6 @@ func healthChanged():
 		print("they died")
 		defeatEnemy()
 
-## Function that runs when an enemy's health reaches 0:
 ## Changes the enemy's data to say they've been defeated,
 ## Manages whether this is a new defeat (ergo new weapon),
 ## Moves to next enemy, Changes scene
@@ -163,3 +166,4 @@ func _on_timeline_ended():
 # I deleted Shattered node (child of FSM) because I couldn't figure out how to get it to work.
 func on_shatter():
 	player_FSM.force_change_state("Shattered")
+		#pause_manager.pause_game()
