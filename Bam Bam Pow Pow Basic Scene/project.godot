@@ -48,6 +48,7 @@ directories/dtl_directory={
 "SavedNotification": "res://dialogic/timelines/SavedNotification.dtl",
 "Sir Plomp": "res://dialogic/timelines/Sir Plomp.dtl",
 "Sweet Baby Jones": "res://dialogic/timelines/Sweet Baby Jones.dtl",
+"equipScreen": "res://dialogic/timelines/equipScreen.dtl",
 "itemDescriptions": "res://dialogic/timelines/itemDescriptions.dtl",
 "itemShop": "res://dialogic/timelines/itemShop.dtl",
 "lvl1Goblin": "res://dialogic/timelines/lvl1Goblin.dtl",

@@ -20,16 +20,19 @@ unique_name_in_owner = true
 layer = -50
 
 [node name="player" parent="." instance=ExtResource("6_xn3vh")]
-position = Vector2(328, 528)
+position = Vector2(280, 528)
 scale = Vector2(2, 2)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(180, 0)
 limit_bottom = 720
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
+drag_left_margin = 0.7
+drag_right_margin = 0.7
 
 [node name="enemy" parent="." instance=ExtResource("7_l7e77")]
-position = Vector2(944, 512)
+position = Vector2(968, 512)
 
 [node name="ComboHandler" parent="." instance=ExtResource("8_kxes6")]
 

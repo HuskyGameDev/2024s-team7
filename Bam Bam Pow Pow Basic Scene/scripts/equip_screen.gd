@@ -2,16 +2,19 @@ extends CanvasLayer
 
 # Get reference to equip/unequip button, cancel selection button,
 # the maximum number of pages, and the currently selected id
-@onready var equip_unequip_button = $Control/HBoxContainer/EquipButton
+@onready var equip_button = $Control/HBoxContainer/EquipButton
 @onready var cancel_button = $Control/HBoxContainer/CancelButton
+@onready var equip_button_label = $Control/HBoxContainer/EquipButton/EquipLabel
+@onready var cancel_button_label = $Control/HBoxContainer/CancelButton/CancelLabel
 @onready var maxPage = ceil(ItemStorage.itemMax/10.0)
 @onready var maxEquippedPage = ceil(ItemStorage.maxequips/5.0)
 @onready var selected_id = -1
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var exitButton = $Control/Sprite2dButton
+@onready var draco = $Draco
 const WOOD_CLICK = preload("res://resources/sounds/WoodClick.wav")
 signal reload
-
+signal timeline_ended
 
 var page = 1
 var equippedpage = 1
@@ -19,11 +22,18 @@ var equippedpage = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Make equip/unequip button and cancel selection button disappear
-	equip_unequip_button.visible = false
+	equip_button.visible = false
 	cancel_button.visible = false
 	emit_signal("reload")
 	reload_equipped()
-
+	
+	if WeaponInShop.itemsOpened == false:
+		draco.show()
+		Dialogic.start('equipScreen')
+	WeaponInShop.equipOpened = true
+	Dialogic.timeline_ended.connect(_on_timeline_ended)
+	await timeline_ended
+	draco.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -91,23 +101,23 @@ func reload_equipped() -> void:
 # When selecting a currently equipped item, make equip/unequip button say unequip,
 # make it and cancel selection button visibile, and update selected id
 func _on_equipped_item_selected_item(id: Variant) -> void:
-	equip_unequip_button.visible = true
+	equip_button.visible = true
 	if (ItemStorage.itemsList[id]["equipped"] == false):
-		equip_unequip_button.text = "Equip"
+		equip_button_label.text = "Equip"
 	else:
-		equip_unequip_button.text = "Unequip"
+		equip_button_label.text = "Unequip"
 	cancel_button.visible = true
 	selected_id = id
 
 # When selecting a currently unequipped item, make equip/unequip button say equip,
 # make it and cancel selection button visibile, and update selected id
 func _on_equip_item_selected_item(id: Variant) -> void:
-	equip_unequip_button.visible = true
+	equip_button.visible = true
 	print(ItemStorage.itemsList[id]["equipped"])
 	if (ItemStorage.itemsList[id]["equipped"] == false):
-		equip_unequip_button.text = "Equip"
+		equip_button_label.text = "Equip"
 	else:
-		equip_unequip_button.text = "Unequip"
+		equip_button_label.text = "Unequip"
 	cancel_button.visible = true
 	selected_id = id
 
@@ -148,7 +158,7 @@ func _on_equip_button_pressed() -> void:
 # Helper function that removes the equip/unequip and cancel buttons and sets selected_id
 # to -1 (nonexistant id)
 func unselect() -> void:
-	equip_unequip_button.visible = false
+	equip_button.visible = false
 	cancel_button.visible = false
 	selected_id = -1
 
@@ -244,3 +254,6 @@ func _on_sprite_2d_button_mouse_exited():
 func _input(event):
 	if Input.is_action_just_pressed('Esc'):
 		SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn")
+		
+func _on_timeline_ended():
+	timeline_ended.emit()

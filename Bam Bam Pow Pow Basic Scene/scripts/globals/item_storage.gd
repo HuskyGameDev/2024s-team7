@@ -112,9 +112,12 @@ func load_game():
 		WeaponShop._changeBox(i)
 	if (get_tree().current_scene.name == "EquipScreen"):
 		EquipScreen.equip_unequip_button.visible = false
-	equipped_weapon = content.get_slice("\n", item_id+1)
+	if content.get_slice("\n", item_id+1) == "spear":
+		equipped_weapon = "spear"
+	else:
+		equipped_weapon = "unarmed"
 	print(equipped_weapon)
-
+	
 # Prints all owned items, currently unused
 func printItems():
 	for item in itemsList:

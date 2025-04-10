@@ -86,7 +86,7 @@ func _on_settings_button_pressed():
 	SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn")
 
 func _on_credit_button_pressed():
-	pass # Replace with function body.
+	OS.shell_open("https://github.com/HuskyGameDev/2024s-team7")
 
 func _on_quit_button_pressed():
 	get_tree().quit()

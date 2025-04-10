@@ -95,10 +95,7 @@ func defeatEnemy():
 	done = true
 	FightDetails.win = true
 	enemy.calc_money()
-	#TODO: make this time taken instead of time left
-	# Not done yet bc I need to actually set the max time to the one in the enemy dict
-	# Problem: idk how the adding to the timer works. will need to make sure no conflicts.
-	Global.time_left = timer.time_left
+	Global.time_left = ItemStorage.time - timer.time_left
 	
 	# # Set the global value of whether opponent has ever been defeated
 	if (!currentEnemy["defeated"]):
