@@ -2,84 +2,84 @@
 	"name": "unarmed",
 	"damage_type": "PHYSICAL",
 	"light_neutral": {
-		"damage": 10,
+		"damage": 15,
 		"knockback": 1.8,
 		"angle": 45.0,
 		"hit_stun": 100,
 		"animation": "unarmed/un_light_n"
 	},
 	"light_neutral_1": {
-		"damage": 8,
+		"damage": 18,
 		"knockback": 1.6,
 		"angle": 45.0,
 		"hit_stun": 100,
 		"animation": "unarmed/un_light_n_1"
 	},
 	"light_neutral_2": {
-		"damage": 25,
+		"damage": 22,
 		"knockback": 7.3,
 		"angle": 45.0,
 		"hit_stun": 100,
 		"animation": "unarmed/un_light_n_2"
 	},
 	"light_up": {
-		"damage": 30,
+		"damage": 6,
 		"knockback": 1.8,
 		"angle": 60.0,
 		"hit_stun": 100,
 		"animation": "unarmed/un_light_u"
 	},
 	"light_down": {
-		"damage": 20,
+		"damage": 8,
 		"knockback": 1,
 		"angle": -30.0,
 		"hit_stun": 150,
 		"animation": "unarmed/un_light_d"
 	},
 	"light_side": {
-		"damage": 80,
+		"damage": 5,
 		"knockback": 3,
 		"angle": 30.0,
 		"hit_stun": 100,
 		"animation": "unarmed/un_light_s"
 	},
 	"light_air": {
-		"damage": 12,
+		"damage": 8,
 		"knockback": 1.0,
 		"angle": 45.0,
 		"hit_stun": 80,
 		"animation": "unarmed/un_light_a"
 	},
 	"heavy_neutral": {
-		"damage": 100,
+		"damage": 30,
 		"knockback": 8,
 		"angle": 45.0,
 		"hit_stun": 100,
 		"animation": "unarmed/un_heavy_n"
 	},
 	"heavy_up": {
-		"damage": 150,
+		"damage": 30,
 		"knockback": -20,
 		"angle": 70.0,
 		"hit_stun": 200,
 		"animation": "unarmed/un_heavy_u"
 	},
 	"heavy_down": {
-		"damage": 25,
+		"damage": 35,
 		"knockback": 1.5,
 		"angle": -50.0,
 		"hit_stun": 100,
 		"animation": "unarmed/un_heavy_d"
 	},
 	"heavy_side": {
-		"damage": 8,
+		"damage": 30,
 		"knockback": 2.0,
 		"angle": 45.0,
 		"hit_stun": 110,
 		"animation": "unarmed/un_heavy_s"
 	},
 	"heavy_air": {
-		"damage": 200,
+		"damage": 32,
 		"knockback": -40,
 		"angle": 45.0,
 		"hit_stun": 80,

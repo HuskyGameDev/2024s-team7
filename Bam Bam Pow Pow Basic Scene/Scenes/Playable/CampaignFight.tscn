@@ -83,6 +83,7 @@ one_shot = true
 
 [node name="AudioTimer" type="AudioStreamPlayer" parent="."]
 process_mode = 1
+bus = &"sfx"
 
 [connection signal="start" from="FightBase" to="." method="_on_fight_base_start"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

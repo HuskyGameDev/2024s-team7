@@ -82,7 +82,6 @@ func _on_tutorial_button_pressed():
 
 func _on_settings_button_pressed():
 	Global.prev_scene = get_tree().current_scene.scene_file_path
-	audio_stream_player.play()
 	SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn")
 
 func _on_credit_button_pressed():

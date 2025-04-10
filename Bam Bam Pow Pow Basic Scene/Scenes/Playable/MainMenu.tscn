@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c76vfrrc8d27k"]
+[gd_scene load_steps=14 format=3 uid="uid://c76vfrrc8d27k"]
 
 [ext_resource type="Script" path="res://scripts/MainMenu.gd" id="1_8i4yj"]
 [ext_resource type="Texture2D" uid="uid://kykh0r7grr4w" path="res://resources/sprites/title screen background.png" id="2_rr2of"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cc1ttocg7gplt" path="res://Scenes/Functional/Sprite2DButton.tscn" id="4_ok530"]
 [ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="5_e1a4t"]
 [ext_resource type="Texture2D" uid="uid://dhr7geb5igl86" path="res://resources/sprites/Main-Menu-Buttons-Spritesheet.png" id="6_g56m3"]
+[ext_resource type="AudioStream" uid="uid://c0cydnjjcj2ac" path="res://resources/sounds/Loop 1.wav" id="7_n7txy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n2c3k"]
 resource_local_to_scene = true
@@ -52,8 +53,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8i4yj")
 metadata/_edit_lock_ = true
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -138,6 +137,11 @@ hoverWhiteStandard = true
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_n7txy")
+autoplay = true
+bus = &"music"
 
 [connection signal="SpriteButtonPressed" from="CanvasLayer/New" to="." method="_on_new_game_button_pressed"]
 [connection signal="SpriteButtonPressed" from="CanvasLayer/Load" to="." method="_on_load_game_button_pressed"]

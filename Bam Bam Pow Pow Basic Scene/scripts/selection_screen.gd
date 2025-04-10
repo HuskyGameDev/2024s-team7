@@ -11,6 +11,8 @@ extends Node
 @onready var trainingButton = $TrainingButton
 @onready var soundPlayer = $AudioStreamPlayer2D
 @onready var piggy_bank = $PiggyBank
+@onready var music = $Music
+
 
 # Go to settings on esc
 func _input(event):
@@ -129,10 +131,11 @@ func _on_training_button_sprite_button_pressed():
 
 func _on_piggy_bank_sprite_button_pressed():
 	soundPlayer.stream = load("res://resources/sounds/oink.mp3")
+	soundPlayer.play()
 	piggy_bank.frame = 2
 	await get_tree().create_timer(.1).timeout
-	soundPlayer.play()
-
+	if(!music.playing):
+		music.play(0)
 
 func _on_audio_stream_player_2d_finished():
 	piggy_bank.frame = 3

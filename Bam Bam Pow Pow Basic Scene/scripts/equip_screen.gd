@@ -173,35 +173,6 @@ func _on_main_menu_button_pressed():
 			audio_stream_player.play()
 	SceneSwap.scene_swap("res://Scenes/Playable/MainMenu.tscn");
 
-func _on_weapon_shop_button_pressed():
-	if (!audio_stream_player.is_playing()):
-			audio_stream_player.stream = WOOD_CLICK
-			audio_stream_player.play()
-	SceneSwap.scene_swap("res://Scenes/Playable/WeaponShop.tscn");
-
-func _on_settings_menu_button_pressed():
-	if (!audio_stream_player.is_playing()):
-			audio_stream_player.stream = WOOD_CLICK
-			audio_stream_player.play()
-	Global.prev_scene = get_tree().current_scene.scene_file_path
-	SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn");
-
-
-func _on_item_scene_button_pressed() -> void:
-	if (!audio_stream_player.is_playing()):
-			audio_stream_player.stream = WOOD_CLICK
-			audio_stream_player.play()
-	Global.prev_scene = get_tree().current_scene.scene_file_path
-	SceneSwap.scene_swap("res://Scenes/Playable/ItemShop.tscn");
-
-
-func _on_fight_scene_button_pressed() -> void:
-	if (!audio_stream_player.is_playing()):
-			audio_stream_player.stream = WOOD_CLICK
-			audio_stream_player.play()
-	Global.prev_scene = get_tree().current_scene.scene_file_path
-	SceneSwap.scene_swap("res://Scenes/Playable/Fight.tscn");
-
 func valequippedpage():
 	if (equippedpage < 1):
 		equippedpage = maxEquippedPage

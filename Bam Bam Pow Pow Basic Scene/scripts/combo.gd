@@ -79,10 +79,10 @@ func _input(event):
 			load_combo(CORE.LIGHT)
 		elif event.is_action_pressed("Kick", false):
 			load_combo(CORE.HEAVY)
-		elif event.is_action_pressed("Weapon", false):
-			load_combo(CORE.SPECIAL)
-		elif event.is_action_pressed("Special", false):
-			load_combo(CORE.SUPER)
+		#elif event.is_action_pressed("Weapon", false):
+			#load_combo(CORE.SPECIAL)
+		#elif event.is_action_pressed("Special", false):
+			#load_combo(CORE.SUPER)
 		elif event.is_action_pressed("Debuff", false):
 			apply_debuff("PHYSICAL", 4.0, -0.5)
 

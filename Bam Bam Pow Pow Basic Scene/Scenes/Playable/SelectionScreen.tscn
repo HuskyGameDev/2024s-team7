@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://cysbblmbob7en"]
+[gd_scene load_steps=53 format=3 uid="uid://cysbblmbob7en"]
 
 [ext_resource type="PackedScene" uid="uid://cc1ttocg7gplt" path="res://Scenes/Functional/Sprite2DButton.tscn" id="1_2csh0"]
 [ext_resource type="Script" path="res://scripts/selection_screen.gd" id="1_3w0n4"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cd677kcyfk448" path="res://resources/sprites/training-button-spritesheet.png" id="13_68j8t"]
 [ext_resource type="Texture2D" uid="uid://5leqnax6w6ig" path="res://resources/sprites/glassy-readies-spritesheet.png" id="13_ycg0v"]
 [ext_resource type="AudioStream" uid="uid://b2g7xb2nbo5ju" path="res://resources/sounds/oink.mp3" id="14_05pke"]
+[ext_resource type="AudioStream" uid="uid://dhvr11jenljs2" path="res://resources/sounds/Loop 2.wav" id="16_f5g3k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yw7w7"]
 resource_local_to_scene = true
@@ -578,6 +579,10 @@ speed_scale = 0.2
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_05pke")
+bus = &"sfx"
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_f5g3k")
 
 [connection signal="SpriteButtonPressed" from="VBoxContainer/SceneSwaps/Settings" to="." method="_on_settings_sprite_button_pressed"]
 [connection signal="SpriteButtonPressed" from="VBoxContainer/SceneSwaps/ItemShop" to="." method="_on_item_shop_sprite_button_pressed"]

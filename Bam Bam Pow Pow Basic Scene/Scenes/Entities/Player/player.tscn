@@ -1648,7 +1648,7 @@ tracks/6/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s3a16"]
-size = Vector2(87, 70)
+size = Vector2(126.733, 64)
 
 [sub_resource type="Animation" id="Animation_ba72k"]
 resource_name = "chop"
@@ -4319,7 +4319,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-45.8647, 45)]
+"values": [Vector2(-58.8647, 31)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -4444,10 +4444,10 @@ tracks/7/path = NodePath("Hitbox/CollisionShape2D:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.450001),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-53.8647, 36)]
+"values": [Vector2(-38.8647, 31)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -4456,7 +4456,7 @@ tracks/8/path = NodePath("Hitbox/CollisionShape2D:scale")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0.450001),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0.945, 0.26)]
@@ -4559,7 +4559,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-33.625, 33)]
+"values": [Vector2(-38.8647, 23)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -4668,7 +4668,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-36.8647, 32)]
+"values": [Vector2(-48.8647, 39)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -4802,10 +4802,10 @@ tracks/7/path = NodePath("Hitbox/CollisionShape2D:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.450001),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-34.8647, 40), Vector2(-46.8647, 11)]
+"values": [Vector2(-46.8647, 11)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -4814,10 +4814,10 @@ tracks/8/path = NodePath("Hitbox/CollisionShape2D:scale")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.450001),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.68, 1.11), Vector2(1.24, 1.935)]
+"values": [Vector2(1.24, 1.935)]
 }
 tracks/9/type = "audio"
 tracks/9/imported = false
@@ -4918,7 +4918,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-46.8647, 47)]
+"values": [Vector2(-54.5937, 39)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -5141,7 +5141,7 @@ tracks/5/path = NodePath("Hitbox/CollisionShape2D:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.1),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0.365, 0.39)]
@@ -5153,10 +5153,10 @@ tracks/6/path = NodePath("Hitbox/CollisionShape2D:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.1),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-42.8647, 26)]
+"values": [Vector2(-50.8647, 28.6739)]
 }
 tracks/7/type = "audio"
 tracks/7/imported = false
@@ -5246,7 +5246,7 @@ tracks/5/path = NodePath("Hitbox/CollisionShape2D:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.0833335),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0.53, 0.51)]
@@ -5258,10 +5258,10 @@ tracks/6/path = NodePath("Hitbox/CollisionShape2D:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.0833335),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-38.8647, 22)]
+"values": [Vector2(-62.8647, 31)]
 }
 tracks/7/type = "audio"
 tracks/7/imported = false
@@ -5382,7 +5382,7 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-36.8647, -4)]
+"values": [Vector2(-50.8647, 15)]
 }
 tracks/8/type = "audio"
 tracks/8/imported = false
@@ -5436,7 +5436,7 @@ tracks/2/path = NodePath("Hitbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.433333, 0.85),
+"times": PackedFloat32Array(0, 0.316667, 0.85),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -5484,7 +5484,7 @@ tracks/6/path = NodePath("Hitbox/CollisionShape2D:scale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.416667),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0.505, 1.125)]
@@ -5496,10 +5496,10 @@ tracks/7/path = NodePath("Hitbox/CollisionShape2D:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.416667),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-27.8647, 28)]
+"values": [Vector2(-38.8647, 35)]
 }
 tracks/8/type = "audio"
 tracks/8/imported = false
@@ -5601,7 +5601,7 @@ tracks/6/path = NodePath("Hitbox/CollisionShape2D:scale")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.133334),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0.505, 1.125)]
@@ -5613,10 +5613,10 @@ tracks/7/path = NodePath("Hitbox/CollisionShape2D:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.133334),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-38.8647, 9)]
+"values": [Vector2(-54.8647, 4.25)]
 }
 tracks/8/type = "audio"
 tracks/8/imported = false
@@ -5943,6 +5943,7 @@ dir = 0
 position = Vector2(10, 21)
 sprite_frames = SubResource("SpriteFrames_yenrd")
 animation = &"Unarmed"
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" parent="." index="1"]
 visible = false
@@ -5975,7 +5976,6 @@ position = Vector2(7.13533, 2)
 shape = SubResource("CapsuleShape2D_xphlf")
 
 [node name="Hitbox" parent="." index="5" instance=ExtResource("4_hxr67")]
-visible = false
 position = Vector2(76, -7)
 collision_layer = 8
 collision_mask = 4

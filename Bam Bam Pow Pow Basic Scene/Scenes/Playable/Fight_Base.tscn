@@ -76,6 +76,7 @@ metadata/_edit_lock_ = true
 shape = SubResource("WorldBoundaryShape2D_my50q")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"music"
 
 [connection signal="attack_performed" from="player" to="enemy" method="_on_player_attack"]
 [connection signal="player_dir" from="player" to="enemy" method="_on_player_player_dir"]

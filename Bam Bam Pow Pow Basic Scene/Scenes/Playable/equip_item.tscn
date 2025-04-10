@@ -1,11 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdh05d3fan0h3"]
+[gd_scene load_steps=8 format=3 uid="uid://bdh05d3fan0h3"]
 
 [ext_resource type="Script" path="res://scripts/equip_item.gd" id="1_ufywy"]
 [ext_resource type="PackedScene" uid="uid://cc1ttocg7gplt" path="res://Scenes/Functional/Sprite2DButton.tscn" id="2_68xeo"]
 [ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="3_1u8yq"]
 [ext_resource type="Texture2D" uid="uid://enf0gw48m1gp" path="res://resources/sprites/full_item_sprites_playtest_3.png" id="4_wks5s"]
+[ext_resource type="PackedScene" uid="uid://dbc7vk84ewdqo" path="res://Scenes/Functional/BasicButton.tscn" id="5_cp0da"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x7lvh"]
+resource_local_to_scene = true
+shader = ExtResource("3_1u8yq")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ony2n"]
 resource_local_to_scene = true
 shader = ExtResource("3_1u8yq")
 shader_parameter/onoffMult = false
@@ -37,13 +44,29 @@ layout_mode = 2
 text = "Name"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="."]
-custom_minimum_size = Vector2(200, 10)
+[node name="BasicButton" parent="." instance=ExtResource("5_cp0da")]
+self_modulate = Color(1, 0.262745, 0.141176, 1)
+material = SubResource("ShaderMaterial_ony2n")
 layout_mode = 2
+
+[node name="Label" type="Label" parent="BasicButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = -10.0
+offset_right = 32.5
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Select"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="SpriteButtonPressed" from="SpriteContainer/Sprite2D" to="." method="_on_sprite_2d_sprite_button_pressed"]
 [connection signal="mouse_entered" from="SpriteContainer/Sprite2D" to="." method="_on_sprite_2d_mouse_entered"]
 [connection signal="mouse_exited" from="SpriteContainer/Sprite2D" to="." method="_on_sprite_2d_mouse_exited"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Button" to="." method="_on_sprite_pressed"]
+[connection signal="buttonPressed" from="BasicButton" to="." method="_on_button_pressed"]

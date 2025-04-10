@@ -5,7 +5,7 @@ signal selected_item(id)
 # Get the sprite, button, name label, and equip screen references
 var id
 @onready var sprite = $SpriteContainer/Sprite2D
-@onready var button = $Button
+@onready var button = $BasicButton
 @onready var namelabel = $Label
 @onready var equip_screen = get_node("/root/EquipScreen")
 

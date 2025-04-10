@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://tetnkmhs2l60"]
+[gd_scene load_steps=20 format=3 uid="uid://tetnkmhs2l60"]
 
 [ext_resource type="PackedScene" uid="uid://bdh05d3fan0h3" path="res://Scenes/Playable/equip_item.tscn" id="1_2wmvw"]
 [ext_resource type="Script" path="res://scripts/equip_screen.gd" id="1_il0yl"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://d1fiq2dit7paw" path="res://resources/sprites/next-prev-spritesheet.png" id="9_mpmoi"]
 [ext_resource type="FontFile" uid="uid://bsodwni6sfoxc" path="res://resources/fonts/PixeloidSans-Bold.ttf" id="9_s7vrq"]
 [ext_resource type="Texture2D" uid="uid://diyocd1b2iykr" path="res://resources/sprites/equip-draco.png" id="11_5jae0"]
+[ext_resource type="AudioStream" uid="uid://cps12sibu0muy" path="res://resources/sounds/Loop 3.wav" id="12_pywbp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4l8q8"]
 resource_local_to_scene = true
@@ -427,6 +428,12 @@ frame = 1
 hoverWhiteStandard = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"sfx"
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_pywbp")
+autoplay = true
+bus = &"music"
 
 [connection signal="SpriteButtonPressed" from="Control/Sprite2dButton" to="." method="_on_sprite_2d_button_sprite_button_pressed"]
 [connection signal="mouse_entered" from="Control/Sprite2dButton" to="." method="_on_sprite_2d_button_mouse_entered"]
