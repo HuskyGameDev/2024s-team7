@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dk80ss5idciud"]
+[gd_scene load_steps=8 format=3 uid="uid://dk80ss5idciud"]
 
 [ext_resource type="Script" path="res://scripts/fight_base.gd" id="1_ifxgk"]
 [ext_resource type="Texture2D" uid="uid://btfkrmpw2jvl3" path="res://resources/sprites/Header/Header-Base.png" id="6_u6y6e"]
@@ -9,10 +9,8 @@
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_my50q"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vi03k"]
-normal = Vector2(1, 0)
-
 [node name="Node" type="Node"]
+process_mode = 3
 script = ExtResource("1_ifxgk")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -26,13 +24,12 @@ position = Vector2(328, 528)
 scale = Vector2(2, 2)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
-limit_left = 0
 limit_bottom = 720
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 
 [node name="enemy" parent="." instance=ExtResource("7_l7e77")]
-position = Vector2(944, 448)
+position = Vector2(944, 512)
 
 [node name="ComboHandler" parent="." instance=ExtResource("8_kxes6")]
 
@@ -74,14 +71,6 @@ metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
 shape = SubResource("WorldBoundaryShape2D_my50q")
-
-[node name="LeftWall" type="StaticBody2D" parent="."]
-position = Vector2(-32, 528)
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
-shape = SubResource("WorldBoundaryShape2D_vi03k")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 

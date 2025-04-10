@@ -35,6 +35,7 @@ offset_bottom = 38.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_fvj5n")
+stretch_mode = 4
 
 [node name="FloorTiles" type="ParallaxLayer" parent="."]
 z_index = 1

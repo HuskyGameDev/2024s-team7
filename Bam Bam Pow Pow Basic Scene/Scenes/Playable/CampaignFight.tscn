@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dsf8y5jpj3jg8" path="res://resources/sprites/clock-fill.png" id="7_8nxyx"]
 
 [node name="Campaign" type="Node"]
+process_mode = 3
 script = ExtResource("1_3iac4")
 
 [node name="FightBase" parent="." instance=ExtResource("2_dnsdk")]
@@ -20,10 +21,9 @@ position = Vector2(328, 536)
 
 [node name="enemy" parent="FightBase" index="3"]
 z_as_relative = false
-position = Vector2(1044, 456)
+position = Vector2(1064, 520)
 
 [node name="TextureRect" parent="FightBase/CanvasLayer" index="0"]
-metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -68,8 +68,8 @@ text = "Time: "
 [node name="TimerSprite" type="TextureProgressBar" parent="CanvasLayer"]
 offset_left = 1139.0
 offset_top = 12.0
-offset_right = 1267.0
-offset_bottom = 140.0
+offset_right = 1171.0
+offset_bottom = 44.0
 scale = Vector2(4, 4)
 fill_mode = 4
 texture_under = ExtResource("5_21awv")
@@ -77,10 +77,12 @@ texture_over = ExtResource("6_n0x1v")
 texture_progress = ExtResource("7_8nxyx")
 
 [node name="Timer" type="Timer" parent="."]
+process_mode = 1
 wait_time = 20.0
 one_shot = true
 
 [node name="AudioTimer" type="AudioStreamPlayer" parent="."]
+process_mode = 1
 
 [connection signal="start" from="FightBase" to="." method="_on_fight_base_start"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://iq81ahbinktl"
-path="res://.godot/imported/Sun.png-fe2f3df6ab3d286ff71e7011298f3a3d.ctex"
+uid="uid://c12fwofi8sg50"
+path="res://.godot/imported/baltimore_sprite_sheet.png-6a53782858d3bace3d2096718a2e7fc3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/sprites/FightBackgrounds/Jonestown/Sun.png"
-dest_files=["res://.godot/imported/Sun.png-fe2f3df6ab3d286ff71e7011298f3a3d.ctex"]
+source_file="res://resources/sprites/Enemies/baltimore_sprite_sheet.png"
+dest_files=["res://.godot/imported/baltimore_sprite_sheet.png-6a53782858d3bace3d2096718a2e7fc3.ctex"]
 
 [params]
 

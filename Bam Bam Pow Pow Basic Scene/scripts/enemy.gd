@@ -67,7 +67,10 @@ signal damage_readied(damage_array)
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-	animPlayer.play("idle")
+	if(FightDetails.infinity):
+		animPlayer.play("Sandbag/Idle")
+	else:
+		animPlayer.play(FightDetails.op_list[FightDetails.op_progress]["opName_no_space"] + "/Idle")
 	ready_mults()
 	print(audioPlayer)
 
@@ -179,6 +182,11 @@ func _on_hurtbox_area_entered(hitbox):
 		audioPlayer.set_stream(stream2)
 		audioPlayer.play()
 	
+	if(FightDetails.infinity):
+		animPlayer.play("Sandbag/Hurt")
+	else:
+		animPlayer.play(FightDetails.op_list[FightDetails.op_progress]["opName_no_space"] + "/Hurt")
+	
 	damage = player.weapon[attack_performed].damage + 0.2 * (player.weapon[attack_performed].damage * self.juggle)
 	damage *= player.weapon[attack_performed].mult
 	damage = calc_resistance(damage, player.weapon[attack_performed].damage_type)
@@ -189,9 +197,7 @@ func _on_hurtbox_area_entered(hitbox):
 
 	self.combo += 1
 	self.juggle += 0.5
-
 	
-	animPlayer.play("hurt")
 	showDmg.emit(damage)
 	
 	velocity.x = 0;

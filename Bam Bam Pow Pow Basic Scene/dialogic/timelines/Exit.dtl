@@ -1,0 +1,10 @@
+Exit without saving?
+- Cancel
+	[end_timeline]
+- Exit Without Saving
+	do SceneSwap.scene_swap("res://Scenes/Playable/MainMenu.tscn")
+- Save and Exit
+	do ItemStorage.save_game()
+	Your game has been saved!
+	do SceneSwap.scene_swap("res://Scenes/Playable/MainMenu.tscn")
+[end_timeline]

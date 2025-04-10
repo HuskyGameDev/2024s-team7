@@ -1,4 +1,5 @@
 extends Control
+# TODO: Would like a fade in. Pretty abrupt as-is.
 
 @onready var result_type_animation = $MarginContainer/ResultTypeAnimation
 @onready var result_image_animation = $MarginContainer/ResultImageAnimation
@@ -72,8 +73,7 @@ func _change_record_seconds():
 		record.add_theme_color_override("font_color", "yellow")
 		record_label.add_theme_color_override("font_color", "yellow")
 		record_label.text = "(New!) Record:"
-	record.text = str(FightDetails.op_list[FightDetails.op_progress]["record"]).pad_decimals(2)
-
+	record.text = (str(FightDetails.op_list[FightDetails.op_progress]["record"]).pad_decimals(2) + "s")
 func _change_combo():
 	combo.text = str(Global.combo)
 
