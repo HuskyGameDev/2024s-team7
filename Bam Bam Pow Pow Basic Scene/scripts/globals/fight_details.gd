@@ -66,16 +66,30 @@ func _ready():
 	))
 	
 	op_list.append(make_opponent(
-		"Sir Plomp",
-		"SirPlomp",
-		"Flippers with finesse.",
-		1000,
-		"res://resources/sprites/temp-batty-spritesheet.png",
-		"fancy",
+		"Sweet Baby Jones",
+		"SweetBabyJones",
+		"...",
+		500,
+		"res://resources/sprites/bbjo-mspaint-spritesheet.png",
+		"jonestown",
 		30,
 		false,
 		true,
-		"light",
+		"",
+		50,
+	))
+	
+	op_list.append(make_opponent(
+		"Robit",
+		"Robit",
+		"A technological miracle",
+		1000,
+		"res://resources/sprites/bbjo-mspaint-spritesheet.png",
+		"factory",
+		30,
+		false,
+		true,
+		"",
 		50,
 	))
 	
@@ -94,16 +108,16 @@ func _ready():
 	))
 	
 	op_list.append(make_opponent(
-		"Sweet Baby Jones",
-		"SweetBabyJones",
-		"...",
+		"Sir Plomp",
+		"SirPlomp",
+		"Flippers with finesse.",
 		3000,
-		"res://resources/sprites/bbjo-mspaint-spritesheet.png",
-		"jonestown",
+		"res://resources/sprites/temp-batty-spritesheet.png",
+		"fancy",
 		30,
 		false,
 		true,
-		"",
+		"light",
 		50,
 	))
 	
@@ -111,7 +125,7 @@ func _ready():
 		"Baltimore",
 		"Baltimore",
 		"Women love me, fish fear me",
-		8000,
+		6000,
 		"res://resources/sprites/master-mspaint-spritesheet.png",
 		"sakura",
 		30,

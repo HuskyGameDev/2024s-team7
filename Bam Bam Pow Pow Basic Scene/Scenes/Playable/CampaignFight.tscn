@@ -14,9 +14,6 @@ script = ExtResource("1_3iac4")
 
 [node name="FightBase" parent="." instance=ExtResource("2_dnsdk")]
 
-[node name="ParallaxElements" parent="FightBase" index="1"]
-background_setup_function = "sakura"
-
 [node name="player" parent="FightBase" index="2"]
 z_index = 1
 z_as_relative = false

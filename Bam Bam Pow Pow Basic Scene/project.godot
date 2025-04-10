@@ -34,14 +34,17 @@ directories/dch_directory={
 "Glassy": "res://dialogic/characters/Glassy.dch",
 "Lvl 1 Goblin": "res://dialogic/characters/Lvl 1 Goblin.dch",
 "Moon": "res://dialogic/characters/Moon.dch",
+"Robit": "res://dialogic/characters/Robit.dch",
 "Sir Plomp": "res://dialogic/characters/Sir Plomp.dch",
 "Sweet Baby Jones": "res://dialogic/characters/Sweet Baby Jones.dch"
 }
 directories/dtl_directory={
 "Baltimore": "res://dialogic/timelines/Baltimore.dtl",
 "Batty": "res://dialogic/timelines/Batty.dtl",
+"Exit": "res://dialogic/timelines/Exit.dtl",
 "Lvl 1 Goblin": "res://dialogic/timelines/Lvl 1 Goblin.dtl",
 "Moon": "res://dialogic/timelines/Moon.dtl",
+"Robit": "res://dialogic/timelines/Robit.dtl",
 "SavedNotification": "res://dialogic/timelines/SavedNotification.dtl",
 "Sir Plomp": "res://dialogic/timelines/Sir Plomp.dtl",
 "Sweet Baby Jones": "res://dialogic/timelines/Sweet Baby Jones.dtl",

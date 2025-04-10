@@ -42,6 +42,8 @@ func _ready():
 			dog_park()
 		"moon":
 			moon()
+		"factory":
+			factory()
 	
 	# Set still background and floor
 	still_background.texture = load(still_background_texture)
@@ -240,7 +242,6 @@ func moon():
 	var closeHillsLayer = _add_layer(1)
 	var closeHillsSprite = _add_sprite(closeHillsLayer, "res://resources/sprites/FightBackgrounds/Moon/close-hill.png")
 
-## Adds all frames necessary for Sakura background
 func dog_park():
 	# Set still background and floor
 	still_background_texture = "res://resources/sprites/FightBackgrounds/Sakura/parallax-sky-cherry.png"
@@ -269,7 +270,6 @@ func dog_park():
 	var sign_sprite = _add_sprite(sign_layer, "res://resources/sprites/FightBackgrounds/Dog Park/sign.png")
 	sign_layer.motion_mirroring.x = 0
 
-## Adds all frames necessary for Sakura background
 func fancy():
 	# Set still background and floor
 	bg_floor.visible = false
@@ -289,3 +289,14 @@ func fancy():
 	
 	var chandelier_layer = _add_layer(1.15)
 	var chandelier_sprite = _add_sprite(chandelier_layer, "res://resources/sprites/FightBackgrounds/Fancy/Chandelier.png")
+
+func factory():
+	# Set still background and floor
+	bg_floor.visible = false
+	
+	# Create all layers:
+	var back_layer = _add_layer(.2)
+	var back_sprite = _add_sprite(back_layer, "res://resources/sprites/FightBackgrounds/Factory/Backdrop.png")
+	
+	var machine_layer = _add_layer(.4)
+	var machine_sprite = _add_sprite(machine_layer, "res://resources/sprites/FightBackgrounds/Factory/Machinery.png")

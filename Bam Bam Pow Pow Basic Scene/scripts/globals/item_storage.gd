@@ -104,6 +104,8 @@ func load_game():
 		else:
 			WeaponInShop.weapons_list[i]["ownership"] = false
 		item_id = item_id+1
+	# Always own unarmed
+	WeaponInShop.weapons_list[0]["ownership"] = true
 	print(WeaponInShop.weapons_list)
 	if (get_tree().current_scene.name == "WeaponShop"):
 		var i = WeaponInShop.currentInstance

@@ -48,7 +48,6 @@ func _ready():
 	
 	if currentEnemy["first_try"]:
 		Dialogic.VAR.FirstFight = true
-		currentEnemy["first_try"] = false
 	else:
 		Dialogic.VAR.FirstFight = false
 	
@@ -136,10 +135,12 @@ func _on_timer_timeout():
 
 # Start timer when Fight Base starts fight
 func _on_fight_base_start():
-	await get_tree().create_timer(.3).timeout
+	await get_tree().create_timer(.5).timeout
 	timer.wait_time = ItemStorage.time
 	timer.start()
-	_start_dialog("FirstHit")
+	if (currentEnemy["first_try"]):
+		_start_dialog("FirstHit")
+		currentEnemy["first_try"] = false
 
 func _start_dialog(label_name):
 	Dialogic.start(currentEnemy["opName"], label_name).process_mode = Node.PROCESS_MODE_ALWAYS
@@ -149,7 +150,13 @@ func _start_dialog(label_name):
 # Go to settings on esc
 func _input(event):
 	if Input.is_action_just_pressed('Esc'):
-		SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn")
+		# Removed for playtest
+		#SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn")
+		enemy.calc_money()
+		if (enemy.current_health > 0):
+			FightDetails.win = false
+			canvas_layer.add_child(results)
+			get_tree().paused = true
 		
 func _on_timeline_ended():
 	get_tree().paused = false
