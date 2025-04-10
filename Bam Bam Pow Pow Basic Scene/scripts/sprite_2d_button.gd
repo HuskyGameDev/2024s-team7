@@ -22,7 +22,7 @@ const Snap = preload("res://resources/sounds/Snap.mp3")
 
 @export var hoverWhiteStandard = false
 @export var pressStandard = false
-@export var soundStandard = false
+@export var soundStandard = true
 # Haven't gotten tooltip to show up yet :pensive:
 @export var tooltip: String
 
@@ -31,7 +31,7 @@ func _ready():
 	# Make button resize to Sprite2d given image
 	button.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	button.tooltip_text = tooltip
-
+	
 # Connect to parent scene like any other button press
 func _on_button_pressed():
 	SpriteButtonPressed.emit()	# Emits buttonPressed signal
@@ -39,8 +39,8 @@ func _on_button_pressed():
 
 	if soundStandard:
 		audio.stream = WOOD_CLICK
-		if (audio.volume_db != 0):
-			audio.volume_db = 0
+		if (audio.volume_db != -10):
+			audio.volume_db = -10
 		audio.play()
 	
 ## Color changes for hover/press using selfLayerEffects shader:
@@ -80,8 +80,8 @@ func _on_button_mouse_entered():	# Hovering
   
 	if soundStandard:
 		audio.stream = Snap
-		if (audio.volume_db != -10):
-			audio.volume_db = -10
+		if (audio.volume_db != -20):
+			audio.volume_db = -20
 		audio.play()
 
 	if hoverWhiteStandard:

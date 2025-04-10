@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var moneylabel = $Control/MarginContainer/MarginContainer2/MoneyLabel
+@onready var money_label = $MoneyHBox/MoneyLabel
 @onready var item1 = $MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item1
 @onready var item2 = $MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item2
 @onready var item3 = $MarginContainer/HBoxContainer/ItemContainer/ItemsFirstRow/Item3
@@ -18,6 +18,7 @@ const Chime = preload("res://resources/sounds/StartChime.wav")
 signal timeline_started
 signal timeline_ended
 
+
 var page = 1 # The item shop always starts on page 1
 
 
@@ -28,7 +29,7 @@ var speed_flash = 1.5
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# ItemStorage.money += 10000
-	moneylabel.text = "Money: " + str(ItemStorage.money)
+	money_label.text = str(ItemStorage.money)
 	#print(warning.modulate)
 	if WeaponInShop.itemsOpened == false:
 		Dialogic.connect("timeline_started", Callable(self,"_on_dialogue_started"))
@@ -44,65 +45,23 @@ func _on_dialogue_ended():
 	$TextureRect/AnimatedSprite2D.stop()
 	$TextureRect/AnimatedSprite2D.frame = 0  
 
-func _process(delta: float) -> void:
-	if warning.modulate.a > 0.99:
-		speed_flash *= -1
-	elif warning.modulate.a < 0.5:
-		speed_flash *= -1
-	warning.modulate = Color(1, 1, 1, warning.modulate.a + speed_flash * delta)
-	if Input.is_key_pressed(KEY_W):
-		print(ItemStorage.maxequips)
+#func _process(delta: float) -> void:
+	#if warning.modulate.a > 0.99:
+		#speed_flash *= -1
+	#elif warning.modulate.a < 0.5:
+		#speed_flash *= -1
+	#warning.modulate = Color(1, 1, 1, warning.modulate.a + speed_flash * delta)
+	#if Input.is_key_pressed(KEY_W):
+		#print(ItemStorage.maxequips)
 
 # A helper function to add money to the players money and display it
 func update_money(change):
 	ItemStorage.money = ItemStorage.money+change
-	moneylabel.text = "Money: " + str(ItemStorage.money)
+	money_label.text = str(ItemStorage.money)
 
 # Helper function to subtract money from the players total when they buy an item
 func bought_item(money):
 	update_money(-money)
-
-# A series of functions that are used to transition to new scenes
-func _on_fight_scene_button_pressed():
-	audio_stream_player.stream = WOOD_CLICK
-	audio_stream_player.play()
-	SceneSwap.scene_swap("res://Scenes/Playable/Fight.tscn");
-
-func _on_main_menu_button_pressed():
-	audio_stream_player.stream = WOOD_CLICK
-	audio_stream_player.play()
-	SceneSwap.scene_swap("res://Scenes/Playable/MainMenu.tscn");
-
-func _on_weapon_shop_button_pressed():
-	audio_stream_player.stream = WOOD_CLICK
-	audio_stream_player.play()
-	SceneSwap.scene_swap("res://Scenes/Playable/WeaponShop.tscn");
-
-func _on_equip_button_pressed() -> void:
-	if (!audio_stream_player.is_playing()):
-			audio_stream_player.stream = WOOD_CLICK
-			audio_stream_player.play()
-	SceneSwap.scene_swap("res://Scenes/Playable/EquipScreen.tscn");
-
-func _on_settings_menu_button_pressed():
-	audio_stream_player.stream = WOOD_CLICK
-	audio_stream_player.play()
-	Global.prev_scene = get_tree().current_scene.scene_file_path
-	SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn");
-
-# Redirection to save game function in item_storage script
-func _on_save_button_pressed():
-	audio_stream_player.stream = Chime
-	audio_stream_player.play()
-	ItemStorage.save_game()
-
-# When load game button is pressed, load it and update money and items
-func _on_load_button_pressed():
-	audio_stream_player.stream = WOOD_CLICK
-	audio_stream_player.play()
-	ItemStorage.load_game()
-	moneylabel.text = "Money: " + str(ItemStorage.money)
-	emit_signal("reload")
 
 # Ensures page number never goes past what is allowed
 func valpage():
@@ -113,8 +72,6 @@ func valpage():
 
 # When the next page button is pressed
 func _on_next_page_button_pressed() -> void:
-	audio_stream_player.stream = WOOD_CLICK
-	audio_stream_player.play()
 	# Increment page and ensure it is still within bounds of available pages
 	page += 1
 	valpage()
@@ -136,8 +93,6 @@ func _on_next_page_button_pressed() -> void:
 
 # When the last page button is pressed
 func _on_last_page_button_pressed() -> void:
-	audio_stream_player.stream = WOOD_CLICK
-	audio_stream_player.play()
 	# Decrement page and ensure it is still within the bounds of available pages
 	page -= 1
 	valpage()
@@ -158,18 +113,18 @@ func _on_last_page_button_pressed() -> void:
 		curr_item._on_item_shop_reload()
 
 
-##--------------------
-## HAZARD SCREEN 10/6/24
-## Hazard screen is a temporary popup that explains to the user
-## the current problems with WeaponShop for playtest
-
-## When hazard button is clicked: warning popup screen is shown
-func _on_hazard_button_pressed():
-	$WarningScreen.visible = !$WarningScreen.visible	# Warning popup
-
-## When close button is clicked: warning popup screen is closed
-func _on_close_pressed():
-	$WarningScreen.hide()	# Close Warning popup
+###--------------------
+### HAZARD SCREEN 10/6/24
+### Hazard screen is a temporary popup that explains to the user
+### the current problems with WeaponShop for playtest
+#
+### When hazard button is clicked: warning popup screen is shown
+#func _on_hazard_button_pressed():
+	#$WarningScreen.visible = !$WarningScreen.visible	# Warning popup
+#
+### When close button is clicked: warning popup screen is closed
+#func _on_close_pressed():
+	#$WarningScreen.hide()	# Close Warning popup
 
 
 func _on_sprite_2d_button_sprite_button_pressed():

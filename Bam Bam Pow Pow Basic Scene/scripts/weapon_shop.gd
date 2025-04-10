@@ -7,21 +7,31 @@
 extends CanvasLayer
 
 # Preload all 'GetNode' s
-@onready var nextButton = $VBoxContainer/Next
-@onready var prevButton = $VBoxContainer/Prev
-@onready var weaponName = $VBoxContainer/ColorRect/VBoxContainer/NameLabel
-@onready var priceLabel = $VBoxContainer/ColorRect/VBoxContainer/ToBuy/PriceLabel
-@onready var flavorText = $VBoxContainer/ColorRect/VBoxContainer/FlavorText
+@onready var prev_button = $Prev
+@onready var next_button = $Next
+@onready var buy_equip_button = $NinePatchRect/ColorRect/VBoxContainer/EquipBuyHBox/BuyEquipButton
+@onready var buy_equip_label = $NinePatchRect/ColorRect/VBoxContainer/EquipBuyHBox/BuyEquipButton/BuyEquipLabel
+@onready var weapon_name = $NinePatchRect/ColorRect/VBoxContainer/NameLabel
+@onready var flavor_text = $NinePatchRect/ColorRect/VBoxContainer/FlavorText
 @onready var scroll = $Control/ScrollContainer
-@onready var toBuy = $VBoxContainer/ColorRect/VBoxContainer/ToBuy
-@onready var bought = $VBoxContainer/ColorRect/VBoxContainer/Bought
-@onready var hazard = $HazardButton
-@onready var warning = $WarningScreen
-@onready var warningLabel = $WarningLabel
+@onready var price = $NinePatchRect/ColorRect/VBoxContainer/EquipBuyHBox/Price
+@onready var money_label = $MoneyHBox/MoneyLabel
 @onready var exitButton = $Sprite2dButton
+@onready var audio_player = $AudioStreamPlayer2D
+
 var speed_flash = 1
 signal timeline_started
 signal timeline_ended
+
+func _ready():
+	money_label.text = str(ItemStorage.money)
+	_changeBox(0)	# Starts at first weapon, changeBox to first
+	# Since first weapon is Unarmed always bought, set to bought screen
+	
+	if WeaponInShop.weaponsOpened == false:
+		Dialogic.start('weaponShop')
+	WeaponInShop.weaponsOpened = true
+
 
 ## Handles changes to Selected Weapon screen
 ##
@@ -31,45 +41,52 @@ func _changeBox(i)-> void:
 	WeaponInShop.currentInstance=i		# Set current instance of weapon global to given i
 	
 	# Set Next/Prev buttons to be visible (default)
-	nextButton.show()
-	prevButton.show()
+	next_button.show()
+	prev_button.show()
 	
 	# --- Set all values in Selected Weapon Screen to correct values given index
 	# Print for testing
 	
 	# Set name of weapon
-	weaponName.text = WeaponInShop.weapons_list[i]["weaponName"]
+	weapon_name.text = WeaponInShop.weapons_list[i]["weaponName"]
 	# print(WeaponInShop.weaponsInShopArray[i])
 	# Set cost of weapon
-	priceLabel.text = str(WeaponInShop.weapons_list[i]["cost"])
+	price.text = str(WeaponInShop.weapons_list[i]["cost"])
 	# print(str(WeaponInShop.weaponsInShopCostsArray[i]))
 	# Set weapon flavortext
-	flavorText.text = WeaponInShop.weapons_list[i]["description"]
+	flavor_text.text = WeaponInShop.weapons_list[i]["description"]
 	# print(WeaponInShop.weaponsInShopDesc[i])
 	
 	# --- Handle whether prev/next exist and should be shown
 	
 	# If index is >= maxIndex, hide next button
 	if i >= WeaponInShop.weapons_list.size()-1:
-		nextButton.hide()
+		next_button.hide()
 	# If index is <= minIndex, hide prev button
 	if i <= 0:
-		prevButton.hide()	
+		prev_button.hide()	
 	
 	# Move the scroll container to center selected element
 	scroll.set_h_scroll((i)*400)	#Move scroll to separation value of hbox*index
 	# Note: would need to change 400 if separation value is changed
 	# Couldn't figure out how to acess it from HBox :pensive: 
 	
-	
+	if WeaponInShop.weapons_list[i]["availability"]== true:
+		if WeaponInShop.weapons_list[i]["ownership"]==true:
+			price.hide()
+			buy_equip_button.show()
+			buy_equip_label.text = "EQUIP"
+		else:
+			price.show()
+			buy_equip_button.show()
+			buy_equip_label.text = "BUY"
+	else:
+		price.show()
+		buy_equip_button.hide()
+		price.text = "Unavailable"
 	# Gross way to find out if weapon i is owned and change Selected Weapon Screen options: 
 	# If it is/isn't owned, change Selected Weapon Screen respectively
-	if WeaponInShop.weapons_list[i]["ownership"]==true:
-		toBuy.hide()
-		bought.show()
-	else:
-		toBuy.show()
-		bought.hide()
+
 	# Print if weapon i is owned for testing
 	print("Do you own?", WeaponInShop.weapons_list[i])
 	
@@ -118,6 +135,7 @@ func _process(delta):
 	hazard.modulate = Color(1, 1, 1, hazard.modulate.a + speed_flash * delta)
 
 
+
 ## Second function of HangerButton (first in Hanger script)
 ## Accesses pressed Hanger index and changeBoxes to it
 func _on_hanger_hanger_pressed():
@@ -130,31 +148,33 @@ func _on_hanger_hanger_pressed():
 ## Buttons used in the selected weapon screen
 ## Has buy function and scrolling by button functions
 
-## When buy button is pressed change current weapon to owned
-## This function is not connected to any real weapons systems
-## nor is it connected to actual money systems
-func _on_buy_button_pressed():
-	var i = WeaponInShop.currentInstance	# Get current weapon idex
-	if (ItemStorage.money >= WeaponInShop.weapons_list[i]["cost"]):
-		ItemStorage.money = ItemStorage.money - WeaponInShop.weapons_list[i]["cost"]
-		WeaponInShop.weapons_list[i]["ownership"] = true
-		WeaponInShop.weaponOwnership[i]=true	# Check if current weapon is owned
-	_changeBox(i)	#Changebox to new bought/buy settings
+func _on_buy_equip_button_button_pressed():
+	match(buy_equip_label.text):
+		"BUY":
+			var i = WeaponInShop.currentInstance	# Get current weapon idex
+			var weaponName = WeaponInShop.weapons_list[i]["weaponName"].to_lower()
+			if (ItemStorage.money >= WeaponInShop.weapons_list[i]["cost"]):
+				audio_player.stream = load("res://resources/sounds/Item_Purchase_Coins.wav")
+				ItemStorage.money = ItemStorage.money - WeaponInShop.weapons_list[i]["cost"]
+				WeaponInShop.weapons_list[i]["ownership"] = true
+				_changeBox(i)	#Changebox to new bought/buy settings
+				audio_player.play()
+				money_label.text = str(ItemStorage.money)
+			else:
+				audio_player.stream = load("res://resources/sounds/Buzz.wav")
+				audio_player.play()
+		"EQUIP":
+			var i = WeaponInShop.currentInstance
+			var weaponName = WeaponInShop.weapons_list[i]["weaponName"].to_lower()
+			if (weaponName == "spear"):
+				ItemStorage.equipped_weapon = weaponName
+				print(ItemStorage.equipped_weapon)
+			elif (weaponName == "unarmed"):
+				ItemStorage.equipped_weapon = weaponName
+				print(ItemStorage.equipped_weapon)
+			audio_player.stream = load("res://resources/sounds/WoodClick.wav")
+			audio_player.play()
 
-func _on_equip_button_pressed():
-	var i = WeaponInShop.currentInstance
-	var weaponName = WeaponInShop.weapons_list[i]["weaponName"].to_lower()
-	if (weaponName == "spear"):
-		ItemStorage.equipped_weapon = weaponName
-		print(ItemStorage.equipped_weapon)
-	elif (weaponName == "unarmed"):
-		ItemStorage.equipped_weapon = weaponName
-		print(ItemStorage.equipped_weapon)
-	else:
-		warningLabel.text = "Sorry, that weapon is currenlty unimplemented"
-		warningLabel.show()
-		await get_tree().create_timer(.5).timeout
-		warningLabel.hide()
 ## Accesses previous weapon
 func _on_prev_sprite_button_pressed():
 	var inst = WeaponInShop.currentInstance	# Grabs current weapon index
@@ -169,74 +189,8 @@ func _on_next_sprite_button_pressed():
 	# Doesn't need to catch edge cases since next is hidden at edge
 	_changeBox(inst)	# changeBoxes to new index
 
-##--------------------
-## MENU BUTTON ROW
-## Set of buttons that exist in both shops and inventory
-## Access other scenes and save options
-
-
-
-
-## Swaps scene to main menu
-func _on_main_menu_button_pressed():
-	SceneSwap.scene_swap("res://Scenes/Playable/MainMenu.tscn");	# Swaps
-
-## Swaps scene to settings
-func _on_settings_button_pressed():
-	Global.prev_scene = get_tree().current_scene.scene_file_path #I don't know why this is here I copied allen
-	SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn");	# Swaps
-
-## Swaps scene to ItemShop
-func _on_item_shop_button_pressed():
-	SceneSwap.scene_swap("res://Scenes/Playable/ItemShop.tscn");	# Swaps
-
-## Swaps scene to Fight
-func _on_fight_scene_button_pressed():
-	SceneSwap.scene_swap("res://Scenes/Playable/Fight.tscn");	# Swaps
-
-## Unimplemented
-## Eventually will save game
-func _on_save_game_button_pressed():
-	ItemStorage.save_game()
-
-# Loads Game
-func _on_load_game_button_pressed():
-	ItemStorage.load_game()
-
-
-
-##--------------------
-## HAZARD SCREEN 10/6/24
-## Hazard screen is a temporary popup that explains to the user
-## the current problems with WeaponShop for playtest
-
-## When hazard button is clicked: warning popup screen is shown
-func _on_hazard_button_sprite_button_pressed():
-	warning.visible = !warning.visible	# Warning popup
-
-
-## When close button is clicked: warning popup screen is closed
-func _on_close_pressed():
-	warning.hide()	# Close Warning popup
-
-
 func _on_sprite_2d_button_sprite_button_pressed():
 	SceneSwap.scene_swap("res://Scenes/Playable/SelectionScreen.tscn")
-
-
-func _on_sprite_2d_button_mouse_entered():
-	exitButton.frame = 1
-
-
-func _on_sprite_2d_button_mouse_exited():
-	exitButton.frame = 0
-
-
-func _on_hazard_button_mouse_entered():
-	hazard.frame = 0
-
-func _on_hazard_button_mouse_exited():
-	hazard.frame = 1
 
 # Go to settings on esc
 func _input(event):

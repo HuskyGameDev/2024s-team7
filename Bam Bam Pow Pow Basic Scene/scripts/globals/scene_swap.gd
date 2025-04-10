@@ -15,6 +15,8 @@ func _deferred_scene_swap(scene_path):
 	# Add fade scene on top.
 	var fade = load("res://Scenes/Functional/fade.tscn").instantiate()
 	get_tree().root.add_child(fade)
+	#get_tree().paused = true
+	# Pause game (fade plays on pause)
 	fade.fade_to_black()
 	
 	await fade.faded
@@ -35,5 +37,7 @@ func _deferred_scene_swap(scene_path):
 	# still need to delete fade
 	get_tree().root.remove_child(fade)
 	fade.queue_free()
+
 	# Allow input to be processed again.
 	set_process_input(true)
+	get_tree().paused = false

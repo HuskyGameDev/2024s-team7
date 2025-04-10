@@ -5,6 +5,9 @@ class_name fight_details
 var animation = ""
 var newWeaponNotification = false
 
+var high_score = 0
+var win = false
+
 var op_list = []			# List of opponent detail dictionaries in order of the fights
 var op_progress = 0		# Which opponent fight player has made it to
 var infinity = true		# Keeps track of if in infinity mode
@@ -14,7 +17,7 @@ var opSelectStartUp = 0
 var opSelectCurrent = 0
 
 func make_opponent(opName: String, description: String, health: int, sprite_path: String, background_setup_function: String, time: int, defeated: bool, defeatable: bool,
-			   weakness: String, speech: Array[String]=["No Words"]) -> Dictionary:
+			   weakness: String, record: float, speech: Array[String]=["No Words"]) -> Dictionary:
 	var opponent: Dictionary = {
 		"opName":		opName,
 		"description":	description,
@@ -25,7 +28,8 @@ func make_opponent(opName: String, description: String, health: int, sprite_path
 		"defeated": 		defeated,
 		"defeatable":	defeatable,
 		"weakness":		weakness,
-		"speech"	: 		speech
+		"record":		record,
+		"speech": 		speech,
 	}
 	return opponent
 
@@ -42,6 +46,7 @@ func _ready():
 		false,
 		true,
 		"fire",
+		50,
 		[
 			"ooooooooooooooooooooooooooooooooo",
 			"i'm jst a small liddle goblin",
@@ -59,6 +64,7 @@ func _ready():
 		false,
 		true,
 		"light",
+		50,
 		[
 			"Hello! Loser >:D"
 		]
@@ -74,6 +80,7 @@ func _ready():
 		false,
 		true,
 		"",
+		50,
 		[
 			"..."
 		]
@@ -89,6 +96,7 @@ func _ready():
 		false,
 		true,
 		"light",
+		50,
 		[
 			"Hmmmmmmmm"
 		]

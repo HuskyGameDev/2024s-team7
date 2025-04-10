@@ -1,14 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://5n0srb1iavr0"]
+[gd_scene load_steps=6 format=3 uid="uid://5n0srb1iavr0"]
 
 [ext_resource type="Script" path="res://scripts/hanger.gd" id="1_g4n7n"]
 [ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="2_qlmu4"]
-[ext_resource type="Texture2D" uid="uid://dotl2ldbft7to" path="res://resources/sprites/playtest-oct-24-hangers.png" id="3_sdmif"]
 [ext_resource type="PackedScene" uid="uid://cc1ttocg7gplt" path="res://Scenes/Functional/Sprite2DButton.tscn" id="4_wjuk4"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fs0ir"]
-shader = ExtResource("2_qlmu4")
-shader_parameter/onoffMult = false
-shader_parameter/onoffSoftLight = false
+[ext_resource type="Texture2D" uid="uid://bxu5d0sp7sest" path="res://resources/sprites/hanger-spritesheet.png" id="4_xvq1v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o416s"]
 resource_local_to_scene = true
@@ -27,33 +22,13 @@ grow_vertical = 2
 scale = Vector2(4, 4)
 script = ExtResource("1_g4n7n")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_fs0ir")
-position = Vector2(256, 353)
-scale = Vector2(4, 4)
-texture = ExtResource("3_sdmif")
-hframes = 5
-
-[node name="HangerButton" type="Button" parent="Sprite2D"]
-visible = false
-self_modulate = Color(1, 1, 1, 0)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -64.0
-offset_top = -88.0
-offset_right = -64.0
-offset_bottom = -88.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="Sprite2dButton" parent="." instance=ExtResource("4_wjuk4")]
 material = SubResource("ShaderMaterial_o416s")
 position = Vector2(256.75, 353.5)
 scale = Vector2(4, 4)
-texture = ExtResource("3_sdmif")
+texture = ExtResource("4_xvq1v")
 hframes = 5
+vframes = 6
+hoverWhiteStandard = true
 
-[connection signal="pressed" from="Sprite2D/HangerButton" to="." method="_on_button_pressed"]
 [connection signal="SpriteButtonPressed" from="Sprite2dButton" to="." method="_on_button_pressed"]

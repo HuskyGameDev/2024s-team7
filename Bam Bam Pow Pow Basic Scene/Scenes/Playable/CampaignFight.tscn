@@ -1,16 +1,30 @@
-[gd_scene load_steps=7 format=3 uid="uid://c55s0tmcletaj"]
+[gd_scene load_steps=8 format=3 uid="uid://c55s0tmcletaj"]
 
 [ext_resource type="Script" path="res://scripts/campaign_fight.gd" id="1_3iac4"]
 [ext_resource type="PackedScene" uid="uid://dk80ss5idciud" path="res://Scenes/Playable/Fight_Base.tscn" id="2_dnsdk"]
 [ext_resource type="Texture2D" uid="uid://dild5ufjiuvtw" path="res://resources/sprites/Header/HP-Bar-Top.png" id="3_6qd30"]
 [ext_resource type="Texture2D" uid="uid://bn8xidkk2f4b2" path="res://resources/sprites/Header/HP-Bar-Progress.png" id="4_uwnrh"]
-[ext_resource type="Texture2D" uid="uid://bnaa7j23m5h40" path="res://resources/sprites/Header/Clock-Bottom.png" id="5_ko2aa"]
-[ext_resource type="Texture2D" uid="uid://rbxdhsgxliu8" path="res://resources/sprites/Header/Clock-Top.png" id="6_sbw4v"]
+[ext_resource type="Texture2D" uid="uid://dxmueg4qdwgdo" path="res://resources/sprites/clock-bg.png" id="5_21awv"]
+[ext_resource type="Texture2D" uid="uid://bnmr0g7juuo55" path="res://resources/sprites/clock-top.png" id="6_n0x1v"]
+[ext_resource type="Texture2D" uid="uid://dsf8y5jpj3jg8" path="res://resources/sprites/clock-fill.png" id="7_8nxyx"]
 
 [node name="Campaign" type="Node"]
 script = ExtResource("1_3iac4")
 
 [node name="FightBase" parent="." instance=ExtResource("2_dnsdk")]
+
+[node name="player" parent="FightBase" index="2"]
+z_index = 1
+z_as_relative = false
+position = Vector2(328, 536)
+
+[node name="enemy" parent="FightBase" index="3"]
+z_as_relative = false
+position = Vector2(1044, 456)
+
+[node name="TextureRect" parent="FightBase/CanvasLayer" index="0"]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
@@ -56,9 +70,11 @@ offset_left = 1139.0
 offset_top = 12.0
 offset_right = 1267.0
 offset_bottom = 140.0
+scale = Vector2(4, 4)
 fill_mode = 4
-texture_under = ExtResource("5_ko2aa")
-texture_progress = ExtResource("6_sbw4v")
+texture_under = ExtResource("5_21awv")
+texture_over = ExtResource("6_n0x1v")
+texture_progress = ExtResource("7_8nxyx")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 20.0

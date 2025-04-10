@@ -15,10 +15,11 @@ var weaponStartup: int = 0		# Prev + to set each Hanger Node to correct weapon i
 
 var weapons_list = []			# List of opponent detail dictionaries in order of the fights
 
-func make_shop_weapon(weaponName: String, cost: int, ownership: bool, description: String):
+func make_shop_weapon(weaponName: String, cost: int, availability: bool, ownership: bool, description: String):
 	var shop_weapon: Dictionary = {
 		"weaponName":	weaponName,
 		"cost":			cost,
+		"availability":	availability,
 		"ownership":	ownership,
 		"description":	description
 	}
@@ -30,11 +31,27 @@ func _ready():
 		"Unarmed",
 		0,
 		true,
+		true,
 		"Punch things with your glass fists"
+	))
+	weapons_list.append(make_shop_weapon(
+		"Spear",
+		55,
+		true,
+		false,
+		"speary"
+	))
+	weapons_list.append(make_shop_weapon(
+		"BBJones",
+		420,
+		false,
+		false,
+		"Sweet baby"
 	))
 	weapons_list.append(make_shop_weapon(
 		"Bat",
 		20,
+		false,
 		false,
 		"Wh'ack e'm"
 	))
@@ -42,35 +59,12 @@ func _ready():
 		"Gun",
 		9999999999,
 		false,
+		false,
 		"M4 carbine Colt AR-15"
 	))
-	weapons_list.append(make_shop_weapon(
-		"BBJones",
-		420,
-		false,
-		"Sweet baby"
-	))
-	weapons_list.append(make_shop_weapon(
-		"MorningStar",
-		2001911,
-		false,
-		"It's pretty spikey"
-	))
-	weapons_list.append(make_shop_weapon(
-		"Spear",
-		55,
-		true,
-		"speary"
-	))
 
 
 
-var weaponsInShopArray = ["Unarmed", "Bat", "Gun", "BBJones", "MorningStar"] # Array of all weapon names
-
-var weaponsInShopCostsArray = [0, 20, 9999999999, 420, 2001911]		# Weapon costs
-var weaponOwnership = [true,false,false,false,false]		# Weapon ownership
-
-var weaponsInShopDesc = ["You punch things with your glass fists","Wh'ack e'm","M4 carbine Colt AR-15", "Sweet baby", "It's pretty spikey"]
 # When there are more descriptions just append and put the appends in a ready function
 
 

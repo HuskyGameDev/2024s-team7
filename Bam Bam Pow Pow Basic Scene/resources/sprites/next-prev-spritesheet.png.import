@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dotl2ldbft7to"
-path="res://.godot/imported/playtest-oct-24-hangers.png-868469fc0e80d99e1bce50b1ee65f643.ctex"
+uid="uid://d1fiq2dit7paw"
+path="res://.godot/imported/next-prev-spritesheet.png-d115a50677e9b602969f9ecd0673fe70.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/sprites/playtest-oct-24-hangers.png"
-dest_files=["res://.godot/imported/playtest-oct-24-hangers.png-868469fc0e80d99e1bce50b1ee65f643.ctex"]
+source_file="res://resources/sprites/next-prev-spritesheet.png"
+dest_files=["res://.godot/imported/next-prev-spritesheet.png-d115a50677e9b602969f9ecd0673fe70.ctex"]
 
 [params]
 

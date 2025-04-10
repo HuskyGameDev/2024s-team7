@@ -19,6 +19,7 @@ signal buttonPressed
 @onready var button = $Button
 @onready var audio = $ButtonAudio
 @export var tooltip: String
+@export var standard_sound = true
 
 ## Preload the image resources for basic/hover/pressed boxes
 var basicBox = preload("res://resources/sprites/button.png")
@@ -54,9 +55,10 @@ func _on_button_button_up():		# On press removed:
 
 func _on_button_button_down():	# On press:
 	self.set_texture(pressBox)	# Set texture to press
-	audio.stream = WOOD_CLICK
-	if (audio.volume_db != 0):
-		audio.volume_db = 0
+	if standard_sound:
+		audio.stream = WOOD_CLICK
+	if (audio.volume_db != -10):
+		audio.volume_db = -10
 	audio.play()
 	#self.material.set_shader_parameter("onoffMult",1)		# Add multiply
 
@@ -68,8 +70,8 @@ func _on_button_mouse_entered():		# On hover:
 	self.set_texture(hoverBox)		# Set texture to hover
 	hover = true		# Is hovering
 	audio.stream = Snap
-	if (audio.volume_db != -10):
-		audio.volume_db = -10
+	if (audio.volume_db != -20):
+		audio.volume_db = -20
 	audio.play()
 	#self.material.set_shader_parameter("onoffSoftLight",1)		# Add soft light
 

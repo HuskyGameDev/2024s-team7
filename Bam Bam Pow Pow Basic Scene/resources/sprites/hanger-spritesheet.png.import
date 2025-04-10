@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csaod2ht6ymhf"
-path="res://.godot/imported/next-prev.png-13bc9e9757bd2285743026d652af6a33.ctex"
+uid="uid://bxu5d0sp7sest"
+path="res://.godot/imported/hanger-spritesheet.png-1e88595b1d4cfbd6e513c9f82bc3491c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/sprites/next-prev.png"
-dest_files=["res://.godot/imported/next-prev.png-13bc9e9757bd2285743026d652af6a33.ctex"]
+source_file="res://resources/sprites/hanger-spritesheet.png"
+dest_files=["res://.godot/imported/hanger-spritesheet.png-1e88595b1d4cfbd6e513c9f82bc3491c.ctex"]
 
 [params]
 

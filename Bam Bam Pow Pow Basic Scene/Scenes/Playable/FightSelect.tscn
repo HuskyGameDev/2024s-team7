@@ -5,7 +5,7 @@
 [ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="2_mcet2"]
 [ext_resource type="PackedScene" uid="uid://cc1ttocg7gplt" path="res://Scenes/Functional/Sprite2DButton.tscn" id="6_mdm7y"]
 [ext_resource type="Texture2D" uid="uid://6yrr4w034b3y" path="res://resources/sprites/door-sprites.png" id="6_pgj15"]
-[ext_resource type="Texture2D" uid="uid://csaod2ht6ymhf" path="res://resources/sprites/next-prev.png" id="7_8tklg"]
+[ext_resource type="Texture2D" uid="uid://d1fiq2dit7paw" path="res://resources/sprites/next-prev-spritesheet.png" id="7_8tklg"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2sdlv"]
 content_margin_left = 450.0
@@ -14,20 +14,14 @@ content_margin_right = 0.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_40vwc"]
 resource_local_to_scene = true
 shader = ExtResource("2_mcet2")
-shader_parameter/onoffMult = false
-shader_parameter/onoffSoftLight = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2i54w"]
 resource_local_to_scene = true
 shader = ExtResource("2_mcet2")
-shader_parameter/onoffMult = false
-shader_parameter/onoffSoftLight = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xwl6u"]
 resource_local_to_scene = true
 shader = ExtResource("2_mcet2")
-shader_parameter/onoffMult = false
-shader_parameter/onoffSoftLight = false
 
 [node name="FightSelect" type="CanvasLayer"]
 script = ExtResource("1_f6csq")
@@ -129,6 +123,8 @@ position = Vector2(93, 236)
 scale = Vector2(3.71429, 3.71429)
 texture = ExtResource("7_8tklg")
 hframes = 2
+vframes = 2
+hoverWhiteStandard = true
 
 [node name="Next" parent="VBoxContainer" instance=ExtResource("6_mdm7y")]
 material = SubResource("ShaderMaterial_2i54w")
@@ -136,7 +132,9 @@ position = Vector2(314, 236)
 scale = Vector2(3.714, 3.714)
 texture = ExtResource("7_8tklg")
 hframes = 2
+vframes = 2
 frame = 1
+hoverWhiteStandard = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2

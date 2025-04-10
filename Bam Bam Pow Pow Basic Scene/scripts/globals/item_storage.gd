@@ -41,9 +41,9 @@ func _ready():
 	for i in range(maxequips*3):
 		equipped_items.append(-1)
 
-# Gives money based on score obtained in fight scene
-func calc_money(score):
-	money += score*self.moneyMult
+## Gives money based on score obtained in fight scene
+#func calc_money(score):
+	#money += score*self.moneyMult
 
 # Adds to fightvisit to be used in hiding the screen of input hints
 func fightvisitup():
