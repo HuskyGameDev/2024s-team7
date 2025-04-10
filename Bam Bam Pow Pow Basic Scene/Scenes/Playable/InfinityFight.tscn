@@ -26,6 +26,9 @@ offset_bottom = 47.0
 offset_left = 16.0
 offset_right = 56.0
 
+[node name="MusicPlayer" parent="Fight_Base" index="8"]
+bus = &"music"
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
 

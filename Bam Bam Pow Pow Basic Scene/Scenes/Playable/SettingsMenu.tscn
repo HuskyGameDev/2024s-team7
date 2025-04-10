@@ -1,11 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://id3t7cvuetv3"]
+[gd_scene load_steps=12 format=3 uid="uid://id3t7cvuetv3"]
 
 [ext_resource type="Texture2D" uid="uid://cdagg8ov4jnos" path="res://resources/sprites/button.png" id="1_e4vij"]
-[ext_resource type="Script" path="res://scripts/settings_menu.gd" id="1_qxjov"]
+[ext_resource type="Script" path="res://Scenes/Playable/settings_menu.gd" id="1_hbpoe"]
 [ext_resource type="PackedScene" uid="uid://dbc7vk84ewdqo" path="res://Scenes/Functional/BasicButton.tscn" id="2_1n86i"]
 [ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="3_yygqf"]
+[ext_resource type="Script" path="res://Scenes/Playable/video_settings.gd" id="5_7slrh"]
+[ext_resource type="Script" path="res://Scenes/Playable/audio_settings.gd" id="5_vc28k"]
+[ext_resource type="Script" path="res://scripts/volume.gd" id="6_glo8k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fuwfs"]
+resource_local_to_scene = true
+shader = ExtResource("3_yygqf")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hjxbh"]
+resource_local_to_scene = true
+shader = ExtResource("3_yygqf")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_35kjc"]
 resource_local_to_scene = true
 shader = ExtResource("3_yygqf")
 shader_parameter/onoffMult = false
@@ -17,17 +32,19 @@ shader = ExtResource("3_yygqf")
 shader_parameter/onoffMult = false
 shader_parameter/onoffSoftLight = false
 
-[node name="SettingsMenu" type="Control"]
+[node name="SettingsMenu" type="Control" node_paths=PackedStringArray("video_settings", "audio_settings")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_qxjov")
+script = ExtResource("1_hbpoe")
+video_settings = NodePath("videoSettingsContainer")
+audio_settings = NodePath("audioSettingsContainer")
 
 [node name="settingsBackground" type="NinePatchRect" parent="."]
-self_modulate = Color(0.0912, 0.57, 0.0912, 1)
+self_modulate = Color(0.466181, 0.466181, 0.466181, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -84,13 +101,13 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 20
 text = "Video"
 
-[node name="videoButton2" parent="settingsMarginContainer/categoryVBoxContainer" instance=ExtResource("2_1n86i")]
-material = SubResource("ShaderMaterial_fuwfs")
+[node name="audioButton" parent="settingsMarginContainer/categoryVBoxContainer" instance=ExtResource("2_1n86i")]
+material = SubResource("ShaderMaterial_hjxbh")
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="buttonLabel" type="Label" parent="settingsMarginContainer/categoryVBoxContainer/videoButton2"]
+[node name="buttonLabel" type="Label" parent="settingsMarginContainer/categoryVBoxContainer/audioButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -107,13 +124,13 @@ theme_override_font_sizes/font_size = 20
 text = "Sound
 "
 
-[node name="videoButton3" parent="settingsMarginContainer/categoryVBoxContainer" instance=ExtResource("2_1n86i")]
-material = SubResource("ShaderMaterial_fuwfs")
+[node name="controlsButton" parent="settingsMarginContainer/categoryVBoxContainer" instance=ExtResource("2_1n86i")]
+material = SubResource("ShaderMaterial_35kjc")
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="buttonLabel" type="Label" parent="settingsMarginContainer/categoryVBoxContainer/videoButton3"]
+[node name="buttonLabel" type="Label" parent="settingsMarginContainer/categoryVBoxContainer/controlsButton"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -129,18 +146,23 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 20
 text = "Controls"
 
-[node name="Control" type="Control" parent="settingsMarginContainer/categoryVBoxContainer"]
+[node name="spacer" type="Control" parent="settingsMarginContainer/categoryVBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="videoSettingsContainer" type="NinePatchRect" parent="."]
 visible = false
 custom_minimum_size = Vector2(500, 500)
-layout_mode = 2
-offset_left = 400.0
-offset_top = 110.0
-offset_right = 900.0
-offset_bottom = 610.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_e4vij")
@@ -148,6 +170,7 @@ patch_margin_left = 20
 patch_margin_top = 20
 patch_margin_right = 20
 patch_margin_bottom = 20
+script = ExtResource("5_7slrh")
 
 [node name="videoSettingsMarginContainer" type="MarginContainer" parent="videoSettingsContainer"]
 layout_mode = 1
@@ -164,15 +187,77 @@ theme_override_constants/margin_bottom = 20
 [node name="videoVBoxContainer" type="VBoxContainer" parent="videoSettingsContainer/videoSettingsMarginContainer"]
 layout_mode = 2
 
-[node name="videoTopHBoxContainer" type="HBoxContainer" parent="videoSettingsContainer/videoSettingsMarginContainer/videoVBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="videoLabel" type="Label" parent="videoSettingsContainer/videoSettingsMarginContainer/videoVBoxContainer/videoTopHBoxContainer"]
+[node name="videoLabel" type="Label" parent="videoSettingsContainer/videoSettingsMarginContainer/videoVBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Video"
 horizontal_alignment = 1
+
+[node name="spacer" type="Control" parent="videoSettingsContainer/videoSettingsMarginContainer/videoVBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="videoSettingsHBoxContainer" type="HBoxContainer" parent="videoSettingsContainer/videoSettingsMarginContainer/videoVBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="videoSettingsLabelsVBoxContainer" type="VBoxContainer" parent="videoSettingsContainer/videoSettingsMarginContainer/videoVBoxContainer/videoSettingsHBoxContainer"]
+layout_mode = 2
+
+[node name="fullscreenToggleLabel" type="Label" parent="videoSettingsContainer/videoSettingsMarginContainer/videoVBoxContainer/videoSettingsHBoxContainer/videoSettingsLabelsVBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+text = "Fullscreen"
+vertical_alignment = 1
+
+[node name="resolutionLabel" type="Label" parent="videoSettingsContainer/videoSettingsMarginContainer/videoVBoxContainer/videoSettingsHBoxContainer/videoSettingsLabelsVBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+text = "Resolution"
+vertical_alignment = 1
+
+[node name="resolutionLabel2" type="Label" parent="videoSettingsContainer/videoSettingsMarginContainer/videoVBoxContainer/videoSettingsHBoxContainer/videoSettingsLabelsVBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+text = "Show Instructions"
+vertical_alignment = 1
+
+[node name="spacer" type="Control" parent="videoSettingsContainer/videoSettingsMarginContainer/videoVBoxContainer/videoSettingsHBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="videoSettingsInteractionsVBoxContainer" type="VBoxContainer" parent="videoSettingsContainer/videoSettingsMarginContainer/videoVBoxContainer/videoSettingsHBoxContainer"]
+layout_mode = 2
+
+[node name="fullscreenToggle" type="CheckButton" parent="videoSettingsContainer/videoSettingsMarginContainer/videoVBoxContainer/videoSettingsHBoxContainer/videoSettingsInteractionsVBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="resolitionHBoxPositioningContainer" type="HBoxContainer" parent="videoSettingsContainer/videoSettingsMarginContainer/videoVBoxContainer/videoSettingsHBoxContainer/videoSettingsInteractionsVBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="resolutionOptionButton" type="OptionButton" parent="videoSettingsContainer/videoSettingsMarginContainer/videoVBoxContainer/videoSettingsHBoxContainer/videoSettingsInteractionsVBoxContainer/resolitionHBoxPositioningContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+selected = 3
+item_count = 4
+popup/item_0/text = "2560x1440"
+popup/item_0/id = 1
+popup/item_1/text = "1920x1080"
+popup/item_1/id = 2
+popup/item_2/text = "1366x768"
+popup/item_2/id = 2
+popup/item_3/text = "1280x720"
+popup/item_3/id = 3
+
+[node name="showInstructionsToggle" type="CheckButton" parent="videoSettingsContainer/videoSettingsMarginContainer/videoVBoxContainer/videoSettingsHBoxContainer/videoSettingsInteractionsVBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+button_pressed = true
 
 [node name="closeMarginContainer" type="MarginContainer" parent="videoSettingsContainer/videoSettingsMarginContainer"]
 layout_mode = 2
@@ -210,6 +295,154 @@ theme_override_font_sizes/font_size = 30
 text = "X"
 horizontal_alignment = 1
 
-[connection signal="buttonPressed" from="settingsMarginContainer/categoryVBoxContainer/videoButton" to="." method="_on_video_button_pressed"]
-[connection signal="buttonPressed" from="settingsMarginContainer/categoryVBoxContainer/videoButton2" to="." method="_on_video_button_pressed"]
-[connection signal="buttonPressed" from="settingsMarginContainer/categoryVBoxContainer/videoButton3" to="." method="_on_video_button_pressed"]
+[node name="audioSettingsContainer" type="NinePatchRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_e4vij")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+script = ExtResource("5_vc28k")
+
+[node name="audioSettingsMarginContainer" type="MarginContainer" parent="audioSettingsContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="audioVBoxContainer" type="VBoxContainer" parent="audioSettingsContainer/audioSettingsMarginContainer"]
+layout_mode = 2
+
+[node name="audioLabel" type="Label" parent="audioSettingsContainer/audioSettingsMarginContainer/audioVBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Audio"
+horizontal_alignment = 1
+
+[node name="spacer" type="Control" parent="audioSettingsContainer/audioSettingsMarginContainer/audioVBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="masterVolumeVBoxContainer" type="VBoxContainer" parent="audioSettingsContainer/audioSettingsMarginContainer/audioVBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="masterVolumeLabel" type="Label" parent="audioSettingsContainer/audioSettingsMarginContainer/audioVBoxContainer/masterVolumeVBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+text = "Master Volume"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="masterVolumeSlider" type="HSlider" parent="audioSettingsContainer/audioSettingsMarginContainer/audioVBoxContainer/masterVolumeVBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+max_value = 1.0
+step = 0.05
+value = 0.5
+script = ExtResource("6_glo8k")
+bus_name = "Master"
+
+[node name="musicVolumeVBoxContainer" type="VBoxContainer" parent="audioSettingsContainer/audioSettingsMarginContainer/audioVBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="musicVolumeLabel" type="Label" parent="audioSettingsContainer/audioSettingsMarginContainer/audioVBoxContainer/musicVolumeVBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+text = "Music Volume"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="musicVolumeSlider" type="HSlider" parent="audioSettingsContainer/audioSettingsMarginContainer/audioVBoxContainer/musicVolumeVBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+max_value = 1.0
+step = 0.05
+value = 0.5
+script = ExtResource("6_glo8k")
+bus_name = "music"
+
+[node name="sfxVolumeVBoxContainer" type="VBoxContainer" parent="audioSettingsContainer/audioSettingsMarginContainer/audioVBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="sfxVolumeLabel" type="Label" parent="audioSettingsContainer/audioSettingsMarginContainer/audioVBoxContainer/sfxVolumeVBoxContainer"]
+custom_minimum_size = Vector2(0, 35)
+layout_mode = 2
+text = "SFX Volume"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="sfxVolumeSlider" type="HSlider" parent="audioSettingsContainer/audioSettingsMarginContainer/audioVBoxContainer/sfxVolumeVBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+max_value = 1.0
+step = 0.05
+value = 0.5
+script = ExtResource("6_glo8k")
+bus_name = "sfx"
+
+[node name="closeMarginContainer" type="MarginContainer" parent="audioSettingsContainer/audioSettingsMarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/margin_top = -25
+theme_override_constants/margin_right = -25
+
+[node name="closeButton" parent="audioSettingsContainer/audioSettingsMarginContainer/closeMarginContainer" instance=ExtResource("2_1n86i")]
+material = SubResource("ShaderMaterial_6y4gg")
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = null
+
+[node name="closeButtonLabelMarginContainer" type="MarginContainer" parent="audioSettingsContainer/audioSettingsMarginContainer/closeMarginContainer/closeButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 5
+
+[node name="closeButtonLabel" type="Label" parent="audioSettingsContainer/audioSettingsMarginContainer/closeMarginContainer/closeButton/closeButtonLabelMarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "X"
+horizontal_alignment = 1
+
+[connection signal="toggled" from="videoSettingsContainer/videoSettingsMarginContainer/videoVBoxContainer/videoSettingsHBoxContainer/videoSettingsInteractionsVBoxContainer/fullscreenToggle" to="videoSettingsContainer" method="_on_fullscreen_toggled"]
+[connection signal="item_selected" from="videoSettingsContainer/videoSettingsMarginContainer/videoVBoxContainer/videoSettingsHBoxContainer/videoSettingsInteractionsVBoxContainer/resolitionHBoxPositioningContainer/resolutionOptionButton" to="videoSettingsContainer" method="_on_resolution_option_selected"]
+[connection signal="toggled" from="videoSettingsContainer/videoSettingsMarginContainer/videoVBoxContainer/videoSettingsHBoxContainer/videoSettingsInteractionsVBoxContainer/showInstructionsToggle" to="videoSettingsContainer" method="_on_show_instructions_toggled"]
+[connection signal="buttonPressed" from="videoSettingsContainer/videoSettingsMarginContainer/closeMarginContainer/closeButton" to="." method="_on_video_settings_button"]
