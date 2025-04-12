@@ -5,6 +5,7 @@ extends Control
 
 var fight_background = preload("res://Scenes/Functional/FightBackground.tscn")
 @onready var background_instance
+@onready var fade
 
 # Load the custom images for the mouse cursor.
 var arrow_texture = load("res://resources/sprites/cursor/arrow.png")
@@ -42,7 +43,7 @@ func _process(delta):
 	background_instance.scroll_offset.x -= 20 * delta
 
 func _on_timer_timeout():
-	var fade = load("res://Scenes/Functional/fade.tscn").instantiate()
+	fade = load("res://Scenes/Functional/fade.tscn").instantiate()
 	get_tree().root.add_child(fade)
 	fade.layer = 0
 	fade.fade_to_black()
@@ -65,26 +66,36 @@ func _on_timer_timeout():
 
 # Go to settings on esc
 func _input(event):
+	_remove_fade()
 	if Input.is_action_just_pressed('Esc'):
 		SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn")
-	
+
+func _remove_fade():
+	if (fade!= null):
+		fade.queue_free()
+
 func _on_new_game_button_pressed():
+	_remove_fade()
 	FightDetails.infinity = false
 	ItemStorage.restart_game()
 	SceneSwap.scene_swap("res://Scenes/Playable/SelectionScreen.tscn")
 
 func _on_load_game_button_pressed():
+	_remove_fade()
 	ItemStorage.load_game()
 	SceneSwap.scene_swap("res://Scenes/Playable/SelectionScreen.tscn")
 
 func _on_tutorial_button_pressed():
+	_remove_fade()
 	SceneSwap.scene_swap("res://Scenes/Playable/tutorial_fight.tscn")
 
 func _on_settings_button_pressed():
+	_remove_fade()
 	Global.prev_scene = get_tree().current_scene.scene_file_path
 	SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn")
 
 func _on_credit_button_pressed():
+	_remove_fade()
 	OS.shell_open("https://github.com/HuskyGameDev/2024s-team7")
 
 func _on_quit_button_pressed():
