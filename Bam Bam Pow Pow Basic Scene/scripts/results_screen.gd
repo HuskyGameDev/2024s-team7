@@ -53,7 +53,7 @@ func _change_coins_positive():
 	coins.text = str(Global.added_coins)
 	
 func _change_coins_negative():
-	ItemStorage.money -= (Global.added_coins)
+	ItemStorage.money -= (300)
 	coins_label.add_theme_color_override("font_color", "red")
 	coins.add_theme_color_override("font_color", "red")
 	coins_label.text = "-Coins"
