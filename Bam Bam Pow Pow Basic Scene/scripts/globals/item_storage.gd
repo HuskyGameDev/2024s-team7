@@ -15,7 +15,7 @@ var EquipScreen = preload("res://Scenes/Playable/EquipScreen.tscn").instantiate(
 var WeaponShop = preload("res://Scenes/Playable/WeaponShop.tscn").instantiate()
 
 @onready var time = 15
-@onready var maxequips = 6
+@onready var maxequips = 5
 var equipped_items = [] # Array of equipped item id's initialized to -1 (not real id)
 @onready var equipped_weapon = "unarmed"
 
@@ -135,7 +135,15 @@ func persistentItemLoad(id):
 
 # Deletes save file by overwriting with no money and no items
 func restart_game():
-	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
-	save_file.store_line(str(0))
-	for i in range(itemsList.size()):
-		save_file.store_line(str(0))
+	money = 0
+	fightvisit = 0
+	for i in range(maxequips*3):
+		equipped_items.append(-1)
+	time = 15
+	maxequips = 5
+	for item in itemsList:
+		item["owned"] = false
+		item["equipped"] = false
+	for weapon in WeaponInShop.weapons_list:
+		weapon["ownership"] = false
+	equipped_weapon = "unarmed"
