@@ -88,4 +88,17 @@ func _on_enemy_show_dmg(dmgNumber):
 # Go to Main Menu on esc
 func _input(event):
 	if Input.is_action_just_pressed('Esc'):
-		SceneSwap.scene_swap("res://Scenes/Playable/MainMenu.tscn")
+		
+		## matthew_dependancy
+		## start
+		if FightDetails.new_game_tutorial:
+			FightDetails.new_game_tutorial = false
+			FightDetails.infinity = false
+			SceneSwap.scene_swap("res://Scenes/Playable/SelectionScreen.tscn")
+		else:
+			SceneSwap.scene_swap("res://Scenes/Playable/MainMenu.tscn")
+		## end
+		## when removing the dependancy uncomment this code and remove these comments
+		## replaced start
+		#SceneSwap.scene_swap("res://Scenes/Playable/MainMenu.tscn")
+		## replaced end

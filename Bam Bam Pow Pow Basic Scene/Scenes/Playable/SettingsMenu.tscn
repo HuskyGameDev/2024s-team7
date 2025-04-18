@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cxwbcxmgttpop"]
+[gd_scene load_steps=14 format=3 uid="uid://cxwbcxmgttpop"]
 
 [ext_resource type="Script" path="res://scripts/SettingsMenu.gd" id="1_0degr"]
 [ext_resource type="Texture2D" uid="uid://cdagg8ov4jnos" path="res://resources/sprites/button.png" id="2_c2wbp"]
@@ -36,6 +36,12 @@ animations = [{
 "name": &"default",
 "speed": 1.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_whoxp"]
+resource_local_to_scene = true
+shader = ExtResource("4_pen3n")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -576,7 +582,7 @@ theme_override_font_sizes/font_size = 30
 text = "INPUT"
 
 [node name="BasicButton" parent="TabContainer/Controls/VBoxContainer" instance=ExtResource("3_7sa1t")]
-material = SubResource("ShaderMaterial_jrhiy")
+material = SubResource("ShaderMaterial_whoxp")
 custom_minimum_size = Vector2(300, 70)
 layout_mode = 2
 size_flags_horizontal = 4

@@ -13,6 +13,16 @@ var op_list = []			# List of opponent detail dictionaries in order of the fights
 var op_progress = 0		# Which opponent fight player has made it to
 var infinity = true		# Keeps track of if in infinity mode
 
+## !!!! Temp additions begin !!!!
+## Dependancies are the actions of new game from the menu and the end state of
+## the tutorial.
+## All dependancies will have "matthew_dependancy" commented with them to make
+## searching for and deleting them later.
+
+var new_game_tutorial: bool = false
+
+## !!!! Temp additions end !!!!
+
 # Temp? Copied WeaponShop to handle selecting which campaign fight to do
 var opSelectStartUp = 0
 var opSelectCurrent = 0
