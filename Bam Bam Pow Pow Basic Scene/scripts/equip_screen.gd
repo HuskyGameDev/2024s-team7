@@ -2,16 +2,19 @@ extends CanvasLayer
 
 # Get reference to equip/unequip button, cancel selection button,
 # the maximum number of pages, and the currently selected id
-@onready var equip_unequip_button = $Control/VBoxContainer/MarginContainer3/HBoxContainer/EquipButton
-@onready var cancel_button = $Control/VBoxContainer/MarginContainer3/HBoxContainer/CancelButton
+@onready var equip_button = $Control/HBoxContainer/EquipButton
+@onready var cancel_button = $Control/HBoxContainer/CancelButton
+@onready var equip_button_label = $Control/HBoxContainer/EquipButton/EquipLabel
+@onready var cancel_button_label = $Control/HBoxContainer/CancelButton/CancelLabel
 @onready var maxPage = ceil(ItemStorage.itemMax/10.0)
 @onready var maxEquippedPage = ceil(ItemStorage.maxequips/5.0)
 @onready var selected_id = -1
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var exitButton = $Control/Sprite2dButton
+@onready var draco = $Draco
 const WOOD_CLICK = preload("res://resources/sounds/WoodClick.wav")
 signal reload
-
+signal timeline_ended
 
 var page = 1
 var equippedpage = 1
@@ -19,11 +22,18 @@ var equippedpage = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Make equip/unequip button and cancel selection button disappear
-	equip_unequip_button.visible = false
+	equip_button.visible = false
 	cancel_button.visible = false
 	emit_signal("reload")
 	reload_equipped()
-
+	
+	if WeaponInShop.itemsOpened == false:
+		draco.show()
+		Dialogic.start('equipScreen')
+	WeaponInShop.equipOpened = true
+	Dialogic.timeline_ended.connect(_on_timeline_ended)
+	await timeline_ended
+	draco.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -46,18 +56,15 @@ func _on_next_page_button_pressed() -> void:
 	# For each of the 10 items onscreen, find their path, then change their metadata to the current metadata+10. 
 	# If that is above the maximum page (Ie the page with the last items), change it instead to i. 
 	# Finally, reload that item.
-	for i in 10:
+	for i in 6:
 		var curr_item;
-		var curr_item_num;
-		if (i < 5):
-			curr_item_num = "Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsFirstRow/EquipItem" + str(i+1)
-		else:
-			curr_item_num = "Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsSecondRow/EquipItem" + str(i+1)
+		var curr_item_num; 
+		curr_item_num = "Control/EquipItems/EquipItem" + str(i+1)
 		curr_item = get_node(curr_item_num)
-		if ((curr_item.get_meta("ID") + 10) >= ceil(ItemStorage.itemMax/10.0)*10):
+		if ((curr_item.get_meta("ID") + 6) >= ceil(ItemStorage.itemMax/6.0)*6):
 			curr_item.set_meta("ID", i)
 		else:
-			curr_item.set_meta("ID", curr_item.get_meta("ID")+10)
+			curr_item.set_meta("ID", curr_item.get_meta("ID")+6)
 		curr_item.on_reload()
 	unselect()
 
@@ -69,18 +76,15 @@ func _on_last_page_button_pressed() -> void:
 	# For each of the 10 items onscreen, find their path, then change their metadata to it-10. If that is below
 	# 0, change it instead to the maximum page's first item + i (Ie going below 0 makes that page the last page)
 	# Finally, reload that item.
-	for i in 10:
+	for i in 6:
 		var curr_item;
 		var curr_item_num;
-		if (i < 5):
-			curr_item_num = "Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsFirstRow/EquipItem" + str(i+1)
-		else:
-			curr_item_num = "Control/VBoxContainer/MarginContainer2/HBoxContainer/ItemContainer/ItemsSecondRow/EquipItem" + str(i+1)
+		curr_item_num = "Control/EquipItems/EquipItem" + str(i+1)
 		curr_item = get_node(curr_item_num)
-		if ((curr_item.get_meta("ID") - 10) < 0):
-			curr_item.set_meta("ID", ((ItemStorage.itemMax/10)*10)+i)
+		if ((curr_item.get_meta("ID") - 6) < 0):
+			curr_item.set_meta("ID", ((ItemStorage.itemMax/6)*6)+i)
 		else:
-			curr_item.set_meta("ID", curr_item.get_meta("ID")-10)
+			curr_item.set_meta("ID", curr_item.get_meta("ID")-6)
 		curr_item.on_reload()
 	unselect()
 
@@ -89,7 +93,7 @@ func _on_last_page_button_pressed() -> void:
 func reload_equipped() -> void:
 	for i in 5:
 		var curr_eq_item 
-		var curr_eq_item_num = "Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem" + str(i+1)
+		var curr_eq_item_num = "Control/EquippedItems/EquippedItem" + str(i+1)
 		curr_eq_item = get_node(curr_eq_item_num)
 		curr_eq_item.set_meta("ID", ItemStorage.equipped_items[(equippedpage-1)*5+i])
 		curr_eq_item.on_reload()
@@ -97,23 +101,23 @@ func reload_equipped() -> void:
 # When selecting a currently equipped item, make equip/unequip button say unequip,
 # make it and cancel selection button visibile, and update selected id
 func _on_equipped_item_selected_item(id: Variant) -> void:
-	equip_unequip_button.visible = true
+	equip_button.visible = true
 	if (ItemStorage.itemsList[id]["equipped"] == false):
-		equip_unequip_button.text = "Equip"
+		equip_button_label.text = "Equip"
 	else:
-		equip_unequip_button.text = "Unequip"
+		equip_button_label.text = "Unequip"
 	cancel_button.visible = true
 	selected_id = id
 
 # When selecting a currently unequipped item, make equip/unequip button say equip,
 # make it and cancel selection button visibile, and update selected id
 func _on_equip_item_selected_item(id: Variant) -> void:
-	equip_unequip_button.visible = true
+	equip_button.visible = true
 	print(ItemStorage.itemsList[id]["equipped"])
 	if (ItemStorage.itemsList[id]["equipped"] == false):
-		equip_unequip_button.text = "Equip"
+		equip_button_label.text = "Equip"
 	else:
-		equip_unequip_button.text = "Unequip"
+		equip_button_label.text = "Unequip"
 	cancel_button.visible = true
 	selected_id = id
 
@@ -154,7 +158,7 @@ func _on_equip_button_pressed() -> void:
 # Helper function that removes the equip/unequip and cancel buttons and sets selected_id
 # to -1 (nonexistant id)
 func unselect() -> void:
-	equip_unequip_button.visible = false
+	equip_button.visible = false
 	cancel_button.visible = false
 	selected_id = -1
 
@@ -169,35 +173,6 @@ func _on_main_menu_button_pressed():
 			audio_stream_player.play()
 	SceneSwap.scene_swap("res://Scenes/Playable/MainMenu.tscn");
 
-func _on_weapon_shop_button_pressed():
-	if (!audio_stream_player.is_playing()):
-			audio_stream_player.stream = WOOD_CLICK
-			audio_stream_player.play()
-	SceneSwap.scene_swap("res://Scenes/Playable/WeaponShop.tscn");
-
-func _on_settings_menu_button_pressed():
-	if (!audio_stream_player.is_playing()):
-			audio_stream_player.stream = WOOD_CLICK
-			audio_stream_player.play()
-	Global.prev_scene = get_tree().current_scene.scene_file_path
-	SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn");
-
-
-func _on_item_scene_button_pressed() -> void:
-	if (!audio_stream_player.is_playing()):
-			audio_stream_player.stream = WOOD_CLICK
-			audio_stream_player.play()
-	Global.prev_scene = get_tree().current_scene.scene_file_path
-	SceneSwap.scene_swap("res://Scenes/Playable/ItemShop.tscn");
-
-
-func _on_fight_scene_button_pressed() -> void:
-	if (!audio_stream_player.is_playing()):
-			audio_stream_player.stream = WOOD_CLICK
-			audio_stream_player.play()
-	Global.prev_scene = get_tree().current_scene.scene_file_path
-	SceneSwap.scene_swap("res://Scenes/Playable/Fight.tscn");
-
 func valequippedpage():
 	if (equippedpage < 1):
 		equippedpage = maxEquippedPage
@@ -209,8 +184,8 @@ func _on_equipped_last_page_button_pressed() -> void:
 	equippedpage -= 1
 	valequippedpage()
 	for i in 5:
-		var curr_eq_item 
-		var curr_eq_item_num = "Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem" + str(i+1)
+		var curr_eq_item
+		var curr_eq_item_num = "Control/EquippedItems/EquippedItem" + str(i+1)
 		curr_eq_item = get_node(curr_eq_item_num)
 		if (((equippedpage-1)*5)+i < ItemStorage.maxequips):
 			curr_eq_item.set_meta("ID", ItemStorage.equipped_items[((equippedpage-1)*5)+i])
@@ -225,7 +200,7 @@ func _on_equipped_next_page_button_pressed() -> void:
 	valequippedpage()
 	for i in 5:
 		var curr_eq_item 
-		var curr_eq_item_num = "Control/VBoxContainer/MarginContainer/HBoxContainer/EquippedItem" + str(i+1)
+		var curr_eq_item_num = "Control/EquippedItems/EquippedItem" + str(i+1)
 		curr_eq_item = get_node(curr_eq_item_num)
 		if (((equippedpage-1)*5)+i < ItemStorage.maxequips):
 			curr_eq_item.set_meta("ID", ItemStorage.equipped_items[((equippedpage-1)*5)+i])
@@ -250,3 +225,6 @@ func _on_sprite_2d_button_mouse_exited():
 func _input(event):
 	if Input.is_action_just_pressed('Esc'):
 		SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn")
+		
+func _on_timeline_ended():
+	timeline_ended.emit()

@@ -61,8 +61,8 @@ func save_game():
 				save_file.store_line(str(1))
 		else:
 			save_file.store_line(str(0))
-	for i in range(WeaponInShop.weaponOwnership.size()):
-		if WeaponInShop.weaponOwnership[i] == true:
+	for i in range(WeaponInShop.weapons_list.size()):
+		if WeaponInShop.weapons_list[i]["ownership"] == true:
 			save_file.store_line(str(1))
 		else:
 			save_file.store_line(str(0))
@@ -98,21 +98,26 @@ func load_game():
 		else:
 			itemsList[item_id]["owned"] = false
 		item_id = item_id+1
-	for i in range(WeaponInShop.weaponOwnership.size()):
+	for i in range(WeaponInShop.weapons_list.size()):
 		if (content.get_slice("\n", item_id+1) == "1"):
-			WeaponInShop.weaponOwnership[i] = true
+			WeaponInShop.weapons_list[i]["ownership"] = true
 		else:
-			WeaponInShop.weaponOwnership[i] = false
+			WeaponInShop.weapons_list[i]["ownership"] = false
 		item_id = item_id+1
-	print(WeaponInShop.weaponOwnership)
+	# Always own unarmed
+	WeaponInShop.weapons_list[0]["ownership"] = true
+	print(WeaponInShop.weapons_list)
 	if (get_tree().current_scene.name == "WeaponShop"):
 		var i = WeaponInShop.currentInstance
 		WeaponShop._changeBox(i)
 	if (get_tree().current_scene.name == "EquipScreen"):
 		EquipScreen.equip_unequip_button.visible = false
-	equipped_weapon = content.get_slice("\n", item_id+1)
+	if content.get_slice("\n", item_id+1) == "spear":
+		equipped_weapon = "spear"
+	else:
+		equipped_weapon = "unarmed"
 	print(equipped_weapon)
-
+	
 # Prints all owned items, currently unused
 func printItems():
 	for item in itemsList:
@@ -130,7 +135,15 @@ func persistentItemLoad(id):
 
 # Deletes save file by overwriting with no money and no items
 func restart_game():
-	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
-	save_file.store_line(str(0))
-	for i in range(itemsList.size()):
-		save_file.store_line(str(0))
+	money = 0
+	fightvisit = 0
+	for i in range(maxequips*3):
+		equipped_items.append(-1)
+	time = 15
+	maxequips = 5
+	for item in itemsList:
+		item["owned"] = false
+		item["equipped"] = false
+	for weapon in WeaponInShop.weapons_list:
+		weapon["ownership"] = false
+	equipped_weapon = "unarmed"

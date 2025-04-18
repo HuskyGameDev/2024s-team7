@@ -172,6 +172,7 @@ offset_bottom = 75.0
 unique_name_in_owner = true
 
 [node name="AudioTimer" type="AudioStreamPlayer" parent="."]
+bus = &"sfx"
 
 [connection signal="attack_performed" from="player" to="enemy" method="_on_player_attack"]
 [connection signal="player_dir" from="player" to="enemy" method="_on_player_player_dir"]

@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7euusov16rvy"]
+[gd_scene load_steps=6 format=3 uid="uid://c7euusov16rvy"]
 
 [ext_resource type="Script" path="res://scripts/equipped_item.gd" id="1_afgyy"]
-[ext_resource type="Texture2D" uid="uid://em6cr61dw1mi" path="res://resources/sprites/combined_playtest_3_spritesheet.png" id="2_2ixhx"]
+[ext_resource type="PackedScene" uid="uid://cc1ttocg7gplt" path="res://Scenes/Functional/Sprite2DButton.tscn" id="2_0r87l"]
+[ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="3_e4jes"]
+[ext_resource type="Texture2D" uid="uid://enf0gw48m1gp" path="res://resources/sprites/full_item_sprites_playtest_3.png" id="4_nqivt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gepc0"]
+resource_local_to_scene = true
+shader = ExtResource("3_e4jes")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
 
 [node name="EquippedItem" type="VBoxContainer"]
 clip_contents = true
@@ -16,21 +24,26 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="SpriteContainer"]
+[node name="Sprite2D" parent="SpriteContainer" instance=ExtResource("2_0r87l")]
+material = SubResource("ShaderMaterial_gepc0")
 position = Vector2(100, 75)
 scale = Vector2(5, 5)
-texture = ExtResource("2_2ixhx")
+texture = ExtResource("4_nqivt")
 hframes = 8
 vframes = 7
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
 text = "Name"
+horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="."]
 custom_minimum_size = Vector2(200, 10)
 layout_mode = 2
 text = "Select"
 
+[connection signal="SpriteButtonPressed" from="SpriteContainer/Sprite2D" to="." method="_on_sprite_2d_sprite_button_pressed"]
+[connection signal="mouse_entered" from="SpriteContainer/Sprite2D" to="." method="_on_sprite_2d_mouse_entered"]
+[connection signal="mouse_exited" from="SpriteContainer/Sprite2D" to="." method="_on_sprite_2d_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_sprite_pressed"]

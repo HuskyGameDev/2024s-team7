@@ -12,7 +12,7 @@
 ## Some special event on fight end (win, lose)
 
 extends Node
-
+signal timeline_ended
 ## Node references
 @onready var enemy = $FightBase/enemy
 @onready var enemySprite = $FightBase/enemy/Sprite2D
@@ -24,6 +24,8 @@ extends Node
 @onready var timerSprite = $CanvasLayer/TimerSprite
 @onready var audio_timer: AudioStreamPlayer = $AudioTimer
 @onready var canvas_layer = $CanvasLayer
+@onready var enemy_animation_player = $FightBase/enemy/AnimationPlayer
+@onready var player_FSM = $FightBase/player/FSM
 
 @onready var currentEnemy = FightDetails.op_list[FightDetails.op_progress]
 @onready var currentEnemyIndex = FightDetails.op_progress
@@ -33,6 +35,9 @@ extends Node
 var results = preload("res://Scenes/Playable/ResultsScreen.tscn").instantiate()
 
 func _ready():
+	#Dialogic.process_mode = Node.PROCESS_MODE_ALWAYS
+	Dialogic.timeline_ended.connect(_on_timeline_ended)
+	FightDetails.shatter.connect(on_shatter)
 	# Set fight type to Campaign
 	# Put here as well mainly for testing. Is set when Campaign/Infinity is in-game
 	FightDetails.infinity = false
@@ -40,6 +45,13 @@ func _ready():
 	# Connect 'health_changed' from enemy scene to local 'healthChanged' function
 	enemy.hit.connect(healthChanged)
 	healthChanged()
+	
+	if currentEnemy["first_try"]:
+		Dialogic.VAR.FirstFight = true
+	else:
+		Dialogic.VAR.FirstFight = false
+	
+	_start_dialog("Startup")
 
 func _process(delta):
 	# Set timer label values
@@ -72,17 +84,18 @@ func healthChanged():
 		print("they died")
 		defeatEnemy()
 
-## Function that runs when an enemy is defeated:
+## Function that runs when an enemy's health reaches 0:
 ## Changes the enemy's data to say they've been defeated,
 ## Manages whether this is a new defeat (ergo new weapon),
 ## Moves to next enemy, Changes scene
 func defeatEnemy():
+	if Dialogic.Text.is_textbox_visible():
+		await timeline_ended
 	# Change all necessary values given fight ended
 	done = true
 	FightDetails.win = true
 	enemy.calc_money()
-	
-	Global.time_left = timer.time_left
+	Global.time_left = ItemStorage.time - timer.time_left
 	
 	# # Set the global value of whether opponent has ever been defeated
 	if (!currentEnemy["defeated"]):
@@ -96,9 +109,12 @@ func defeatEnemy():
 		FightDetails.op_progress = currentEnemyIndex + 1
 		print("went to next guy")
 		print("fight num: ",FightDetails.op_progress)
-	timer.stop()
-	canvas_layer.add_child(results)
+	_start_dialog("GlassyWins")
+	await timeline_ended
 	get_tree().paused = true
+	await get_tree().create_timer(.5).timeout
+	canvas_layer.add_child(results)
+
 	#SceneSwap.scene_swap("res://Scenes/Playable/ResultsScreen.tscn")
 
 ## Function that runs when timer runs out
@@ -107,17 +123,43 @@ func _on_timer_timeout():
 	enemy.calc_money()
 	if (enemy.current_health > 0):
 		FightDetails.win = false
-		timer.stop()
+		_start_dialog("GlassyLoses")
+		Dialogic.timeline_ended.connect(_on_timeline_ended)
+		await timeline_ended
+		await get_tree().create_timer(.5).timeout
 		canvas_layer.add_child(results)
 		get_tree().paused = true
-		#SceneSwap.scene_swap("res://Scenes/Playable/ResultsScreen.tscn")
 
 # Start timer when Fight Base starts fight
 func _on_fight_base_start():
+	await get_tree().create_timer(.5).timeout
 	timer.wait_time = ItemStorage.time
 	timer.start()
-	
+	if (currentEnemy["first_try"]):
+		_start_dialog("FirstHit")
+		currentEnemy["first_try"] = false
+
+func _start_dialog(label_name):
+	Dialogic.start(currentEnemy["opName"], label_name).process_mode = Node.PROCESS_MODE_ALWAYS
+	Dialogic.process_mode = Node.PROCESS_MODE_ALWAYS
+	get_tree().paused = true
+
 # Go to settings on esc
 func _input(event):
 	if Input.is_action_just_pressed('Esc'):
-		SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn")
+		# Removed for playtest
+		#SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn")
+		enemy.calc_money()
+		if (enemy.current_health > 0):
+			FightDetails.win = false
+			canvas_layer.add_child(results)
+			get_tree().paused = true
+		
+func _on_timeline_ended():
+	get_tree().paused = false
+	timeline_ended.emit()
+
+# Does not exist yet.
+# I deleted Shattered node (child of FSM) because I couldn't figure out how to get it to work.
+func on_shatter():
+	player_FSM.force_change_state("Shattered")

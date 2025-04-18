@@ -1,0 +1,34 @@
+HI
+label Startup (Startup)
+if {FirstFight} == true:
+	"Lvl 1 Goblin": ooooooooooooooooooh
+	"Lvl 1 Goblin": i'm jus' a smal widdle goblin (´•̥ ᵔ •̥`)
+	"Lvl 1 Goblin": please don't hit me! i will die to just one attack D\:
+	*The poor lvl 1 Goblin breaks down in tears in front of you*
+	[end_timeline]
+else:
+	"Lvl 1 Goblin": oohhhhhhhhhhhh please
+	"Lvl 1 Goblin": i'm just a small little goblin
+	"Lvl 1 Goblin": i don't drop any good items (;Д;)
+	[end_timeline]
+[end_timeline]
+label FirstHit (FirstHit)
+if {FirstFight} == true:
+	"Lvl 1 Goblin": WAHHH!
+	[end_timeline]
+else:
+	"Lvl 1 Goblin": WAHHHHHH!
+	[end_timeline]
+[end_timeline]
+label GlassyWins (GlassyWins)
+*The goblin dies. There are more just like him.*
+[end_timeline]
+label GlassyLoses (GlassyLoses)
+if {FirstFight} == true:
+	"Lvl 1 Goblin": i cannot live in a world with this fear, sir.
+	"Lvl 1 Goblin": goodbye.
+	[end_timeline]
+else:
+	"Lvl 1 Goblin": i have to... for my family.
+	[end_timeline]
+[end_timeline]

@@ -19,7 +19,11 @@ func _ready():
 # Go to Selection on esc
 func _input(event):
 	if Input.is_action_just_pressed('Esc'):
-		SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn")
+		# Removed for playtest
+		#SceneSwap.scene_swap("res://Scenes/Playable/SettingsMenu.tscn")
+		enemy.calc_money()
+		canvas_layer.add_child(results)
+		get_tree().paused = true
 		
 # Change header values when Enemy hit
 func _on_enemy_hit():

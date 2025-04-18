@@ -71,3 +71,4 @@ func _ready():
 ## UNRELATED SILLY GLOBALS FOR FIRST SCENE OPENS
 var weaponsOpened = false
 var itemsOpened = false
+var equipOpened = false

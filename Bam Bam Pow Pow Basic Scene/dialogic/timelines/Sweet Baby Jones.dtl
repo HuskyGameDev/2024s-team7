@@ -1,0 +1,14 @@
+HI
+label Startup (Startup)
+"Sweet Baby Jones": ...
+[end_timeline]
+label FirstHit (FirstHit)
+if {FirstFight} == true:
+"Sweet Baby Jones": ...
+[end_timeline]
+label GlassyWins (GlassyWins)
+"Sweet Baby Jones": \:(
+[end_timeline]
+label GlassyLoses (GlassyLoses)
+"Sweet Baby Jones": \:)
+[end_timeline]

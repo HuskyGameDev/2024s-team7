@@ -2,9 +2,11 @@ extends Control
 
 var keylist = [KEY_W, KEY_S, KEY_A, KEY_D, KEY_J, KEY_K, KEY_L, KEY_SEMICOLON]
 
+@onready var fullscreen_check = $"TabContainer/Video & Audio/MarginContainer/VBoxContainer/FullscreenHBox/FullscreenCheckButton"
+@onready var resolution_options = $"TabContainer/Video & Audio/MarginContainer/VBoxContainer/ResolutionHBox/ResolutionOptionButton"
 func _ready() -> void:
-	$"TabContainer/Video & Audio/CheckButton".button_pressed = Global.fullscreen_on
-	$"TabContainer/Video & Audio/OptionButton".selected = Global.resolution_index
+	fullscreen_check.button_pressed = Global.fullscreen_on
+	resolution_options.selected = Global.resolution_index
 
 func _input(event):
 	if Input.is_action_just_pressed('Esc'):

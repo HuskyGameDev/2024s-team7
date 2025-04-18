@@ -13,6 +13,8 @@ var started = false
 @onready var player = $player
 @onready var combo_label = $CanvasLayer/combo
 @onready var musicplayer: AudioStreamPlayer = $MusicPlayer
+@onready var camera_2d = $player/Camera2D
+
 const Song = preload("res://resources/sounds/FightSongDraft.wav")
 
 func _ready():
@@ -30,7 +32,11 @@ func _input(event):
 		if (musicplayer.volume_db > -10):
 			musicplayer.volume_db = musicplayer.volume_db - 10
 		musicplayer.play()
-
+		#camera_2d.draw_set_transform(Vector2(0, 0), 0, Vector2(1, 1))
+		var t = Transform2D()
+		t.x *= 0
+		t.y *= 0
+		camera_2d.transform = t
 func _process(delta):
 	pass
 

@@ -2,6 +2,7 @@ extends Node
 
 class_name fight_details
 
+signal shatter
 var animation = ""
 var newWeaponNotification = false
 
@@ -16,20 +17,20 @@ var infinity = true		# Keeps track of if in infinity mode
 var opSelectStartUp = 0
 var opSelectCurrent = 0
 
-func make_opponent(opName: String, description: String, health: int, sprite_path: String, background_setup_function: String, time: int, defeated: bool, defeatable: bool,
-			   weakness: String, record: float, speech: Array[String]=["No Words"]) -> Dictionary:
+func make_opponent(opName: String, opName_no_space: String, description: String, health: int, sprite_path: String, background_setup_function: String, time: int, defeated: bool, first_try: bool,
+			   weakness: String, record: float) -> Dictionary:
 	var opponent: Dictionary = {
 		"opName":		opName,
+		"opName_no_space": opName_no_space,
 		"description":	description,
 		"health":		health,
 		"sprite_path":	sprite_path,
 		"background_setup_function":	background_setup_function,
 		"time":			time,
-		"defeated": 		defeated,
-		"defeatable":	defeatable,
+		"defeated": 	defeated,
+		"first_try":	first_try,
 		"weakness":		weakness,
 		"record":		record,
-		"speech": 		speech,
 	}
 	return opponent
 
@@ -37,7 +38,8 @@ func make_opponent(opName: String, description: String, health: int, sprite_path
 func _ready():
 	
 	op_list.append(make_opponent(
-		"Goblin",
+		"Lvl 1 Goblin",
+		"Lvl1Goblin",
 		"He's just a lil' guy that would die in one hit",
 		1,
 		"res://resources/sprites/lvl1gob-mspaint-spritesheet.png",
@@ -47,33 +49,27 @@ func _ready():
 		true,
 		"fire",
 		50,
-		[
-			"ooooooooooooooooooooooooooooooooo",
-			"i'm jst a small liddle goblin",
-			"i will die to just one attack :'()"
-		]
 	))
 	
 	op_list.append(make_opponent(
-		"Bat",
+		"Batty",
+		"Batty",
 		"Rambunctious delinquent.",
-		1000,
+		300,
 		"res://resources/sprites/temp-batty-spritesheet.png",
-		"school",
+		"sakura",
 		30,
 		false,
 		true,
 		"light",
 		50,
-		[
-			"Hello! Loser >:D"
-		]
 	))
 	
 	op_list.append(make_opponent(
 		"Sweet Baby Jones",
+		"SweetBabyJones",
 		"...",
-		3000,
+		500,
 		"res://resources/sprites/bbjo-mspaint-spritesheet.png",
 		"jonestown",
 		30,
@@ -81,15 +77,55 @@ func _ready():
 		true,
 		"",
 		50,
-		[
-			"..."
-		]
 	))
 	
 	op_list.append(make_opponent(
-		"Wise Man",
-		"He likes to groom his beard",
-		8000,
+		"Robit",
+		"Robit",
+		"A technological miracle",
+		1000,
+		"res://resources/sprites/bbjo-mspaint-spritesheet.png",
+		"factory",
+		30,
+		false,
+		true,
+		"",
+		50,
+	))
+	
+	op_list.append(make_opponent(
+		"Moon",
+		"Moon",
+		"Traveled a long way for this.",
+		1500,
+		"res://resources/sprites/temp-batty-spritesheet.png",
+		"moon",
+		30,
+		false,
+		true,
+		"light",
+		50,
+	))
+	
+	op_list.append(make_opponent(
+		"Sir Plomp",
+		"SirPlomp",
+		"Flippers with finesse.",
+		3000,
+		"res://resources/sprites/temp-batty-spritesheet.png",
+		"fancy",
+		30,
+		false,
+		true,
+		"light",
+		50,
+	))
+	
+	op_list.append(make_opponent(
+		"Baltimore",
+		"Baltimore",
+		"Women love me, fish fear me",
+		6000,
 		"res://resources/sprites/master-mspaint-spritesheet.png",
 		"sakura",
 		30,
@@ -97,7 +133,7 @@ func _ready():
 		true,
 		"light",
 		50,
-		[
-			"Hmmmmmmmm"
-		]
 	))
+	
+func do_shatter():
+	shatter.emit()

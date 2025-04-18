@@ -11,6 +11,8 @@ extends Node
 @onready var trainingButton = $TrainingButton
 @onready var soundPlayer = $AudioStreamPlayer2D
 @onready var piggy_bank = $PiggyBank
+@onready var music = $Music
+
 
 # Go to settings on esc
 func _input(event):
@@ -70,12 +72,14 @@ func _on_inventory_sprite_button_pressed():
 
 
 func _on_exit_sprite_button_pressed():
-	SceneSwap.scene_swap("res://Scenes/Playable/MainMenu.tscn")
+	Dialogic.start('Exit')
+	#SceneSwap.scene_swap("res://Scenes/Playable/MainMenu.tscn")
 
 func _on_save_sprite_button_pressed():
 	ItemStorage.save_game()
 	Dialogic.start('SavedNotification')
 
+#TODO: Replace this back to fight animation handling with a blended animation tree (capture mode)
 func _on_back_to_fight_sprite_button_pressed():
 	if FightDetails.infinity:
 		SceneSwap.scene_swap("res://Scenes/Playable/InfinityFight.tscn")
@@ -127,10 +131,11 @@ func _on_training_button_sprite_button_pressed():
 
 func _on_piggy_bank_sprite_button_pressed():
 	soundPlayer.stream = load("res://resources/sounds/oink.mp3")
+	soundPlayer.play()
 	piggy_bank.frame = 2
 	await get_tree().create_timer(.1).timeout
-	soundPlayer.play()
-
+	if(!music.playing):
+		music.play(0)
 
 func _on_audio_stream_player_2d_finished():
 	piggy_bank.frame = 3

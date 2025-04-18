@@ -1,0 +1,37 @@
+HI
+# #
+# Startup
+label Startup (Startup)
+if {FirstFight} == true:
+	Robit: Human! You dare challenge me?!
+	[end_timeline]
+else:
+	Robit: Error Detected: Human hasn't learned to give up.
+	[end_timeline]
+[end_timeline]
+# 
+# First Hit
+label FirstHit (FirstHit)
+if {FirstFight} == true:
+	Robit: SYSTEM ERROR
+[end_timeline]
+# #
+# Glassy Wins
+label GlassyWins (GlassyWins)
+if {FirstFight} == true:
+	Robit: It's a malfunction.
+	Robit: This can't be possible...
+	[end_timeline]
+else:
+	Robit: Can't compute. REBOOTING...
+	[end_timeline]
+# #
+# Glassy Loses
+label GlassyLoses (GlassyLoses)
+if {FirstFight} == true:
+	Robit: Technology reigns supreme.
+	[end_timeline]
+else:
+	Robit: Expected outcome. You lose.
+	[end_timeline]
+[end_timeline]

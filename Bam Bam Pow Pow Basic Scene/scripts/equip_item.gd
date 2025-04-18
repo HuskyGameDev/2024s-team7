@@ -5,7 +5,7 @@ signal selected_item(id)
 # Get the sprite, button, name label, and equip screen references
 var id
 @onready var sprite = $SpriteContainer/Sprite2D
-@onready var button = $Button
+@onready var button = $BasicButton
 @onready var namelabel = $Label
 @onready var equip_screen = get_node("/root/EquipScreen")
 
@@ -52,3 +52,18 @@ func on_reload() -> void:
 		namelabel.visible = true
 		namelabel.text = ItemStorage.itemsList[id]["item_name"]
 		
+
+func _on_sprite_2d_mouse_entered() -> void:
+	sprite.frame += 24
+
+
+func _on_sprite_2d_mouse_exited() -> void:
+	sprite.frame -= 24
+	
+func _on_sprite_2d_sprite_button_pressed():
+	# print("the button worked awooga")
+	#Dialogic.set_variable('ItemDescript', 'awooooga')
+	var lines = ItemStorage.itemsList[id]["descript"]
+	Dialogic.VAR.ItemDescript = lines
+
+	Dialogic.start('itemDescriptions')

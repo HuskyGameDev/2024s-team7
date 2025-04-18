@@ -28,14 +28,30 @@ FightDetails="*res://scripts/globals/fight_details.gd"
 [dialogic]
 
 directories/dch_directory={
+"Baltimore": "res://dialogic/characters/Baltimore.dch",
 "Batty": "res://dialogic/characters/Batty.dch",
 "Drako": "res://dialogic/characters/Drako.dch",
-"Glassy": "res://dialogic/characters/Glassy.dch"
+"Glassy": "res://dialogic/characters/Glassy.dch",
+"Lvl 1 Goblin": "res://dialogic/characters/Lvl 1 Goblin.dch",
+"Moon": "res://dialogic/characters/Moon.dch",
+"Robit": "res://dialogic/characters/Robit.dch",
+"Sir Plomp": "res://dialogic/characters/Sir Plomp.dch",
+"Sweet Baby Jones": "res://dialogic/characters/Sweet Baby Jones.dch"
 }
 directories/dtl_directory={
+"Baltimore": "res://dialogic/timelines/Baltimore.dtl",
+"Batty": "res://dialogic/timelines/Batty.dtl",
+"Exit": "res://dialogic/timelines/Exit.dtl",
+"Lvl 1 Goblin": "res://dialogic/timelines/Lvl 1 Goblin.dtl",
+"Moon": "res://dialogic/timelines/Moon.dtl",
+"Robit": "res://dialogic/timelines/Robit.dtl",
 "SavedNotification": "res://dialogic/timelines/SavedNotification.dtl",
+"Sir Plomp": "res://dialogic/timelines/Sir Plomp.dtl",
+"Sweet Baby Jones": "res://dialogic/timelines/Sweet Baby Jones.dtl",
+"equipScreen": "res://dialogic/timelines/equipScreen.dtl",
 "itemDescriptions": "res://dialogic/timelines/itemDescriptions.dtl",
 "itemShop": "res://dialogic/timelines/itemShop.dtl",
+"lvl1Goblin": "res://dialogic/timelines/lvl1Goblin.dtl",
 "weaponShop": "res://dialogic/timelines/weaponShop.dtl"
 }
 extensions_folder="res://addons/dialogic_additions"
@@ -59,11 +75,11 @@ save/autosave_delay=60.0
 save/encryption_on_exports_only=true
 text/autopauses={}
 glossary/default_case_sensitive=true
-layout/style_list=[]
-layout/default_style="Default"
+layout/style_list=["res://dialogic/bubble_style.tres", "res://dialogic/default_style.tres"]
+layout/default_style="res://dialogic/default_style.tres"
 variables={
-"ItemDescript": "none",
-"bees": ""
+"FirstFight": true,
+"ItemDescript": "none"
 }
 
 [display]

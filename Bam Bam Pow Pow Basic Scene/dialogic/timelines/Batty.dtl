@@ -1,0 +1,44 @@
+HI
+#
+# Startup
+label Startup (Startup)
+if {FirstFight} == true:
+	Batty: Hah! A new challenger.
+	Batty: You don't look awfully strong. Come any closer and I'll knock you on your ass.
+	Batty: Not that you'd have the courage to.
+	[end_timeline]
+else:
+	Batty: I see you've come back. How foolish!
+	[end_timeline]
+[end_timeline]
+# 
+# First Hit
+label FirstHit (FirstHit)
+if {FirstFight} == true:
+	Batty: WAH?
+	[end_timeline]
+else:
+	Batty: HUH?!
+	[end_timeline]
+[end_timeline]
+#
+# Glassy Wins
+label GlassyWins (GlassyWins)
+if {FirstFight} == true:
+	Batty: I- I underestimated you.
+	[end_timeline]
+else:
+	Batty: How could this happen?..
+	[end_timeline]
+#
+# Glassy Loses
+label GlassyLoses (GlassyLoses)
+if {FirstFight} == true:
+	*Batty seems to have recovered from her state of shock.*
+	Batty: YOU!
+	Batty: I've got you now!!
+	[end_timeline]
+else:
+	Batty: Hah! I can beat you any day.
+	[end_timeline]
+[end_timeline]
