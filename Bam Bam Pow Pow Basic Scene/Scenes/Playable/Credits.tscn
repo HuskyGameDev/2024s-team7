@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://b6jc6ywe7genx"]
+
+[ext_resource type="Texture2D" uid="uid://b0g7yg4c2v28f" path="res://resources/sprites/credits/frame0000.png" id="1_gyyl8"]
+[ext_resource type="Script" path="res://scripts/credits.gd" id="1_wwsob"]
+[ext_resource type="Texture2D" uid="uid://mcrmm5ipbsw2" path="res://resources/sprites/credits/frame0001.png" id="2_tbok2"]
+[ext_resource type="PackedScene" uid="uid://cc1ttocg7gplt" path="res://Scenes/Functional/Sprite2DButton.tscn" id="4_xsyu7"]
+[ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="5_6nue6"]
+[ext_resource type="Texture2D" uid="uid://dhr7geb5igl86" path="res://resources/sprites/Main-Menu-Buttons-Spritesheet.png" id="6_creq7"]
+[ext_resource type="Texture2D" uid="uid://br31y4fp84xea" path="res://resources/sprites/credits/GIT_spritesheet.png" id="6_pay0s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jk38d"]
+resource_local_to_scene = true
+shader = ExtResource("5_6nue6")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ggxs"]
+resource_local_to_scene = true
+shader = ExtResource("5_6nue6")
+shader_parameter/onoffMult = false
+shader_parameter/onoffSoftLight = false
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wwsob")
+textures = Array[Texture2D]([ExtResource("1_gyyl8"), ExtResource("2_tbok2")])
+
+[node name="backgroundColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.144063, 0.144063, 0.144063, 1)
+
+[node name="animatedCreditsTextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_gyyl8")
+stretch_mode = 5
+
+[node name="Credit" parent="." instance=ExtResource("4_xsyu7")]
+material = SubResource("ShaderMaterial_jk38d")
+position = Vector2(945, 674)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_pay0s")
+hframes = 2
+hoverWhiteStandard = true
+
+[node name="Exit" parent="." instance=ExtResource("4_xsyu7")]
+material = SubResource("ShaderMaterial_8ggxs")
+position = Vector2(1160, 671)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_creq7")
+hframes = 4
+vframes = 3
+frame = 5
+hoverWhiteStandard = true
+
+[connection signal="SpriteButtonPressed" from="Credit" to="." method="_on_github_button_pressed"]
+[connection signal="SpriteButtonPressed" from="Exit" to="." method="_on_exit_button_pressed"]

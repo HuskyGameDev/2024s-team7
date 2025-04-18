@@ -76,9 +76,18 @@ func _remove_fade():
 
 func _on_new_game_button_pressed():
 	_remove_fade()
-	FightDetails.infinity = false
-	ItemStorage.restart_game()
-	SceneSwap.scene_swap("res://Scenes/Playable/SelectionScreen.tscn")
+	## matthew_dependancy
+	## start
+	FightDetails.new_game_tutorial = true
+	SceneSwap.scene_swap("res://Scenes/Playable/tutorial_fight.tscn")
+	## end
+	## when removing the dependancy uncomment this code and remove these comments
+	## replaced start
+	#FightDetails.infinity = false
+	#ItemStorage.restart_game()
+	#SceneSwap.scene_swap("res://Scenes/Playable/SelectionScreen.tscn")
+	## replaced end
+	
 
 func _on_load_game_button_pressed():
 	_remove_fade()
@@ -87,6 +96,7 @@ func _on_load_game_button_pressed():
 
 func _on_tutorial_button_pressed():
 	_remove_fade()
+	FightDetails.new_game_tutorial = false
 	SceneSwap.scene_swap("res://Scenes/Playable/tutorial_fight.tscn")
 
 func _on_settings_button_pressed():
@@ -96,7 +106,7 @@ func _on_settings_button_pressed():
 
 func _on_credit_button_pressed():
 	_remove_fade()
-	OS.shell_open("https://github.com/HuskyGameDev/2024s-team7")
+	SceneSwap.scene_swap("res://Scenes/Playable/Credits.tscn")
 
 func _on_quit_button_pressed():
 	get_tree().quit()
