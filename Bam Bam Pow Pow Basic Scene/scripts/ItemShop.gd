@@ -13,6 +13,11 @@ extends CanvasLayer
 @onready var maxPage = ceil(ItemStorage.itemMax/8.0)
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var exitButton = $Control/Sprite2dButton
+const WOOD_CLICK = preload("res://resources/sounds/WoodClick.wav")
+const Chime = preload("res://resources/sounds/StartChime.wav")
+signal timeline_started
+signal timeline_ended
+
 
 var page = 1 # The item shop always starts on page 1
 
@@ -26,11 +31,19 @@ func _ready():
 	# ItemStorage.money += 10000
 	money_label.text = str(ItemStorage.money)
 	#print(warning.modulate)
-	
 	if WeaponInShop.itemsOpened == false:
+		Dialogic.connect("timeline_started", Callable(self,"_on_dialogue_started"))
+		Dialogic.connect("timeline_ended", Callable(self,"_on_dialogue_ended"))
+		$TextureRect/AnimatedSprite2D.play("talk")
 		Dialogic.start('itemShop')
-	WeaponInShop.itemsOpened = true
+	WeaponInShop.itemsOpened = true        
 
+func _on_dialogue_started():
+	pass
+
+func _on_dialogue_ended():
+	$TextureRect/AnimatedSprite2D.stop()
+	$TextureRect/AnimatedSprite2D.frame = 0  
 
 #func _process(delta: float) -> void:
 	#if warning.modulate.a > 0.99:
