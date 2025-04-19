@@ -1,12 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://i48tabjyt08t"]
+[gd_scene load_steps=13 format=3 uid="uid://i48tabjyt08t"]
 
 [ext_resource type="Script" path="res://scripts/ItemShop.gd" id="1_ed3xk"]
 [ext_resource type="PackedScene" uid="uid://btqmnmpytpfkq" path="res://Scenes/Functional/Item.tscn" id="2_3qixg"]
 [ext_resource type="Texture2D" uid="uid://dqhwy21a3peoc" path="res://resources/sprites/item-shop-bg.png" id="2_b1eqh"]
-[ext_resource type="PackedScene" uid="uid://dbc7vk84ewdqo" path="res://Scenes/Functional/BasicButton.tscn" id="3_exxd0"]
-[ext_resource type="Texture2D" uid="uid://ckxdnq45ht1om" path="res://resources/sprites/DracoSprites/closed-item-draco.png" id="3_vtfmh"]
-[ext_resource type="Texture2D" uid="uid://mqg53g3e6wqd" path="res://resources/sprites/DracoSprites/open-item-draco.png" id="4_8infh"]
-
 [ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="4_cax4p"]
 [ext_resource type="Texture2D" uid="uid://6yrr4w034b3y" path="res://resources/sprites/door-sprites.png" id="6_sgoiq"]
 [ext_resource type="PackedScene" uid="uid://cc1ttocg7gplt" path="res://Scenes/Functional/Sprite2DButton.tscn" id="7_lh6kn"]
@@ -42,13 +38,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_b1eqh")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TextureRect"]
-position = Vector2(642, 366)
-scale = Vector2(3.97266, 4.05833)
-sprite_frames = SubResource("SpriteFrames_rwhhi")
-animation = &"talk"
-frame_progress = 0.195037
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
