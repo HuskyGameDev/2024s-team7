@@ -20,8 +20,6 @@ extends CanvasLayer
 @onready var audio_player = $AudioStreamPlayer2D
 
 var speed_flash = 1
-signal timeline_started
-signal timeline_ended
 
 func _ready():
 	money_label.text = str(ItemStorage.money)
@@ -89,52 +87,6 @@ func _changeBox(i)-> void:
 
 	# Print if weapon i is owned for testing
 	print("Do you own?", WeaponInShop.weapons_list[i])
-	
-## Makes all weapons appear if they are not owned and disappear if they are
-func reloadWeapons():
-	for i in WeaponInShop.weaponOwnership.size():
-		if WeaponInShop.weaponOwnership[i]==true:
-			toBuy.hide()
-			bought.show()
-		else:
-			toBuy.show()
-			bought.hide()
-	
-
-## Sets starting Selected Weapon Box
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	_changeBox(0)	# Starts at first weapon, changeBox to first
-	# Since first weapon is Unarmed always bought, set to bought screen
-	toBuy.hide()
-	bought.show()
-	
-	warningLabel.hide()
-	if WeaponInShop.weaponsOpened == false:
-		Dialogic.connect("timeline_started", Callable(self,"_on_dialogue_started"))
-		Dialogic.connect("timeline_ended", Callable(self,"_on_dialogue_ended"))
-		$AnimatedSprite2D.play("talk")
-		Dialogic.start('weaponShop')
-	WeaponInShop.weaponsOpened = true
-
-func _on_dialogue_started():
-	pass
-
-func _on_dialogue_ended():
-	$AnimatedSprite2D.stop()
-	$AnimatedSprite2D.frame = 0
-	
-
-## Not necessary yet. Kept only for potential later convenience.
-## Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if hazard.modulate.a > 0.99:
-		speed_flash *= -1
-	elif hazard.modulate.a < 0.5:
-		speed_flash *= -1
-	hazard.modulate = Color(1, 1, 1, hazard.modulate.a + speed_flash * delta)
-
-
 
 ## Second function of HangerButton (first in Hanger script)
 ## Accesses pressed Hanger index and changeBoxes to it

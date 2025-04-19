@@ -1,12 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://c7hqp2kuj8xq5"]
+[gd_scene load_steps=23 format=3 uid="uid://c7hqp2kuj8xq5"]
 
 [ext_resource type="Script" path="res://scripts/weapon_shop.gd" id="1_wkwj5"]
 [ext_resource type="Texture2D" uid="uid://dxunmhf25os5p" path="res://resources/sprites/dragon-in-shop.png" id="2_7m3va"]
 [ext_resource type="Texture2D" uid="uid://dc36bpll4ldvy" path="res://resources/sprites/background-itemshop.png" id="2_8ayfd"]
 [ext_resource type="PackedScene" uid="uid://5n0srb1iavr0" path="res://Scenes/Entities/hanger.tscn" id="3_01yxm"]
 [ext_resource type="PackedScene" uid="uid://cc1ttocg7gplt" path="res://Scenes/Functional/Sprite2DButton.tscn" id="5_8vjnh"]
-[ext_resource type="Texture2D" uid="uid://csaod2ht6ymhf" path="res://resources/sprites/next-prev.png" id="5_75nm7"]
-[ext_resource type="Texture2D" uid="uid://dh8s6dfms86dd" path="res://resources/sprites/DracoSprites/closed-weapon-draco.png" id="5_c1lo8"]
 [ext_resource type="Shader" path="res://resources/fonts/selfLayerEffects.gdshader" id="6_el8qg"]
 [ext_resource type="Texture2D" uid="uid://cdagg8ov4jnos" path="res://resources/sprites/button.png" id="6_rmsbf"]
 [ext_resource type="FontFile" uid="uid://bsodwni6sfoxc" path="res://resources/fonts/PixeloidSans-Bold.ttf" id="7_ietxf"]
@@ -27,45 +25,7 @@ shader_parameter/onoffSoftLight = false
 content_margin_left = 450.0
 content_margin_right = 0.0
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_2eann"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_c1lo8")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_7m3va")
-}],
-"loop": true,
-"name": &"talk",
-"speed": 5.0
-}]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_40vwc"]
-resource_local_to_scene = true
-shader = ExtResource("6_el8qg")
-shader_parameter/onoffMult = false
-shader_parameter/onoffSoftLight = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2i54w"]
-resource_local_to_scene = true
-shader = ExtResource("6_el8qg")
-shader_parameter/onoffMult = false
-shader_parameter/onoffSoftLight = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vue0w"]
-resource_local_to_scene = true
-shader = ExtResource("6_el8qg")
-shader_parameter/onoffMult = false
-shader_parameter/onoffSoftLight = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w8y6o"]
-resource_local_to_scene = true
-shader = ExtResource("6_el8qg")
-shader_parameter/onoffMult = false
-shader_parameter/onoffSoftLight = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_owe7p"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f6m70"]
 resource_local_to_scene = true
 shader = ExtResource("6_el8qg")
 shader_parameter/onoffMult = false
@@ -155,11 +115,11 @@ color = Color(1, 1, 1, 0)
 [node name="HScrollBar" type="HScrollBar" parent="Control/ScrollContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Dra\'ko" type="Sprite2D" parent="."]
 position = Vector2(640, 360)
 scale = Vector2(4, 4)
-sprite_frames = SubResource("SpriteFrames_2eann")
-animation = &"talk"
+texture = ExtResource("2_7m3va")
+metadata/_edit_lock_ = true
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 anchors_preset = 8
